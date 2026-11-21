@@ -194,6 +194,8 @@ struct SettingsServerPage: View {
                 } label: {
                     SettingsLabel(title: String(localized: "Connected Apps"), systemImage: "app.connected.to.app.below.fill")
                 }
+
+                ForkMCPSettingsRow(connection: hermesConnection, server: server)
             }
 
             OfflineDataSection(server: server)
