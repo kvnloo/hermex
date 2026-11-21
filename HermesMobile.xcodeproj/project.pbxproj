@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */; };
+		2E9F8B06FAAEB4834089007A /* ForkMCPServers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45091E50F8192F05F6B35D2A /* ForkMCPServers.swift */; };
+		402D6B143CBF2188DFCE05B4 /* ForkMCPServersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DF8CA747382A507307CCF /* ForkMCPServersView.swift */; };
 		6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611229C09BFE865783BA1CC4 /* ForkRPC.swift */; };
+		7CDBA6D77F9DBD7C954A8658 /* ForkMCPRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */; };
 		A15740000000000000000002 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A15740000000000000000001 /* AppIcon.icon */; };
 		D14090000000000000000014 /* ProviderLimitsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000003 /* ProviderLimitsWidget.swift */; };
 		D14090000000000000000011 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
@@ -22,6 +25,7 @@
 		D16430000000000000000015 /* BotWidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000003 /* BotWidgetPublisher.swift */; };
 		D16430000000000000000016 /* BotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000004 /* BotWidget.swift */; };
 		D16430000000000000000017 /* BotWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000005 /* BotWidgetTests.swift */; };
+		DFD1D755F237889B1F728F44 /* ForkMCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F28927F691751A928FE57 /* ForkMCPClient.swift */; };
 		E1582000000000000000A009 /* HermesPluginCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A010 /* HermesPluginCatalog.swift */; };
 		E1582000000000000000A011 /* PluginInstallSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A012 /* PluginInstallSheet.swift */; };
 		E1582000000000000000A013 /* PluginDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A014 /* PluginDiscoverView.swift */; };
@@ -61,6 +65,7 @@
 		B48200000000000000000008 /* BotProfileEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48200000000000000000007 /* BotProfileEditorTests.swift */; };
 		B48200000000000000000024 /* BotFaceMotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48200000000000000000023 /* BotFaceMotionTests.swift */; };
 		C72A6DDA681F4CDABE7445DD /* BotHistoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */; };
+		ECF685D21F1CE2F6739A8BA5 /* ForkMCPServersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4949044CB553EA242FCF44 /* ForkMCPServersTests.swift */; };
 		F0907446778F4FBEBAEEC2B9 /* BotHistoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCCA0BACC647998F9CC3D0 /* BotHistoryCache.swift */; };
 		6F1EF01AA79B446C989D7FC1 /* BotSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0AA6F787074B4A8DC903FF /* BotSearchView.swift */; };
 		D1F04357497D4FD381D726C8 /* BotChatControlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6984D85D628F4E18ABAA2BA9 /* BotChatControlsTests.swift */; };
@@ -787,8 +792,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		075F28927F691751A928FE57 /* ForkMCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPClient.swift; sourceTree = "<group>"; };
 		1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPCTests.swift; sourceTree = "<group>"; };
+		45091E50F8192F05F6B35D2A /* ForkMCPServers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPServers.swift; sourceTree = "<group>"; };
 		611229C09BFE865783BA1CC4 /* ForkRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPC.swift; sourceTree = "<group>"; };
+		718DF8CA747382A507307CCF /* ForkMCPServersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPServersView.swift; sourceTree = "<group>"; };
+		75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPRPCTests.swift; sourceTree = "<group>"; };
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
 		D14090000000000000000001 /* ProviderLimitsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsSnapshot.swift; sourceTree = "<group>"; };
@@ -799,6 +808,7 @@
 		D16430000000000000000003 /* BotWidgetPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotWidgetPublisher.swift; sourceTree = "<group>"; };
 		D16430000000000000000004 /* BotWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotWidget.swift; sourceTree = "<group>"; };
 		D16430000000000000000005 /* BotWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotWidgetTests.swift; sourceTree = "<group>"; };
+		DF4949044CB553EA242FCF44 /* ForkMCPServersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPServersTests.swift; sourceTree = "<group>"; };
 		E1318000000000000000A010 /* APIKeyEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyEditor.swift; sourceTree = "<group>"; };
 		E1582000000000000000A010 /* HermesPluginCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hermes/HermesPluginCatalog.swift"; sourceTree = "<group>"; };
 		E1582000000000000000A012 /* PluginInstallSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginInstallSheet.swift; sourceTree = "<group>"; };
@@ -1563,8 +1573,17 @@
 			isa = PBXGroup;
 			children = (
 				1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */,
+				75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */,
 			);
 			path = ForkApp;
+			sourceTree = "<group>";
+		};
+		7E21641DFD8B619872A3B531 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				45091E50F8192F05F6B35D2A /* ForkMCPServers.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		90894119555CFD9971BEA473 /* Networking */ = {
@@ -1579,6 +1598,8 @@
 			isa = PBXGroup;
 			children = (
 				90894119555CFD9971BEA473 /* Networking */,
+				E39DC717F9FD6A4421A9DA9B /* Core */,
+				F7899A2D78F49CDB3F3C89C2 /* Settings */,
 			);
 			path = Fork;
 			sourceTree = "<group>";
@@ -1701,6 +1722,7 @@
 				1AF16E9919604984868D037B /* BotRoomTests.swift */,
 				73869046C6B24A24B963627C /* BotRoomManagementTests.swift */,
 				5DAB6E1003A74F1992A3C350 /* BotInboxTests.swift */,
+				F20BE09C2F2D10DE30148850 /* Fork */,
 				FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */,
 				A496B07E0000000000000002 /* BotModeGateTests.swift */,
 				A496B07E0000000000000004 /* BotConnectionVersionTests.swift */,
@@ -2585,6 +2607,31 @@
 			path = Insights;
 			sourceTree = "<group>";
 		};
+		E39DC717F9FD6A4421A9DA9B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7E21641DFD8B619872A3B531 /* Settings */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F20BE09C2F2D10DE30148850 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				DF4949044CB553EA242FCF44 /* ForkMCPServersTests.swift */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
+		F7899A2D78F49CDB3F3C89C2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				075F28927F691751A928FE57 /* ForkMCPClient.swift */,
+				718DF8CA747382A507307CCF /* ForkMCPServersView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2812,12 +2859,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E9F8B06FAAEB4834089007A /* ForkMCPServers.swift in Sources */,
+				402D6B143CBF2188DFCE05B4 /* ForkMCPServersView.swift in Sources */,
 				6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */,
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
 				D5D7BC7A9A48E1E101C20E93 /* ScreenInput.swift in Sources */,
 				D54C4191484B7E0927A7C9BD /* ScreenControl.swift in Sources */,
 				CFA1B013C7784C249E72A5DE /* ScreenView.swift in Sources */,
 				284C1405D843B63B8A2360CA /* ScreenSession.swift in Sources */,
+				DFD1D755F237889B1F728F44 /* ForkMCPClient.swift in Sources */,
 				FC264D031B2CAEDB4AF53C1D /* RFBClient.swift in Sources */,
 				DAB1829DA684D7E566D41872 /* RFBDecoder.swift in Sources */,
 				A4790000000000000000E001 /* PushEnvironment.swift in Sources */,
@@ -3270,6 +3320,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
+				7CDBA6D77F9DBD7C954A8658 /* ForkMCPRPCTests.swift in Sources */,
+				ECF685D21F1CE2F6739A8BA5 /* ForkMCPServersTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,
