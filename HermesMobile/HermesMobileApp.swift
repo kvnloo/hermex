@@ -105,6 +105,7 @@ struct HermesMobileApp: App {
                 .preferredColorScheme(AppTheme.storedValue(appThemeRawValue).colorScheme)
                 .background(WindowBackgroundPainter())
                 .appRootFont()
+                .forkSystemEntryBridge()
                 .task(id: authManager.state) { await DevAutoLogin.run(authManager: authManager) }
                 .overlay(alignment: .topLeading) {
                     if HitchMeter.isEnabled {
@@ -116,6 +117,7 @@ struct HermesMobileApp: App {
                 .preferredColorScheme(AppTheme.storedValue(appThemeRawValue).colorScheme)
                 .background(WindowBackgroundPainter())
                 .appRootFont()
+                .forkSystemEntryBridge()
             #endif
         }
         .modelContainer(cacheContainer)

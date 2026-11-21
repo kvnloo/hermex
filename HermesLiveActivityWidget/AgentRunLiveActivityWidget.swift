@@ -8,6 +8,9 @@ struct HermesLiveActivityWidgetBundle: WidgetBundle {
         AgentRunLiveActivityWidget()
         ProviderLimitsWidget()
         BotWidget()
+        ForkActionsWidget()
+        ForkNewChatControl()
+        ForkLiveVoiceControl()
     }
 }
 
