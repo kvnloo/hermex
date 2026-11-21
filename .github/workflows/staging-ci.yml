@@ -1,0 +1,176 @@
+# Fork CI for kvnloo/hermex `staging` (see FORK.md). Upstream's pr-ci.yml is
+# left untouched so syncing `master` never conflicts; this file is fork-only.
+#
+# - Build and Test: the same xcodebuild build-for-testing / test-without-building
+#   commands, pins and simulator selection as pr-ci.yml, unsigned
+#   (CODE_SIGNING_ALLOWED=NO), on the GitHub-hosted `xcode-27` image. That label
+#   is not upstream-only: the fork's own PR CI run on master (a9861b9) ran on it
+#   and passed. The app needs the Xcode 27.1 SDK (`#available(iOS 27.1, *)`), so
+#   an older macos-15 image cannot compile it.
+# - Fork Logic (Linux): scripts/fork-linux-test compiles the Foundation-only fork
+#   sources under HermesMobile/Fork and runs HermesMobileTests/Fork with XCTest.
+# - Tooling Tests: upstream's Linux checks (comments, test waits, scripts tests).
+
+name: Staging CI
+
+on:
+  push:
+    branches: [staging]
+  pull_request:
+    branches: [staging]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: staging-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: xcode-27
+    timeout-minutes: 90
+
+    env:
+      PROJECT_PATH: HermesMobile.xcodeproj
+      SCHEME: HermesMobile
+      DERIVED_DATA_PATH: DerivedData
+      RESULT_BUNDLE_PATH: TestResults.xcresult
+      DEVELOPER_DIR: /Applications/Xcode_27.1.app/Contents/Developer
+      SIMULATOR_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-27-0
+      SIMULATOR_NAME: iPhone 17
+      CI_LOG_DIR: ci-logs
+      TEST_WORKER_COUNT: 1
+      TEST_RUNNER_HERMEX_CI: "1"
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Verify Xcode
+        id: toolchain
+        run: |
+          set -euo pipefail
+          mkdir -p "${CI_LOG_DIR}"
+          {
+            if [[ ! -d "${DEVELOPER_DIR}" ]]; then
+              echo "Pinned Xcode is missing: ${DEVELOPER_DIR}" >&2
+              ls -d /Applications/Xcode*.app >&2 || true
+              exit 1
+            fi
+            xcodebuild -version
+            xcrun --find simctl
+          } 2>&1 | tee "${CI_LOG_DIR}/toolchain.log"
+
+      - name: Select simulator
+        id: sim
+        run: |
+          set -euo pipefail
+          xcrun simctl list devices available --json > "${CI_LOG_DIR}/devices.json"
+          python3 - <<'PYTHON' 2>&1 | tee "${CI_LOG_DIR}/selection.log"
+          import json, os
+          from pathlib import Path
+
+          devices = json.loads(Path(os.environ["CI_LOG_DIR"], "devices.json").read_text())["devices"]
+          runtime = os.environ["SIMULATOR_RUNTIME"]
+          name = os.environ["SIMULATOR_NAME"]
+          matches = [d for d in devices.get(runtime, []) if d.get("isAvailable") and d["name"] == name]
+          if len(matches) != 1:
+              raise SystemExit(f"Expected one available {name} on {runtime}, found {len(matches)}. See devices.json; no fallback runtime is used.")
+          udid = matches[0]["udid"]
+          print(f"Using {name} on {runtime}: {udid}")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"udid={udid}\n")
+          PYTHON
+
+      - name: Build for testing
+        id: build
+        env:
+          SIMULATOR_UDID: ${{ steps.sim.outputs.udid }}
+        run: |
+          set -euo pipefail
+          xcodebuild build-for-testing \
+            -project "${PROJECT_PATH}" \
+            -scheme "${SCHEME}" \
+            -destination "platform=iOS Simulator,id=${SIMULATOR_UDID}" \
+            -derivedDataPath "${DERIVED_DATA_PATH}" \
+            -disableAutomaticPackageResolution \
+            -showBuildTimingSummary \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "${CI_LOG_DIR}/build.log"
+
+      - name: Test without building
+        id: tests
+        timeout-minutes: 30
+        env:
+          SIMULATOR_UDID: ${{ steps.sim.outputs.udid }}
+        run: |
+          set -euo pipefail
+          xcodebuild test-without-building \
+            -project "${PROJECT_PATH}" \
+            -scheme "${SCHEME}" \
+            -destination "platform=iOS Simulator,id=${SIMULATOR_UDID}" \
+            -derivedDataPath "${DERIVED_DATA_PATH}" \
+            -resultBundlePath "${RESULT_BUNDLE_PATH}" \
+            -disableAutomaticPackageResolution \
+            -parallel-testing-enabled YES \
+            -parallel-testing-worker-count "${TEST_WORKER_COUNT}" \
+            -collect-test-diagnostics never \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "${CI_LOG_DIR}/tests.log"
+
+      - name: Check String Catalog coverage
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 ci/check_string_catalog.py --derived-data "${DERIVED_DATA_PATH}"
+
+      - name: Report results
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        env:
+          TOOLCHAIN_OUTCOME: ${{ steps.toolchain.outcome }}
+          SELECTION_OUTCOME: ${{ steps.sim.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+        run: python3 ci/report_test_results.py
+
+      - name: Upload test results on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: staging-test-results
+          path: |
+            ${{ env.RESULT_BUNDLE_PATH }}
+            ${{ env.CI_LOG_DIR }}
+          if-no-files-found: ignore
+
+  fork-logic:
+    name: Fork Logic (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container: swift:6.2-noble
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Compile and test fork logic
+        run: scripts/fork-linux-test
+
+  tooling:
+    name: Tooling Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Run tooling tests
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s scripts/tests
+          python3 -m unittest discover -s ci -p 'test_*.py'
+          python3 ci/check_test_waits.py
+          if [[ -n "${GITHUB_BASE_REF:-}" ]]; then
+            git fetch --no-tags --depth=1 origin "+refs/heads/${GITHUB_BASE_REF}:refs/remotes/origin/${GITHUB_BASE_REF}"
+          fi
+          python3 ci/check_comments.py
+          ruby ci/select_testflight_build_number_test.rb
