@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# Compiles the fork's Foundation-only sources (HermesMobile/Fork/**/*.swift that
-# import nothing Apple-only) as a module named HermesMobile, so the XCTest files
-# in HermesMobileTests/Fork (`@testable import HermesMobile`) run unchanged on
-# Linux. The same files are also members of the Xcode app and test targets.
+# Compiles the fork's Foundation-only sources (HermesMobile/Fork/Core/**/*.swift)
+# as a module named HermesMobile, so the XCTest files in HermesMobileTests/Fork
+# (`@testable import HermesMobile`) run unchanged on Linux. The same files are
+# also members of the Xcode app and test targets. Core files may use only the
+# standard library and Foundation, and nothing else from the app; any import
+# from the list below fails the run.
 # Usage: scripts/fork-linux-test [extra swift test args]
 set -euo pipefail
 
@@ -14,15 +16,17 @@ trap 'rm -rf "${work}"' EXIT
 mkdir -p "${work}/Sources/HermesMobile" "${work}/Tests/ForkTests"
 
 count=0
-if [[ -d "${repo}/HermesMobile/Fork" ]]; then
+core="${repo}/HermesMobile/Fork/Core"
+if [[ -d "${core}" ]]; then
   while IFS= read -r -d '' file; do
     if grep -Eq "${apple_only}" "${file}"; then
-      continue
+      echo "fork-linux-test: ${file#"${repo}/"} imports an Apple-only module; Core must stay Foundation-only" >&2
+      exit 1
     fi
-    rel="${file#"${repo}/HermesMobile/Fork/"}"
+    rel="${file#"${core}/"}"
     ln -s "${file}" "${work}/Sources/HermesMobile/${rel//\//__}"
     count=$((count + 1))
-  done < <(find "${repo}/HermesMobile/Fork" -name '*.swift' -print0 | sort -z)
+  done < <(find "${core}" -name '*.swift' -print0 | sort -z)
 fi
 
 tests=0

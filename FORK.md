@@ -29,8 +29,8 @@ move that commit to a branch off `staging`, then reset `master` to `upstream/mas
 
 ## Keeping merges cheap
 
-- Fork-only code lives in new files: `HermesMobile/Fork/<Feature>/`, tests in
-  `HermesMobileTests/Fork/`. Upstream files get the smallest possible hook (one row,
+- Fork-only code lives in new files: `HermesMobile/Fork/<Feature>/` for app code,
+  `HermesMobile/Fork/Core/` for Foundation-only logic, tests in `HermesMobileTests/Fork/`. Upstream files get the smallest possible hook (one row,
   one modifier, one case), so `git merge master` rarely conflicts.
 - Fork-only CI is `.github/workflows/staging-ci.yml`. Upstream workflows are never edited.
 - Fork-only UI copy uses the `Fork` string table (`Text("…", tableName: "Fork")`,
@@ -57,8 +57,10 @@ builds and tests on Linux, without Xcode:
 scripts/fork-linux-test
 ```
 
-It compiles every `HermesMobile/Fork/**/*.swift` file that imports no Apple-only
-framework as a module named `HermesMobile`, and runs `HermesMobileTests/Fork` with XCTest.
+It compiles `HermesMobile/Fork/Core/**/*.swift` (standard library and Foundation only,
+no app types) as a module named `HermesMobile`, and runs `HermesMobileTests/Fork` with
+XCTest. The same files are members of the Xcode app and test targets, so macOS CI runs
+those tests too.
 
 ## Fork features
 
