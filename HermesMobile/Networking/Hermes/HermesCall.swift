@@ -128,6 +128,8 @@ enum HermesCall: Equatable, Sendable {
 
     case clientCapabilities
 
+    case fork(ForkRPC)
+
     enum AvatarChange: Equatable, Sendable {
         case replace(String)
         case clear
@@ -379,6 +381,7 @@ enum HermesCall: Equatable, Sendable {
         case .groupsRename: return "groups.rename"
         case .groupsDisband: return "groups.disband"
         case .clientCapabilities: return "client.capabilities"
+        case .fork(let call): return call.method
         }
     }
 
@@ -630,6 +633,7 @@ enum HermesCall: Equatable, Sendable {
         case .groupsRename(let roomID, let eventID, let name):
             return ["room_id": .string(roomID), "event_id": .string(eventID), "name": .string(name)]
         case .clientCapabilities: return ["server_requests": .bool(true)]
+        case .fork(let call): return call.params
         }
     }
 
@@ -766,6 +770,7 @@ enum HermesCall: Equatable, Sendable {
              .requestAnswer, .clarifyLock, .modelOptions, .configuredModelOptions, .sessionCwdSet, .sessionControlRead,
              .sessionControl, .groupsCapabilities, .clientCapabilities:
             valid = true
+        case .fork(let call): valid = call.isAdmissible
         }
         guard valid else { throw BotFailure.unsupported }
     }

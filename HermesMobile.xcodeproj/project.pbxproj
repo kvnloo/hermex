@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */; };
+		6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611229C09BFE865783BA1CC4 /* ForkRPC.swift */; };
 		A15740000000000000000002 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A15740000000000000000001 /* AppIcon.icon */; };
 		D14090000000000000000014 /* ProviderLimitsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000003 /* ProviderLimitsWidget.swift */; };
 		D14090000000000000000011 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
@@ -785,6 +787,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPCTests.swift; sourceTree = "<group>"; };
+		611229C09BFE865783BA1CC4 /* ForkRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPC.swift; sourceTree = "<group>"; };
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
 		D14090000000000000000001 /* ProviderLimitsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsSnapshot.swift; sourceTree = "<group>"; };
@@ -1555,6 +1559,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
+			isa = PBXGroup;
+			children = (
+				1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */,
+			);
+			path = ForkApp;
+			sourceTree = "<group>";
+		};
+		90894119555CFD9971BEA473 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				611229C09BFE865783BA1CC4 /* ForkRPC.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A46DF3785EECB38B9161F511 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				90894119555CFD9971BEA473 /* Networking */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 		D14090000000000000000010 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1616,7 @@
 				1A2B3C4D5E6F7000000000FA /* Config */,
 				1A2B3C4D5E6F700000000339 /* AppIntents */,
 				A04500000000000000000020 /* LiveActivities */,
+				A46DF3785EECB38B9161F511 /* Fork */,
 				D14090000000000000000010 /* Widgets */,
 				1A2B3C4D5E6F7000000000C0 /* Auth */,
 				1A2B3C4D5E6F7000000000C1 /* Networking */,
@@ -1633,6 +1662,7 @@
 		1A2B3C4D5E6F700000000034 /* HermesMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				0EBD60CB80D7894949643AF1 /* ForkApp */,
 				4A6ABCD131F0EF3A6368B7C8 /* ScreenSessionTests.swift */,
 				642EA013D5ADD8D1B4FA3936 /* RFBDecoderTests.swift */,
 				B235F2E82C1F89AFDC0447FD /* BotAvatarLibraryTests.swift */,
@@ -2782,6 +2812,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */,
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
 				D5D7BC7A9A48E1E101C20E93 /* ScreenInput.swift in Sources */,
 				D54C4191484B7E0927A7C9BD /* ScreenControl.swift in Sources */,
@@ -3238,6 +3269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,
