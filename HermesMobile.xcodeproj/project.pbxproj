@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03CC1EF1DBA9BB62BA10ECE /* ForkTurboCatalogTests.swift */; };
+		8311D55DE10C054E87D8AD43 /* ForkTurboModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59456E1646C79455591E58B /* ForkTurboModelsTests.swift */; };
+		8FAEA6AEA95F86C4480CA50F /* ForkTurboModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26346E09CC0F3BD0A62FED1B /* ForkTurboModels.swift */; };
 		A15740000000000000000002 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A15740000000000000000001 /* AppIcon.icon */; };
+		B0AD692DCC11D71E2EC792C0 /* ForkTurboCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF081C27526EC111B642030 /* ForkTurboCatalog.swift */; };
 		D14090000000000000000014 /* ProviderLimitsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000003 /* ProviderLimitsWidget.swift */; };
 		D14090000000000000000011 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
 		D14090000000000000000012 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
@@ -785,7 +789,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		26346E09CC0F3BD0A62FED1B /* ForkTurboModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboModels.swift; sourceTree = "<group>"; };
+		7DF081C27526EC111B642030 /* ForkTurboCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboCatalog.swift; sourceTree = "<group>"; };
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		B59456E1646C79455591E58B /* ForkTurboModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboModelsTests.swift; sourceTree = "<group>"; };
+		C03CC1EF1DBA9BB62BA10ECE /* ForkTurboCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboCatalogTests.swift; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
 		D14090000000000000000001 /* ProviderLimitsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsSnapshot.swift; sourceTree = "<group>"; };
 		D14090000000000000000002 /* ProviderLimitsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsPublisher.swift; sourceTree = "<group>"; };
@@ -1555,6 +1563,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
+			isa = PBXGroup;
+			children = (
+				C03CC1EF1DBA9BB62BA10ECE /* ForkTurboCatalogTests.swift */,
+			);
+			path = ForkApp;
+			sourceTree = "<group>";
+		};
+		2DECFB72765ACA384FBEA278 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7DF081C27526EC111B642030 /* ForkTurboCatalog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4CBAB278E7CD2A2BE19A1A63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26346E09CC0F3BD0A62FED1B /* ForkTurboModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A46DF3785EECB38B9161F511 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				2DECFB72765ACA384FBEA278 /* Models */,
+				E39DC717F9FD6A4421A9DA9B /* Core */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 		D14090000000000000000010 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1629,7 @@
 				1A2B3C4D5E6F7000000000FA /* Config */,
 				1A2B3C4D5E6F700000000339 /* AppIntents */,
 				A04500000000000000000020 /* LiveActivities */,
+				A46DF3785EECB38B9161F511 /* Fork */,
 				D14090000000000000000010 /* Widgets */,
 				1A2B3C4D5E6F7000000000C0 /* Auth */,
 				1A2B3C4D5E6F7000000000C1 /* Networking */,
@@ -1633,6 +1675,7 @@
 		1A2B3C4D5E6F700000000034 /* HermesMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				0EBD60CB80D7894949643AF1 /* ForkApp */,
 				4A6ABCD131F0EF3A6368B7C8 /* ScreenSessionTests.swift */,
 				642EA013D5ADD8D1B4FA3936 /* RFBDecoderTests.swift */,
 				B235F2E82C1F89AFDC0447FD /* BotAvatarLibraryTests.swift */,
@@ -1671,6 +1714,7 @@
 				1AF16E9919604984868D037B /* BotRoomTests.swift */,
 				73869046C6B24A24B963627C /* BotRoomManagementTests.swift */,
 				5DAB6E1003A74F1992A3C350 /* BotInboxTests.swift */,
+				F20BE09C2F2D10DE30148850 /* Fork */,
 				FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */,
 				A496B07E0000000000000002 /* BotModeGateTests.swift */,
 				A496B07E0000000000000004 /* BotConnectionVersionTests.swift */,
@@ -2555,6 +2599,22 @@
 			path = Insights;
 			sourceTree = "<group>";
 		};
+		E39DC717F9FD6A4421A9DA9B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4CBAB278E7CD2A2BE19A1A63 /* Models */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F20BE09C2F2D10DE30148850 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				B59456E1646C79455591E58B /* ForkTurboModelsTests.swift */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2783,6 +2843,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
+				8FAEA6AEA95F86C4480CA50F /* ForkTurboModels.swift in Sources */,
+				B0AD692DCC11D71E2EC792C0 /* ForkTurboCatalog.swift in Sources */,
 				D5D7BC7A9A48E1E101C20E93 /* ScreenInput.swift in Sources */,
 				D54C4191484B7E0927A7C9BD /* ScreenControl.swift in Sources */,
 				CFA1B013C7784C249E72A5DE /* ScreenView.swift in Sources */,
@@ -3238,6 +3300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */,
+				8311D55DE10C054E87D8AD43 /* ForkTurboModelsTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,
