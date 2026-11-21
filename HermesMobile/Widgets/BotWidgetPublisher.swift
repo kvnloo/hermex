@@ -9,16 +9,19 @@ import WidgetKit
     private let serverTitle: @MainActor (URL) -> String?
     private let reloadWidget: () -> Void
     private let configuredBots: () async -> [BotWidgetDestination]?
+    private let renderAvatar: @MainActor (BotProfile, UIImage?, Bool) -> Data?
     private var renderGenerations: [String: Int] = [:]
 
     init(file: BotWidgetSnapshotFile?,
          serverTitle: @escaping @MainActor (URL) -> String? = BotWidgetPublisher.registryTitle,
          reloadWidget: @escaping () -> Void = { WidgetCenter.shared.reloadTimelines(ofKind: BotWidgetSnapshot.widgetKind) },
-         configuredBots: @escaping () async -> [BotWidgetDestination]? = BotWidgetPublisher.currentConfigurations) {
+         configuredBots: @escaping () async -> [BotWidgetDestination]? = BotWidgetPublisher.currentConfigurations,
+         renderAvatar: @escaping @MainActor (BotProfile, UIImage?, Bool) -> Data? = BotWidgetPublisher.avatar) {
         self.file = file
         self.serverTitle = serverTitle
         self.reloadWidget = reloadWidget
         self.configuredBots = configuredBots
+        self.renderAvatar = renderAvatar
     }
 
     func publish(_ profiles: [BotProfile], server: URL, connectionID: UUID) {
@@ -58,7 +61,7 @@ import WidgetKit
             guard !isCurrent, !(profile.isPhoto && photo == nil) else { continue }
             try? FileManager.default.createDirectory(at: file.avatarDirectory, withIntermediateDirectories: true)
             for dark in [false, true] {
-                guard let data = Self.avatar(profile, photo: photo, dark: dark) else { continue }
+                guard let data = renderAvatar(profile, photo, dark) else { continue }
                 rendered = (try? data.write(to: file.avatarURL(name, dark: dark), options: .atomic)) != nil || rendered
             }
         }
@@ -108,7 +111,7 @@ import WidgetKit
 
     private static func avatarPrefix(serverKey: String) -> String { "\(serverKey.prefix(16))-" }
 
-    private static func avatar(_ profile: BotProfile, photo: UIImage?, dark: Bool) -> Data? {
+    static func avatar(_ profile: BotProfile, photo: UIImage?, dark: Bool) -> Data? {
         let size: CGFloat = 76
         let renderer = ImageRenderer(content: Group {
             if let photo {
