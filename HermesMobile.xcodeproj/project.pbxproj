@@ -870,7 +870,7 @@
 		56072E9464C2CCD3D91864AB /* ForkOpenUIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIBoardView.swift; sourceTree = "<group>"; };
 		5997454E23E505D02E2EC784 /* AnnotationComposeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationComposeTests.swift; sourceTree = "<group>"; };
 		5F03BE88B465A7F08EB0E6FA /* LiveModeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModeRequest.swift; sourceTree = "<group>"; };
-		5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel+Fork.swift; sourceTree = "<group>"; };
+		5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewModel+Fork.swift"; sourceTree = "<group>"; };
 		60BA7EDF4E722F3EB89B7439 /* ForkTerminalPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTerminalPalette.swift; sourceTree = "<group>"; };
 		611229C09BFE865783BA1CC4 /* ForkRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPC.swift; sourceTree = "<group>"; };
 		6F94A79BB5774E8486B7D510 /* OpenUIPanels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUIPanels.swift; sourceTree = "<group>"; };
