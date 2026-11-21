@@ -83,8 +83,10 @@ import XCTest
         defer { try? FileManager.default.removeItem(at: directory) }
         let file = BotWidgetSnapshotFile(directory: directory)
         let key = BotHistoryCache.Scope.key(hermes)
+        var renders = 0
         let publisher = BotWidgetPublisher(file: file, serverTitle: { _ in "" }, reloadWidget: {},
-                                           configuredBots: { [BotWidgetDestination(serverKey: key, profile: "work")] })
+                                           configuredBots: { [BotWidgetDestination(serverKey: key, profile: "work")] },
+                                           renderAvatar: { _, _, _ in renders += 1; return Data("png".utf8) })
         let work = try XCTUnwrap(BotProfile(.object(["name": .string("work"), "ui_meta_revisions": .object(["hermes-bots": .number(3)])])))
         let connection = UUID()
         let avatar = file.avatarURL(BotWidgetPublisher.avatarName(serverKey: key, profile: work, connectionID: connection), dark: true)
@@ -92,10 +94,13 @@ import XCTest
 
         await publisher.renderAvatars([work], server: hermes, connectionID: connection, photos: [:])
         XCTAssertTrue(FileManager.default.fileExists(atPath: avatar.path))
+        await publisher.renderAvatars([work], server: hermes, connectionID: connection, photos: [:])
+        XCTAssertEqual(renders, 2, "A current look is not rendered again")
         publisher.forgetAvatar(server: hermes, profile: "work")
         XCTAssertFalse(FileManager.default.fileExists(atPath: avatar.path))
         await publisher.renderAvatars([work], server: hermes, connectionID: connection, photos: [:])
         XCTAssertTrue(FileManager.default.fileExists(atPath: avatar.path))
+        XCTAssertEqual(renders, 4)
     }
 
     func testTheSnapshotKeepsEqualProfileNamesOnTwoServersApartAndDropsARemovedServer() throws {
