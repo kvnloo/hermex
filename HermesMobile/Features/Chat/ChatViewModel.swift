@@ -562,6 +562,7 @@ final class ChatViewModel {
     private let streamCoordinator: ChatStreamCoordinator
     private let turn: any ChatTurnCoordinating
     private let hermesTurn: HermesChatTurnCoordinator?
+    var forkChat: ForkChatState? { hermesTurn?.forkChat }
     private let drafts: ChatDraftStore
     private let pendingActionCoordinator: ChatPendingActionCoordinator
     private let attachmentCoordinator: ChatAttachmentCoordinator

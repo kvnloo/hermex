@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */; };
+		212C3034D7CDED976DA1E6C6 /* ForkReactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978F4B610AEAA53A028C95C9 /* ForkReactions.swift */; };
+		2E4C6D76B90CEE868EC6BDBE /* ChatViewModel+Fork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */; };
+		503494FE76634CAB2C6F0FBC /* ForkChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353395B1629DE99C5BDB2F80 /* ForkChatState.swift */; };
 		6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611229C09BFE865783BA1CC4 /* ForkRPC.swift */; };
+		780427CAB882328CBE8CE44D /* ForkMemoryNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD673424A5BE823BC10DD0 /* ForkMemoryNotice.swift */; };
+		7F0C38549836C10121F37102 /* ForkReactionRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2B0FB75302ADEC822BC22 /* ForkReactionRPC.swift */; };
 		A15740000000000000000002 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A15740000000000000000001 /* AppIcon.icon */; };
+		A611B0E7BC2C18BA2CA2690F /* ForkMemoryNoticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */; };
+		C6A9A15020D6FDF3791221E7 /* ForkChatRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99AF1D35D93792E7C80B35 /* ForkChatRPCTests.swift */; };
 		D14090000000000000000014 /* ProviderLimitsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000003 /* ProviderLimitsWidget.swift */; };
 		D14090000000000000000011 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
 		D14090000000000000000012 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
@@ -22,6 +29,7 @@
 		D16430000000000000000015 /* BotWidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000003 /* BotWidgetPublisher.swift */; };
 		D16430000000000000000016 /* BotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000004 /* BotWidget.swift */; };
 		D16430000000000000000017 /* BotWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000005 /* BotWidgetTests.swift */; };
+		DA24FDB39391DDBA18F72307 /* ForkReactionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF35F954A0C8F008E9FC71 /* ForkReactionViews.swift */; };
 		E1582000000000000000A009 /* HermesPluginCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A010 /* HermesPluginCatalog.swift */; };
 		E1582000000000000000A011 /* PluginInstallSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A012 /* PluginInstallSheet.swift */; };
 		E1582000000000000000A013 /* PluginDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A014 /* PluginDiscoverView.swift */; };
@@ -61,6 +69,7 @@
 		B48200000000000000000008 /* BotProfileEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48200000000000000000007 /* BotProfileEditorTests.swift */; };
 		B48200000000000000000024 /* BotFaceMotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48200000000000000000023 /* BotFaceMotionTests.swift */; };
 		C72A6DDA681F4CDABE7445DD /* BotHistoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */; };
+		E3F5754BA971FCE280677E84 /* ForkReactionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */; };
 		F0907446778F4FBEBAEEC2B9 /* BotHistoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCCA0BACC647998F9CC3D0 /* BotHistoryCache.swift */; };
 		6F1EF01AA79B446C989D7FC1 /* BotSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0AA6F787074B4A8DC903FF /* BotSearchView.swift */; };
 		D1F04357497D4FD381D726C8 /* BotChatControlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6984D85D628F4E18ABAA2BA9 /* BotChatControlsTests.swift */; };
@@ -787,9 +796,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionsTests.swift; sourceTree = "<group>"; };
 		1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPCTests.swift; sourceTree = "<group>"; };
+		353395B1629DE99C5BDB2F80 /* ForkChatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkChatState.swift; sourceTree = "<group>"; };
+		5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel+Fork.swift; sourceTree = "<group>"; };
 		611229C09BFE865783BA1CC4 /* ForkRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPC.swift; sourceTree = "<group>"; };
+		78DD673424A5BE823BC10DD0 /* ForkMemoryNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMemoryNotice.swift; sourceTree = "<group>"; };
+		978F4B610AEAA53A028C95C9 /* ForkReactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactions.swift; sourceTree = "<group>"; };
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		B2D2B0FB75302ADEC822BC22 /* ForkReactionRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionRPC.swift; sourceTree = "<group>"; };
+		B4FF35F954A0C8F008E9FC71 /* ForkReactionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionViews.swift; sourceTree = "<group>"; };
+		BF99AF1D35D93792E7C80B35 /* ForkChatRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkChatRPCTests.swift; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
 		D14090000000000000000001 /* ProviderLimitsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsSnapshot.swift; sourceTree = "<group>"; };
 		D14090000000000000000002 /* ProviderLimitsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsPublisher.swift; sourceTree = "<group>"; };
@@ -831,6 +848,7 @@
 		B48200000000000000000005 /* BotProfileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotProfileEditorView.swift; sourceTree = "<group>"; };
 		B48200000000000000000007 /* BotProfileEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotProfileEditorTests.swift; sourceTree = "<group>"; };
 		B48200000000000000000023 /* BotFaceMotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotFaceMotionTests.swift; sourceTree = "<group>"; };
+		FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMemoryNoticeTests.swift; sourceTree = "<group>"; };
 		FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotHistoryCacheTests.swift; sourceTree = "<group>"; };
 		41FCCA0BACC647998F9CC3D0 /* BotHistoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotHistoryCache.swift; sourceTree = "<group>"; };
 		AF0AA6F787074B4A8DC903FF /* BotSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotSearchView.swift; sourceTree = "<group>"; };
@@ -1563,8 +1581,29 @@
 			isa = PBXGroup;
 			children = (
 				1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */,
+				BF99AF1D35D93792E7C80B35 /* ForkChatRPCTests.swift */,
 			);
 			path = ForkApp;
+			sourceTree = "<group>";
+		};
+		3743733FE8BA6519927551C0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				353395B1629DE99C5BDB2F80 /* ForkChatState.swift */,
+				5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */,
+				B2D2B0FB75302ADEC822BC22 /* ForkReactionRPC.swift */,
+				B4FF35F954A0C8F008E9FC71 /* ForkReactionViews.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		5CD51A27C34932C4D8A4B220 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				78DD673424A5BE823BC10DD0 /* ForkMemoryNotice.swift */,
+				978F4B610AEAA53A028C95C9 /* ForkReactions.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		90894119555CFD9971BEA473 /* Networking */ = {
@@ -1578,7 +1617,9 @@
 		A46DF3785EECB38B9161F511 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				3743733FE8BA6519927551C0 /* Chat */,
 				90894119555CFD9971BEA473 /* Networking */,
+				E39DC717F9FD6A4421A9DA9B /* Core */,
 			);
 			path = Fork;
 			sourceTree = "<group>";
@@ -1701,6 +1742,7 @@
 				1AF16E9919604984868D037B /* BotRoomTests.swift */,
 				73869046C6B24A24B963627C /* BotRoomManagementTests.swift */,
 				5DAB6E1003A74F1992A3C350 /* BotInboxTests.swift */,
+				F20BE09C2F2D10DE30148850 /* Fork */,
 				FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */,
 				A496B07E0000000000000002 /* BotModeGateTests.swift */,
 				A496B07E0000000000000004 /* BotConnectionVersionTests.swift */,
@@ -2585,6 +2627,23 @@
 			path = Insights;
 			sourceTree = "<group>";
 		};
+		E39DC717F9FD6A4421A9DA9B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5CD51A27C34932C4D8A4B220 /* Chat */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F20BE09C2F2D10DE30148850 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */,
+				FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2812,12 +2871,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212C3034D7CDED976DA1E6C6 /* ForkReactions.swift in Sources */,
+				2E4C6D76B90CEE868EC6BDBE /* ChatViewModel+Fork.swift in Sources */,
+				503494FE76634CAB2C6F0FBC /* ForkChatState.swift in Sources */,
 				6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */,
+				780427CAB882328CBE8CE44D /* ForkMemoryNotice.swift in Sources */,
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
+				7F0C38549836C10121F37102 /* ForkReactionRPC.swift in Sources */,
 				D5D7BC7A9A48E1E101C20E93 /* ScreenInput.swift in Sources */,
 				D54C4191484B7E0927A7C9BD /* ScreenControl.swift in Sources */,
 				CFA1B013C7784C249E72A5DE /* ScreenView.swift in Sources */,
 				284C1405D843B63B8A2360CA /* ScreenSession.swift in Sources */,
+				DA24FDB39391DDBA18F72307 /* ForkReactionViews.swift in Sources */,
 				FC264D031B2CAEDB4AF53C1D /* RFBClient.swift in Sources */,
 				DAB1829DA684D7E566D41872 /* RFBDecoder.swift in Sources */,
 				A4790000000000000000E001 /* PushEnvironment.swift in Sources */,
@@ -3270,6 +3335,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
+				A611B0E7BC2C18BA2CA2690F /* ForkMemoryNoticeTests.swift in Sources */,
+				C6A9A15020D6FDF3791221E7 /* ForkChatRPCTests.swift in Sources */,
+				E3F5754BA971FCE280677E84 /* ForkReactionsTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,

@@ -24,6 +24,7 @@ struct HermesUnservedProfile: Equatable {
     func hermesBackgroundDidChange(_ task: HermesBackgroundTask)
     func hermesGoalDidChange(_ goal: SubmittedGoal?)
     func hermesWorkspaceDidChange()
+    func hermesForkMemoryUpdated()
 }
 
 struct HermesSessionChat: Hashable, Identifiable {
@@ -91,6 +92,7 @@ struct HermesLostTurn: Equatable {
 @MainActor @Observable final class HermesChatTurnCoordinator {
     let engine: HermesConversation
     @ObservationIgnored private weak var delegate: (any HermesChatTurnDelegate)?
+    @ObservationIgnored private(set) lazy var forkChat = ForkChatState(turn: self)
 
     private(set) var activeStreamID: String?
     private(set) var activeRunStartedAt: Date?
@@ -1046,6 +1048,10 @@ struct HermesLostTurn: Equatable {
         case "notification.show", "notification.clear":
             hostNotices.receive(frame, live: live)
             endDeferredPick(on: frame)
+        case "message.reaction":
+            if let rowID = payload["row_id"].integer { forkChat.receive(rowID: rowID, reactions: payload["reactions"]) }
+        case "review.summary":
+            if live, ForkMemoryNotice.isMemoryUpdate(payload["text"].text) { delegate?.hermesForkMemoryUpdated() }
         default:
             break
         }

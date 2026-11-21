@@ -1022,6 +1022,7 @@ private struct ChatTranscriptMessageRow: View {
         } else {
             VStack(alignment: isUserMessage ? .trailing : .leading, spacing: metaRowSpacing) {
                 bubble
+                ForkReactionStrip(message: message, offersAdd: !isUserMessage && isTerminalReply && !isStreaming)
 
                 if showsMetaRow {
                     ChatMessageMetaRow(
