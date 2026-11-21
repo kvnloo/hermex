@@ -1169,6 +1169,7 @@ struct ChatView: View {
                     delegatedWorkToolbarItem
                 }
             }
+            .forkLiveMode(viewModel, title: displayTitle)
             .navigationDestination(item: $pushedSession) { session in
                 ChatView(session: session, server: server, onAPIError: onAPIError)
             }
