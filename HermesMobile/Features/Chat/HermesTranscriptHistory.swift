@@ -186,7 +186,7 @@ enum HermesTranscriptProjection {
                     timestamp: row["timestamp"].number,
                     messageId: id,
                     displayKind: steer != nil ? ChatMessage.steerDisplayKind : kind ?? (skill == nil ? nil : "skill_invocation"),
-                    displayMetadata: row["display_metadata"].argumentDictionary,
+                    displayMetadata: ForkReactionRows.displayMetadata(row),
                     rowID: rowID,
                     isCompacted: row["active"].integer == 0
                 ))

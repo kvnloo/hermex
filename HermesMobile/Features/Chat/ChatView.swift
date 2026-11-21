@@ -2318,6 +2318,7 @@ struct ChatView: View {
             delegatedWork: delegatedWork,
             onOpenDelegatedWork: openDelegatedWork
         )
+        .forkChat(viewModel.forkChat)
         .onChange(of: viewModel.latestRunOutcome) {
             handleLatestRunOutcomeChange(viewModel.latestRunOutcome)
         }
