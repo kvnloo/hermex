@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */; };
+		3766F4657AC9AFE2A1294563 /* ForkThemeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58729227C28BC9B91025942 /* ForkThemeStore.swift */; };
+		3E260E887C9B1185BB6534F4 /* ForkThemeRoles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA84847739A459112E526D6 /* ForkThemeRoles.swift */; };
+		4A38FD73E9E65936D79E3F25 /* ForkThemeSpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */; };
+		81C42EB859B65F5482D0DB60 /* ForkRGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9D0A567FA3898766C93075 /* ForkRGBA.swift */; };
 		A15740000000000000000002 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A15740000000000000000001 /* AppIcon.icon */; };
+		A56A4C6A22B3A4D3F8FF7DB6 /* ForkThemeStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */; };
 		D14090000000000000000014 /* ProviderLimitsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000003 /* ProviderLimitsWidget.swift */; };
 		D14090000000000000000011 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
 		D14090000000000000000012 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
@@ -20,6 +26,7 @@
 		D16430000000000000000015 /* BotWidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000003 /* BotWidgetPublisher.swift */; };
 		D16430000000000000000016 /* BotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000004 /* BotWidget.swift */; };
 		D16430000000000000000017 /* BotWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000005 /* BotWidgetTests.swift */; };
+		D978F78F285CE534B30099C7 /* ForkAppearanceSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */; };
 		E1582000000000000000A009 /* HermesPluginCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A010 /* HermesPluginCatalog.swift */; };
 		E1582000000000000000A011 /* PluginInstallSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A012 /* PluginInstallSheet.swift */; };
 		E1582000000000000000A013 /* PluginDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1582000000000000000A014 /* PluginDiscoverView.swift */; };
@@ -785,7 +792,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkAppearanceSections.swift; sourceTree = "<group>"; };
+		29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeStoreTests.swift; sourceTree = "<group>"; };
+		4CA84847739A459112E526D6 /* ForkThemeRoles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeRoles.swift; sourceTree = "<group>"; };
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeSpec.swift; sourceTree = "<group>"; };
+		A58729227C28BC9B91025942 /* ForkThemeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeStore.swift; sourceTree = "<group>"; };
+		BC9D0A567FA3898766C93075 /* ForkRGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRGBA.swift; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
 		D14090000000000000000001 /* ProviderLimitsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsSnapshot.swift; sourceTree = "<group>"; };
 		D14090000000000000000002 /* ProviderLimitsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsPublisher.swift; sourceTree = "<group>"; };
@@ -827,6 +840,7 @@
 		B48200000000000000000005 /* BotProfileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotProfileEditorView.swift; sourceTree = "<group>"; };
 		B48200000000000000000007 /* BotProfileEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotProfileEditorTests.swift; sourceTree = "<group>"; };
 		B48200000000000000000023 /* BotFaceMotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotFaceMotionTests.swift; sourceTree = "<group>"; };
+		EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeSpecTests.swift; sourceTree = "<group>"; };
 		FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotHistoryCacheTests.swift; sourceTree = "<group>"; };
 		41FCCA0BACC647998F9CC3D0 /* BotHistoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotHistoryCache.swift; sourceTree = "<group>"; };
 		AF0AA6F787074B4A8DC903FF /* BotSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotSearchView.swift; sourceTree = "<group>"; };
@@ -1555,6 +1569,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
+			isa = PBXGroup;
+			children = (
+				29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */,
+			);
+			path = ForkApp;
+			sourceTree = "<group>";
+		};
+		7F0AD04752C3913552FD7AB1 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4CA84847739A459112E526D6 /* ForkThemeRoles.swift */,
+				A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */,
+				BC9D0A567FA3898766C93075 /* ForkRGBA.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		A46DF3785EECB38B9161F511 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				CAEB05D72EB25DBAC4AA5A13 /* Theme */,
+				E39DC717F9FD6A4421A9DA9B /* Core */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
+		CAEB05D72EB25DBAC4AA5A13 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */,
+				A58729227C28BC9B91025942 /* ForkThemeStore.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		D14090000000000000000010 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1638,7 @@
 				1A2B3C4D5E6F7000000000FA /* Config */,
 				1A2B3C4D5E6F700000000339 /* AppIntents */,
 				A04500000000000000000020 /* LiveActivities */,
+				A46DF3785EECB38B9161F511 /* Fork */,
 				D14090000000000000000010 /* Widgets */,
 				1A2B3C4D5E6F7000000000C0 /* Auth */,
 				1A2B3C4D5E6F7000000000C1 /* Networking */,
@@ -1633,6 +1684,7 @@
 		1A2B3C4D5E6F700000000034 /* HermesMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				0EBD60CB80D7894949643AF1 /* ForkApp */,
 				4A6ABCD131F0EF3A6368B7C8 /* ScreenSessionTests.swift */,
 				642EA013D5ADD8D1B4FA3936 /* RFBDecoderTests.swift */,
 				B235F2E82C1F89AFDC0447FD /* BotAvatarLibraryTests.swift */,
@@ -1671,6 +1723,7 @@
 				1AF16E9919604984868D037B /* BotRoomTests.swift */,
 				73869046C6B24A24B963627C /* BotRoomManagementTests.swift */,
 				5DAB6E1003A74F1992A3C350 /* BotInboxTests.swift */,
+				F20BE09C2F2D10DE30148850 /* Fork */,
 				FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */,
 				A496B07E0000000000000002 /* BotModeGateTests.swift */,
 				A496B07E0000000000000004 /* BotConnectionVersionTests.swift */,
@@ -2555,6 +2608,22 @@
 			path = Insights;
 			sourceTree = "<group>";
 		};
+		E39DC717F9FD6A4421A9DA9B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7F0AD04752C3913552FD7AB1 /* Theme */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F20BE09C2F2D10DE30148850 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2782,11 +2851,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */,
+				3766F4657AC9AFE2A1294563 /* ForkThemeStore.swift in Sources */,
+				3E260E887C9B1185BB6534F4 /* ForkThemeRoles.swift in Sources */,
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
+				81C42EB859B65F5482D0DB60 /* ForkRGBA.swift in Sources */,
 				D5D7BC7A9A48E1E101C20E93 /* ScreenInput.swift in Sources */,
 				D54C4191484B7E0927A7C9BD /* ScreenControl.swift in Sources */,
 				CFA1B013C7784C249E72A5DE /* ScreenView.swift in Sources */,
 				284C1405D843B63B8A2360CA /* ScreenSession.swift in Sources */,
+				D978F78F285CE534B30099C7 /* ForkAppearanceSections.swift in Sources */,
 				FC264D031B2CAEDB4AF53C1D /* RFBClient.swift in Sources */,
 				DAB1829DA684D7E566D41872 /* RFBDecoder.swift in Sources */,
 				A4790000000000000000E001 /* PushEnvironment.swift in Sources */,
@@ -3238,6 +3312,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A38FD73E9E65936D79E3F25 /* ForkThemeSpecTests.swift in Sources */,
+				A56A4C6A22B3A4D3F8FF7DB6 /* ForkThemeStoreTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,
