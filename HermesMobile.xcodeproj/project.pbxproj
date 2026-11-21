@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A354B1D84EBF032C9046434 /* ForkOpenUIPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453937AC97DC5C8E07F5EB14 /* ForkOpenUIPanelView.swift */; };
+		4F11B1AFA9AFE6D0F932A45D /* OpenUITreemapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D61C250D17DCA68AA54FA7 /* OpenUITreemapLayout.swift */; };
+		5F7E68DFE3DD0C5C49DAC1A6 /* OpenUICheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E37ED2823F231E459F2B /* OpenUICheck.swift */; };
+		736645F7454FADA987E48FE2 /* OpenUICatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */; };
+		8463263265BB430B216B908A /* OpenUILangTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */; };
 		A15740000000000000000002 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A15740000000000000000001 /* AppIcon.icon */; };
+		A4F2D0869CF238C0FA918BB2 /* ForkOpenUIBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56072E9464C2CCD3D91864AB /* ForkOpenUIBoardView.swift */; };
+		A51DF9C43664F57AB354D418 /* OpenUIPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F94A79BB5774E8486B7D510 /* OpenUIPanels.swift */; };
+		C28EAF595A5AC02F102BE75D /* OpenUIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979792DB0B837DB22851E2A /* OpenUIBoard.swift */; };
+		CF67285D939FF9B79EC076C8 /* OpenUILang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DAD16551D36CF365BD9F51 /* OpenUILang.swift */; };
 		D14090000000000000000014 /* ProviderLimitsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000003 /* ProviderLimitsWidget.swift */; };
 		D14090000000000000000011 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
 		D14090000000000000000012 /* ProviderLimitsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14090000000000000000001 /* ProviderLimitsSnapshot.swift */; };
@@ -785,7 +794,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27D61C250D17DCA68AA54FA7 /* OpenUITreemapLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUITreemapLayout.swift; sourceTree = "<group>"; };
+		2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUILangTests.swift; sourceTree = "<group>"; };
+		453937AC97DC5C8E07F5EB14 /* ForkOpenUIPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIPanelView.swift; sourceTree = "<group>"; };
+		56072E9464C2CCD3D91864AB /* ForkOpenUIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIBoardView.swift; sourceTree = "<group>"; };
+		6F94A79BB5774E8486B7D510 /* OpenUIPanels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUIPanels.swift; sourceTree = "<group>"; };
+		71DAD16551D36CF365BD9F51 /* OpenUILang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUILang.swift; sourceTree = "<group>"; };
+		9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUICatalogTests.swift; sourceTree = "<group>"; };
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		B979792DB0B837DB22851E2A /* OpenUIBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUIBoard.swift; sourceTree = "<group>"; };
+		BDB8E37ED2823F231E459F2B /* OpenUICheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUICheck.swift; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
 		D14090000000000000000001 /* ProviderLimitsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsSnapshot.swift; sourceTree = "<group>"; };
 		D14090000000000000000002 /* ProviderLimitsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsPublisher.swift; sourceTree = "<group>"; };
@@ -1555,6 +1573,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42759D128A6D951CC5DEE2AC /* OpenUI */ = {
+			isa = PBXGroup;
+			children = (
+				453937AC97DC5C8E07F5EB14 /* ForkOpenUIPanelView.swift */,
+				56072E9464C2CCD3D91864AB /* ForkOpenUIBoardView.swift */,
+			);
+			path = OpenUI;
+			sourceTree = "<group>";
+		};
+		953785A80FC53973558A49FA /* OpenUI */ = {
+			isa = PBXGroup;
+			children = (
+				27D61C250D17DCA68AA54FA7 /* OpenUITreemapLayout.swift */,
+				6F94A79BB5774E8486B7D510 /* OpenUIPanels.swift */,
+				71DAD16551D36CF365BD9F51 /* OpenUILang.swift */,
+				B979792DB0B837DB22851E2A /* OpenUIBoard.swift */,
+				BDB8E37ED2823F231E459F2B /* OpenUICheck.swift */,
+			);
+			path = OpenUI;
+			sourceTree = "<group>";
+		};
+		A46DF3785EECB38B9161F511 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				42759D128A6D951CC5DEE2AC /* OpenUI */,
+				E39DC717F9FD6A4421A9DA9B /* Core */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 		D14090000000000000000010 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1636,7 @@
 				1A2B3C4D5E6F7000000000FA /* Config */,
 				1A2B3C4D5E6F700000000339 /* AppIntents */,
 				A04500000000000000000020 /* LiveActivities */,
+				A46DF3785EECB38B9161F511 /* Fork */,
 				D14090000000000000000010 /* Widgets */,
 				1A2B3C4D5E6F7000000000C0 /* Auth */,
 				1A2B3C4D5E6F7000000000C1 /* Networking */,
@@ -1671,6 +1720,7 @@
 				1AF16E9919604984868D037B /* BotRoomTests.swift */,
 				73869046C6B24A24B963627C /* BotRoomManagementTests.swift */,
 				5DAB6E1003A74F1992A3C350 /* BotInboxTests.swift */,
+				F20BE09C2F2D10DE30148850 /* Fork */,
 				FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */,
 				A496B07E0000000000000002 /* BotModeGateTests.swift */,
 				A496B07E0000000000000004 /* BotConnectionVersionTests.swift */,
@@ -2555,6 +2605,23 @@
 			path = Insights;
 			sourceTree = "<group>";
 		};
+		E39DC717F9FD6A4421A9DA9B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				953785A80FC53973558A49FA /* OpenUI */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F20BE09C2F2D10DE30148850 /* Fork */ = {
+			isa = PBXGroup;
+			children = (
+				2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */,
+				9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */,
+			);
+			path = Fork;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2782,7 +2849,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A354B1D84EBF032C9046434 /* ForkOpenUIPanelView.swift in Sources */,
+				4F11B1AFA9AFE6D0F932A45D /* OpenUITreemapLayout.swift in Sources */,
+				5F7E68DFE3DD0C5C49DAC1A6 /* OpenUICheck.swift in Sources */,
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
+				A4F2D0869CF238C0FA918BB2 /* ForkOpenUIBoardView.swift in Sources */,
+				A51DF9C43664F57AB354D418 /* OpenUIPanels.swift in Sources */,
+				C28EAF595A5AC02F102BE75D /* OpenUIBoard.swift in Sources */,
+				CF67285D939FF9B79EC076C8 /* OpenUILang.swift in Sources */,
 				D5D7BC7A9A48E1E101C20E93 /* ScreenInput.swift in Sources */,
 				D54C4191484B7E0927A7C9BD /* ScreenControl.swift in Sources */,
 				CFA1B013C7784C249E72A5DE /* ScreenView.swift in Sources */,
@@ -3238,6 +3312,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				736645F7454FADA987E48FE2 /* OpenUICatalogTests.swift in Sources */,
+				8463263265BB430B216B908A /* OpenUILangTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,
