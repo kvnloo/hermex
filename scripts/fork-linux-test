@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Compiles the fork's Foundation-only sources (HermesMobile/Fork/**/*.swift that
+# import nothing Apple-only) as a module named HermesMobile, so the XCTest files
+# in HermesMobileTests/Fork (`@testable import HermesMobile`) run unchanged on
+# Linux. The same files are also members of the Xcode app and test targets.
+# Usage: scripts/fork-linux-test [extra swift test args]
+set -euo pipefail
+
+repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+apple_only='^[[:space:]]*(@preconcurrency[[:space:]]+)?import[[:space:]]+(SwiftUI|UIKit|SwiftData|PencilKit|AVFoundation|AVFAudio|Speech|WidgetKit|AppIntents|ActivityKit|Combine|CoreImage|CoreGraphics|QuartzCore|Photos|PhotosUI|AuthenticationServices|Security|LocalAuthentication|OSLog|os|Network|KeychainAccess|MarkdownUI|LDSwiftEventSource|Observation)\b'
+
+work="$(mktemp -d)"
+trap 'rm -rf "${work}"' EXIT
+mkdir -p "${work}/Sources/HermesMobile" "${work}/Tests/ForkTests"
+
+count=0
+if [[ -d "${repo}/HermesMobile/Fork" ]]; then
+  while IFS= read -r -d '' file; do
+    if grep -Eq "${apple_only}" "${file}"; then
+      continue
+    fi
+    rel="${file#"${repo}/HermesMobile/Fork/"}"
+    ln -s "${file}" "${work}/Sources/HermesMobile/${rel//\//__}"
+    count=$((count + 1))
+  done < <(find "${repo}/HermesMobile/Fork" -name '*.swift' -print0 | sort -z)
+fi
+
+tests=0
+if [[ -d "${repo}/HermesMobileTests/Fork" ]]; then
+  while IFS= read -r -d '' file; do
+    ln -s "${file}" "${work}/Tests/ForkTests/$(basename "${file}")"
+    tests=$((tests + 1))
+  done < <(find "${repo}/HermesMobileTests/Fork" -name '*.swift' -print0 | sort -z)
+fi
+
+echo "fork-linux-test: ${count} source files, ${tests} test files"
+if [[ "${count}" -eq 0 ]]; then
+  echo "fork-linux-test: no Foundation-only fork sources yet; nothing to do"
+  exit 0
+fi
+if [[ "${tests}" -eq 0 ]]; then
+  echo "public enum ForkLinuxPlaceholder {}" > "${work}/Tests/ForkTests/Placeholder.swift"
+fi
+
+cat > "${work}/Package.swift" <<'SWIFT'
+// swift-tools-version:5.10
+import PackageDescription
+
+let package = Package(
+    name: "HermexForkLinux",
+    targets: [
+        .target(name: "HermesMobile", path: "Sources/HermesMobile",
+                swiftSettings: [.enableExperimentalFeature("StrictConcurrency=targeted")]),
+        .testTarget(name: "ForkTests", dependencies: ["HermesMobile"], path: "Tests/ForkTests"),
+    ]
+)
+SWIFT
+
+cd "${work}"
+swift build --build-tests "$@"
+swift test --skip-build "$@"
