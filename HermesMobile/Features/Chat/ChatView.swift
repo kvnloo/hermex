@@ -1132,6 +1132,7 @@ struct ChatView: View {
                 handleRunEnd()
             }
             .onChange(of: viewModel.streamingHapticPulseTrigger, handleStreamingHapticPulse)
+            .forkAnnotate(viewModel, title: displayTitle)
     }
 
     private var chatContent: some View {
