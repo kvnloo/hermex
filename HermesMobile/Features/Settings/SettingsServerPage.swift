@@ -171,6 +171,8 @@ struct SettingsServerPage: View {
 
         if let hermesConnection {
             Section {
+                ForkTerminalSettingsRow(connection: hermesConnection, server: server)
+
                 NavigationLink {
                     HermesDefaultModelView(connection: hermesConnection, server: server)
                 } label: {
