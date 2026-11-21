@@ -217,6 +217,8 @@ private struct MathFenceOrCodeBlock: View {
     var body: some View {
         if MathFenceLanguage.matches(language), MathLaTeX.isRenderable(content) {
             DisplayMathView(latex: content)
+        } else if ForkOpenUIFence.matches(language), !(isStreaming || replyIsStreaming) {
+            ForkOpenUIBoardView(source: content)
         } else {
             ChatCodeBlock(
                 language: language,
