@@ -118,6 +118,28 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Document scanner | missing | `VNDocumentCameraViewController` (VisionKit, Apple framework, no Play-services issue on iOS) → composer attachment | `boat/hermex/doc-scanner` (later) |
 | Push notifications with actions | has | hermex-push relay, notification actions (ADR 0122-0127) | — |
 
+## Built by the boat/hermex lane (2026-11-21)
+
+Each branch below is cut from `staging` and is unmerged until Kevin merges it. Branches that call the gateway
+start from the shared commit on `boat/hermex/fork-rpc`. `boat/hermex/integration` merges them all and proves
+they combine. The Linux core tests (`scripts/fork-linux-test`) pass there: 88 of 88.
+
+| Branch | Rows it closes | Still open after it |
+|---|---|---|
+| `boat/hermex/chat-parity` | Reactions with skin tone; Memory updated | Reactions on a still-streaming reply (only persisted rows) |
+| `boat/hermex/theme-json` | NextGen theme JSON import/copy, looks; Solid/Glass switch | `glow` accepted but unused |
+| `boat/hermex/openui-boards` | ephemeral-ui / OpenUI boards | Action panels (RideOptions, MailList, Route, PullRequest) show a notice, as on Android |
+| `boat/hermex/live-mode` | Live Mode call surface; hands-free loop; voice orb + thinking orb; listening avatar | Wake word; GPT-Live/WebRTC (new dependency: Kevin) |
+| `boat/hermex/annotation` | Annotation: ink, snapshot, narration, send | Live overlay over the running chat; circle-to-draft |
+| `boat/hermex/mcp-servers` | Agent settings → MCP | Adding/removing servers stays on the host |
+| `boat/hermex/turbo-models` | Turbo models | — |
+| `boat/hermex/host-terminal` | More → Terminal (host shell) | Direct SSH (new dependency: Kevin) |
+| `boat/hermex/system-entry` | Quick Settings tiles → Control Center; actions widget; Start Live Voice | Live Voice App Shortcut phrase (needs every shipped language in `AppShortcuts.xcstrings`) |
+
+Not built and why: bot directory import, document scanner (VisionKit, no blocker; left for a follow-up), home
+filters sheet, mTLS client certificates, per-message Report, device access (blocked on a host tool contract, same as
+Android). Everything above still needs a macOS CI run and a device check (see the lane's BRANCHES.md).
+
 ## Order of work
 
 1. `boat/hermex/chat-parity`: reactions with skin tone, Memory updated
