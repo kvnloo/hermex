@@ -799,7 +799,7 @@
 		06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionsTests.swift; sourceTree = "<group>"; };
 		1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPCTests.swift; sourceTree = "<group>"; };
 		353395B1629DE99C5BDB2F80 /* ForkChatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkChatState.swift; sourceTree = "<group>"; };
-		5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel+Fork.swift; sourceTree = "<group>"; };
+		5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewModel+Fork.swift"; sourceTree = "<group>"; };
 		611229C09BFE865783BA1CC4 /* ForkRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPC.swift; sourceTree = "<group>"; };
 		78DD673424A5BE823BC10DD0 /* ForkMemoryNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMemoryNotice.swift; sourceTree = "<group>"; };
 		978F4B610AEAA53A028C95C9 /* ForkReactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactions.swift; sourceTree = "<group>"; };
