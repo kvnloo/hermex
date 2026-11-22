@@ -36,11 +36,14 @@ class CheckStringCatalogTests(unittest.TestCase):
         for target in TARGETS:
             self.stringsdata(target, keys)
 
-    def run_check(self, catalog_keys):
+    def run_check(self, catalog_keys, fork_keys=()):
         catalog = self.root / "Localizable.xcstrings"
         catalog.write_text(json.dumps({"strings": {key: {} for key in catalog_keys}}))
+        fork = self.root / "Fork.xcstrings"
+        fork.write_text(json.dumps({"strings": {key: {} for key in fork_keys}}))
         return subprocess.run(
-            [sys.executable, str(SCRIPT), "--derived-data", str(self.root / "dd"), "--catalog", str(catalog)],
+            [sys.executable, str(SCRIPT), "--derived-data", str(self.root / "dd"), "--catalog", str(catalog),
+             "--fork-catalog", str(fork)],
             capture_output=True, text=True, env={"PATH": "/usr/bin:/bin"},
         )
 
@@ -67,6 +70,19 @@ class CheckStringCatalogTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         # The mixed-table file still contributes its Localizable key.
         self.assertEqual(self.run_check([]).returncode, 1)
+
+    def test_fork_compiler_keys_require_the_fork_catalog(self):
+        self.every_target([("Send", 3)])
+        self.stringsdata("HermesMobile", [("Fork-only %lld", 7)], table="Fork")
+        self.stringsdata("HermesLiveActivityWidget", [("Widget-only title", 9)], table="Fork")
+        result = self.run_check(["Send", "Fork-only %lld"])
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("missing from HermesMobile/Resources/Fork.xcstrings", result.stdout)
+        self.assertIn('"Fork-only %lld"', result.stdout)
+        self.assertIn('"Widget-only title"', result.stdout)
+        result = self.run_check(["Send"], ["Fork-only %lld", "Widget-only title"])
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("Fork.xcstrings covers all 2 extracted keys from HermesMobile, HermesLiveActivityWidget.", result.stdout)
 
     def test_missing_target_output_is_an_error_not_a_pass(self):
         self.stringsdata("HermesMobile", [("Send", 3)])

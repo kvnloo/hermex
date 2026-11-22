@@ -43,7 +43,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Tool summary row | has | Tool call rows and turn folding (`ToolCallLogRowView`, `TranscriptTurnFolding`, ADR 0054) | — |
 | Copy, Retry, token count | has | Message actions, `/retry`, Insights token counts | — |
 | Read aloud | has | Listen playback (`ListenAudioPlayer`, `OnDeviceSpeech`, ADR 0049/0050) | — |
-| Report (message) | partial | Report a Problem opens GitHub; no per-message report | not planned |
+| Report (message) | has | Assistant message action menu → Report opens a GitHub issue prefilled with the message ID, never its text (`ForkMessageReportButton`, `ForkMessageReport`) | `boat/hx-small/hx-024` |
 | Dictation puts the avatar into listening | partial | Bot faces have expressions (`BotFaceMotion`); dictation doesn't drive them | `boat/hermex/live-mode` |
 | Chat style (Bubbles) | has | `MessageBubbleView` (native bubbles are hermex's default) | — |
 | More → Artifacts | has | Bot artifacts (`BotArtifact*`, ADR 0001) | — |
@@ -115,7 +115,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Share target → new-chat draft | has | `HermesShareExtension` + share inbox (ADR 0073) | — |
 | Live Activity / ongoing turn | has | `HermesLiveActivityWidget` (ADR 0069-0072) | — |
 | System assistant (VoiceInteractionService, assist overlay) | partial | iOS doesn't allow third-party assistants. Equivalent: Siri / Action button via App Shortcuts (has), plus the Live Voice intent | `boat/hermex/system-entry` |
-| App Functions | has (mapped) | App Intents / App Shortcuts are the iOS equivalent | — |
+| App Functions (chat and routines handoffs) | has | App Intents in Shortcuts: **Ask a Bot** (`AskBotIntent`: prompt + optional Bot) stages the prompt as a new-chat draft through the share inbox, nothing sent; **Run a Task** (`RunRoutineIntent`) opens the active Hermes server's Tasks for the user to tap Run Now, nothing runs from Shortcuts (same as Android's handoffs). Not App Shortcuts, so no Siri phrases to localize (`HermesMobile/Fork/System/ForkHandoffIntents.swift`) | `boat/hx-intents/hx-067` |
 | Device access: Health, calendar, contacts, location, alarms | missing | HealthKit, EventKit, Contacts, CoreLocation, AlarmKit. **Blocked: host tool contract** (same as Android card t_4e0c2c46) | — |
 | Document scanner | missing | `VNDocumentCameraViewController` (VisionKit, Apple framework, no Play-services issue on iOS) → composer attachment | `boat/hermex/doc-scanner` (later) |
 | Push notifications with actions | has | hermex-push relay, notification actions (ADR 0122-0127) | — |
