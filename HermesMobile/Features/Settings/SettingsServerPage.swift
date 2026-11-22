@@ -216,6 +216,7 @@ struct SettingsServerPage: View {
                 }
 
                 ForkMCPSettingsRow(connection: hermesConnection, server: server)
+                ForkProviderSignInRow(connection: hermesConnection, server: server)
             }
 
             OfflineDataSection(server: server)
