@@ -436,11 +436,15 @@ struct BotHostStatusProbe {
     }
 
     func check(_ address: URL, headers: HermesHeaders = .none) async -> Result<BotHostStatus, BotHostProbeFailure> {
-        let session = URLSession(configuration: configuration)
+        let certificate = ForkClientCertificateScope(server: address).flatMap { ForkClientCertificateDelegate.saved(for: $0) }
+        let session = URLSession(configuration: configuration, delegate: certificate, delegateQueue: nil)
         defer { session.finishTasksAndInvalidate() }
         do {
             let request = headers.applied(to: try HermesREST.status.request(base: address), origin: address)
-            let (data, response) = try await session.data(for: request, delegate: headers.redirectGuard(for: address))
+            let delegate: any URLSessionTaskDelegate
+            if let certificate { delegate = certificate }
+            else { delegate = headers.redirectGuard(for: address) }
+            let (data, response) = try await session.data(for: request, delegate: delegate)
             guard let response = response as? HTTPURLResponse else { return .failure(.notHermes) }
             if response.url?.host != request.url?.host || [401, 403].contains(response.statusCode) { return .failure(.blocked) }
             guard response.statusCode == 200 else { return .failure(.answered(response.statusCode)) }

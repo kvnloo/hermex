@@ -21,7 +21,9 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Several saved instances (two or more hosts) | has | `ServerAccount` / server registry, per-server isolation (ADR 0131, `docs/agents/multi-server-state-isolation.md`) | — |
 | Browser (OIDC) sign-in | has | `HermesBrowserSignIn`: loopback + `ASWebAuthenticationSession` + PKCE (ADR 0140) | — |
 | Browser tab closes after sign-in | has | `ASWebAuthenticationSession` (ephemeral) dismisses itself when the loopback redirect lands; the Android open item does not apply | — |
-| mTLS client certificates | partial | Custom headers + Cloudflare Access service tokens (ADR 0148); no client-certificate picker | not planned (no ask) |
+| mTLS client certificates | has | Settings → Hermes server → Client certificate; import a PKCS#12 identity into device-only Keychain for native HTTPS/WSS | `boat/hx-mtls/client-cert` |
+
+Add Server also accepts a client certificate before the connection probe. The system browser used for browser sign-in does not have access to Hermex’s stored identity.
 
 ## Home
 
@@ -137,7 +139,7 @@ they combine. The Linux core tests (`scripts/fork-linux-test`) pass there: 88 of
 | `boat/hermex/system-entry` | Quick Settings tiles → Control Center; actions widget; Start Live Voice | Live Voice App Shortcut phrase (needs every shipped language in `AppShortcuts.xcstrings`) |
 
 Not built and why: bot directory import, document scanner (VisionKit, no blocker; left for a follow-up), home
-filters sheet, mTLS client certificates, per-message Report, device access (blocked on a host tool contract, same as
+filters sheet, per-message Report, device access (blocked on a host tool contract, same as
 Android). Everything above still needs a macOS CI run and a device check (see the lane's BRANCHES.md).
 
 ## Order of work

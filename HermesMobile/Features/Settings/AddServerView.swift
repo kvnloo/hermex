@@ -74,6 +74,18 @@ struct AddServerView: View {
                                 .disabled(form.isConnectionLocked)
                         }
                         connectionOptionsRow
+                        if !isSigningInAgain, let scope = form.certificateScope {
+                            NavigationLink {
+                                ForkClientCertificateView(
+                                    scope: scope, staged: form.stagedClientCertificate != nil,
+                                    save: { try form.stageClientCertificate($0, for: scope) },
+                                    remove: { try form.stageClientCertificate(nil, for: scope) }
+                                )
+                            } label: {
+                                SettingsLabel(title: String(localized: "Client certificate"), systemImage: "checkmark.shield")
+                            }
+                            .disabled(form.isConnectionLocked)
+                        }
                     }
                 }
                 .padding(.horizontal, 16)

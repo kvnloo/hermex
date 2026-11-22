@@ -14,6 +14,7 @@ struct SettingsServerPage: View {
     @State private var isConfirmingRemove = false
     @State private var isConfirmingSignOut = false
     @State private var isRemoving = false
+    @State private var removalError: String?
     @State private var webui: WebuiServerSettingsModel?
     @State private var hermesConnection: BotConnection?
     @State private var profileServing: HermesProfileServing?
@@ -64,6 +65,16 @@ struct SettingsServerPage: View {
                 MoveToHermesSection(authManager: authManager, account: account, request: $moveRequest)
             }
 
+            if account.kind == .hermes, let server, let scope = ForkClientCertificateScope(server: server) {
+                Section {
+                    NavigationLink {
+                        ForkClientCertificateView(scope: scope)
+                    } label: {
+                        SettingsLabel(title: String(localized: "Client certificate"), systemImage: "checkmark.shield")
+                    }
+                }
+            }
+
             accountSections
         }
         .settingsPage(displayName.isEmpty ? hostFallback : displayName)
@@ -96,6 +107,13 @@ struct SettingsServerPage: View {
             }
         } message: {
             Text(removeAlertMessage)
+        }
+        .alert("Could not remove server", isPresented: Binding(
+            get: { removalError != nil }, set: { if !$0 { removalError = nil } }
+        )) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(removalError ?? "")
         }
         .alert("Sign out of this server?", isPresented: $isConfirmingSignOut) {
             Button("Cancel", role: .cancel) {}
@@ -279,11 +297,16 @@ struct SettingsServerPage: View {
     private func remove() async {
         let wasActive = isActive
         isRemoving = true
+        await authManager.removeServer(account)
+        if authManager.servers.contains(where: { $0.id == account.id }) {
+            isRemoving = false
+            removalError = authManager.lastErrorMessage
+            return
+        }
         if let server {
             try? CacheStore.clearCache(for: server, in: modelContext)
             await ChatDraftStore.shared.discardDrafts(for: server)
         }
-        await authManager.removeServer(account)
         if !wasActive {
             isRemoving = false
             dismiss()

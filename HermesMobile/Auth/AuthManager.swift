@@ -268,18 +268,30 @@ final class AuthManager {
     }
 
     @discardableResult
-    func addHermesServer(_ connection: BotConnection, activating: Bool = true) -> Bool {
+    func addHermesServer(_ connection: BotConnection, activating: Bool = true,
+                         clientCertificate: ForkClientCertificate? = nil) -> Bool {
         lastErrorMessage = nil
         let server = (try? BotConnection.address(connection.address.absoluteString)) ?? connection.address
         guard !serverRegistry.servers.contains(where: { $0.id == server.absoluteString }) else {
             lastErrorMessage = String(localized: "This server is already configured.")
             return false
         }
+        let store = BotConnectionStore(keychain: keychain)
+        var importedScope: ForkClientCertificateScope?
         do {
-            try BotConnectionStore(keychain: keychain).save(connection, server: server)
+            try store.save(connection, server: server)
+            if let clientCertificate, let scope = ForkClientCertificateScope(server: server) {
+                try ForkClientCertificateStore.save(clientCertificate, for: scope, keychain: keychain)
+                importedScope = scope
+            }
             if activating { try keychain.save(server.absoluteString, forKey: .serverURL) }
         } catch {
-            lastErrorMessage = String(localized: "Could not save sign-in details on this iPhone.")
+            if clientCertificate != nil {
+                if let importedScope { try? ForkClientCertificateStore.remove(importedScope, keychain: keychain) }
+                try? store.remove(server: server)
+            }
+            lastErrorMessage = (error as? ForkClientCertificateError)?.localizedDescription
+                ?? String(localized: "Could not save sign-in details on this iPhone.")
             return false
         }
         guard activating else {
@@ -296,7 +308,7 @@ final class AuthManager {
         return true
     }
 
-    func replaceWebuiServer(with connection: BotConnection) async -> Bool {
+    func replaceWebuiServer(with connection: BotConnection, clientCertificate: ForkClientCertificate? = nil) async -> Bool {
         lastErrorMessage = nil
         let server = (try? BotConnection.address(connection.address.absoluteString)) ?? connection.address
         guard let webui = servers.first(where: { $0.id == server.absoluteString }), webui.kind == .webui else {
@@ -304,7 +316,7 @@ final class AuthManager {
             return false
         }
         await removeServer(webui)
-        guard addHermesServer(connection), let added = activeServer else { return false }
+        guard addHermesServer(connection, clientCertificate: clientCertificate), let added = activeServer else { return false }
         updateServerIdentity(added, displayName: webui.displayName, initials: webui.initials,
                              headerLogoColorHex: webui.headerLogoColorHex)
         return true
@@ -412,11 +424,19 @@ final class AuthManager {
 
     func removeServer(_ account: ServerAccount) async {
         guard let serverURL = URL(string: account.urlString) else { return }
+        lastErrorMessage = nil
         removingServerIDs.insert(account.id)
         defer { removingServerIDs.remove(account.id) }
         limitsPublisher.invalidate(server: serverURL)
         dropStaleMoveSheets()
         await ScreenHolds.handBackAll(server: serverURL)
+        if account.kind == .hermes, let scope = ForkClientCertificateScope(server: serverURL) {
+            do { try ForkClientCertificateStore.remove(scope, keychain: keychain) }
+            catch {
+                lastErrorMessage = error.localizedDescription
+                return
+            }
+        }
         let movedSources = (servers.first { $0.id == account.id } ?? account).movedWebuiServers.map(\.sourceServerID)
         try? await BotHistoryCache.shared.removeServer(serverURL, activeConnectionID: (try? BotConnectionStore(keychain: keychain).load(server: serverURL))?.id)
         SessionUnreadStore().remove(for: serverURL)

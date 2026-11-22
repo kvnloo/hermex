@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1200000000000000000206 /* test-client.p12 in Resources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000106 /* test-client.p12 */; };
+		CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */; };
+		CF1200000000000000000204 /* ForkClientCertificateScopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */; };
+		CF1200000000000000000203 /* ForkClientCertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000103 /* ForkClientCertificateView.swift */; };
+		CF1200000000000000000202 /* ForkClientCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000102 /* ForkClientCertificate.swift */; };
+		CF1200000000000000000201 /* ForkClientCertificateScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000101 /* ForkClientCertificateScope.swift */; };
 		01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */; };
 		DBBCA6BD7C07485CAFF21894 /* ForkHomeFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37A6455F30495BA8090474 /* ForkHomeFilters.swift */; };
 		0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76875456DE0BDC0A137F9BDA /* ForkTerminalScreen.swift */; };
@@ -860,6 +866,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF1200000000000000000106 /* test-client.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fixtures/ClientCertificate/test-client.p12"; sourceTree = "<group>"; };
+		CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateChallengeTests.swift"; sourceTree = "<group>"; };
+		CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateScopeTests.swift"; sourceTree = "<group>"; };
+		CF1200000000000000000103 /* ForkClientCertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateView.swift"; sourceTree = "<group>"; };
+		CF1200000000000000000102 /* ForkClientCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Security/ForkClientCertificate.swift"; sourceTree = "<group>"; };
+		CF1200000000000000000101 /* ForkClientCertificateScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateScope.swift"; sourceTree = "<group>"; };
 		06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionsTests.swift; sourceTree = "<group>"; };
 		075F28927F691751A928FE57 /* ForkMCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPClient.swift; sourceTree = "<group>"; };
 		0F8501A29A58FC210F161741 /* ForkHandoffIntentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkHandoffIntentsTests.swift; sourceTree = "<group>"; };
@@ -1852,6 +1864,7 @@
 		A46DF3785EECB38B9161F511 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				CF1200000000000000000102 /* ForkClientCertificate.swift */,
 				2DECFB72765ACA384FBEA278 /* Models */,
 				3743733FE8BA6519927551C0 /* Chat */,
 				38BD7060DB50668D1CF2458A /* System */,
@@ -1974,6 +1987,8 @@
 		1A2B3C4D5E6F700000000034 /* HermesMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				CF1200000000000000000106 /* test-client.p12 */,
+				CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */,
 				0EBD60CB80D7894949643AF1 /* ForkApp */,
 				4A6ABCD131F0EF3A6368B7C8 /* ScreenSessionTests.swift */,
 				642EA013D5ADD8D1B4FA3936 /* RFBDecoderTests.swift */,
@@ -2922,6 +2937,7 @@
 		E39DC717F9FD6A4421A9DA9B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CF1200000000000000000101 /* ForkClientCertificateScope.swift */,
 				2A37A6455F30495BA8090474 /* ForkHomeFilters.swift */,
 				4C4E255D18602C368E060584 /* Live */,
 				4CBAB278E7CD2A2BE19A1A63 /* Models */,
@@ -2939,6 +2955,7 @@
 		F20BE09C2F2D10DE30148850 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */,
 				06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */,
 				2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */,
 				49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */,
@@ -2960,6 +2977,7 @@
 		F7899A2D78F49CDB3F3C89C2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				CF1200000000000000000103 /* ForkClientCertificateView.swift */,
 				075F28927F691751A928FE57 /* ForkMCPClient.swift */,
 				718DF8CA747382A507307CCF /* ForkMCPServersView.swift */,
 			);
@@ -3003,6 +3021,7 @@
 			buildConfigurationList = 1A2B3C4D5E6F700000000045 /* Build configuration list for PBXNativeTarget "HermesMobileTests" */;
 			buildPhases = (
 				1A2B3C4D5E6F700000000052 /* Sources */,
+				CF1200000000000000000000 /* Resources */,
 				1A2B3C4D5E6F700000000021 /* Frameworks */,
 			);
 			buildRules = (
@@ -3146,6 +3165,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CF1200000000000000000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF1200000000000000000206 /* test-client.p12 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1A2B3C4D5E6F700000000060 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3195,6 +3222,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1200000000000000000203 /* ForkClientCertificateView.swift in Sources */,
+				CF1200000000000000000202 /* ForkClientCertificate.swift in Sources */,
+				CF1200000000000000000201 /* ForkClientCertificateScope.swift in Sources */,
 				01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */,
 				DBBCA6BD7C07485CAFF21894 /* ForkHomeFilters.swift in Sources */,
 				0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */,
@@ -3701,6 +3731,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */,
+				CF1200000000000000000204 /* ForkClientCertificateScopeTests.swift in Sources */,
 				0AC8B181DEC2DFC8498A6A92 /* ForkRoutineRequestTests.swift in Sources */,
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,

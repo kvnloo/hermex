@@ -16,6 +16,7 @@ struct KeychainStore: KeychainStoring {
         case serverURL = "server_url"
         case customHeaders = "custom_headers"
         case servers = "servers"
+        case clientCertificate = "client_certificate_v1"
         case botConnection = "bot_connection"
         case pushPairing = "push_pairing"
         case screenHolds = "screen_holds"
