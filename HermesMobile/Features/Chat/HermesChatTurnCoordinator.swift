@@ -171,7 +171,8 @@ struct HermesLostTurn: Equatable {
          isNetworkAvailable: @escaping @MainActor () -> Bool = { NetworkPathMonitor.shared.isSatisfied },
          previewLimit: Int = BotArtifactBuffer.maximumBytes,
          ratingPromptState: RatingPromptState? = nil,
-         noticeTimer: HermesHostNotices.Timer? = nil) {
+         noticeTimer: HermesHostNotices.Timer? = nil,
+         avatarStore: BotAvatarStore? = nil) {
         self.engine = engine
         self.previewLimit = previewLimit
         self.ratingPromptState = ratingPromptState ?? .shared
@@ -183,7 +184,8 @@ struct HermesLostTurn: Equatable {
         requests = HermesChatRequests(engine: engine)
         hostNotices = HermesHostNotices(timer: noticeTimer)
         sideTasks = HermesChatSideTasks(engine: engine)
-        settings = HermesChatSettings(engine: engine, loadsAvatars: policy == .botChat, openedBot: openedBot)
+        settings = HermesChatSettings(engine: engine, loadsAvatars: policy == .botChat, openedBot: openedBot,
+                                      avatarStore: avatarStore)
         slashCommands = HermesSlashCommands(engine: engine, policy: policy)
         activity = HermesChatActivity(wire: engine.wire)
         self.lineageRoot = lineageRoot

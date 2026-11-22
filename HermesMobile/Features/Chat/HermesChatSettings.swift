@@ -67,6 +67,7 @@ enum HermesProfilePreference {
     private(set) var mentions: BotMentions
     private(set) var avatars: [String: UIImage] = [:]
     private let loadsAvatars: Bool
+    private let avatarStore: BotAvatarStore
     @ObservationIgnored var onRosterRead: (() -> Void)?
     @ObservationIgnored var onAvatarsChange: (() -> Void)?
     private(set) var pendingPersonality: String?
@@ -76,13 +77,15 @@ enum HermesProfilePreference {
     @ObservationIgnored private(set) var presetApplication: Task<Void, Never>?
     private let engine: HermesConversation
 
-    init(engine: HermesConversation, loadsAvatars: Bool = false, openedBot: BotProfile? = nil) {
+    init(engine: HermesConversation, loadsAvatars: Bool = false, openedBot: BotProfile? = nil,
+         avatarStore: BotAvatarStore? = nil) {
         self.engine = engine
         self.loadsAvatars = loadsAvatars
+        self.avatarStore = avatarStore ?? .shared
         profile = engine.target.profile
         mentions = BotMentions(roster: [], excluding: profile)
         if let openedBot { bots = [openedBot] }
-        if loadsAvatars { avatars = BotAvatarStore.shared.images(connectionID: engine.connection.id) }
+        if loadsAvatars { avatars = self.avatarStore.images(connectionID: engine.connection.id) }
         controls.onPickedModelActive = { [weak self] option in self?.pickRan(option) }
     }
 
@@ -153,7 +156,7 @@ enum HermesProfilePreference {
         mentions = BotMentions(roster: bots, excluding: profile)
         onRosterRead?()
         guard loadsAvatars else { return }
-        let store = BotAvatarStore.shared, connectionID = engine.connection.id
+        let store = avatarStore, connectionID = engine.connection.id
         await store.refresh(bots, connectionID: connectionID, using: engine.wire,
                             validateDispatch: { [engine] in try engine.check(attempt) }) {
             avatars = store.images(connectionID: connectionID)
