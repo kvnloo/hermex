@@ -37,7 +37,7 @@ struct ForkOpenUIPanelView: View {
     private func barChart(_ unit: String, _ bars: [(label: String, value: Double)]) -> some View {
         let axis = unit.isEmpty ? "Value" : unit
         return Chart(bars.indices, id: \.self) { index in
-            BarMark(x: .value(axis, bars[index].value), y: .value("Label", bars[index].label))
+            BarMark(x: .value(axis, bars[index].value), y: .value(ForkOpenUIDimension.label, bars[index].label))
                 .foregroundStyle(Color.accentColor)
         }
         .frame(height: CGFloat(max(bars.count, 2)) * 28)
@@ -67,7 +67,7 @@ struct ForkOpenUIPanelView: View {
         let cells = rows.indices.flatMap { row in columns.indices.map { (row: row, column: $0) } }
         return Chart(cells.indices, id: \.self) { index in
             let cell = cells[index]
-            RectangleMark(x: .value("Column", columns[cell.column]), y: .value("Row", rows[cell.row]))
+            RectangleMark(x: .value(ForkOpenUIDimension.column, columns[cell.column]), y: .value(ForkOpenUIDimension.row, rows[cell.row]))
                 .foregroundStyle(by: .value(legend, counts[cell.row][cell.column]))
         }
         .chartForegroundStyleScale(range: Gradient(colors: [Color(.appFillTertiary), Color.accentColor]))
@@ -102,17 +102,25 @@ private struct ForkOpenUISeriesChart: View {
     @ChartContentBuilder
     private func mark(_ point: ForkOpenUIPoint) -> some ChartContent {
         let name = series[point.series].name
-        let x = PlottableValue.value("Category", categories[point.category])
+        let x = PlottableValue.value(ForkOpenUIDimension.category, categories[point.category])
         let y = PlottableValue.value(unit.isEmpty ? "Value" : unit, series[point.series].values[point.category])
         switch kind {
         case .line:
-            LineMark(x: x, y: y).foregroundStyle(by: .value("Series", name)).symbol(by: .value("Series", name))
+            LineMark(x: x, y: y).foregroundStyle(by: .value(ForkOpenUIDimension.series, name)).symbol(by: .value(ForkOpenUIDimension.series, name))
         case .stackedArea:
-            AreaMark(x: x, y: y, stacking: .standard).foregroundStyle(by: .value("Series", name))
+            AreaMark(x: x, y: y, stacking: .standard).foregroundStyle(by: .value(ForkOpenUIDimension.series, name))
         case .stackedBar:
-            BarMark(x: x, y: y, stacking: .standard).foregroundStyle(by: .value("Series", name))
+            BarMark(x: x, y: y, stacking: .standard).foregroundStyle(by: .value(ForkOpenUIDimension.series, name))
         }
     }
+}
+
+private enum ForkOpenUIDimension {
+    static let label: String = "Label"
+    static let column: String = "Column"
+    static let row: String = "Row"
+    static let category: String = "Category"
+    static let series: String = "Series"
 }
 
 private struct ForkOpenUIPoint: Hashable {
