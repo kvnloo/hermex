@@ -48,11 +48,35 @@ struct ForkLiveModeView: View {
     }
 
     var body: some View {
+        ForkLiveModeScreen(
+            title: title, phase: controller.phase, level: controller.level,
+            heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
+            onOrb: controller.tapOrb, onEnd: controller.stop
+        )
+        .onAppear {
+            controller.onClose = { dismiss() }
+            controller.start()
+        }
+        .onDisappear { controller.stop() }
+    }
+}
+
+struct ForkLiveModeScreen: View {
+    let title: String
+    let phase: LivePhase
+    let level: Double
+    let heard: String
+    let error: String?
+    @Binding var orbStyle: ForkLiveOrbStyle
+    let onOrb: () -> Void
+    let onEnd: () -> Void
+
+    var body: some View {
         VStack(spacing: 20) {
             header
             Spacer(minLength: 12)
-            Button { controller.tapOrb() } label: {
-                ForkLiveOrb(phase: controller.phase, level: controller.level, style: orbStyle)
+            Button(action: onOrb) {
+                ForkLiveOrb(phase: phase, level: level, style: orbStyle)
                     .frame(width: 240, height: 240)
             }
             .buttonStyle(.plain)
@@ -61,13 +85,13 @@ struct ForkLiveModeView: View {
             statusText
                 .font(AppFont.headline())
                 .accessibilityHidden(true)
-            Text(verbatim: controller.heard.isEmpty ? " " : controller.heard)
+            Text(verbatim: heard.isEmpty ? " " : heard)
                 .font(AppFont.body())
                 .foregroundStyle(.appSecondary)
                 .multilineTextAlignment(.center)
                 .lineLimit(4)
                 .padding(.horizontal, 24)
-            if let error = controller.errorMessage {
+            if let error {
                 Text(verbatim: error).font(AppFont.footnote()).foregroundStyle(.red).multilineTextAlignment(.center)
             }
             Spacer(minLength: 12)
@@ -76,11 +100,6 @@ struct ForkLiveModeView: View {
         .padding(.vertical, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .themedPageBackground()
-        .onAppear {
-            controller.onClose = { dismiss() }
-            controller.start()
-        }
-        .onDisappear { controller.stop() }
     }
 
     private var header: some View {
@@ -99,14 +118,14 @@ struct ForkLiveModeView: View {
 
     private var controls: some View {
         HStack(spacing: 40) {
-            Button { controller.tapOrb() } label: {
-                Image(systemName: controller.phase == .listening ? "mic.fill" : "mic.slash.fill")
+            Button(action: onOrb) {
+                Image(systemName: phase == .listening ? "mic.fill" : "mic.slash.fill")
                     .font(.system(size: 22, weight: .semibold))
                     .frame(width: 64, height: 64)
                     .background(Color(.appFillSecondary), in: Circle())
             }
-            .accessibilityLabel(controller.phase == .listening ? Text("Pause Listening", tableName: "Fork") : Text("Listen", tableName: "Fork"))
-            Button { controller.stop() } label: {
+            .accessibilityLabel(phase == .listening ? Text("Pause Listening", tableName: "Fork") : Text("Listen", tableName: "Fork"))
+            Button(action: onEnd) {
                 Image(systemName: "xmark")
                     .font(.system(size: 22, weight: .semibold))
                     .foregroundStyle(.white)
@@ -119,7 +138,7 @@ struct ForkLiveModeView: View {
     }
 
     private var statusText: Text {
-        switch controller.phase {
+        switch phase {
         case .idle, .paused: Text("Paused · tap to talk", tableName: "Fork")
         case .listening: Text("Listening…", tableName: "Fork")
         case .sending, .thinking: Text("Thinking…", tableName: "Fork")

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 2 ]]; then
+  echo "Usage: scripts/export-store-screenshots TestResults.xcresult NEW_OUTPUT_DIR" >&2
+  exit 2
+fi
+
+result=$1
+output=$2
+attachments=$(mktemp -d)
+trap 'rm -r -- "$attachments"' EXIT
+xcrun xcresulttool export attachments --path "$result" --output-path "$attachments"
+
+python3 - "$attachments" "$output" <<'PY'
+import json
+from pathlib import Path
+import shutil
+import struct
+import sys
+
+root, output = map(Path, sys.argv[1:])
+names = ("openui-board", "live-mode", "appearance-looks")
+found = {}
+for test in json.loads((root / "manifest.json").read_text()):
+    if "StoreScreenshotTests/" not in test.get("testIdentifier", ""):
+        continue
+    for attachment in test["attachments"]:
+        label = attachment.get("suggestedHumanReadableName", "")
+        name = next((name for name in names if label == name or label.startswith((name + ".", name + "_"))), None)
+        if name is None:
+            continue
+        path = root / attachment["exportedFileName"]
+        data = path.read_bytes()
+        if (len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR"
+                or struct.unpack(">II", data[16:24]) != (1206, 2622)):
+            raise SystemExit(f"Not a 1206 x 2622 PNG: {path}")
+        if name in found:
+            raise SystemExit(f"Multiple captures for {name}; export a single run.")
+        found[name] = path
+if set(found) != set(names):
+    raise SystemExit("Missing screenshots: " + ", ".join(sorted(set(names) - found.keys())))
+
+output.mkdir()
+for name in names:
+    path = output / (name + ".png")
+    shutil.copyfile(found[name], path)
+    print(path)
+PY
