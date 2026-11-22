@@ -614,7 +614,7 @@ struct HermexAttachmentPickerView: View {
                 Task { await model.loadLibrary() }
             }
             if let onScanDocument {
-                menuRow(title: "Scan document", tableName: "Fork", systemImage: "doc.viewfinder", enabled: imageChoicesAreEnabled) {
+                menuRow(label: Text("Scan document", tableName: "Fork"), systemImage: "doc.viewfinder", enabled: imageChoicesAreEnabled) {
                     guard !isDismissing else { return }
                     onScanDocument()
                     animateDismissal()
@@ -635,12 +635,20 @@ struct HermexAttachmentPickerView: View {
 
     private func menuRow(
         title: LocalizedStringKey,
-        tableName: String? = nil,
         systemImage: String,
         enabled: Bool,
         action: @escaping () -> Void
     ) -> some View {
-        HermexAttachmentMenuRow(title: Text(title, tableName: tableName), systemImage: systemImage, action: action)
+        menuRow(label: Text(title), systemImage: systemImage, enabled: enabled, action: action)
+    }
+
+    private func menuRow(
+        label: Text,
+        systemImage: String,
+        enabled: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        HermexAttachmentMenuRow(title: label, systemImage: systemImage, action: action)
             .disabled(!enabled)
     }
 
