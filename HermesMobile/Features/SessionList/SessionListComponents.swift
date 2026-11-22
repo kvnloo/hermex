@@ -463,9 +463,10 @@ struct SessionSidebarUtilityRows: View {
     let openDestination: (SessionListUtilityDestination) -> Void
     let switchActiveProfile: (ProfileSummary) -> Void
     let presentProjectCreation: () -> Void
+    var openMissionControl: (() -> Void)? = nil
 
     var body: some View {
-        if sectionVisibility.showsAnyUtilityLink {
+        if sectionVisibility.showsAnyUtilityLink || openMissionControl != nil {
             utilityLinks
                 .padding(.top, topPadding)
                 .sessionsScreenListRow()
@@ -524,6 +525,10 @@ struct SessionSidebarUtilityRows: View {
                 SidebarNavButton(title: String(localized: "Tasks"), assetImage: "LucideCalendarClock") {
                     openDestination(.tasks)
                 }
+            }
+
+            if let openMissionControl {
+                ForkMissionControlSidebarRow(action: openMissionControl)
             }
 
             if sectionVisibility.kanban {
