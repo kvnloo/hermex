@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5125BA99B7A6FD55D4003494 /* ForkDeviceApproval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E0749E05B8B7B74EEC6EBA /* ForkDeviceApproval.swift */; };
+		B1D1B729AA88DFB5F24B4169 /* ForkDeviceDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66B1295E1A96B7CFAC16592 /* ForkDeviceDispatcher.swift */; };
+		863AAA917B7B34F631911F51 /* ForkDeviceTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551A186FAD863C562BC79FF /* ForkDeviceTools.swift */; };
+		A14D7CE0308DF15EBE3DB590 /* ForkAppleDeviceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630DC5D0A656B95E7FD2226 /* ForkAppleDeviceProvider.swift */; };
+		A9BC079E7E8172879DE3DEDB /* ForkDeviceAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4668D92754302F94FC5EC204 /* ForkDeviceAccessView.swift */; };
+		00962700E0A25FA0C2077D5F /* ForkDeviceAlarms.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4EA83E8B7FC5902B7080A /* ForkDeviceAlarms.swift */; };
+		B8D5C103F18675212491B463 /* ForkLocationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6542DDBF4F129F0FCA1888 /* ForkLocationReader.swift */; };
+		3558ED1FC71D279897A54444 /* ForkDeviceApprovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA71FCDDB11AE4D8613F0164 /* ForkDeviceApprovalTests.swift */; };
+		00A09D436A5AE1DB62DDE037 /* ForkDeviceDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170CD219DCF863F535AD3EB9 /* ForkDeviceDispatcherTests.swift */; };
+		E2C53E32419C5E4D678B9484 /* ForkDeviceToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937DF78A1918DDE5AC2D39F /* ForkDeviceToolsTests.swift */; };
+		2045BFB3D91B3D0686C650A4 /* AlarmKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723468B44CD60712CD445519 /* AlarmKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */; };
 		0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76875456DE0BDC0A137F9BDA /* ForkTerminalScreen.swift */; };
 		0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */; };
@@ -847,6 +858,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		98E0749E05B8B7B74EEC6EBA /* ForkDeviceApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceApproval.swift; sourceTree = "<group>"; };
+		D66B1295E1A96B7CFAC16592 /* ForkDeviceDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceDispatcher.swift; sourceTree = "<group>"; };
+		C551A186FAD863C562BC79FF /* ForkDeviceTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceTools.swift; sourceTree = "<group>"; };
+		C630DC5D0A656B95E7FD2226 /* ForkAppleDeviceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkAppleDeviceProvider.swift; sourceTree = "<group>"; };
+		4668D92754302F94FC5EC204 /* ForkDeviceAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceAccessView.swift; sourceTree = "<group>"; };
+		B3D4EA83E8B7FC5902B7080A /* ForkDeviceAlarms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceAlarms.swift; sourceTree = "<group>"; };
+		7F6542DDBF4F129F0FCA1888 /* ForkLocationReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLocationReader.swift; sourceTree = "<group>"; };
+		BA71FCDDB11AE4D8613F0164 /* ForkDeviceApprovalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceApprovalTests.swift; sourceTree = "<group>"; };
+		170CD219DCF863F535AD3EB9 /* ForkDeviceDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceDispatcherTests.swift; sourceTree = "<group>"; };
+		E937DF78A1918DDE5AC2D39F /* ForkDeviceToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkDeviceToolsTests.swift; sourceTree = "<group>"; };
+		723468B44CD60712CD445519 /* AlarmKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlarmKit.framework; path = System/Library/Frameworks/AlarmKit.framework; sourceTree = SDKROOT; };
 		06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionsTests.swift; sourceTree = "<group>"; };
 		075F28927F691751A928FE57 /* ForkMCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPClient.swift; sourceTree = "<group>"; };
 		1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveVoiceIntent.swift; sourceTree = "<group>"; };
@@ -1636,6 +1658,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2045BFB3D91B3D0686C650A4 /* AlarmKit.framework in Frameworks */,
 				1A2B3C4D5E6F700000000004 /* LDSwiftEventSource in Frameworks */,
 				1A2B3C4D5E6F700000000005 /* MarkdownUI in Frameworks */,
 				1A2B3C4D5E6F700000000006 /* Splash in Frameworks */,
@@ -1677,6 +1700,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC6466AEAA7D015E940D412A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				723468B44CD60712CD445519 /* AlarmKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		585EF083F8A3200894857A7B /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				98E0749E05B8B7B74EEC6EBA /* ForkDeviceApproval.swift */,
+				D66B1295E1A96B7CFAC16592 /* ForkDeviceDispatcher.swift */,
+				C551A186FAD863C562BC79FF /* ForkDeviceTools.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+		AB5FAB0DF62FB274D75D6531 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				C630DC5D0A656B95E7FD2226 /* ForkAppleDeviceProvider.swift */,
+				4668D92754302F94FC5EC204 /* ForkDeviceAccessView.swift */,
+				B3D4EA83E8B7FC5902B7080A /* ForkDeviceAlarms.swift */,
+				7F6542DDBF4F129F0FCA1888 /* ForkLocationReader.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
 		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1822,6 +1874,7 @@
 		A46DF3785EECB38B9161F511 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				AB5FAB0DF62FB274D75D6531 /* Device */,
 				2DECFB72765ACA384FBEA278 /* Models */,
 				3743733FE8BA6519927551C0 /* Chat */,
 				38BD7060DB50668D1CF2458A /* System */,
@@ -1885,6 +1938,7 @@
 				A04500000000000000000021 /* HermesLiveActivityWidget */,
 				559000000000000000000020 /* HermesNotificationService */,
 				1A2B3C4D5E6F700000000032 /* Products */,
+				EC6466AEAA7D015E940D412A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2889,6 +2943,7 @@
 		E39DC717F9FD6A4421A9DA9B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				585EF083F8A3200894857A7B /* Device */,
 				4C4E255D18602C368E060584 /* Live */,
 				4CBAB278E7CD2A2BE19A1A63 /* Models */,
 				5CD51A27C34932C4D8A4B220 /* Chat */,
@@ -2905,6 +2960,9 @@
 		F20BE09C2F2D10DE30148850 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				BA71FCDDB11AE4D8613F0164 /* ForkDeviceApprovalTests.swift */,
+				170CD219DCF863F535AD3EB9 /* ForkDeviceDispatcherTests.swift */,
+				E937DF78A1918DDE5AC2D39F /* ForkDeviceToolsTests.swift */,
 				06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */,
 				2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */,
 				5997454E23E505D02E2EC784 /* AnnotationComposeTests.swift */,
@@ -3156,6 +3214,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5125BA99B7A6FD55D4003494 /* ForkDeviceApproval.swift in Sources */,
+				B1D1B729AA88DFB5F24B4169 /* ForkDeviceDispatcher.swift in Sources */,
+				863AAA917B7B34F631911F51 /* ForkDeviceTools.swift in Sources */,
+				A14D7CE0308DF15EBE3DB590 /* ForkAppleDeviceProvider.swift in Sources */,
+				A9BC079E7E8172879DE3DEDB /* ForkDeviceAccessView.swift in Sources */,
+				00962700E0A25FA0C2077D5F /* ForkDeviceAlarms.swift in Sources */,
+				B8D5C103F18675212491B463 /* ForkLocationReader.swift in Sources */,
 				01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */,
 				0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */,
 				14BFB05ECAA8FA6066D0FA4F /* ForkLiveVoiceIntent.swift in Sources */,
@@ -3655,6 +3720,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3558ED1FC71D279897A54444 /* ForkDeviceApprovalTests.swift in Sources */,
+				00A09D436A5AE1DB62DDE037 /* ForkDeviceDispatcherTests.swift in Sources */,
+				E2C53E32419C5E4D678B9484 /* ForkDeviceToolsTests.swift in Sources */,
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
 				1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */,

@@ -85,6 +85,8 @@ struct SettingsView: View {
                 } label: {
                     SettingsLabel(title: String(localized: "General"), systemImage: "gearshape")
                 }
+
+                ForkDeviceAccessSettingsRow()
             } header: {
                 Text(verbatim: "Hermex")
             } appFooter: {
