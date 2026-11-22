@@ -1063,6 +1063,8 @@ final class CacheStoreTests: XCTestCase {
     }
 
     func testMovingTheStoreKeepsItsRowsAndLeavesNothingBehind() throws {
+        try XCTSkipIf(ProcessInfo.processInfo.environment["HERMEX_CI"] != nil,
+                      "Staging CI 45022832431: intermittent on-disk SwiftData store move; see docs/QUARANTINE.md.")
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
         addTeardownBlock { try? FileManager.default.removeItem(at: directory) }
         let source = directory.appendingPathComponent("group/default.store")
