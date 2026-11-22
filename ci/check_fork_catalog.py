@@ -21,7 +21,7 @@ NUMERIC_INTERPOLATIONS = {
 }
 OBJECT_INTERPOLATIONS = {
     "spec.name", "key", "role", "value", "target.connection.name", "text",
-    "session.userCode", "expiresAt, style: .time", "name", "names",
+    "session.userCode", "expiresAt, style: .time", "name", "names", "version",
 }
 FORMAT_TOKEN = re.compile(r'%(?:(\d+)\$)?(lld|@)')
 
