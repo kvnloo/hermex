@@ -16,8 +16,9 @@ import OSLog
     private(set) var lastAttempt: HermesAttemptRecord?
     private(set) var attemptCount = 0
     private var platformNoteChecks: [String: Task<Bool, Never>] = [:]
-    let session: URLSession
-    let provisioningSession: URLSession
+    private(set) var session: URLSession
+    private(set) var provisioningSession: URLSession
+    private let originalCredentialStorage: URLCredentialStorage?
     private let headers: HermesHeaders
     private let redirectGuard: CrossOriginHeaderStripper
     private let gatewayOptions: HermesGateway.Options
@@ -43,7 +44,8 @@ import OSLog
     private static var connectionCount = 0
 
     init(connection: BotConnection, configuration: URLSessionConfiguration = .ephemeral,
-         gateway: HermesGateway.Options = HermesGateway.Options()) {
+         gateway: HermesGateway.Options = HermesGateway.Options(),
+         stagedCertificate: ForkClientCertificate? = nil) {
         self.connection = connection
         headers = HermesHeaders(saved: connection)
         gatewayOptions = gateway
@@ -57,8 +59,46 @@ import OSLog
         provisioning.timeoutIntervalForRequest = 120
         provisioning.timeoutIntervalForResource = 180
         provisioning.httpCookieStorage = standard.httpCookieStorage
-        session = URLSession(configuration: standard)
-        provisioningSession = URLSession(configuration: provisioning)
+        originalCredentialStorage = standard.urlCredentialStorage
+        let certificateDelegate = ForkClientCertificateScope(server: connection.address)
+            .flatMap { ForkClientCertificateDelegate.saved(for: $0, staged: stagedCertificate) }
+        session = Self.makeSession(standard, delegate: certificateDelegate)
+        provisioningSession = Self.makeSession(provisioning, delegate: certificateDelegate)
+        if stagedCertificate == nil, ForkClientCertificateScope(server: connection.address) != nil {
+            ForkClientCertificateStore.observe(self)
+        }
+    }
+
+    deinit {
+        session.invalidateAndCancel()
+        provisioningSession.invalidateAndCancel()
+    }
+
+    private static func makeSession(_ configuration: URLSessionConfiguration,
+                                    delegate: ForkClientCertificateDelegate?) -> URLSession {
+        guard let delegate else { return URLSession(configuration: configuration) }
+        configuration.urlCredentialStorage = nil
+        return URLSession(configuration: configuration, delegate: delegate, delegateQueue: nil)
+    }
+
+    func clientCertificateChanged() {
+        guard let scope = ForkClientCertificateScope(server: connection.address) else { return }
+        if isRetired {
+            session.invalidateAndCancel()
+            provisioningSession.invalidateAndCancel()
+            return
+        }
+        let standard = session.configuration
+        let provisioning = provisioningSession.configuration
+        provisioning.httpCookieStorage = standard.httpCookieStorage
+        standard.urlCredentialStorage = originalCredentialStorage
+        provisioning.urlCredentialStorage = originalCredentialStorage
+        session.invalidateAndCancel()
+        provisioningSession.invalidateAndCancel()
+        let certificateDelegate = ForkClientCertificateDelegate.saved(for: scope)
+        session = Self.makeSession(standard, delegate: certificateDelegate)
+        provisioningSession = Self.makeSession(provisioning, delegate: certificateDelegate)
+        liveGateways.forEach { $0.dropSocket() }
     }
 
     var gateway: HermesGateway {
@@ -342,12 +382,11 @@ import OSLog
                                  validateDispatch: (@MainActor () throws -> Void)? = nil,
                                  _ perform: @Sendable (URLRequest, URLSession) async throws -> T) async throws -> T {
         let request = prepared(request)
-        let session = self.session(for: deadline)
         try await signIn(deadline: deadline)
         try validateDispatch?()
         let sentEpoch = epoch
         do {
-            let value = try await perform(bearing(request), session)
+            let value = try await perform(bearing(request), session(for: deadline))
             try checkCurrent()
             return value
         } catch BotFailure.rejected(401) {
@@ -355,7 +394,7 @@ import OSLog
             if epoch == sentEpoch, isSignedIn { isSignedIn = false; credential = nil }
             try await signIn(deadline: deadline)
             try validateDispatch?()
-            let value = try await perform(bearing(request), session)
+            let value = try await perform(bearing(request), session(for: deadline))
             try checkCurrent()
             return value
         }
@@ -485,7 +524,10 @@ import OSLog
 
     private nonisolated static func exchange(_ request: URLRequest, on session: URLSession,
                                              redirectGuard: CrossOriginHeaderStripper) async throws -> (Data, HTTPURLResponse) {
-        let (data, response) = try await session.data(for: request, delegate: redirectGuard)
+        let delegate: any URLSessionTaskDelegate
+        if let certificate = session.delegate as? ForkClientCertificateDelegate { delegate = certificate }
+        else { delegate = redirectGuard }
+        let (data, response) = try await session.data(for: request, delegate: delegate)
         guard let response = response as? HTTPURLResponse else { throw BotFailure.transport }
         if let final = response.url?.host, final.lowercased() != request.url?.host?.lowercased() { throw BotFailure.blocked }
         if (300..<400).contains(response.statusCode) { throw BotFailure.blocked }

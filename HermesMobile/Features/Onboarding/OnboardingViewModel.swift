@@ -19,6 +19,9 @@ final class OnboardingViewModel {
     let moveSource: MoveSource?
     var serverURLString = "" {
         didSet {
+            if let stagedClientCertificate, certificateScope != stagedClientCertificate.scope {
+                self.stagedClientCertificate = nil
+            }
             invalidateProbedAuthStatusIfNeeded()
             dropReusedSignInIfMoved()
         }
@@ -111,6 +114,26 @@ final class OnboardingViewModel {
     var addressPreview: URL? {
         if detectedKind == .webui { return try? AuthManager.normalizedServerURL(from: serverURLString) }
         return try? BotConnection.address(serverURLString)
+    }
+
+    var certificateScope: ForkClientCertificateScope? {
+        (try? BotConnection.address(serverURLString)).flatMap(ForkClientCertificateScope.init(server:))
+    }
+
+    private(set) var stagedClientCertificate: (scope: ForkClientCertificateScope, certificate: ForkClientCertificate)?
+
+    func stageClientCertificate(_ certificate: ForkClientCertificate?, for scope: ForkClientCertificateScope) throws {
+        guard !isConnectionLocked, scope == certificateScope else { return }
+        if let certificate {
+            _ = try certificate.credential()
+            stagedClientCertificate = (scope, certificate)
+        } else {
+            stagedClientCertificate = nil
+        }
+        dropReusedSignIn()
+        forgetProbe()
+        lastAttempt = nil
+        errorMessage = nil
     }
 
     func useSavedSignIn(_ signIn: AuthManager.SavedHermesSignIn) {
@@ -280,7 +303,8 @@ final class OnboardingViewModel {
               let headers = try? HermesHeaders(sentHeaders) else { return .notHermes(nil) }
         let probe = BotConnection(id: UUID(), name: "", address: address, username: "", password: "",
                                   headers: headers.values.isEmpty ? nil : headers.values)
-        let http = HermesConnection(connection: probe, configuration: hermesConfiguration())
+        let http = HermesConnection(connection: probe, configuration: hermesConfiguration(),
+                                    stagedCertificate: stagedClientCertificate?.certificate)
         do {
             let status = try await http.status()
             guard let methods = HermesSignInMethod.offered(by: status) else { return .notHermes(nil) }
@@ -353,6 +377,10 @@ final class OnboardingViewModel {
             case .notHermes(let attempt):
                 dropReusedSignIn()
                 lastAttempt = attempt
+                if stagedClientCertificate != nil {
+                    errorMessage = String(localized: "Could not connect using this client certificate.")
+                    return nil
+                }
             }
         }
 
@@ -400,7 +428,9 @@ final class OnboardingViewModel {
             username: isOpen ? "" : username.trimmingCharacters(in: .whitespacesAndNewlines), password: isOpen ? "" : password,
             installID: reusedSignIn?.connection.installID, headers: headers.isEmpty ? nil : headers
         )
-        let http = HermesConnection(connection: candidate, configuration: hermesConfiguration(), gateway: hermesGateway)
+        let certificate = stagedClientCertificate?.certificate
+        let http = HermesConnection(connection: candidate, configuration: hermesConfiguration(), gateway: hermesGateway,
+                                    stagedCertificate: certificate)
         let socket = BotClient(http: http)
         defer { socket.close() }
         do {
@@ -422,8 +452,8 @@ final class OnboardingViewModel {
         record.hermesVersion = http.serverVersion
         record.installID = http.serverInstallID ?? candidate.installID
         let added = saved == nil
-            ? authManager.addHermesServer(record, activating: moveSource == nil)
-            : await authManager.replaceWebuiServer(with: record)
+            ? authManager.addHermesServer(record, activating: moveSource == nil, clientCertificate: certificate)
+            : await authManager.replaceWebuiServer(with: record, clientCertificate: certificate)
         guard added else {
             errorMessage = authManager.lastErrorMessage
             return nil
