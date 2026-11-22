@@ -31,7 +31,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Filters (view, sort, recent, show, agents, include groups) | partial | Session list filters and project filter; the Bots inbox has search, not the full filter sheet | later |
 | New session sheet with every bot and New group | has | `BotCreateView`, `BotRoomCreateView` (ADR 0011) | — |
 | Search filters as you type | has | `BotSearchView`, session search (ADR 0135) | — |
-| Bot directory import (`application/vnd.ai.nousresearch.hermes.mobile.bot+json`) | missing | Document type + `onOpenURL` import sheet | `boat/hermex/bot-import` (later) |
+| Bot directory import (`application/vnd.ai.nousresearch.hermes.mobile.bot+json`) | has | Imported type + document type in Info.plist; opening a bot file shows Import Bot with name, title and description, then Add Bot (prefilled `BotCreateView`, profile name from the file) or Open Chat if it exists (`ForkBotImport`, `ForkBotDirectoryDocument`) | `boat/hx-small/hx-019` |
 
 ## Chat
 
