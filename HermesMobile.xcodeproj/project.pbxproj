@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */; };
 		0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76875456DE0BDC0A137F9BDA /* ForkTerminalScreen.swift */; };
+		0AC8B181DEC2DFC8498A6A92 /* ForkRoutineRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */; };
 		0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */; };
 		0D4B0C89517853C424C982B8 /* ForkLiveVoiceIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */; };
 		14BFB05ECAA8FA6066D0FA4F /* ForkLiveVoiceIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */; };
@@ -37,6 +38,7 @@
 		736645F7454FADA987E48FE2 /* OpenUICatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */; };
 		75AAA756EFE6F90494464055 /* ForkLiveModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F0388FE63DAA78F894F506 /* ForkLiveModeController.swift */; };
 		7612F614AB86CBEF2F8DC07C /* LiveSpeechText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C752931926558ABF54BEF9 /* LiveSpeechText.swift */; };
+		7791568D48463E4BBFB781B2 /* ForkRoutineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0B0E988DB0D0E10E85937E /* ForkRoutineRequest.swift */; };
 		780427CAB882328CBE8CE44D /* ForkMemoryNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD673424A5BE823BC10DD0 /* ForkMemoryNotice.swift */; };
 		782640638436A34D4E5C1ABD /* LiveModeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F03BE88B465A7F08EB0E6FA /* LiveModeRequest.swift */; };
 		7CDBA6D77F9DBD7C954A8658 /* ForkMCPRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */; };
@@ -859,12 +861,14 @@
 		29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeStoreTests.swift; sourceTree = "<group>"; };
 		2A18A7BB13E96C1FD37D98E8 /* LiveModeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModeMachine.swift; sourceTree = "<group>"; };
 		2C2F8C654E9FEE8600DA6622 /* ForkLiveOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveOrb.swift; sourceTree = "<group>"; };
+		2D0B0E988DB0D0E10E85937E /* ForkRoutineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRoutineRequest.swift; sourceTree = "<group>"; };
 		2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUILangTests.swift; sourceTree = "<group>"; };
 		353395B1629DE99C5BDB2F80 /* ForkChatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkChatState.swift; sourceTree = "<group>"; };
 		3C17686249155089FE939D7C /* ForkHostTerminalSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkHostTerminalSession.swift; sourceTree = "<group>"; };
 		40F0388FE63DAA78F894F506 /* ForkLiveModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveModeController.swift; sourceTree = "<group>"; };
 		45091E50F8192F05F6B35D2A /* ForkMCPServers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPServers.swift; sourceTree = "<group>"; };
 		453937AC97DC5C8E07F5EB14 /* ForkOpenUIPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIPanelView.swift; sourceTree = "<group>"; };
+		49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRoutineRequestTests.swift; sourceTree = "<group>"; };
 		4CA84847739A459112E526D6 /* ForkThemeRoles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeRoles.swift; sourceTree = "<group>"; };
 		4F4497EA4CE4B8E7ACA9BB58 /* ForkControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkControls.swift; sourceTree = "<group>"; };
 		56072E9464C2CCD3D91864AB /* ForkOpenUIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIBoardView.swift; sourceTree = "<group>"; };
@@ -1841,6 +1845,7 @@
 			isa = PBXGroup;
 			children = (
 				27ED2E952E2FC00BD3470928 /* ForkLiveVoiceRequest.swift */,
+				2D0B0E988DB0D0E10E85937E /* ForkRoutineRequest.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -2907,6 +2912,7 @@
 			children = (
 				06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */,
 				2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */,
+				49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */,
 				5997454E23E505D02E2EC784 /* AnnotationComposeTests.swift */,
 				8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */,
 				9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */,
@@ -3177,6 +3183,7 @@
 				6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */,
 				75AAA756EFE6F90494464055 /* ForkLiveModeController.swift in Sources */,
 				7612F614AB86CBEF2F8DC07C /* LiveSpeechText.swift in Sources */,
+				7791568D48463E4BBFB781B2 /* ForkRoutineRequest.swift in Sources */,
 				780427CAB882328CBE8CE44D /* ForkMemoryNotice.swift in Sources */,
 				782640638436A34D4E5C1ABD /* LiveModeRequest.swift in Sources */,
 				79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */,
@@ -3655,6 +3662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC8B181DEC2DFC8498A6A92 /* ForkRoutineRequestTests.swift in Sources */,
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
 				1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */,
