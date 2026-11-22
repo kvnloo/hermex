@@ -1786,6 +1786,125 @@
         }
       }
     },
+    "Attach": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "إرفاق"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Anhängen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attach"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Adjuntar"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پیوست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Joindre"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "צירוף"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Allega"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bijvoegen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Załącz"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Anexar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Прикрепить"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekle"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "附加"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "附加"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "附加"
+          }
+        }
+      }
+    },
     "Avatar": {
       "extractionState": "manual",
       "localizations": {
@@ -3928,6 +4047,125 @@
         }
       }
     },
+    "Discard": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تجاهل"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Verwerfen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Descartar"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "دور انداختن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Supprimer"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "מחיקה"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Scarta"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "破棄"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "버리기"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Weggooien"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Odrzuć"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Descartar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Удалить"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "At"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "رد کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "捨棄"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "丢弃"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "捨棄"
+          }
+        }
+      }
+    },
     "Double-tap to pause, resume, or interrupt the reply.": {
       "extractionState": "manual",
       "localizations": {
@@ -5471,6 +5709,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Hermes 未能開啟終端（HTTP %lld）。"
+          }
+        }
+      }
+    },
+    "Hermex couldn’t save the screenshot. Try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تعذّر على Hermex حفظ لقطة الشاشة. حاول مرة أخرى."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex konnte das Bildschirmfoto nicht sichern. Versuche es erneut."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hermex couldn’t save the screenshot. Try again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex no pudo guardar la captura de pantalla. Inténtalo de nuevo."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex نتوانست نماگرفت را ذخیره کند. دوباره امتحان کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex n’a pas pu enregistrer la capture d’écran. Réessayez."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex לא הצליח לשמור את צילום המסך. נסו שוב."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex non è riuscito a salvare lo screenshot. Riprova."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex はスクリーンショットを保存できませんでした。もう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex가 스크린샷을 저장하지 못했습니다. 다시 시도하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex kon de schermafbeelding niet bewaren. Probeer het opnieuw."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex nie mógł zapisać zrzutu ekranu. Spróbuj ponownie."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "O Hermex não conseguiu salvar a captura de tela. Tente novamente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex не удалось сохранить снимок экрана. Попробуйте ещё раз."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex ekran görüntüsünü kaydedemedi. Tekrar deneyin."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex اسکرین شاٹ محفوظ نہیں کر سکا۔ دوبارہ کوشش کریں۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex 無法儲存截圖，請再試一次。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex 无法存储截屏，请重试。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex 無法儲存截圖，請再試一次。"
           }
         }
       }
@@ -9164,6 +9521,125 @@
         }
       }
     },
+    "Only this image is shared, and only if you attach it. Attaching adds it to a new chat’s composer; nothing is sent until you send it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تتم مشاركة هذه الصورة فقط، وفقط إذا أرفقتها. الإرفاق يضيفها إلى محرر دردشة جديدة؛ لا يُرسل شيء حتى ترسله أنت."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nur dieses Bild wird geteilt, und nur wenn du es anhängst. Anhängen legt es in das Eingabefeld eines neuen Chats; gesendet wird erst, wenn du sendest."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only this image is shared, and only if you attach it. Attaching adds it to a new chat’s composer; nothing is sent until you send it."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Solo se comparte esta imagen, y solo si la adjuntas. Adjuntarla la añade al editor de un chat nuevo; no se envía nada hasta que lo envíes."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "فقط همین تصویر به اشتراک گذاشته می‌شود، آن هم فقط اگر پیوستش کنید. پیوست کردن آن را به نگارشگر یک گفتگوی جدید می‌افزاید؛ تا خودتان نفرستید چیزی فرستاده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Seule cette image est partagée, et seulement si vous la joignez. La joindre l’ajoute à la zone de saisie d’une nouvelle discussion ; rien n’est envoyé tant que vous ne l’envoyez pas."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "רק התמונה הזו משותפת, ורק אם תצרפו אותה. צירוף מוסיף אותה לתיבת הכתיבה של צ׳אט חדש; שום דבר לא נשלח עד שתשלחו."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Viene condivisa solo questa immagine, e solo se la alleghi. Allegarla la aggiunge al compositore di una nuova chat; non viene inviato nulla finché non lo invii tu."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共有されるのはこの画像だけで、添付した場合に限られます。添付すると新しいチャットの入力欄に追加されます。送信するまで何も送られません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 이미지만, 그리고 첨부한 경우에만 공유됩니다. 첨부하면 새 채팅의 작성란에 추가되며, 직접 보내기 전에는 아무것도 전송되지 않습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Alleen deze afbeelding wordt gedeeld, en alleen als je hem bijvoegt. Bijvoegen zet hem in het invoerveld van een nieuwe chat; er wordt niets verstuurd tot jij het verstuurt."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Udostępniany jest tylko ten obraz i tylko wtedy, gdy go załączysz. Załączenie dodaje go do edytora nowego czatu; nic nie zostanie wysłane, dopóki tego nie wyślesz."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Só esta imagem é compartilhada, e só se você anexá-la. Anexar a coloca no editor de um novo chat; nada é enviado até você enviar."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Передаётся только это изображение и только если вы его прикрепите. Прикреплённое оно попадает в поле ввода нового чата; ничего не отправится, пока вы не отправите."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Yalnızca bu görüntü paylaşılır, o da yalnızca eklerseniz. Eklemek onu yeni bir sohbetin yazma alanına koyar; siz gönderene kadar hiçbir şey gönderilmez."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "صرف یہی تصویر شیئر ہوتی ہے، اور صرف تب جب آپ اسے منسلک کریں۔ منسلک کرنے سے یہ نئی چیٹ کے کمپوزر میں شامل ہو جاتی ہے؛ جب تک آپ نہ بھیجیں کچھ نہیں بھیجا جاتا۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "只會分享這張圖片，而且只在你附加時分享。附加後會加入新對話的輸入欄；在你傳送前不會傳送任何內容。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "只会共享这张图像，而且只在你附加时共享。附加后会添加到新聊天的输入框；在你发送之前不会发送任何内容。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "只會分享這張影像，而且只在你附加時分享。附加後會加入新聊天的輸入欄；在你傳送之前不會傳送任何內容。"
+          }
+        }
+      }
+    },
     "Open Chat": {
       "extractionState": "manual",
       "localizations": {
@@ -11425,6 +11901,125 @@
         }
       }
     },
+    "Review a screenshot in Hermex, for example from Take Screenshot, before adding it to a new chat. Nothing is attached or sent until you choose to.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "راجع لقطة شاشة في Hermex، مثلاً من «التقاط لقطة شاشة»، قبل إضافتها إلى دردشة جديدة. لا يُرفق أو يُرسل شيء حتى تختار ذلك."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Prüfe ein Bildschirmfoto in Hermex, etwa aus „Bildschirmfoto aufnehmen“, bevor du es einem neuen Chat hinzufügst. Nichts wird angehängt oder gesendet, bis du es willst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review a screenshot in Hermex, for example from Take Screenshot, before adding it to a new chat. Nothing is attached or sent until you choose to."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Revisa una captura de pantalla en Hermex, por ejemplo de Hacer captura de pantalla, antes de añadirla a un chat nuevo. No se adjunta ni se envía nada hasta que lo decidas."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "یک نماگرفت را، مثلاً از «گرفتن نماگرفت»، پیش از افزودن به یک گفتگوی جدید در Hermex بازبینی کنید. تا خودتان نخواهید چیزی پیوست یا فرستاده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vérifiez une capture d’écran dans Hermex, par exemple issue de Prendre une capture d’écran, avant de l’ajouter à une nouvelle discussion. Rien n’est joint ni envoyé sans votre choix."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "סקרו צילום מסך ב-Hermex, למשל מ״צילום מסך״, לפני שתוסיפו אותו לצ׳אט חדש. שום דבר לא מצורף או נשלח עד שתבחרו בכך."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Controlla uno screenshot in Hermex, ad esempio da Fai screenshot, prima di aggiungerlo a una nuova chat. Non viene allegato né inviato nulla finché non lo scegli."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "「スクリーンショットを撮る」などで撮ったスクリーンショットを、新しいチャットに追加する前に Hermex で確認します。選ぶまで何も添付・送信されません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "새 채팅에 추가하기 전에 Hermex에서 스크린샷(예: 스크린샷 찍기)을 검토합니다. 직접 선택하기 전에는 아무것도 첨부하거나 전송하지 않습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bekijk een schermafbeelding in Hermex, bijvoorbeeld van Maak schermafbeelding, voordat je hem aan een nieuwe chat toevoegt. Er wordt niets bijgevoegd of verstuurd tot je daarvoor kiest."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Przejrzyj zrzut ekranu w Hermex, na przykład z akcji Zrób zrzut ekranu, zanim dodasz go do nowego czatu. Nic nie zostanie załączone ani wysłane, dopóki tego nie wybierzesz."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Revise uma captura de tela no Hermex, por exemplo de Capturar Tela, antes de adicioná-la a um novo chat. Nada é anexado ou enviado até você escolher."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Просмотрите снимок экрана в Hermex, например из действия «Сделать снимок экрана», прежде чем добавить его в новый чат. Ничего не прикрепляется и не отправляется, пока вы не решите."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bir ekran görüntüsünü, örneğin Ekran Görüntüsü Al ile alınanı, yeni bir sohbete eklemeden önce Hermex’te inceleyin. Siz seçene kadar hiçbir şey eklenmez veya gönderilmez."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "نئی چیٹ میں شامل کرنے سے پہلے Hermex میں اسکرین شاٹ کا جائزہ لیں، مثلاً Take Screenshot سے۔ جب تک آپ نہ چاہیں، کچھ بھی منسلک یا روانہ نہیں ہوتا۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "在加入新對話前，先在 Hermex 檢視截圖（例如來自「拍攝截圖」）。在你選擇之前不會附加或傳送任何內容。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "在添加到新聊天之前，先在 Hermex 中查看截屏（例如来自“截屏”）。在你选择之前不会附加或发送任何内容。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "在加入新聊天之前，先在 Hermex 中檢視截圖（例如來自「截圖」）。在你選擇之前不會附加或傳送任何內容。"
+          }
+        }
+      }
+    },
     "Run a Task": {
       "extractionState": "manual",
       "localizations": {
@@ -11540,6 +12135,244 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "執行工作"
+          }
+        }
+      }
+    },
+    "Screenshot": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لقطة شاشة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bildschirmfoto"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Captura de pantalla"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "نماگرفت"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Capture d’écran"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "צילום מסך"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Screenshot"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "スクリーンショット"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "스크린샷"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Schermafbeelding"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zrzut ekranu"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Captura de tela"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Снимок экрана"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekran görüntüsü"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اسکرین شاٹ"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "截圖"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "截屏"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "截圖"
+          }
+        }
+      }
+    },
+    "Screenshot to share": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لقطة الشاشة المراد مشاركتها"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zu teilendes Bildschirmfoto"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot to share"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Captura de pantalla para compartir"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "نماگرفت برای اشتراک‌گذاری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Capture d’écran à partager"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "צילום מסך לשיתוף"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Screenshot da condividere"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共有するスクリーンショット"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "공유할 스크린샷"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Te delen schermafbeelding"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zrzut ekranu do udostępnienia"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Captura de tela para compartilhar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Снимок экрана для отправки"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Paylaşılacak ekran görüntüsü"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "شیئر کرنے کے لیے اسکرین شاٹ"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "要分享的截圖"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "要共享的截屏"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "要分享的截圖"
           }
         }
       }
@@ -11778,6 +12611,244 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "傳送"
+          }
+        }
+      }
+    },
+    "Share Screen": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مشاركة الشاشة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bildschirm teilen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share Screen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compartir pantalla"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اشتراک صفحه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Partager l’écran"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "שיתוף מסך"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Condividi schermo"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "画面を共有"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "화면 공유"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Scherm delen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Udostępnij ekran"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compartilhar tela"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Поделиться экраном"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekranı paylaş"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اسکرین شیئر کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "分享畫面"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共享屏幕"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "分享畫面"
+          }
+        }
+      }
+    },
+    "Share Screen to Hermex": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مشاركة الشاشة مع Hermex"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bildschirm mit Hermex teilen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share Screen to Hermex"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compartir pantalla con Hermex"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اشتراک صفحه با Hermex"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Partager l’écran avec Hermex"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "שיתוף מסך עם Hermex"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Condividi schermo con Hermex"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "画面を Hermex に共有"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermex로 화면 공유"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Scherm delen met Hermex"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Udostępnij ekran w Hermex"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compartilhar tela com o Hermex"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Поделиться экраном с Hermex"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekranı Hermex ile paylaş"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اسکرین Hermex کے ساتھ شیئر کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "分享畫面至 Hermex"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共享屏幕到 Hermex"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "分享畫面至 Hermex"
           }
         }
       }
@@ -14043,6 +15114,125 @@
         }
       }
     },
+    "That file isn’t an image Hermex can preview.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "هذا الملف ليس صورة يمكن لـ Hermex معاينتها."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Diese Datei ist kein Bild, das Hermex anzeigen kann."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That file isn’t an image Hermex can preview."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ese archivo no es una imagen que Hermex pueda previsualizar."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "این فایل تصویری نیست که Hermex بتواند پیش‌نمایش دهد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ce fichier n’est pas une image que Hermex peut prévisualiser."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הקובץ הזה אינו תמונה ש-Hermex יכול להציג."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Quel file non è un’immagine che Hermex può mostrare in anteprima."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "このファイルは Hermex でプレビューできる画像ではありません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 파일은 Hermex가 미리 볼 수 있는 이미지가 아닙니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dat bestand is geen afbeelding die Hermex kan tonen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ten plik nie jest obrazem, który Hermex może wyświetlić."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esse arquivo não é uma imagem que o Hermex possa pré-visualizar."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Этот файл не является изображением, которое Hermex может показать."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu dosya Hermex’in önizleyebileceği bir görüntü değil."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "یہ فائل ایسی تصویر نہیں جس کا Hermex پیش منظر دکھا سکے۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "該檔案不是 Hermex 可以預覽的圖片。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "该文件不是 Hermex 可以预览的图像。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "該檔案不是 Hermex 可以預覽的影像。"
+          }
+        }
+      }
+    },
     "That isn't valid JSON.": {
       "extractionState": "manual",
       "localizations": {
@@ -14158,6 +15348,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "這不是有效的 JSON。"
+          }
+        }
+      }
+    },
+    "That screenshot is too large to attach.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لقطة الشاشة هذه أكبر من أن تُرفق."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dieses Bildschirmfoto ist zu groß zum Anhängen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That screenshot is too large to attach."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esa captura de pantalla es demasiado grande para adjuntarla."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "این نماگرفت برای پیوست کردن خیلی بزرگ است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cette capture d’écran est trop volumineuse pour être jointe."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "צילום המסך הזה גדול מכדי לצרף אותו."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Questo screenshot è troppo grande da allegare."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "このスクリーンショットは大きすぎて添付できません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 스크린샷은 너무 커서 첨부할 수 없습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Die schermafbeelding is te groot om bij te voegen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ten zrzut ekranu jest za duży, aby go załączyć."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Essa captura de tela é grande demais para anexar."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Этот снимок экрана слишком большой для вложения."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu ekran görüntüsü eklemek için çok büyük."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "یہ اسکرین شاٹ منسلک کرنے کے لیے بہت بڑا ہے۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "該截圖太大，無法附加。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "该截屏太大，无法附加。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "該截圖太大，無法附加。"
           }
         }
       }
@@ -15705,6 +17014,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "此檔案不是 Hermex 可匯入的機器人。"
+          }
+        }
+      }
+    },
+    "This screenshot expired. Run the Shortcut again to take a new one.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "انتهت صلاحية لقطة الشاشة هذه. شغّل الاختصار مرة أخرى لالتقاط واحدة جديدة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dieses Bildschirmfoto ist abgelaufen. Führe den Kurzbefehl erneut aus, um ein neues aufzunehmen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This screenshot expired. Run the Shortcut again to take a new one."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esta captura de pantalla caducó. Vuelve a ejecutar el atajo para hacer una nueva."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "این نماگرفت منقضی شد. برای گرفتن نماگرفت جدید، میان‌بر را دوباره اجرا کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cette capture d’écran a expiré. Relancez le raccourci pour en prendre une nouvelle."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "פג תוקפו של צילום המסך. הפעילו שוב את הקיצור כדי לצלם חדש."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Questo screenshot è scaduto. Esegui di nuovo il comando rapido per farne uno nuovo."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "このスクリーンショットは期限切れです。ショートカットをもう一度実行して新しく撮影してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 스크린샷이 만료되었습니다. 단축어를 다시 실행해 새로 찍으세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Deze schermafbeelding is verlopen. Voer de opdracht opnieuw uit om een nieuwe te maken."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ten zrzut ekranu wygasł. Uruchom skrót ponownie, aby zrobić nowy."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esta captura de tela expirou. Execute o atalho de novo para fazer outra."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Срок действия снимка экрана истёк. Запустите быструю команду снова, чтобы сделать новый."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu ekran görüntüsünün süresi doldu. Yeni bir tane almak için kestirmeyi yeniden çalıştırın."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس اسکرین شاٹ کی میعاد ختم ہو گئی۔ نیا لینے کے لیے شارٹ کٹ دوبارہ چلائیں۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "此截圖已過期，請再次執行捷徑以拍攝新的截圖。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "此截屏已过期。请再次运行快捷指令以拍摄新截屏。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "此截圖已過期，請再次執行捷徑以拍攝新的截圖。"
           }
         }
       }
