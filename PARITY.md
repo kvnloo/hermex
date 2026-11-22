@@ -111,6 +111,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Home screen widget "Agent Actions" (New Chat, Live Voice) | partial | Bot widgets and provider-limit widgets exist (ADR 0067); no actions widget | `boat/hermex/system-entry` |
 | Launcher shortcuts: New Chat, Start Live Voice, Open Sessions | partial | App Shortcuts: New Chat, New Chat with Voice, profile chats (`HermexAppIntents`). Add Start Live Voice | `boat/hermex/system-entry` |
 | Share target → new-chat draft | has | `HermesShareExtension` + share inbox (ADR 0073) | — |
+| Share with favourite actions (Summarize, Extract tasks…) and Project pick | has | Share to Hermes sheet in the Hermes home before the draft (ADR 0182) | `boat/hx-share-oauth/hx-076` |
 | Live Activity / ongoing turn | has | `HermesLiveActivityWidget` (ADR 0069-0072) | — |
 | System assistant (VoiceInteractionService, assist overlay) | partial | iOS doesn't allow third-party assistants. Equivalent: Siri / Action button via App Shortcuts (has), plus the Live Voice intent | `boat/hermex/system-entry` |
 | App Functions | has (mapped) | App Intents / App Shortcuts are the iOS equivalent | — |
