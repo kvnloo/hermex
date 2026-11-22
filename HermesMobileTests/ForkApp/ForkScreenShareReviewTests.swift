@@ -1,4 +1,5 @@
 import UIKit
+import UniformTypeIdentifiers
 import XCTest
 @testable import HermesMobile
 
