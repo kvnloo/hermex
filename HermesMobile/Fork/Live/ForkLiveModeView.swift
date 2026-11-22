@@ -48,12 +48,17 @@ struct ForkLiveModeView: View {
     }
 
     var body: some View {
+        let transcript = controller.transcript
         VStack(spacing: 20) {
             header
-            Spacer(minLength: 12)
+            if transcript.isEmpty {
+                Spacer(minLength: 12)
+            } else {
+                ForkLiveTranscriptView(turns: transcript)
+            }
             Button { controller.tapOrb() } label: {
                 ForkLiveOrb(phase: controller.phase, level: controller.level, style: orbStyle)
-                    .frame(width: 240, height: 240)
+                    .frame(width: transcript.isEmpty ? 240 : 140, height: transcript.isEmpty ? 240 : 140)
             }
             .buttonStyle(.plain)
             .accessibilityLabel(statusText)
@@ -70,7 +75,7 @@ struct ForkLiveModeView: View {
             if let error = controller.errorMessage {
                 Text(verbatim: error).font(AppFont.footnote()).foregroundStyle(.red).multilineTextAlignment(.center)
             }
-            Spacer(minLength: 12)
+            if transcript.isEmpty { Spacer(minLength: 12) }
             controls
         }
         .padding(.vertical, 24)

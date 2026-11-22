@@ -17,6 +17,7 @@ final class ForkLiveModeController {
     @ObservationIgnored private var replyBaselineID: String?
     @ObservationIgnored private var sentAt: Date?
     @ObservationIgnored private let clock = Date()
+    @ObservationIgnored private let transcriptBaseline: Set<String>
     var onClose: (() -> Void)?
 
     private static let echoGuard = Duration.milliseconds(300)
@@ -24,11 +25,16 @@ final class ForkLiveModeController {
 
     init(viewModel: ChatViewModel) {
         self.viewModel = viewModel
+        transcriptBaseline = ForkLiveTranscriptSource.baseline(viewModel)
         speaker.onFinished = { [weak self] in self?.handle(.speechFinished) }
     }
 
     var phase: LivePhase { machine.phase }
     var heard: String { machine.heard }
+    var transcript: [LiveTurn<ToolCall>] {
+        guard let viewModel else { return [] }
+        return ForkLiveTranscriptSource.turns(in: viewModel, excluding: transcriptBaseline)
+    }
 
     func start() {
         guard ticker == nil else { return handle(.start) }
