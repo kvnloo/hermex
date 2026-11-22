@@ -55,9 +55,9 @@ final class StoreScreenshotTests: XCTestCase {
     private func assertSnapshot(
         _ name: String, @ViewBuilder content: () -> some View
     ) async throws {
-        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.lazy.compactMap { $0 as? UIWindowScene }.first)
+        let scene: UIWindowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.lazy.compactMap { $0 as? UIWindowScene }.first)
         let defaultsName = "Hermex.StoreScreenshotTests.\(UUID().uuidString)"
-        let defaults = try XCTUnwrap(UserDefaults(suiteName: defaultsName))
+        let defaults: UserDefaults = try XCTUnwrap(UserDefaults(suiteName: defaultsName))
         defer { defaults.removePersistentDomain(forName: defaultsName) }
 
         let font = AppFontSettings.shared.family
@@ -79,7 +79,7 @@ final class StoreScreenshotTests: XCTestCase {
             .environment(\.locale, Locale(identifier: "en_US"))
             .environment(\.layoutDirection, .leftToRight)
             .environment(\.dynamicTypeSize, .large)
-            .environment(\.accessibilityReduceMotion, true)
+            .environment(\.forkLiveOrbIsStill, true)
             .defaultAppStorage(defaults)
             .transaction { $0.disablesAnimations = true }
             .onAppear { appeared.fulfill() }
@@ -100,12 +100,13 @@ final class StoreScreenshotTests: XCTestCase {
         format.opaque = true
         let bounds = CGRect(origin: .zero, size: Self.size)
         var rendered = false
-        let image = UIGraphicsImageRenderer(bounds: bounds, format: format).image { _ in
+        let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
+        let image: UIImage = renderer.image { (_: UIGraphicsImageRendererContext) in
             rendered = host.view.drawHierarchy(in: bounds, afterScreenUpdates: true)
         }
         XCTAssertTrue(rendered)
-        let png = try XCTUnwrap(image.pngData())
-        let actual = try XCTUnwrap(UIImage(data: png)?.cgImage)
+        let png: Data = try XCTUnwrap(image.pngData())
+        let actual: CGImage = try XCTUnwrap(UIImage(data: png)?.cgImage)
         XCTAssertEqual(actual.width, 1206)
         XCTAssertEqual(actual.height, 2622)
         let pixels = try rgba(actual)
@@ -117,7 +118,7 @@ final class StoreScreenshotTests: XCTestCase {
 
         let attachment = XCTAttachment(data: png, uniformTypeIdentifier: UTType.png.identifier)
         attachment.name = name
-        attachment.lifetime = .keepAlways
+        attachment.lifetime = XCTAttachment.Lifetime.keepAlways
         add(attachment)
 
         let environment = ProcessInfo.processInfo.environment
@@ -131,8 +132,8 @@ final class StoreScreenshotTests: XCTestCase {
             throw XCTSkip("Rendered \(name); comparison awaits reviewed PNGs. See docs/store-screenshot-goldens.md.")
         }
         XCTAssertEqual(references.count, Self.names.count, "Commit all three reviewed PNGs together.")
-        let reference = try XCTUnwrap(references.first { $0.deletingPathExtension().lastPathComponent == name })
-        let expected = try XCTUnwrap(UIImage(contentsOfFile: reference.path)?.cgImage)
+        let reference: URL = try XCTUnwrap(references.first { $0.deletingPathExtension().lastPathComponent == name })
+        let expected: CGImage = try XCTUnwrap(UIImage(contentsOfFile: reference.path)?.cgImage)
         guard expected.width == actual.width, expected.height == actual.height else {
             return XCTFail("\(name) golden has the wrong dimensions")
         }
@@ -140,7 +141,7 @@ final class StoreScreenshotTests: XCTestCase {
         if pixels != expectedPixels {
             let original = XCTAttachment(data: try Data(contentsOf: reference), uniformTypeIdentifier: UTType.png.identifier)
             original.name = "\(name)-expected"
-            original.lifetime = .keepAlways
+            original.lifetime = XCTAttachment.Lifetime.keepAlways
             add(original)
             XCTFail("\(name) differs from the reviewed golden. Inspect the actual and expected PNGs.")
         }
@@ -149,12 +150,12 @@ final class StoreScreenshotTests: XCTestCase {
     private func rgba(_ image: CGImage) throws -> Data {
         let width = image.width
         let height = image.height
-        let colorSpace = try XCTUnwrap(CGColorSpace(name: CGColorSpace.sRGB))
+        let colorSpace: CGColorSpace = try XCTUnwrap(CGColorSpace(name: CGColorSpace.sRGB))
         var bytes = Data(count: width * height * 4)
         try bytes.withUnsafeMutableBytes { storage in
-            let context = try XCTUnwrap(CGContext(data: storage.baseAddress, width: width, height: height,
-                                                 bitsPerComponent: 8, bytesPerRow: width * 4, space: colorSpace,
-                                                 bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+            let context: CGContext = try XCTUnwrap(CGContext(data: storage.baseAddress, width: width, height: height,
+                                                               bitsPerComponent: 8, bytesPerRow: width * 4, space: colorSpace,
+                                                               bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
             context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
         }
         return bytes
