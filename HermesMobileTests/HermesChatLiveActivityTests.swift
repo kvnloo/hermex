@@ -399,7 +399,7 @@ import Observation
                           botChatRoot: String? = nil, roster: BotJSON? = nil, subagents: [BotJSON]? = nil,
                           pictures: Bool = false, manager: AgentLiveActivityManager? = nil) async -> Chat {
         addTeardownBlock { HermesHostFixture.reset() }
-        BotAvatarStore.shared.removeAll(connectionID: Self.connection.id)
+        let avatarStore = BotAvatarStore()
         let host = BotSocketHost()
         host.always("session.resume", .init(result: snapshot ?? resume(running: false)))
         host.always("session.events.since", .init(result: BotFixtureWire.replay(latest: 0)))
@@ -412,10 +412,10 @@ import Observation
         let engine = HermesConversation(server: Self.server, connection: Self.connection,
                                         target: target, wire: client,
                                         reconnectDelay: { _ in throw CancellationError() })
-        let spy = Spy()
+        let spy = Spy(avatarStore: avatarStore)
         let turn = HermesChatTurnCoordinator(engine: engine, botChatRoot: botChatRoot, liveActivities: manager ?? spy,
                                              writeBotAvatar: { profile, destination in spy.writeAvatar(profile, destination) },
-                                             isNetworkAvailable: { true })
+                                             isNetworkAvailable: { true }, avatarStore: avatarStore)
         let model = ChatViewModel(
             session: SessionSummary(profile: "default"), server: Self.server, liveActivityManager: manager ?? spy,
             showsLiveActivityResponseExcerpts: excerpts, streamingScrollCoalescingDelayNanoseconds: 0,
@@ -500,6 +500,7 @@ import Observation
         let expression: String?
     }
 
+    private let avatarStore: BotAvatarStore
     private(set) var starts: [Start] = []
     private(set) var botStarts: [BotStart] = []
     private(set) var avatars: [Avatar] = []
@@ -510,6 +511,10 @@ import Observation
     private(set) var moves: [String] = []
     private var drivenPushSessionID: String?
     var drivenSessionID: String?
+
+    init(avatarStore: BotAvatarStore) {
+        self.avatarStore = avatarStore
+    }
 
     func start(sessionID: String, server: URL, sessionTitle: String, streamID: String?, startedAt: Date) {
         starts.append(Start(sessionID: sessionID, server: server, title: sessionTitle, streamID: streamID, startedAt: startedAt))
@@ -548,7 +553,7 @@ import Observation
     func writeAvatar(_ profile: BotProfile, _ destination: BotDestination) -> String? {
         let look = BotProfileAppearance(profile: profile)
         avatars.append(Avatar(title: look.title, expression: look.expression))
-        avatarPhotos.append(BotAvatarStore.shared.images(connectionID: destination.connectionID)[profile.id] != nil)
+        avatarPhotos.append(avatarStore.images(connectionID: destination.connectionID)[profile.id] != nil)
         return "avatar.png"
     }
 
