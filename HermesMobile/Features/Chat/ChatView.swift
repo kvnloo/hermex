@@ -322,6 +322,7 @@ struct ChatView: View {
     let onOpenHermesSessions: ((HermesSessionListEntry) -> Void)?
 
     @State private var draftMessage = ""
+    @State private var isLiveAnnotating = false
     @State private var draftQuotes: [ComposerQuote] = []
     @State private var draftRevision = 0
     @State private var isScrolledNearBottom = true
@@ -991,6 +992,18 @@ struct ChatView: View {
 
                     messageContent
                         .environment(\.layoutDirection, chatLayoutDirection)
+                        .accessibilityHidden(isLiveAnnotating)
+                        .overlay {
+                            if isLiveAnnotating {
+                                let key = draftKey
+                                ForkLiveInkCanvas { passage in
+                                    guard isLiveAnnotating, draftKey == key, isOnScreen else { return }
+                                    isLiveAnnotating = false
+                                    addSelectedPassageToDraft(passage)
+                                }
+                                .padding(.bottom, composerHeight + 8)
+                            }
+                        }
                 }
                 .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: viewModel.showsListenPlaybackBar)
 
@@ -1033,6 +1046,7 @@ struct ChatView: View {
                 toastState.show(toast)
             }
             .onChange(of: scenePhase) {
+                if scenePhase != .active { isLiveAnnotating = false }
                 handleScenePhaseChange(scenePhase)
             }
             .onChange(of: NetworkPathMonitor.shared.changeCount) {
@@ -1072,6 +1086,7 @@ struct ChatView: View {
                 if isOnScreen { ScreenShortcut.shared.offer(screenShortcut, from: viewID) }
             }
             .onDisappear {
+                isLiveAnnotating = false
                 isOnScreen = false
                 ScreenShortcut.shared.withdraw(viewID)
                 toastState.dismiss()
@@ -1135,7 +1150,14 @@ struct ChatView: View {
                 handleRunEnd()
             }
             .onChange(of: viewModel.streamingHapticPulseTrigger, handleStreamingHapticPulse)
-            .forkAnnotate(viewModel, title: displayTitle)
+            .onChange(of: draftKey) { isLiveAnnotating = false }
+            .onChange(of: viewModel.isViewingCachedData) {
+                if viewModel.isViewingCachedData { isLiveAnnotating = false }
+            }
+            .forkAnnotate(viewModel, title: displayTitle, isLive: $isLiveAnnotating) {
+                composerIsFocused = false
+                isLiveAnnotating = true
+            }
     }
 
     private var chatContent: some View {
