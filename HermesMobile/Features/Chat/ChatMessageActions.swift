@@ -68,6 +68,7 @@ struct ChatMessageActionMenu: View {
             }
             .disabled(!item.isEnabled)
         }
+        ForkMessageReportButton(context: context)
     }
 
     var items: [ChatMessageActionItem] {
