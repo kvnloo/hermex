@@ -32,6 +32,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 |---|---|---|---|
 | Bot list with last message and time | has | Bots inbox (`BotsInboxView`, ADR 0009/0015) | — |
 | Filters (view, sort, recent, show, agents, include groups) | partial | Session list filters and project filter; the Bots inbox has search, not the full filter sheet | later |
+| Tree of sessions under each bot (HA-032) | has | Bots inbox: a chevron on each bot row expands its newest five sessions, Show all (N) into that bot's Sessions list, New session (`ForkBotSessionTreeView`, `ForkBotSessionTree`) | `boat/hx-bot-sessions/bot-session-tree` |
 | New session sheet with every bot and New group | has | `BotCreateView`, `BotRoomCreateView` (ADR 0011) | — |
 | Search filters as you type | has | `BotSearchView`, session search (ADR 0135) | — |
 | Bot directory import (`application/vnd.ai.nousresearch.hermes.mobile.bot+json`) | has | Imported type + document type in Info.plist; opening a bot file shows Import Bot with name, title and description, then Add Bot (prefilled `BotCreateView`, profile name from the file) or Open Chat if it exists (`ForkBotImport`, `ForkBotDirectoryDocument`) | `boat/hx-small/hx-019` |

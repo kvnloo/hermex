@@ -366,6 +366,7 @@ extension BotHostStatus {
             BotUnreadStore().remove(connectionID: old.id)
             BotRoomOrganizeStore().remove(connectionID: old.id)
             BotSectionOrderStore().remove(server: server, connectionID: old.id)
+            ForkBotSessionExpansion.forget(server: server, connectionID: old.id)
         }
         errorMessage = error
     }

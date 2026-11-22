@@ -29,6 +29,9 @@
 		11BDF2B16D339FA8B1C2FD26 /* ForkMissionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CAB98898BEA1BAE79F5E8 /* ForkMissionClient.swift */; };
 		2EBE8DD69CFE60C4D4467EF5 /* ForkMissionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF64BC2BE92EE1FF72CB30E3 /* ForkMissionControlView.swift */; };
 		E080940EB658F7BF6AECAA41 /* ForkMissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B21698D9D0430C803455C3 /* ForkMissionTests.swift */; };
+		5E470C2C4E2F6B5E74329517 /* ForkBotSessionTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8C1B711E4793A5129EA56 /* ForkBotSessionTree.swift */; };
+		947BE15572EE00A84246452E /* ForkBotSessionTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F7277DD33877DDEDFD7711 /* ForkBotSessionTreeView.swift */; };
+		ED698DD7902CE8DC220A4637 /* ForkBotSessionTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234ECA251B16267B38AE25B /* ForkBotSessionTreeTests.swift */; };
 		01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */; };
 		0FCA42BE09074DA9A7C66318 /* ForkScanPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE0466A91B481295B329A8 /* ForkScanPages.swift */; };
 		DBBCA6BD7C07485CAFF21894 /* ForkHomeFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37A6455F30495BA8090474 /* ForkHomeFilters.swift */; };
@@ -927,6 +930,9 @@
 		5D3CAB98898BEA1BAE79F5E8 /* ForkMissionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMissionClient.swift; sourceTree = "<group>"; };
 		FF64BC2BE92EE1FF72CB30E3 /* ForkMissionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMissionControlView.swift; sourceTree = "<group>"; };
 		F2B21698D9D0430C803455C3 /* ForkMissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMissionTests.swift; sourceTree = "<group>"; };
+		82F8C1B711E4793A5129EA56 /* ForkBotSessionTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotSessionTree.swift; sourceTree = "<group>"; };
+		97F7277DD33877DDEDFD7711 /* ForkBotSessionTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotSessionTreeView.swift; sourceTree = "<group>"; };
+		C234ECA251B16267B38AE25B /* ForkBotSessionTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotSessionTreeTests.swift; sourceTree = "<group>"; };
 		06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionsTests.swift; sourceTree = "<group>"; };
 		075F28927F691751A928FE57 /* ForkMCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPClient.swift; sourceTree = "<group>"; };
 		098DE621D27772BB34EEC473 /* ScreenShareConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShareConsent.swift; sourceTree = "<group>"; };
@@ -1840,6 +1846,22 @@
 			path = Mission;
 			sourceTree = "<group>";
 		};
+		2556299A73E1D5EC3F0DB6E4 /* Bots */ = {
+			isa = PBXGroup;
+			children = (
+				82F8C1B711E4793A5129EA56 /* ForkBotSessionTree.swift */,
+			);
+			path = Bots;
+			sourceTree = "<group>";
+		};
+		2A165CBF43E83C9896B82CCF /* Bots */ = {
+			isa = PBXGroup;
+			children = (
+				97F7277DD33877DDEDFD7711 /* ForkBotSessionTreeView.swift */,
+			);
+			path = Bots;
+			sourceTree = "<group>";
+		};
 		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -2006,6 +2028,7 @@
 			children = (
 				CF1200000000000000000102 /* ForkClientCertificate.swift */,
 				AB5FAB0DF62FB274D75D6531 /* Device */,
+				2A165CBF43E83C9896B82CCF /* Bots */,
 				2DECFB72765ACA384FBEA278 /* Models */,
 				3743733FE8BA6519927551C0 /* Chat */,
 				38BD7060DB50668D1CF2458A /* System */,
@@ -3099,6 +3122,7 @@
 				CF1200000000000000000101 /* ForkClientCertificateScope.swift */,
 				585EF083F8A3200894857A7B /* Device */,
 				4ADE0466A91B481295B329A8 /* ForkScanPages.swift */,
+				2556299A73E1D5EC3F0DB6E4 /* Bots */,
 				2A37A6455F30495BA8090474 /* ForkHomeFilters.swift */,
 				4C4E255D18602C368E060584 /* Live */,
 				4CBAB278E7CD2A2BE19A1A63 /* Models */,
@@ -3122,6 +3146,7 @@
 				BA71FCDDB11AE4D8613F0164 /* ForkDeviceApprovalTests.swift */,
 				170CD219DCF863F535AD3EB9 /* ForkDeviceDispatcherTests.swift */,
 				E937DF78A1918DDE5AC2D39F /* ForkDeviceToolsTests.swift */,
+				C234ECA251B16267B38AE25B /* ForkBotSessionTreeTests.swift */,
 				06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */,
 				2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */,
 				2EE1CFD1B0FC242AA40C0B2D /* ForkShareReviewTests.swift */,
@@ -3407,6 +3432,8 @@
 				A9BC079E7E8172879DE3DEDB /* ForkDeviceAccessView.swift in Sources */,
 				00962700E0A25FA0C2077D5F /* ForkDeviceAlarms.swift in Sources */,
 				B8D5C103F18675212491B463 /* ForkLocationReader.swift in Sources */,
+				947BE15572EE00A84246452E /* ForkBotSessionTreeView.swift in Sources */,
+				5E470C2C4E2F6B5E74329517 /* ForkBotSessionTree.swift in Sources */,
 				01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */,
 				0FCA42BE09074DA9A7C66318 /* ForkScanPages.swift in Sources */,
 				DBBCA6BD7C07485CAFF21894 /* ForkHomeFilters.swift in Sources */,
@@ -3935,6 +3962,7 @@
 				3558ED1FC71D279897A54444 /* ForkDeviceApprovalTests.swift in Sources */,
 				00A09D436A5AE1DB62DDE037 /* ForkDeviceDispatcherTests.swift in Sources */,
 				E2C53E32419C5E4D678B9484 /* ForkDeviceToolsTests.swift in Sources */,
+				ED698DD7902CE8DC220A4637 /* ForkBotSessionTreeTests.swift in Sources */,
 				0AC8B181DEC2DFC8498A6A92 /* ForkRoutineRequestTests.swift in Sources */,
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
