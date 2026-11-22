@@ -168,14 +168,12 @@ final class CouncilReaderTests: XCTestCase {
         XCTAssertNil(reader.reading)
     }
 
-    func testReduceMotionReadsTheBriefOnConveneAndFailureTurnsReadAloudOff() {
+    func testReduceMotionReadsTheBriefOnConveneAndCloseStopsEverything() {
         var reader = CouncilReader(run: run, reduceMotion: true)
         _ = reader.handle(.toggleReadAloud, at: 0)
         XCTAssertEqual(reader.handle(.convene, at: 0), [.startClock, .read(.brief)])
-        _ = reader.handle(.readingFailed, at: 1)
-        XCTAssertTrue(reader.failed)
-        XCTAssertFalse(reader.readAloud)
+        XCTAssertEqual(reader.handle(.close, at: 2), [.stopSpeaking, .stopClock])
         XCTAssertNil(reader.reading)
-        XCTAssertEqual(reader.handle(.close, at: 2), [.stopClock])
+        XCTAssertTrue(reader.canConvene)
     }
 }

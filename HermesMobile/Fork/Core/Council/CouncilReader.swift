@@ -12,7 +12,6 @@ enum CouncilReaderEvent: Equatable, Sendable {
     case tick
     case returnToCard
     case readingFinished
-    case readingFailed
     case close
 }
 
@@ -36,7 +35,6 @@ struct CouncilReader: Equatable, Sendable {
     private(set) var readAloud = false
     private(set) var muted = false
     private(set) var reading: CouncilReading?
-    private(set) var failed = false
     private var held: Hold?
     private var briefRead = false
     private var reportRead = false
@@ -59,7 +57,6 @@ struct CouncilReader: Equatable, Sendable {
         case .convene:
             guard !clockRunning else { return [] }
             returnToCard(at: now, into: &effects)
-            failed = false
             briefRead = false
             reportRead = false
             startedAt = now
@@ -71,7 +68,6 @@ struct CouncilReader: Equatable, Sendable {
             }
         case .toggleReadAloud:
             readAloud.toggle()
-            failed = false
             if !readAloud {
                 returnToCard(at: now, into: &effects)
             } else if startedAt != nil {
@@ -92,12 +88,6 @@ struct CouncilReader: Equatable, Sendable {
         case .readingFinished:
             guard reading != nil else { return [] }
             reading = nil
-            release(at: now)
-        case .readingFailed:
-            guard reading != nil else { return [] }
-            reading = nil
-            readAloud = false
-            failed = true
             release(at: now)
         case .close:
             returnToCard(at: now, into: &effects)
