@@ -596,6 +596,125 @@
         }
       }
     },
+    "A Project chat starts in that Project’s folder.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تبدأ دردشة المشروع في مجلد ذلك المشروع."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ein Projekt-Chat startet im Ordner dieses Projekts."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Project chat starts in that Project’s folder."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Un chat de proyecto empieza en la carpeta de ese proyecto."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "گفتگوی پروژه در پوشهٔ همان پروژه شروع می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Une discussion de projet démarre dans le dossier de ce projet."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "צ׳אט של פרויקט מתחיל בתיקייה של אותו פרויקט."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Una chat di progetto parte nella cartella di quel progetto."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "プロジェクトのチャットは、そのプロジェクトのフォルダで始まります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "프로젝트 채팅은 해당 프로젝트의 폴더에서 시작됩니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Een projectchat begint in de map van dat project."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Czat projektu zaczyna się w folderze tego projektu."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Um chat de projeto começa na pasta desse projeto."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Чат проекта начинается в папке этого проекта."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Proje sohbeti o projenin klasöründe başlar."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پروجیکٹ چیٹ اسی پروجیکٹ کے فولڈر میں شروع ہوتی ہے۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "專案對話會在該專案的資料夾中開始。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "项目聊天会在该项目的文件夹中开始。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "專案聊天會在該專案的資料夾中開始。"
+          }
+        }
+      }
+    },
     "A theme is a JSON object.": {
       "extractionState": "manual",
       "localizations": {
@@ -834,6 +953,125 @@
         }
       }
     },
+    "Action": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "الإجراء"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Aktion"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Action"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Acción"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کنش"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Action"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "פעולה"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Azione"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "アクション"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "동작"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Actie"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Akcja"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ação"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Действие"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Eylem"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "عمل"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "動作"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "操作"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "動作"
+          }
+        }
+      }
+    },
     "Add Reaction": {
       "extractionState": "manual",
       "localizations": {
@@ -1068,6 +1306,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "新增備註"
+          }
+        }
+      }
+    },
+    "Add to Chat": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "إضافة إلى الدردشة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zum Chat hinzufügen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to Chat"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Añadir al chat"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "افزودن به گفتگو"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ajouter à la discussion"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הוספה לצ׳אט"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Aggiungi alla chat"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "チャットに追加"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "채팅에 추가"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Toevoegen aan chat"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dodaj do czatu"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Adicionar ao chat"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Добавить в чат"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Sohbete ekle"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "چیٹ میں شامل کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "加入對話"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添加到聊天"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "加入聊天"
           }
         }
       }
@@ -1544,6 +1901,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "詢問機器人"
+          }
+        }
+      }
+    },
+    "Attachments: %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "المرفقات: %lld"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Anhänge: %lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachments: %lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Adjuntos: %lld"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پیوست‌ها: %lld"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Pièces jointes : %lld"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "קבצים מצורפים: %lld"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Allegati: %lld"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付ファイル: %lld"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부 파일: %lld"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bijlagen: %lld"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Załączniki: %lld"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Anexos: %lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Вложения: %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekler: %lld"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلکات: %lld"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "附件：%lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "附件：%lld"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "附件：%lld"
           }
         }
       }
@@ -3452,6 +3928,125 @@
         }
       }
     },
+    "Destination": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "الوجهة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ziel"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Destino"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مقصد"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Destination"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "יעד"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Destinazione"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "送信先"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "대상"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bestemming"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Miejsce docelowe"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Destino"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Назначение"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hedef"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منزل"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目的地"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目标位置"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目的地"
+          }
+        }
+      }
+    },
     "Didn't connect": {
       "extractionState": "manual",
       "localizations": {
@@ -3928,6 +4523,720 @@
         }
       }
     },
+    "Explain": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "شرح"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Erklären"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explain"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explicar"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "توضیح"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Expliquer"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הסבר"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Spiega"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "説明"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "설명"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Uitleggen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyjaśnij"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explicar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Объяснить"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Açıkla"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "وضاحت کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "解釋"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "解释"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "解釋"
+          }
+        }
+      }
+    },
+    "Explain the attached content clearly.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اشرح المحتوى المرفق بوضوح."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Erkläre den angehängten Inhalt verständlich."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explain the attached content clearly."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explica con claridad el contenido adjunto."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "محتوای پیوست را روشن توضیح بده."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explique clairement le contenu joint."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הסבר בבהירות את התוכן המצורף."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Spiega chiaramente il contenuto allegato."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付の内容をわかりやすく説明してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부된 내용을 명확하게 설명해 줘."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Leg de bijgevoegde inhoud duidelijk uit."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyjaśnij jasno załączoną treść."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explique com clareza o conteúdo anexado."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Понятно объясни приложенное содержимое."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekteki içeriği açıkça açıkla."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک مواد کو واضح طور پر سمجھاؤ۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請清楚解釋附加的內容。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请清楚地解释所附内容。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請清楚解釋附加的內容。"
+          }
+        }
+      }
+    },
+    "Explain this content clearly:\n\n%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اشرح هذا المحتوى بوضوح:\n\n%@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Erkläre diesen Inhalt verständlich:\n\n%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explain this content clearly:\n\n%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explica este contenido con claridad:\n\n%@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "این محتوا را روشن توضیح بده:\n\n%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explique clairement ce contenu :\n\n%@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הסבר את התוכן הזה בבהירות:\n\n%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Spiega chiaramente questo contenuto:\n\n%@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "この内容をわかりやすく説明してください:\n\n%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 내용을 명확하게 설명해 줘:\n\n%@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Leg deze inhoud duidelijk uit:\n\n%@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyjaśnij jasno tę treść:\n\n%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Explique este conteúdo com clareza:\n\n%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Понятно объясни это содержимое:\n\n%@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu içeriği açıkça açıkla:\n\n%@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس مواد کو واضح طور پر سمجھاؤ:\n\n%@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請清楚解釋此內容：\n\n%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请清楚地解释以下内容：\n\n%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請清楚解釋此內容：\n\n%@"
+          }
+        }
+      }
+    },
+    "Extract Tasks": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخراج المهام"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Aufgaben herausziehen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extract Tasks"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extraer tareas"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخراج کارها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extraire les tâches"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "חילוץ משימות"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Estrai attività"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "タスクを抽出"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "할 일 추출"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Taken eruit halen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyodrębnij zadania"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extrair tarefas"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Выделить задачи"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Görevleri çıkar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کام نکالیں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "擷取工作"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "提取任务"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "擷取任務"
+          }
+        }
+      }
+    },
+    "Extract the decisions, deadlines, owners, and action items from the attached content.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخرج القرارات والمواعيد النهائية والمسؤولين وبنود العمل من المحتوى المرفق."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zieh die Entscheidungen, Fristen, Verantwortlichen und To-dos aus dem angehängten Inhalt heraus."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extract the decisions, deadlines, owners, and action items from the attached content."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extrae las decisiones, plazos, responsables y tareas pendientes del contenido adjunto."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تصمیم‌ها، مهلت‌ها، مسئولان و اقدام‌ها را از محتوای پیوست استخراج کن."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extrais les décisions, échéances, responsables et actions à mener du contenu joint."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "חלץ מהתוכן המצורף את ההחלטות, המועדים, האחראים ופריטי הפעולה."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Estrai decisioni, scadenze, responsabili e azioni da fare dal contenuto allegato."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付の内容から、決定事項、期限、担当者、アクションアイテムを抽出してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부된 내용에서 결정 사항, 마감일, 담당자, 실행 항목을 추출해 줘."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Haal de besluiten, deadlines, eigenaars en actiepunten uit de bijgevoegde inhoud."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyodrębnij z załączonej treści decyzje, terminy, osoby odpowiedzialne i zadania do wykonania."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extraia as decisões, prazos, responsáveis e itens de ação do conteúdo anexado."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Выдели из приложенного содержимого решения, сроки, ответственных и задачи."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekteki içerikten kararları, son tarihleri, sorumluları ve yapılacak işleri çıkar."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک مواد سے فیصلے، آخری تاریخیں، ذمہ داران اور کرنے کے کام نکالو۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請從附加的內容中擷取決定、期限、負責人和待辦事項。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请从所附内容中提取决定、截止日期、负责人和待办事项。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請從附加的內容中擷取決策、期限、負責人和待辦事項。"
+          }
+        }
+      }
+    },
+    "Extract the decisions, deadlines, owners, and action items from this content:\n\n%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخرج القرارات والمواعيد النهائية والمسؤولين وبنود العمل من هذا المحتوى:\n\n%@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zieh die Entscheidungen, Fristen, Verantwortlichen und To-dos aus diesem Inhalt heraus:\n\n%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extract the decisions, deadlines, owners, and action items from this content:\n\n%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extrae las decisiones, plazos, responsables y tareas pendientes de este contenido:\n\n%@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تصمیم‌ها، مهلت‌ها، مسئولان و اقدام‌ها را از این محتوا استخراج کن:\n\n%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extrais les décisions, échéances, responsables et actions à mener de ce contenu :\n\n%@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "חלץ מהתוכן הזה את ההחלטות, המועדים, האחראים ופריטי הפעולה:\n\n%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Estrai decisioni, scadenze, responsabili e azioni da fare da questo contenuto:\n\n%@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "この内容から、決定事項、期限、担当者、アクションアイテムを抽出してください:\n\n%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 내용에서 결정 사항, 마감일, 담당자, 실행 항목을 추출해 줘:\n\n%@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Haal de besluiten, deadlines, eigenaars en actiepunten uit deze inhoud:\n\n%@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyodrębnij z tej treści decyzje, terminy, osoby odpowiedzialne i zadania do wykonania:\n\n%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Extraia as decisões, prazos, responsáveis e itens de ação deste conteúdo:\n\n%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Выдели из этого содержимого решения, сроки, ответственных и задачи:\n\n%@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu içerikten kararları, son tarihleri, sorumluları ve yapılacak işleri çıkar:\n\n%@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس مواد سے فیصلے، آخری تاریخیں، ذمہ داران اور کرنے کے کام نکالو:\n\n%@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請從此內容中擷取決定、期限、負責人和待辦事項：\n\n%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请从以下内容中提取决定、截止日期、负责人和待办事项：\n\n%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請從此內容中擷取決策、期限、負責人和待辦事項：\n\n%@"
+          }
+        }
+      }
+    },
     "Failed": {
       "extractionState": "manual",
       "localizations": {
@@ -4043,6 +5352,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "已失敗"
+          }
+        }
+      }
+    },
+    "Fill from Document": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "التعبئة من مستند"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Aus Dokument ausfüllen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fill from Document"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Rellenar desde documento"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پر کردن از سند"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Remplir depuis un document"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "מילוי ממסמך"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compila dal documento"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "書類から入力"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "문서로 채우기"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Invullen uit document"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wypełnij z dokumentu"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Preencher a partir do documento"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Заполнить по документу"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belgeden doldur"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "دستاویز سے پُر کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "從文件填寫"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "从文稿填写"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "從文件填寫"
           }
         }
       }
@@ -8331,6 +9759,125 @@
         }
       }
     },
+    "No Projects with a folder on this Profile. The share opens in a new chat.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لا توجد مشاريع لها مجلد في هذا الملف الشخصي. ستُفتح المشاركة في دردشة جديدة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "In diesem Profil gibt es keine Projekte mit Ordner. Die Freigabe öffnet sich in einem neuen Chat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Projects with a folder on this Profile. The share opens in a new chat."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "No hay proyectos con carpeta en este perfil. Lo compartido se abre en un chat nuevo."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "در این نمایه هیچ پروژه‌ای با پوشه وجود ندارد. اشتراک در یک گفتگوی جدید باز می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Aucun projet avec dossier dans ce profil. Le partage s’ouvre dans une nouvelle discussion."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "אין בפרופיל הזה פרויקטים עם תיקייה. השיתוף ייפתח בצ׳אט חדש."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nessun progetto con cartella in questo profilo. La condivisione si apre in una nuova chat."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "このプロファイルにはフォルダのあるプロジェクトがありません。共有内容は新しいチャットで開きます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 프로필에는 폴더가 있는 프로젝트가 없습니다. 공유 항목은 새 채팅에서 열립니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Geen projecten met een map in dit profiel. De gedeelde inhoud opent in een nieuwe chat."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "W tym profilu nie ma projektów z folderem. Udostępniona treść otworzy się w nowym czacie."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nenhum projeto com pasta neste perfil. O compartilhamento abre em um novo chat."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "В этом профиле нет проектов с папкой. Отправленное откроется в новом чате."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu profilde klasörü olan proje yok. Paylaşım yeni bir sohbette açılır."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس پروفائل میں فولڈر والا کوئی پروجیکٹ نہیں۔ شیئر نئی چیٹ میں کھلے گا۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "此設定檔中沒有附資料夾的專案，分享內容會在新對話中開啟。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "此配置文件中没有带文件夹的项目。共享内容将在新聊天中打开。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "此描述檔中沒有含資料夾的專案，分享內容會在新聊天中開啟。"
+          }
+        }
+      }
+    },
     "No bots yet.": {
       "extractionState": "manual",
       "localizations": {
@@ -8565,6 +10112,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "沒有符合這些篩選條件的聊天。"
+          }
+        }
+      }
+    },
+    "Not Now": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ليس الآن"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nicht jetzt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not Now"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ahora no"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اکنون نه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plus tard"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "לא עכשיו"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Non ora"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "今はしない"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "나중에"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Niet nu"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nie teraz"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Agora não"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Не сейчас"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Şimdi değil"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ابھی نہیں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "暫時不要"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "以后"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "現在不要"
           }
         }
       }
@@ -10354,6 +12020,125 @@
         }
       }
     },
+    "Remember": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تذكّر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Merken"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remember"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Recordar"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "به خاطر بسپار"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Mémoriser"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "זכור"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ricorda"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "記憶"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "기억"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Onthouden"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zapamiętaj"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Lembrar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Запомнить"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hatırla"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "یاد رکھیں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "記住"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "记住"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "記住"
+          }
+        }
+      }
+    },
     "Remove Reaction": {
       "extractionState": "manual",
       "localizations": {
@@ -10711,6 +12496,363 @@
         }
       }
     },
+    "Research": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "بحث"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Recherchieren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Research"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Investigar"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پژوهش"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Rechercher"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "מחקר"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ricerca"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "リサーチ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "조사"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Onderzoeken"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zbadaj"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Pesquisar"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Исследовать"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Araştır"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تحقیق"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "研究"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "研究"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "研究"
+          }
+        }
+      }
+    },
+    "Research the attached content, verify the important claims, and cite sources.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ابحث في المحتوى المرفق، وتحقق من الادعاءات المهمة، واذكر المصادر."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Recherchiere zum angehängten Inhalt, prüfe die wichtigen Aussagen und nenne Quellen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Research the attached content, verify the important claims, and cite sources."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Investiga el contenido adjunto, verifica las afirmaciones importantes y cita las fuentes."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "دربارهٔ محتوای پیوست پژوهش کن، ادعاهای مهم را بررسی کن و منابع را ذکر کن."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Fais des recherches sur le contenu joint, vérifie les affirmations importantes et cite tes sources."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "חקור את התוכן המצורף, אמת את הטענות החשובות וציין מקורות."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Approfondisci il contenuto allegato, verifica le affermazioni importanti e cita le fonti."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付の内容を調査し、重要な主張を検証して、出典を示してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부된 내용을 조사하고, 중요한 주장을 검증하고, 출처를 밝혀 줘."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Onderzoek de bijgevoegde inhoud, controleer de belangrijke beweringen en vermeld bronnen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zbadaj załączoną treść, zweryfikuj ważne twierdzenia i podaj źródła."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Pesquise o conteúdo anexado, verifique as afirmações importantes e cite as fontes."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Изучи приложенное содержимое, проверь важные утверждения и укажи источники."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekteki içeriği araştır, önemli iddiaları doğrula ve kaynak göster."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک مواد پر تحقیق کرو، اہم دعووں کی تصدیق کرو اور حوالے دو۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請研究附加的內容、核實重要的說法，並註明來源。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请研究所附内容，核实重要论断，并注明来源。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請研究附加的內容、驗證重要的主張，並註明來源。"
+          }
+        }
+      }
+    },
+    "Research this content, verify the important claims, and cite sources:\n\n%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ابحث في هذا المحتوى، وتحقق من الادعاءات المهمة، واذكر المصادر:\n\n%@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Recherchiere zu diesem Inhalt, prüfe die wichtigen Aussagen und nenne Quellen:\n\n%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Research this content, verify the important claims, and cite sources:\n\n%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Investiga este contenido, verifica las afirmaciones importantes y cita las fuentes:\n\n%@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "دربارهٔ این محتوا پژوهش کن، ادعاهای مهم را بررسی کن و منابع را ذکر کن:\n\n%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Fais des recherches sur ce contenu, vérifie les affirmations importantes et cite tes sources :\n\n%@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "חקור את התוכן הזה, אמת את הטענות החשובות וציין מקורות:\n\n%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Approfondisci questo contenuto, verifica le affermazioni importanti e cita le fonti:\n\n%@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "この内容を調査し、重要な主張を検証して、出典を示してください:\n\n%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 내용을 조사하고, 중요한 주장을 검증하고, 출처를 밝혀 줘:\n\n%@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Onderzoek deze inhoud, controleer de belangrijke beweringen en vermeld bronnen:\n\n%@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zbadaj tę treść, zweryfikuj ważne twierdzenia i podaj źródła:\n\n%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Pesquise este conteúdo, verifique as afirmações importantes e cite as fontes:\n\n%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Изучи это содержимое, проверь важные утверждения и укажи источники:\n\n%@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu içeriği araştır, önemli iddiaları doğrula ve kaynak göster:\n\n%@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس مواد پر تحقیق کرو، اہم دعووں کی تصدیق کرو اور حوالے دو:\n\n%@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請研究此內容、核實重要的說法，並註明來源：\n\n%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请研究以下内容，核实重要论断，并注明来源：\n\n%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請研究此內容、驗證重要的主張，並註明來源：\n\n%@"
+          }
+        }
+      }
+    },
     "Reset filters": {
       "extractionState": "manual",
       "localizations": {
@@ -10949,6 +13091,244 @@
         }
       }
     },
+    "Save the durable facts from the attached content to memory, then confirm what was kept.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "احفظ الحقائق الدائمة من المحتوى المرفق في الذاكرة، ثم أكّد ما تم حفظه."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Speichere die dauerhaften Fakten aus dem angehängten Inhalt im Gedächtnis und bestätige dann, was behalten wurde."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save the durable facts from the attached content to memory, then confirm what was kept."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Guarda en la memoria los datos duraderos del contenido adjunto y luego confirma lo que se conservó."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "واقعیت‌های ماندگار محتوای پیوست را در حافظه ذخیره کن، سپس تأیید کن چه چیزهایی نگه داشته شد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Enregistre en mémoire les faits durables du contenu joint, puis confirme ce qui a été conservé."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "שמור בזיכרון את העובדות הקבועות מהתוכן המצורף, ואז אשר מה נשמר."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Salva in memoria i fatti duraturi del contenuto allegato, poi conferma cosa è stato conservato."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付の内容から長く役立つ事実をメモリに保存し、何を残したかを確認してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부된 내용에서 오래 유지할 사실을 메모리에 저장한 뒤, 무엇을 남겼는지 확인해 줘."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Sla de blijvende feiten uit de bijgevoegde inhoud op in het geheugen en bevestig daarna wat is bewaard."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zapisz w pamięci trwałe fakty z załączonej treści, a potem potwierdź, co zachowano."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Salve na memória os fatos duradouros do conteúdo anexado e depois confirme o que foi mantido."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Сохрани в память устойчивые факты из приложенного содержимого, затем подтверди, что сохранено."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekteki içerikteki kalıcı bilgileri belleğe kaydet, sonra neyin tutulduğunu onayla."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک مواد کے مستقل حقائق میموری میں محفوظ کرو، پھر بتاؤ کیا رکھا گیا۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請將附加內容中的長期事實存入記憶，然後確認保留了哪些。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请将所附内容中的持久事实保存到记忆中，然后确认保留了哪些内容。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請將附加內容中的長期事實儲存到記憶中，然後確認保留了哪些內容。"
+          }
+        }
+      }
+    },
+    "Save the durable facts from this content to memory, then confirm what was kept:\n\n%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "احفظ الحقائق الدائمة من هذا المحتوى في الذاكرة، ثم أكّد ما تم حفظه:\n\n%@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Speichere die dauerhaften Fakten aus diesem Inhalt im Gedächtnis und bestätige dann, was behalten wurde:\n\n%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save the durable facts from this content to memory, then confirm what was kept:\n\n%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Guarda en la memoria los datos duraderos de este contenido y luego confirma lo que se conservó:\n\n%@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "واقعیت‌های ماندگار این محتوا را در حافظه ذخیره کن، سپس تأیید کن چه چیزهایی نگه داشته شد:\n\n%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Enregistre en mémoire les faits durables de ce contenu, puis confirme ce qui a été conservé :\n\n%@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "שמור בזיכרון את העובדות הקבועות מהתוכן הזה, ואז אשר מה נשמר:\n\n%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Salva in memoria i fatti duraturi di questo contenuto, poi conferma cosa è stato conservato:\n\n%@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "この内容から長く役立つ事実をメモリに保存し、何を残したかを確認してください:\n\n%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 내용에서 오래 유지할 사실을 메모리에 저장한 뒤, 무엇을 남겼는지 확인해 줘:\n\n%@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Sla de blijvende feiten uit deze inhoud op in het geheugen en bevestig daarna wat is bewaard:\n\n%@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zapisz w pamięci trwałe fakty z tej treści, a potem potwierdź, co zachowano:\n\n%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Salve na memória os fatos duradouros deste conteúdo e depois confirme o que foi mantido:\n\n%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Сохрани в память устойчивые факты из этого содержимого, затем подтверди, что сохранено:\n\n%@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu içerikteki kalıcı bilgileri belleğe kaydet, sonra neyin tutulduğunu onayla:\n\n%@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس مواد کے مستقل حقائق میموری میں محفوظ کرو، پھر بتاؤ کیا رکھا گیا:\n\n%@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請將此內容中的長期事實存入記憶，然後確認保留了哪些：\n\n%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请将以下内容中的持久事实保存到记忆中，然后确认保留了哪些内容：\n\n%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請將此內容中的長期事實儲存到記憶中，然後確認保留了哪些內容：\n\n%@"
+          }
+        }
+      }
+    },
     "Secrets": {
       "extractionState": "manual",
       "localizations": {
@@ -11183,6 +13563,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "傳送"
+          }
+        }
+      }
+    },
+    "Share to Hermes": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مشاركة مع Hermes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Mit Hermes teilen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share to Hermes"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compartir con Hermes"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اشتراک با Hermes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Partager avec Hermes"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "שיתוף ל-Hermes"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Condividi con Hermes"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermes に共有"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermes로 공유"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Delen met Hermes"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Udostępnij w Hermes"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compartilhar com o Hermes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Отправить в Hermes"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermes ile paylaş"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hermes کے ساتھ شیئر کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "分享至 Hermes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共享到 Hermes"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "分享至 Hermes"
           }
         }
       }
@@ -12849,6 +15348,363 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "停止錄製說明"
+          }
+        }
+      }
+    },
+    "Summarize": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تلخيص"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zusammenfassen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summarize"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Resumir"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "خلاصه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Résumer"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "סיכום"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Riassumi"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "要約"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "요약"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Samenvatten"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Podsumuj"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Resumir"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Кратко изложить"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Özetle"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "خلاصہ کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "摘要"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "总结"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "摘要"
+          }
+        }
+      }
+    },
+    "Summarize the attached content.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لخّص المحتوى المرفق."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Fasse den angehängten Inhalt zusammen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summarize the attached content."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Resume el contenido adjunto."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "محتوای پیوست را خلاصه کن."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Résume le contenu joint."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "סכם את התוכן המצורף."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Riassumi il contenuto allegato."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付の内容を要約してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부된 내용을 요약해 줘."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vat de bijgevoegde inhoud samen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Podsumuj załączoną treść."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Resuma o conteúdo anexado."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Кратко изложи приложенное содержимое."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekteki içeriği özetle."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک مواد کا خلاصہ کرو۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請摘要附加的內容。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请总结所附内容。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請摘要附加的內容。"
+          }
+        }
+      }
+    },
+    "Summarize this content:\n\n%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لخّص هذا المحتوى:\n\n%@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Fasse diesen Inhalt zusammen:\n\n%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summarize this content:\n\n%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Resume este contenido:\n\n%@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "این محتوا را خلاصه کن:\n\n%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Résume ce contenu :\n\n%@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "סכם את התוכן הזה:\n\n%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Riassumi questo contenuto:\n\n%@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "この内容を要約してください:\n\n%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 내용을 요약해 줘:\n\n%@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vat deze inhoud samen:\n\n%@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Podsumuj tę treść:\n\n%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Resuma este conteúdo:\n\n%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Кратко изложи это содержимое:\n\n%@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu içeriği özetle:\n\n%@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس مواد کا خلاصہ کرو:\n\n%@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請摘要此內容：\n\n%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请总结以下内容：\n\n%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請摘要此內容：\n\n%@"
           }
         }
       }
@@ -15586,6 +18442,363 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "未知的顏色角色“%@”。"
+          }
+        }
+      }
+    },
+    "Use as Is": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخدام كما هو"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Unverändert verwenden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use as Is"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usar tal cual"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استفاده بدون تغییر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Utiliser tel quel"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "שימוש כמו שהוא"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usa così com’è"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "そのまま使う"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "그대로 사용"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Gebruiken zoals het is"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Użyj bez zmian"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usar como está"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Использовать как есть"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Olduğu gibi kullan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "جیسا ہے استعمال کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "照原樣使用"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "按原样使用"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "照原樣使用"
+          }
+        }
+      }
+    },
+    "Use the attached content to fill the relevant document or form fields. Ask before submitting anything.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخدم المحتوى المرفق لتعبئة حقول المستند أو النموذج المعنية. اسأل قبل إرسال أي شيء."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Fülle mit dem angehängten Inhalt die passenden Dokument- oder Formularfelder aus. Frag nach, bevor du etwas absendest."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use the attached content to fill the relevant document or form fields. Ask before submitting anything."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usa el contenido adjunto para rellenar los campos del documento o formulario correspondientes. Pregunta antes de enviar nada."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "با محتوای پیوست، فیلدهای مربوط سند یا فرم را پر کن. پیش از ارسال هر چیزی بپرس."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Utilise le contenu joint pour remplir les champs du document ou du formulaire concernés. Demande avant de soumettre quoi que ce soit."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "השתמש בתוכן המצורף כדי למלא את שדות המסמך או הטופס הרלוונטיים. שאל לפני שליחת משהו."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usa il contenuto allegato per compilare i campi pertinenti del documento o del modulo. Chiedi prima di inviare qualsiasi cosa."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添付の内容を使って、該当する書類やフォームの項目を入力してください。何かを送信する前に確認してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "첨부된 내용으로 관련 문서나 양식 필드를 채워 줘. 무엇이든 제출하기 전에 물어봐."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Gebruik de bijgevoegde inhoud om de relevante document- of formuliervelden in te vullen. Vraag het voordat je iets indient."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Użyj załączonej treści, aby wypełnić odpowiednie pola dokumentu lub formularza. Zapytaj, zanim cokolwiek wyślesz."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Use o conteúdo anexado para preencher os campos relevantes do documento ou formulário. Pergunte antes de enviar qualquer coisa."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Заполни по приложенному содержимому нужные поля документа или формы. Спроси, прежде чем что-либо отправлять."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ekteki içerikle ilgili belge veya form alanlarını doldur. Bir şey göndermeden önce sor."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "منسلک مواد سے متعلقہ دستاویز یا فارم کے خانے پُر کرو۔ کچھ بھی جمع کرانے سے پہلے پوچھو۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請使用附加的內容填寫相關文件或表單欄位。提交任何內容前請先詢問。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请使用所附内容填写相关文稿或表单字段。提交任何内容之前请先询问。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請使用附加的內容填寫相關文件或表單欄位。提交任何內容之前請先詢問。"
+          }
+        }
+      }
+    },
+    "Use this content to fill the relevant document or form fields. Ask before submitting anything:\n\n%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "استخدم هذا المحتوى لتعبئة حقول المستند أو النموذج المعنية. اسأل قبل إرسال أي شيء:\n\n%@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Fülle mit diesem Inhalt die passenden Dokument- oder Formularfelder aus. Frag nach, bevor du etwas absendest:\n\n%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use this content to fill the relevant document or form fields. Ask before submitting anything:\n\n%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usa este contenido para rellenar los campos del documento o formulario correspondientes. Pregunta antes de enviar nada:\n\n%@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "با این محتوا، فیلدهای مربوط سند یا فرم را پر کن. پیش از ارسال هر چیزی بپرس:\n\n%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Utilise ce contenu pour remplir les champs du document ou du formulaire concernés. Demande avant de soumettre quoi que ce soit :\n\n%@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "השתמש בתוכן הזה כדי למלא את שדות המסמך או הטופס הרלוונטיים. שאל לפני שליחת משהו:\n\n%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Usa questo contenuto per compilare i campi pertinenti del documento o del modulo. Chiedi prima di inviare qualsiasi cosa:\n\n%@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "この内容を使って、該当する書類やフォームの項目を入力してください。何かを送信する前に確認してください:\n\n%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "이 내용으로 관련 문서나 양식 필드를 채워 줘. 무엇이든 제출하기 전에 물어봐:\n\n%@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Gebruik deze inhoud om de relevante document- of formuliervelden in te vullen. Vraag het voordat je iets indient:\n\n%@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Użyj tej treści, aby wypełnić odpowiednie pola dokumentu lub formularza. Zapytaj, zanim cokolwiek wyślesz:\n\n%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Use este conteúdo para preencher os campos relevantes do documento ou formulário. Pergunte antes de enviar qualquer coisa:\n\n%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Заполни по этому содержимому нужные поля документа или формы. Спроси, прежде чем что-либо отправлять:\n\n%@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bu içerikle ilgili belge veya form alanlarını doldur. Bir şey göndermeden önce sor:\n\n%@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "اس مواد سے متعلقہ دستاویز یا فارم کے خانے پُر کرو۔ کچھ بھی جمع کرانے سے پہلے پوچھو:\n\n%@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請使用此內容填寫相關文件或表單欄位。提交任何內容前請先詢問：\n\n%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "请使用以下内容填写相关文稿或表单字段。提交任何内容之前请先询问：\n\n%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "請使用此內容填寫相關文件或表單欄位。提交任何內容之前請先詢問：\n\n%@"
           }
         }
       }
