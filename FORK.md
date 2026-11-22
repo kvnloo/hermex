@@ -62,6 +62,16 @@ no app types) as a module named `HermesMobile`, and runs `HermesMobileTests/Fork
 XCTest. The same files are members of the Xcode app and test targets, so macOS CI runs
 those tests too.
 
+## Preview channel
+
+Settings → Hermex → Preview channel follows the newest green `staging` run of
+`staging-ci.yml` and shows a chip naming the build that is running. The app reads its
+own build from the `HERMEX_BUILD_SHA` and `HERMEX_BUILD_TIME` build settings (Info.plist
+`HermexBuildSHA`/`HermexBuildTime`); Staging CI sets them. For a device build, pass them
+the same way, e.g.
+`xcodebuild … HERMEX_BUILD_SHA="$(git rev-parse HEAD)" HERMEX_BUILD_TIME="$(date -u +%s)"`.
+Without them the chip shows only the served build.
+
 ## Fork features
 
 See [PARITY.md](PARITY.md) for the hermes-android → hermex feature matrix, each
