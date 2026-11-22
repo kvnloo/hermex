@@ -5322,6 +5322,28 @@ final class ChatViewModel {
         }
     }
 
+    var supportsLiveLanes: Bool { hermesTurn != nil }
+
+    var liveLaneThread: String? { hermesTurn?.engine.root }
+
+    var canBranchLiveLane: Bool {
+        liveLaneThread != nil && !isViewingCachedData && !isStartingChat && !isForkingMessage && activeStreamID == nil
+    }
+
+    func makeLiveLane() async throws -> ChatViewModel {
+        guard let hermesTurn, canBranchLiveLane else { throw BotFailure.stale }
+        isForkingMessage = true
+        defer { isForkingMessage = false }
+        let key = try await hermesTurn.branch(through: nil, name: nil)
+        guard key != hermesTurn.engine.root, key != hermesTurn.engine.storedKey else { throw BotFailure.stale }
+        let chat = hermesBranchChat(key, on: hermesTurn)
+        return ChatViewModel(
+            session: SessionSummary(title: chat.title, model: chat.model, profile: chat.target.profile),
+            server: chat.server,
+            backend: .hermes(HermesChatTurnCoordinator(chat))
+        )
+    }
+
     private func hermesBranchChat(_ key: String, on hermes: HermesChatTurnCoordinator) -> HermesSessionChat {
         HermesSessionChat(server: hermes.engine.server, connection: hermes.engine.connection,
                           target: .session(profile: hermes.engine.target.profile, key: key), parentKey: hermes.engine.storedKey)

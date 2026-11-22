@@ -6,24 +6,26 @@ extension View {
     }
 }
 
+@MainActor
 private struct ForkLiveModeEntry: ViewModifier {
     let viewModel: ChatViewModel
     let title: String
     @State private var isPresented = false
+    @State private var controller: ForkLiveModeController?
     @AppStorage(LiveModeRequest.storageKey) private var requestedAt: Double = 0
 
     func body(content: Content) -> some View {
         content
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button { isPresented = true } label: {
+                    Button(action: present) {
                         Label { Text("Live Mode", tableName: "Fork") } icon: { Image(systemName: "waveform") }
                     }
                     .disabled(viewModel.isViewingCachedData)
                 }
             }
             .fullScreenCover(isPresented: $isPresented) {
-                ForkLiveModeView(viewModel: viewModel, title: title)
+                if let controller { ForkLiveModeView(title: title, controller: controller) }
             }
             .onAppear(perform: openIfRequested)
             .onChange(of: requestedAt) { openIfRequested() }
@@ -32,32 +34,43 @@ private struct ForkLiveModeEntry: ViewModifier {
     private func openIfRequested() {
         guard LiveModeRequest.isFresh(requestedAt, now: Date().timeIntervalSince1970) else { return }
         requestedAt = 0
+        present()
+    }
+
+    private func present() {
+        guard !viewModel.isViewingCachedData else { return }
+        if controller?.belongs(to: viewModel) != true {
+            controller = ForkLiveModeController(viewModel: viewModel)
+        }
         isPresented = true
     }
 }
 
 struct ForkLiveModeView: View {
     let title: String
-    @State private var controller: ForkLiveModeController
+    let controller: ForkLiveModeController
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
     @AppStorage("fork.liveMode.orbStyle") private var orbStyle = ForkLiveOrbStyle.voice
-
-    init(viewModel: ChatViewModel, title: String) {
-        self.title = title
-        _controller = State(initialValue: ForkLiveModeController(viewModel: viewModel))
-    }
 
     var body: some View {
         ForkLiveModeScreen(
             title: title, phase: controller.phase, level: controller.level,
             heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
-            onOrb: controller.tapOrb, onEnd: controller.stop
+            onOrb: controller.tapOrb, onEnd: controller.stop,
+            lanes: controller.supportsLanes ? ForkLiveLaneControls(controller: controller) : nil
         )
         .onAppear {
             controller.onClose = { dismiss() }
             controller.start()
         }
-        .onDisappear { controller.stop() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .background { controller.stop() }
+        }
+        .onDisappear {
+            controller.onClose = nil
+            controller.stop()
+        }
     }
 }
 
@@ -70,18 +83,38 @@ struct ForkLiveModeScreen: View {
     @Binding var orbStyle: ForkLiveOrbStyle
     let onOrb: () -> Void
     let onEnd: () -> Void
+    var lanes: ForkLiveLaneControls? = nil
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.layoutDirection) private var layoutDirection
 
     var body: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                stackedContent.frame(minHeight: geometry.size.height)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+        }
+        .themedPageBackground()
+    }
+
+    private var stackedContent: some View {
         VStack(spacing: 20) {
             header
             Spacer(minLength: 12)
-            Button(action: onOrb) {
-                ForkLiveOrb(phase: phase, level: level, style: orbStyle)
-                    .frame(width: 240, height: 240)
+            ZStack {
+                if let lanes, lanes.hasOrbit {
+                    lanes.orbit(reduceMotion: reduceMotion, layoutDirection: layoutDirection)
+                }
+                Button(action: onOrb) {
+                    let side: CGFloat = lanes?.hasOrbit == true ? 158 : 240
+                    ForkLiveOrb(phase: phase, level: level, style: orbStyle)
+                        .frame(width: side, height: side)
+                        .contentShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(statusText)
+                .accessibilityHint(Text("Double-tap to pause, resume, or interrupt the reply.", tableName: "Fork"))
             }
-            .buttonStyle(.plain)
-            .accessibilityLabel(statusText)
-            .accessibilityHint(Text("Double-tap to pause, resume, or interrupt the reply.", tableName: "Fork"))
             statusText
                 .font(AppFont.headline())
                 .accessibilityHidden(true)
@@ -95,11 +128,11 @@ struct ForkLiveModeScreen: View {
                 Text(verbatim: error).font(AppFont.footnote()).foregroundStyle(.red).multilineTextAlignment(.center)
             }
             Spacer(minLength: 12)
+            if let lanes { lanes.actions }
             controls
         }
         .padding(.vertical, 24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .themedPageBackground()
+        .frame(maxWidth: .infinity)
     }
 
     private var header: some View {
@@ -145,5 +178,86 @@ struct ForkLiveModeScreen: View {
         case .speaking: Text("Speaking · tap to interrupt", tableName: "Fork")
         case .failed: Text("Something went wrong · tap to retry", tableName: "Fork")
         }
+    }
+}
+
+
+@MainActor
+struct ForkLiveLaneControls {
+    let controller: ForkLiveModeController
+
+    var hasOrbit: Bool { controller.router.lanes.count > 1 }
+
+    func orbit(reduceMotion: Bool, layoutDirection: LayoutDirection) -> some View {
+        let router = controller.router
+        let selectedIndex = router.lanes.firstIndex(of: router.selected) ?? 0
+        return ZStack {
+            Circle()
+                .strokeBorder(Color.accentColor.opacity(0.25), style: StrokeStyle(lineWidth: 1, dash: [3, 5]))
+                .frame(width: 222, height: 222)
+                .accessibilityHidden(true)
+            ForEach(router.lanes, id: \.self) { lane in
+                let index = router.lanes.firstIndex(of: lane) ?? 0
+                let position = Double(index - selectedIndex) * 2 * .pi / Double(router.lanes.count)
+                let angle = layoutDirection == .rightToLeft ? .pi - position : position
+                Button { controller.selectLane(lane) } label: {
+                    Group {
+                        if lane == LiveLaneRouter.root {
+                            Image(systemName: "bubble.left")
+                        } else {
+                            Text(lane.formatted()).monospacedDigit()
+                        }
+                    }
+                    .font(AppFont.subheadline(weight: .semibold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.65)
+                    .frame(width: 44, height: 44)
+                    .background(.regularMaterial, in: Circle())
+                    .overlay {
+                        Circle().strokeBorder(Color.accentColor, lineWidth: router.selected == lane ? 3 : 1)
+                    }
+                }
+                .buttonStyle(.plain)
+                .disabled(!controller.canChangeLane)
+                .accessibilityLabel(label(lane))
+                .accessibilityAddTraits(router.selected == lane ? .isSelected : [])
+                .rotationEffect(.radians(-angle))
+                .offset(x: 111)
+                .rotationEffect(.radians(angle))
+            }
+        }
+        .frame(width: 266, height: 266)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: router.selected)
+    }
+
+    var actions: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack { laneButtons }
+            VStack { laneButtons }
+        }
+        .buttonStyle(.bordered)
+        .font(AppFont.footnote())
+        .padding(.horizontal, 16)
+    }
+
+    @ViewBuilder private var laneButtons: some View {
+        if controller.isAddingLane {
+            ProgressView().accessibilityLabel(Text("Add Live lane", tableName: "Fork"))
+        }
+        Button { controller.addLane() } label: {
+            Label { Text("Add Live lane", tableName: "Fork") } icon: { Image(systemName: "plus") }
+        }
+        .disabled(!controller.canAddLane)
+        if controller.router.selected != LiveLaneRouter.root {
+            Button { controller.detachLane() } label: {
+                Label { Text("Detach Live lane", tableName: "Fork") } icon: { Image(systemName: "minus") }
+            }
+            .disabled(!controller.canChangeLane)
+        }
+    }
+
+    private func label(_ lane: Int) -> Text {
+        if lane == LiveLaneRouter.root { Text("Main Live lane", tableName: "Fork") }
+        else { Text("Live lane \(lane)", tableName: "Fork") }
     }
 }

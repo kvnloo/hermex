@@ -62,6 +62,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | hermes-android feature | hermex | iOS mapping / where | Branch |
 |---|---|---|---|
 | Live Mode call surface (bot pill, orb, prompt, mic, close) | missing | Full-screen `LiveModeView`: `SFSpeechRecognizer` turn-taking → normal `prompt.submit` → `AVSpeechSynthesizer` reply, over the existing chat path | `boat/hermex/live-mode` |
+| Live Mode lanes (HX-092 / HA-035) | Implemented; device verification pending | From an existing Hermes thread, add up to four branch sessions as selectable orbs. Select a lane, then tap the mic to speak. One voice turn at a time; detaching only removes the orb, not the server session. The orb list lasts while that chat is open. | `boat/hx-lanes/hx-092` |
 | Hands-free (wake phrase, follow-up window) | missing | Same Live Mode loop with a bounded follow-up window; no wake-word model (would be a new dependency) | `boat/hermex/live-mode` (no wake word) |
 | GPT-Live over WebRTC | missing | Needs a WebRTC stack (new dependency) and a host that offers it; **blocked: Kevin** (dependency) | — |
 | Avatar styles: faces, voice orb (persona looks), thinking orb | partial | Faces exist (`BotFaceMotion`, generated avatars). Voice orb and thinking orb drawn natively with SwiftUI `Canvas`/`TimelineView` | `boat/hermex/live-mode` |
