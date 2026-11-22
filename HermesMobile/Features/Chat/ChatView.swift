@@ -1193,6 +1193,7 @@ struct ChatView: View {
                 }
             }
             .forkLiveMode(viewModel, title: displayTitle)
+            .forkCouncil(viewModel)
             .navigationDestination(item: $pushedSession) { session in
                 ChatView(session: session, server: server, onAPIError: onAPIError)
             }

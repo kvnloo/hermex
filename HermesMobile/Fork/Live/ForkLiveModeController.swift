@@ -140,6 +140,7 @@ final class ForkLiveModeController {
 final class ForkLiveSpeaker: NSObject, AVSpeechSynthesizerDelegate {
     private let synthesizer = AVSpeechSynthesizer()
     private var pending = 0
+    var onStarted: ((String) -> Void)?
     var onFinished: (() -> Void)?
 
     override init() {
@@ -163,6 +164,14 @@ final class ForkLiveSpeaker: NSObject, AVSpeechSynthesizerDelegate {
     func stop() {
         pending = 0
         if synthesizer.isSpeaking { synthesizer.stopSpeaking(at: .immediate) }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        let text = utterance.speechString
+        Task { @MainActor in
+            guard self.pending > 0 else { return }
+            self.onStarted?(text)
+        }
     }
 
     nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
