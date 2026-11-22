@@ -41,7 +41,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Tool summary row | has | Tool call rows and turn folding (`ToolCallLogRowView`, `TranscriptTurnFolding`, ADR 0054) | — |
 | Copy, Retry, token count | has | Message actions, `/retry`, Insights token counts | — |
 | Read aloud | has | Listen playback (`ListenAudioPlayer`, `OnDeviceSpeech`, ADR 0049/0050) | — |
-| Report (message) | partial | Report a Problem opens GitHub; no per-message report | not planned |
+| Report (message) | has | Assistant message action menu → Report opens a GitHub issue prefilled with the message ID, never its text (`ForkMessageReportButton`, `ForkMessageReport`) | `boat/hx-small/hx-024` |
 | Dictation puts the avatar into listening | partial | Bot faces have expressions (`BotFaceMotion`); dictation doesn't drive them | `boat/hermex/live-mode` |
 | Chat style (Bubbles) | has | `MessageBubbleView` (native bubbles are hermex's default) | — |
 | More → Artifacts | has | Bot artifacts (`BotArtifact*`, ADR 0001) | — |
