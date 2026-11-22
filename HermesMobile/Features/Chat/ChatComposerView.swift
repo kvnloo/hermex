@@ -1643,7 +1643,7 @@ struct MessageComposerView: View {
         if scanFailed {
             scanFailed = false
             shouldRestoreFocusAfterPresentation = false
-            noticeMessage = String(localized: "Could not scan the document. Please try again.")
+            noticeMessage = String(localized: "Could not scan the document. Please try again.", table: "Fork")
         } else if let data = scannedPDF {
             scannedPDF = nil
             Task { @MainActor in

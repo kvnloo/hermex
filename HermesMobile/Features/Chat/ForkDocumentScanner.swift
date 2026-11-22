@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import VisionKit
 
 struct ForkDocumentScanner: UIViewControllerRepresentable {

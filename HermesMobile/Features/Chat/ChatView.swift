@@ -630,7 +630,7 @@ struct ChatView: View {
                 Task { await handlePhotoSelection(media) }
             },
             onScannedPDF: { data in
-                await viewModel.uploadAttachment(data: data, filename: "scan-\(UUID().uuidString).pdf")
+                await viewModel.uploadAttachment(data: data, filename: "scan-\(UUID().uuidString.prefix(8)).pdf")
             },
             onFileURLsSelected: { urls in
                 Task { await handleSelectedFileURLs(urls) }

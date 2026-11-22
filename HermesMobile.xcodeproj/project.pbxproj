@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */; };
+		0FCA42BE09074DA9A7C66318 /* ForkScanPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE0466A91B481295B329A8 /* ForkScanPages.swift */; };
 		0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76875456DE0BDC0A137F9BDA /* ForkTerminalScreen.swift */; };
 		0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */; };
 		0D4B0C89517853C424C982B8 /* ForkLiveVoiceIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */; };
 		14BFB05ECAA8FA6066D0FA4F /* ForkLiveVoiceIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */; };
 		18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */; };
-		EE73ABCB92A848D3902AFE26 /* ForkScanPagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297BFD54D34C4D0286D33DF8 /* ForkScanPagesTests.swift */; };
 		1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03CC1EF1DBA9BB62BA10ECE /* ForkTurboCatalogTests.swift */; };
 		1DE409CDAF4B7CC5CC1E20E2 /* ForkTerminalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E180D3404FE5B8E296F714 /* ForkTerminalProtocol.swift */; };
 		1EB4BE1CF1E94BAC23760DFD /* ForkLiveVoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED2E952E2FC00BD3470928 /* ForkLiveVoiceRequest.swift */; };
@@ -29,12 +29,12 @@
 		3E260E887C9B1185BB6534F4 /* ForkThemeRoles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA84847739A459112E526D6 /* ForkThemeRoles.swift */; };
 		402D6B143CBF2188DFCE05B4 /* ForkMCPServersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DF8CA747382A507307CCF /* ForkMCPServersView.swift */; };
 		4A38FD73E9E65936D79E3F25 /* ForkThemeSpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */; };
+		A8837C5BBF9444A492B17435 /* ForkScanPagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A835DA3AD41F9BB24B031 /* ForkScanPagesTests.swift */; };
 		4F11B1AFA9AFE6D0F932A45D /* OpenUITreemapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D61C250D17DCA68AA54FA7 /* OpenUITreemapLayout.swift */; };
 		503494FE76634CAB2C6F0FBC /* ForkChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353395B1629DE99C5BDB2F80 /* ForkChatState.swift */; };
 		521DD6EAFE3FB3CF9346C4AC /* ForkLiveModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19F35A59EC5DAA4FA6C322 /* ForkLiveModeView.swift */; };
 		5F7E68DFE3DD0C5C49DAC1A6 /* OpenUICheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E37ED2823F231E459F2B /* OpenUICheck.swift */; };
 		6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611229C09BFE865783BA1CC4 /* ForkRPC.swift */; };
-		B8A7E81EC29E4B6EB3657C3F /* ForkScanPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91028C54914B378F092F33 /* ForkScanPages.swift */; };
 		71AD01A116298F4DBA909514 /* ForkLiveVoiceRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92C9F4FF63955A0EB82DF0 /* ForkLiveVoiceRequestTests.swift */; };
 		736645F7454FADA987E48FE2 /* OpenUICatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */; };
 		75AAA756EFE6F90494464055 /* ForkLiveModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F0388FE63DAA78F894F506 /* ForkLiveModeController.swift */; };
@@ -855,7 +855,6 @@
 		075F28927F691751A928FE57 /* ForkMCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPClient.swift; sourceTree = "<group>"; };
 		1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveVoiceIntent.swift; sourceTree = "<group>"; };
 		1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPCTests.swift; sourceTree = "<group>"; };
-		297BFD54D34C4D0286D33DF8 /* ForkScanPagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkScanPagesTests.swift; sourceTree = "<group>"; };
 		1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkAppearanceSections.swift; sourceTree = "<group>"; };
 		21A8142271498D56EC872003 /* AnnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationModel.swift; sourceTree = "<group>"; };
 		26346E09CC0F3BD0A62FED1B /* ForkTurboModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboModels.swift; sourceTree = "<group>"; };
@@ -878,7 +877,6 @@
 		5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewModel+Fork.swift"; sourceTree = "<group>"; };
 		60BA7EDF4E722F3EB89B7439 /* ForkTerminalPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTerminalPalette.swift; sourceTree = "<group>"; };
 		611229C09BFE865783BA1CC4 /* ForkRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPC.swift; sourceTree = "<group>"; };
-		8C91028C54914B378F092F33 /* ForkScanPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkScanPages.swift; sourceTree = "<group>"; };
 		6F94A79BB5774E8486B7D510 /* OpenUIPanels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUIPanels.swift; sourceTree = "<group>"; };
 		718DF8CA747382A507307CCF /* ForkMCPServersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPServersView.swift; sourceTree = "<group>"; };
 		71DAD16551D36CF365BD9F51 /* OpenUILang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUILang.swift; sourceTree = "<group>"; };
@@ -893,6 +891,7 @@
 		A15740000000000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		A4E180D3404FE5B8E296F714 /* ForkTerminalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTerminalProtocol.swift; sourceTree = "<group>"; };
 		A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeSpec.swift; sourceTree = "<group>"; };
+		4ADE0466A91B481295B329A8 /* ForkScanPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkScanPages.swift; sourceTree = "<group>"; };
 		A58729227C28BC9B91025942 /* ForkThemeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeStore.swift; sourceTree = "<group>"; };
 		AF80E0D7BB949E48D199DC10 /* ForkTerminalScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTerminalScreenTests.swift; sourceTree = "<group>"; };
 		B2D2B0FB75302ADEC822BC22 /* ForkReactionRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionRPC.swift; sourceTree = "<group>"; };
@@ -952,6 +951,7 @@
 		B48200000000000000000007 /* BotProfileEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotProfileEditorTests.swift; sourceTree = "<group>"; };
 		B48200000000000000000023 /* BotFaceMotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotFaceMotionTests.swift; sourceTree = "<group>"; };
 		EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeSpecTests.swift; sourceTree = "<group>"; };
+		D64A835DA3AD41F9BB24B031 /* ForkScanPagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkScanPagesTests.swift; sourceTree = "<group>"; };
 		FC5CEA5BED78D9FFC8D19C70 /* ForkTerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTerminalView.swift; sourceTree = "<group>"; };
 		FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMemoryNoticeTests.swift; sourceTree = "<group>"; };
 		FE3A09625987439BABF6BC8C /* BotHistoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotHistoryCacheTests.swift; sourceTree = "<group>"; };
@@ -1689,7 +1689,6 @@
 			isa = PBXGroup;
 			children = (
 				1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */,
-				297BFD54D34C4D0286D33DF8 /* ForkScanPagesTests.swift */,
 				29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */,
 				75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */,
 				BF99AF1D35D93792E7C80B35 /* ForkChatRPCTests.swift */,
@@ -1812,7 +1811,6 @@
 			isa = PBXGroup;
 			children = (
 				611229C09BFE865783BA1CC4 /* ForkRPC.swift */,
-				8C91028C54914B378F092F33 /* ForkScanPages.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -2901,6 +2899,7 @@
 		E39DC717F9FD6A4421A9DA9B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4ADE0466A91B481295B329A8 /* ForkScanPages.swift */,
 				4C4E255D18602C368E060584 /* Live */,
 				4CBAB278E7CD2A2BE19A1A63 /* Models */,
 				5CD51A27C34932C4D8A4B220 /* Chat */,
@@ -2927,6 +2926,7 @@
 				BF92C9F4FF63955A0EB82DF0 /* ForkLiveVoiceRequestTests.swift */,
 				DF4949044CB553EA242FCF44 /* ForkMCPServersTests.swift */,
 				EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */,
+				D64A835DA3AD41F9BB24B031 /* ForkScanPagesTests.swift */,
 				FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */,
 			);
 			path = Fork;
@@ -3169,6 +3169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01A946A68595C1D5028FF539 /* ForkThemeSpec.swift in Sources */,
+				0FCA42BE09074DA9A7C66318 /* ForkScanPages.swift in Sources */,
 				0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */,
 				14BFB05ECAA8FA6066D0FA4F /* ForkLiveVoiceIntent.swift in Sources */,
 				1DE409CDAF4B7CC5CC1E20E2 /* ForkTerminalProtocol.swift in Sources */,
@@ -3187,7 +3188,6 @@
 				521DD6EAFE3FB3CF9346C4AC /* ForkLiveModeView.swift in Sources */,
 				5F7E68DFE3DD0C5C49DAC1A6 /* OpenUICheck.swift in Sources */,
 				6E945235D205556BAABDE246 /* ForkRPC.swift in Sources */,
-				B8A7E81EC29E4B6EB3657C3F /* ForkScanPages.swift in Sources */,
 				75AAA756EFE6F90494464055 /* ForkLiveModeController.swift in Sources */,
 				7612F614AB86CBEF2F8DC07C /* LiveSpeechText.swift in Sources */,
 				780427CAB882328CBE8CE44D /* ForkMemoryNotice.swift in Sources */,
@@ -3671,10 +3671,10 @@
 			files = (
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
-				EE73ABCB92A848D3902AFE26 /* ForkScanPagesTests.swift in Sources */,
 				1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */,
 				2394F725C3727E726555400A /* ForkTerminalScreenTests.swift in Sources */,
 				4A38FD73E9E65936D79E3F25 /* ForkThemeSpecTests.swift in Sources */,
+				A8837C5BBF9444A492B17435 /* ForkScanPagesTests.swift in Sources */,
 				71AD01A116298F4DBA909514 /* ForkLiveVoiceRequestTests.swift in Sources */,
 				736645F7454FADA987E48FE2 /* OpenUICatalogTests.swift in Sources */,
 				7CDBA6D77F9DBD7C954A8658 /* ForkMCPRPCTests.swift in Sources */,

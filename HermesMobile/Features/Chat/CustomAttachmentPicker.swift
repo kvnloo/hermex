@@ -530,7 +530,7 @@ struct HermexAttachmentPickerView: View {
     var body: some View {
         GeometryReader { proxy in
             let layout = HermexAttachmentPickerLayout.resolve(
-                containerSize: proxy.size, mode: mode, menuRowCount: 3 + (onScanDocument == nil ? 0 : 1) + (onRecordVoiceNote == nil ? 0 : 1)
+                containerSize: proxy.size, mode: mode, menuRowCount: menuRowCount
             )
             ZStack(alignment: .bottomLeading) {
                 Button(action: dismissPicker) {
@@ -576,7 +576,13 @@ struct HermexAttachmentPickerView: View {
 
     private func panel(size: CGSize) -> some View {
         ZStack {
-            if mode == .menu { menuPanel.transition(.opacity) }
+            if mode == .menu {
+                if size.height < preferredMenuHeight {
+                    ScrollView { menuPanel }.transition(.opacity)
+                } else {
+                    menuPanel.transition(.opacity)
+                }
+            }
             if mode == .photos { photoPanel.transition(.opacity) }
             if mode == .camera {
                 HermexAttachmentCameraPanel(
@@ -594,6 +600,9 @@ struct HermexAttachmentPickerView: View {
         .clipShape(.rect(cornerRadius: 46, style: .continuous))
     }
 
+    private var menuRowCount: Int { 3 + (onScanDocument == nil ? 0 : 1) + (onRecordVoiceNote == nil ? 0 : 1) }
+    private var preferredMenuHeight: CGFloat { CGFloat(menuRowCount) * 66 + 24 }
+
     private var menuPanel: some View {
         VStack(spacing: 0) {
             menuRow(title: "Files", systemImage: "paperclip", enabled: !isBusy, action: chooseFiles)
@@ -605,7 +614,7 @@ struct HermexAttachmentPickerView: View {
                 Task { await model.loadLibrary() }
             }
             if let onScanDocument {
-                menuRow(title: "Scan document", systemImage: "doc.viewfinder", enabled: imageChoicesAreEnabled) {
+                menuRow(title: "Scan document", tableName: "Fork", systemImage: "doc.viewfinder", enabled: imageChoicesAreEnabled) {
                     guard !isDismissing else { return }
                     onScanDocument()
                     animateDismissal()
@@ -626,11 +635,12 @@ struct HermexAttachmentPickerView: View {
 
     private func menuRow(
         title: LocalizedStringKey,
+        tableName: String? = nil,
         systemImage: String,
         enabled: Bool,
         action: @escaping () -> Void
     ) -> some View {
-        HermexAttachmentMenuRow(title: Text(title), systemImage: systemImage, action: action)
+        HermexAttachmentMenuRow(title: Text(title, tableName: tableName), systemImage: systemImage, action: action)
             .disabled(!enabled)
     }
 
