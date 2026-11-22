@@ -522,6 +522,7 @@ struct HermexAttachmentPickerView: View {
 
     let imageCapacity: Int
     let onChooseFiles: () -> Void
+    var onScanDocument: (() -> Void)? = nil
     var onRecordVoiceNote: (() -> Void)? = nil
     let onAdd: ([HermexPickedMedia]) -> Void
     let onDismiss: () -> Void
@@ -529,7 +530,7 @@ struct HermexAttachmentPickerView: View {
     var body: some View {
         GeometryReader { proxy in
             let layout = HermexAttachmentPickerLayout.resolve(
-                containerSize: proxy.size, mode: mode, menuRowCount: onRecordVoiceNote == nil ? 3 : 4
+                containerSize: proxy.size, mode: mode, menuRowCount: 3 + (onScanDocument == nil ? 0 : 1) + (onRecordVoiceNote == nil ? 0 : 1)
             )
             ZStack(alignment: .bottomLeading) {
                 Button(action: dismissPicker) {
@@ -602,6 +603,13 @@ struct HermexAttachmentPickerView: View {
             menuRow(title: "Photos", systemImage: "photo.on.rectangle.angled", enabled: imageChoicesAreEnabled) {
                 animate { mode = .photos }
                 Task { await model.loadLibrary() }
+            }
+            if let onScanDocument {
+                menuRow(title: "Scan document", systemImage: "doc.viewfinder", enabled: imageChoicesAreEnabled) {
+                    guard !isDismissing else { return }
+                    onScanDocument()
+                    animateDismissal()
+                }
             }
             if let onRecordVoiceNote {
                 menuRow(title: "Voice note", systemImage: "waveform", enabled: !isBusy) {
