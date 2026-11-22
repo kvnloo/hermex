@@ -66,11 +66,12 @@ enum BotProfileName {
     private let store: BotConnectionStore
     private let makeWire: @MainActor (BotConnection) -> any BotTransport
     private let onCreated: (String) -> Void
+    private let fixedName: String?
 
-    init(server: URL, connection: BotConnection, roster: [BotProfile], source: BotProfile? = nil,
+    init(server: URL, connection: BotConnection, roster: [BotProfile], source: BotProfile? = nil, name: String? = nil,
          store: BotConnectionStore? = nil, makeWire: (@MainActor (BotConnection) -> any BotTransport)? = nil,
          onCreated: @escaping (String) -> Void = { _ in }) {
-        self.server = server; self.connection = connection; self.source = source
+        self.server = server; self.connection = connection; self.source = source; fixedName = name
         self.store = store ?? BotConnectionStore()
         self.makeWire = makeWire ?? { BotClient(saved: $0, server: server) }; self.onCreated = onCreated
         taken = Set(roster.map(\.id))
@@ -89,7 +90,7 @@ enum BotProfileName {
         self.draft = draft
     }
 
-    var name: String { BotProfileName.slug(from: draft.title) }
+    var name: String { fixedName ?? BotProfileName.slug(from: draft.title) }
     var nameIsTaken: Bool { taken.contains(name) }
     var hasStarted: Bool { !outcomes.isEmpty }
     var nameProblem: String? {

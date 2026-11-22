@@ -95,6 +95,25 @@ import XCTest
         XCTAssertNil(creator.note)
     }
 
+    func testAnImportedBotKeepsItsProfileNameWhateverItsTitle() async throws {
+        var created: [String] = []
+        let (creator, wire) = try makeCreator(roster: [], name: "reviewer") { created.append($0) }
+        creator.setTitle("Code Reviewer")
+        creator.setRole("Reviews pull requests")
+
+        await creator.create()
+
+        XCTAssertEqual(Array(wire.calls.map(\.0).prefix(2)), ["profiles.create", "profiles.configure"])
+        let create = wire.calls[0].1
+        XCTAssertEqual(create["name"], .string("reviewer"), "the file's profile name, not a slug of its title")
+        XCTAssertEqual(create["description"], .string("Reviews pull requests"))
+        let look = wire.calls[1].1
+        XCTAssertEqual(look["name"], .string("reviewer"))
+        XCTAssertEqual(look["ui_meta"]?["hermes-bots"]["title"], .string("Code Reviewer"))
+        XCTAssertEqual(creator.phase, .created)
+        XCTAssertEqual(created, ["reviewer"])
+    }
+
     func testNewBotSendsTypedInstructionsAndTheSkillsOptOut() async throws {
         let (creator, wire) = try makeCreator(roster: [])
         creator.setTitle("Chief of Staff")
@@ -419,7 +438,7 @@ import XCTest
         XCTAssertEqual(BotUnreadStore(defaults: defaults).load(connectionID: inbox.connection!.id).keys.sorted(), ["keep"])
     }
 
-    private func makeCreator(roster: [BotJSON], source: BotProfile? = nil, store: BotConnectionStore? = nil,
+    private func makeCreator(roster: [BotJSON], source: BotProfile? = nil, name: String? = nil, store: BotConnectionStore? = nil,
                              onCreated: @escaping (String) -> Void = { _ in }) throws -> (BotCreator, BotLifecycleFixtureWire) {
         let store = try store ?? {
             let store = BotConnectionStore(keychain: InMemoryKeychainStore())
@@ -430,7 +449,7 @@ import XCTest
         let connection = try XCTUnwrap(store.load(server: server))
         let wire = BotLifecycleFixtureWire(roster: roster)
         let creator = BotCreator(server: server, connection: connection, roster: roster.compactMap(BotProfile.init),
-                                 source: source, store: store, makeWire: { _ in wire }, onCreated: onCreated)
+                                 source: source, name: name, store: store, makeWire: { _ in wire }, onCreated: onCreated)
         return (creator, wire)
     }
 
