@@ -653,6 +653,12 @@ struct HermesServerHome: View {
             }
         }
         .onAppear(perform: readConnection)
+        .forkRoutineTab(showSessionsForRoutine)
+    }
+
+    private func showSessionsForRoutine() {
+        guard sessions != nil else { return }
+        tab = .sessions; settings = nil; isPresentingAddServer = false
     }
 
     private func readConnection() {
