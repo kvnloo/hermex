@@ -14,11 +14,18 @@ enum ForkLiveOrbStyle: String, CaseIterable, Identifiable {
     }
 }
 
+extension EnvironmentValues {
+    @Entry var forkLiveOrbIsStill = false
+}
+
 struct ForkLiveOrb: View {
     let phase: LivePhase
     let level: Double
     let style: ForkLiveOrbStyle
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.forkLiveOrbIsStill) private var isStill
+
+    private var reduceMotion: Bool { systemReduceMotion || isStill }
 
     var body: some View {
         TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { context in

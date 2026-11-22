@@ -878,6 +878,21 @@ places sections for this phone only: `BotSectionOrderStore` keeps the placed ids
 Desktop. Placed sections keep their position, the rest follow A–Z after them,
 and ids the roster no longer has are ignored. "Reset to A–Z" forgets the
 placement; removing the connection deletes it.
+On a Hermes server's home, each bot row has a chevron that expands the bot's sessions under
+it (`ForkBotSessionBranchRows`, HX-089). Expanding reads that Profile's first Sessions page
+(`BotInbox.firstSessionPage`, the same `GET /api/sessions` the Sessions list sends) once the
+inbox is live, and reads it again after every roster read, so `sessions.changed` refreshes an
+open branch. Hidden rows (the bot's own Bot Chat, room sessions) and archived rows are left
+out, a lineage shows once, and rows sort newest first (`ForkBotSessionBranch`). The branch
+shows the first five with the host's unread mark, the relative time or the live state that
+`session.active_list` reports for the row's key, then "Show all (N)" (N+ when the page was
+full), which picks that Profile on the Sessions side, and "New session", a new chat on that
+Profile. A row opens through the Sessions side's own link handling, as a notification tap
+does. Which bots are expanded is kept per configured server, connection and Profile in
+`UserDefaults` (`ForkBotSessionExpansion`); deleting the bot or removing the connection
+forgets it. A failed read keeps the rows shown; with none, it offers a retry. The webui Bot
+Mode inbox has no Sessions side, so it shows no chevron.
+
 `groups` are executable group rooms, not Desktop organization sections. Their read-only viewer is described below. A
 description of 24 characters or fewer reads as a role chip beside the name when
 the chat has a preview; the activity label is the time today, the weekday within

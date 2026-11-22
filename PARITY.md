@@ -18,6 +18,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 |---|---|---|---|
 | Add an instance by address and test it | has | Add Server sheet, connection probe (ADR 0138, 0143) | — |
 | Password sign-in | has | `AuthManager`, Hermes connection credentials (ADR 0142) | — |
+| Provider OAuth sign-in (device code) | has | Settings → Provider Sign-In: host device-code routes, `ASWebAuthenticationSession`, catalog readback without an account claim (ADR 0181) | `boat/hx-rebase/hx-084` |
 | Several saved instances (two or more hosts) | has | `ServerAccount` / server registry, per-server isolation (ADR 0131, `docs/agents/multi-server-state-isolation.md`) | — |
 | Browser (OIDC) sign-in | has | `HermesBrowserSignIn`: loopback + `ASWebAuthenticationSession` + PKCE (ADR 0140) | — |
 | Browser tab closes after sign-in | has | `ASWebAuthenticationSession` (ephemeral) dismisses itself when the loopback redirect lands; the Android open item does not apply | — |
@@ -31,6 +32,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 |---|---|---|---|
 | Bot list with last message and time | has | Bots inbox (`BotsInboxView`, ADR 0009/0015) | — |
 | Filters (view, sort, recent, show, agents, include groups) | partial | Session list filters and project filter; the Bots inbox has search, not the full filter sheet | later |
+| Tree of sessions under each bot (HA-032) | has | Bots inbox: a chevron on each bot row expands its newest five sessions, Show all (N) into that bot's Sessions list, New session (`ForkBotSessionTreeView`, `ForkBotSessionTree`) | `boat/hx-bot-sessions/bot-session-tree` |
 | New session sheet with every bot and New group | has | `BotCreateView`, `BotRoomCreateView` (ADR 0011) | — |
 | Search filters as you type | has | `BotSearchView`, session search (ADR 0135) | — |
 | Bot directory import (`application/vnd.ai.nousresearch.hermes.mobile.bot+json`) | has | Imported type + document type in Info.plist; opening a bot file shows Import Bot with name, title and description, then Add Bot (prefilled `BotCreateView`, profile name from the file) or Open Chat if it exists (`ForkBotImport`, `ForkBotDirectoryDocument`) | `boat/hx-small/hx-019` |
@@ -48,6 +50,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Chat style (Bubbles) | has | `MessageBubbleView` (native bubbles are hermex's default) | — |
 | More → Artifacts | has | Bot artifacts (`BotArtifact*`, ADR 0001) | — |
 | More → Execution | has | Delegated work / workers (`HermesDelegatedWorkView`, ADR 0037) | — |
+| Mission Control: agents, subagents, Tasks, background processes with Pause / Resume / Stop / Retry | has | Sidebar → **Mission Control** sheet: one list from `delegation.status`, the Tasks list and `agents.list`; spawn gate and Tasks pause/resume, failed Tasks retry; commands the host can't honour are disabled with the reason (`HermesMobile/Fork/Mission/`, ADR 0183) | `boat/hx-rebase/hx-075` |
 | More → Terminal | missing | Host shell over `/api/host-terminal` WebSocket + a small VT screen buffer | `boat/hermex/host-terminal` |
 | "Worked for %s" after a turn | has | `TranscriptTurnFolding` ("Worked for \(elapsed)") | — |
 | Reactions with skin tone (`message.react`, `message.reaction`) | missing | Context-menu React picker with a skin-tone row; chips under the message | `boat/hermex/chat-parity` |
@@ -114,10 +117,11 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Home screen widget "Agent Actions" (New Chat, Live Voice) | partial | Bot widgets and provider-limit widgets exist (ADR 0067); no actions widget | `boat/hermex/system-entry` |
 | Launcher shortcuts: New Chat, Start Live Voice, Open Sessions | partial | App Shortcuts: New Chat, New Chat with Voice, profile chats (`HermexAppIntents`). Add Start Live Voice | `boat/hermex/system-entry` |
 | Share target → new-chat draft | has | `HermesShareExtension` + share inbox (ADR 0073) | — |
+| Share with favourite actions (Summarize, Extract tasks…) and Project pick | has | Share to Hermes sheet in the Hermes home before the draft (ADR 0182) | `boat/hx-rebase/hx-076` |
 | Live Activity / ongoing turn | has | `HermesLiveActivityWidget` (ADR 0069-0072) | — |
-| System assistant (VoiceInteractionService, assist overlay) | partial | iOS doesn't allow third-party assistants. Equivalent: Siri / Action button via App Shortcuts (has), plus the Live Voice intent | `boat/hermex/system-entry` |
+| System assistant + consented screen preview | has (mapped) | iOS doesn't allow third-party assistants. Action button → Live Voice: the Live Voice control (`ForkLiveVoiceControl`) or the Start Live Voice App Shortcut (`boat/hx-shortcuts-l10n/shortcuts`). Screen preview: **Share Screen to Hermex** (`ForkShareScreenIntent`) takes an image, e.g. from Shortcuts' Take Screenshot on the Action button, and shows it in a review sheet; only Attach queues it into the share inbox as a new-chat attachment, nothing is sent, Discard or swipe-away drops it, and a capture expires after 10 minutes (`ScreenShareConsent`). No ReplayKit broadcast extension: it would need a new target and App ID for the same one-image result | `boat/hx-rebase/hx-065` |
 | App Functions (chat and routines handoffs) | has | App Intents in Shortcuts: **Ask a Bot** (`AskBotIntent`: prompt + optional Bot) stages the prompt as a new-chat draft through the share inbox, nothing sent; **Run a Task** (`RunRoutineIntent`) opens the active Hermes server's Tasks for the user to tap Run Now, nothing runs from Shortcuts (same as Android's handoffs). Not App Shortcuts, so no Siri phrases to localize (`HermesMobile/Fork/System/ForkHandoffIntents.swift`) | `boat/hx-intents/hx-067` |
-| Device access: Health, calendar, contacts, location, alarms | missing | HealthKit, EventKit, Contacts, CoreLocation, AlarmKit. **Blocked: host tool contract** (same as Android card t_4e0c2c46) | — |
+| Device access: Health, calendar, contacts, location, alarms | partial | Settings → Device Access: HealthKit, EventKit, Contacts, CoreLocation, AlarmKit sources, off by default, per-request prompt, `device_tools_v1` shapes ([docs/device-tools.md](docs/device-tools.md)). Local only, as on Android: the gateway does not send `device.tool.call` yet | `boat/hx-rebase/hx-066` |
 | Document scanner | missing | `VNDocumentCameraViewController` (VisionKit, Apple framework, no Play-services issue on iOS) → composer attachment | `boat/hermex/doc-scanner` (later) |
 | Push notifications with actions | has | hermex-push relay, notification actions (ADR 0122-0127) | — |
 

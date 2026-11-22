@@ -131,7 +131,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Hermex needs microphone access to dictate text into the message composer.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Hermex needs camera access to capture and attach photos directly in chat.</string>
+	<string>Hermex needs camera access to capture photos and scan documents to attach in chat.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Hermex uses Face ID to unlock the app when the lock is on.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -144,6 +144,20 @@
 	<true/>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Hermex uses speech recognition to turn dictated audio into editable draft text.</string>
+	<key>NSAlarmKitUsageDescription</key>
+	<string>Hermex schedules an alarm only when you allow a device request for one in Settings, Device Access.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Hermex reads event titles and times only when you allow a device request for them in Settings, Device Access.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Hermex looks up contact names only when you allow a device request for one in Settings, Device Access.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Hermex reads your step total for the last 24 hours only when you allow a device request for it in Settings, Device Access.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Hermex never writes to Health.</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Hermex reads your approximate location only when you allow a device request for it in Settings, Device Access.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

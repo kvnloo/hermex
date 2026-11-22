@@ -220,6 +220,7 @@ struct MessageComposerView: View {
     let onSelectProfile: (ProfileSummary) -> Void
     let onHeightChange: (_ height: CGFloat, _ isResting: Bool) -> Void
     let onPhotoMediaSelected: ([HermexPickedMedia]) -> Void
+    let onScannedPDF: (Data) async -> Void
     let onFileURLsSelected: ([URL]) -> Void
     let onPasteFileProviders: ([NSItemProvider]) -> Void
     let onPasteFileURLs: ([URL]) -> Void
@@ -283,6 +284,10 @@ struct MessageComposerView: View {
     @State private var deferredUploadFocusPhase: DeferredUploadFocusPhase = .none
     @State private var showMediaPicker = false
     @State private var presentFilesAfterMediaPickerDismisses = false
+    @State private var presentScannerAfterMediaPickerDismisses = false
+    @State private var showDocumentScanner = false
+    @State private var scannedPDF: Data?
+    @State private var scanFailed = false
     @State private var showFileImporter = false
     @State private var voiceInput = ComposerVoiceInputController()
     @State private var restoresFocusAfterDictation = false
@@ -579,6 +584,9 @@ struct MessageComposerView: View {
                     onChooseFiles: {
                         presentFilesAfterMediaPickerDismisses = true
                     },
+                    onScanDocument: ForkDocumentScanner.isSupported ? {
+                        presentScannerAfterMediaPickerDismisses = true
+                    } : nil,
                     onRecordVoiceNote: isVoiceNoteRecordingDisabled ? nil : { startVoiceNoteRecording(isHeld: false) },
                     onAdd: { media in
                         guard !media.isEmpty else { return }
@@ -664,6 +672,15 @@ struct MessageComposerView: View {
         }
         .onChange(of: showMediaPicker) { _, isPresented in
             guard !isPresented else { return }
+            if presentScannerAfterMediaPickerDismisses {
+                presentScannerAfterMediaPickerDismisses = false
+                prepareForComposerPresentation()
+                Task { @MainActor in
+                    await Task.yield()
+                    showDocumentScanner = true
+                }
+                return
+            }
             guard presentFilesAfterMediaPickerDismisses else {
                 if !showFileImporter { restoreFocusAfterPresentationDismissalSettles() }
                 return
@@ -705,6 +722,17 @@ struct MessageComposerView: View {
             .themedPageBackground()
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
+        }
+        .fullScreenCover(isPresented: $showDocumentScanner, onDismiss: finishDocumentScan) {
+            ForkDocumentScanner { result in
+                switch result {
+                case .success(let data): scannedPDF = data
+                case .failure: scanFailed = true
+                case nil: break
+                }
+                showDocumentScanner = false
+            }
+            .ignoresSafeArea()
         }
         .fileImporter(
             isPresented: $showFileImporter,
@@ -1608,6 +1636,22 @@ struct MessageComposerView: View {
         shouldRestoreFocusAfterPresentation = isFocused
         if isFocused {
             isFocused = false
+        }
+    }
+
+    private func finishDocumentScan() {
+        if scanFailed {
+            scanFailed = false
+            shouldRestoreFocusAfterPresentation = false
+            noticeMessage = String(localized: "Could not scan the document. Please try again.", table: "Fork")
+        } else if let data = scannedPDF {
+            scannedPDF = nil
+            Task { @MainActor in
+                await onScannedPDF(data)
+                restoreFocusAfterPresentationIfNeeded()
+            }
+        } else {
+            restoreFocusAfterPresentationIfNeeded()
         }
     }
 

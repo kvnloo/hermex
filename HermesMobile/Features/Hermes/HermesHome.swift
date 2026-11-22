@@ -9,6 +9,7 @@ struct HermesHome {
     let avatar: SessionsHeader.Avatar
     let tab: Binding<HermesHomeTab>
     var isSidebar = false
+    var botSessions: ForkBotSessionRoutes? = nil
 }
 
 struct HermesHomeSearch {
