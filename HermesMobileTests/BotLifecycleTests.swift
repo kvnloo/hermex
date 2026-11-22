@@ -109,7 +109,7 @@ import XCTest
         XCTAssertEqual(create["description"], .string("Reviews pull requests"))
         let look = wire.calls[1].1
         XCTAssertEqual(look["name"], .string("reviewer"))
-        XCTAssertEqual(look["ui_meta"]?["hermes-bots"]?["title"], .string("Code Reviewer"))
+        XCTAssertEqual(look["ui_meta"]?["hermes-bots"]["title"], .string("Code Reviewer"))
         XCTAssertEqual(creator.phase, .created)
         XCTAssertEqual(created, ["reviewer"])
     }
