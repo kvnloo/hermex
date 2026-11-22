@@ -114,7 +114,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Live Activity / ongoing turn | has | `HermesLiveActivityWidget` (ADR 0069-0072) | — |
 | System assistant (VoiceInteractionService, assist overlay) | partial | iOS doesn't allow third-party assistants. Equivalent: Siri / Action button via App Shortcuts (has), plus the Live Voice intent | `boat/hermex/system-entry` |
 | App Functions | has (mapped) | App Intents / App Shortcuts are the iOS equivalent | — |
-| Device access: Health, calendar, contacts, location, alarms | missing | HealthKit, EventKit, Contacts, CoreLocation, AlarmKit. **Blocked: host tool contract** (same as Android card t_4e0c2c46) | — |
+| Device access: Health, calendar, contacts, location, alarms | partial | Settings → Device Access: HealthKit, EventKit, Contacts, CoreLocation, AlarmKit sources, off by default, per-request prompt, `device_tools_v1` shapes ([docs/device-tools.md](docs/device-tools.md)). Local only, as on Android: the gateway does not send `device.tool.call` yet | `boat/hx-device/device-access` |
 | Document scanner | missing | `VNDocumentCameraViewController` (VisionKit, Apple framework, no Play-services issue on iOS) → composer attachment | `boat/hermex/doc-scanner` (later) |
 | Push notifications with actions | has | hermex-push relay, notification actions (ADR 0122-0127) | — |
 
