@@ -86,6 +86,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Plugins with counts | has | `PluginsView`, `PluginDiscoverView` (ADR 0089) | — |
 | MCP | partial | Per-bot `enabled_mcp_servers` and MCP failure notices; no page listing configured servers and their status | `boat/hermex/mcp-servers` |
 | Projects | has | `HermesProjects`, project filter (`projects.*`) | — |
+| Projects intelligence (HX-077) | missing | Blocked on the Hermes host organizer contract: proposals, high-confidence assignment, smart preview, and organization undo. `projects.for_cwd` reports existing directory ownership, not a proposal. | `boat/hx-projects-intel/hx-077` (blocker only) |
 | Kanban | has | Kanban board (ADR 0062-0066) | — |
 | Artifacts for all of a bot's chats | has | Bot artifacts | — |
 | Routines (scheduled jobs) | has | Tasks (cron) editor, run history (ADR 0153-0156) | — |
