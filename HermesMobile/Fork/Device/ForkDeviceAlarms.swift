@@ -28,8 +28,14 @@ enum ForkDeviceAlarms {
     static func schedule(at date: Date, defaults: UserDefaults = .standard) async throws {
         guard #available(iOS 26.0, *) else { throw ForkDeviceProviderError.unavailable }
         cancel(defaults: defaults)
-        let stop = AlarmButton(text: LocalizedStringResource("Stop", table: "Fork"), textColor: .white, systemImageName: "stop.circle")
-        let alert = AlarmPresentation.Alert(title: LocalizedStringResource("Hermes alarm", table: "Fork"), stopButton: stop)
+        let title = LocalizedStringResource("Hermes alarm", table: "Fork")
+        let alert: AlarmPresentation.Alert
+        if #available(iOS 26.1, *) {
+            alert = AlarmPresentation.Alert(title: title)
+        } else {
+            let stop = AlarmButton(text: LocalizedStringResource("Stop", table: "Fork"), textColor: .white, systemImageName: "stop.circle")
+            alert = AlarmPresentation.Alert(title: title, stopButton: stop)
+        }
         let attributes = AlarmAttributes<ForkDeviceAlarmMetadata>(
             presentation: AlarmPresentation(alert: alert), metadata: ForkDeviceAlarmMetadata(), tintColor: .accentColor
         )

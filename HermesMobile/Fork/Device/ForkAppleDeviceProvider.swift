@@ -60,7 +60,7 @@ final class ForkAppleDeviceProvider: ForkDeviceProvider, @unchecked Sendable {
     func steps(from start: Date, to end: Date) async throws -> Int64? {
         let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
         let descriptor = HKStatisticsQueryDescriptor(
-            predicate: HKSamplePredicate.quantitySample(type: stepType, predicate: predicate),
+            predicate: .quantitySample(type: stepType, predicate: predicate),
             options: .cumulativeSum
         )
         do {

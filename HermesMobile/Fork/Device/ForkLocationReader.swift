@@ -38,7 +38,7 @@ final class ForkLocationReader: NSObject, CLLocationManagerDelegate {
         let timeout = Task {
             try? await Task.sleep(nanoseconds: 15_000_000_000)
             guard !Task.isCancelled else { return }
-            finishFix(nil)
+            self.finishFix(nil)
         }
         defer { timeout.cancel() }
         return await withCheckedContinuation { continuation in
