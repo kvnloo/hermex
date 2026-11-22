@@ -858,6 +858,13 @@
 		79EEC8486030DA04A092D557 /* ScreenCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62D4ED7F12CB894C054390 /* ScreenCanvas.swift */; };
 		946A74000000000000000003 /* StoreScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A74000000000000000001 /* StoreScreenshotTests.swift */; };
 		946A74000000000000000004 /* StoreScreenshotGoldens in Resources */ = {isa = PBXBuildFile; fileRef = 946A74000000000000000002 /* StoreScreenshotGoldens */; };
+		7E8226306F99FF60ACB6F348 /* ForkSharedTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DF997E10D7C7495B0C8AED /* ForkSharedTheme.swift */; };
+		71CD99630DD04908C8E4EB03 /* ForkCardCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE14ACC30D4CB8AE327500E /* ForkCardCatalog.swift */; };
+		CB905F5E400794056C6FB390 /* ForkSharedThemeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94338B7185DBC79B8B3EACE4 /* ForkSharedThemeEnvironment.swift */; };
+		ECB3E359B33829BD701B6B3C /* ForkCardGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161B10C425A32C990813D393 /* ForkCardGalleryView.swift */; };
+		C5C6D89469656255CBF9EBFA /* ForkSharedThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0824CBEA0092FC3A4E363 /* ForkSharedThemeTests.swift */; };
+		F330591078769D8EB99186C0 /* ForkCardGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947BA193BBA1126E6902E3C /* ForkCardGalleryTests.swift */; };
+		0F2E93B92F71859A1DFCEBBF /* EphemeralUI in Resources */ = {isa = PBXBuildFile; fileRef = B6B29FEB300EB72A0F4793A1 /* EphemeralUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1750,6 +1757,13 @@
 		CE62D4ED7F12CB894C054390 /* ScreenCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen/ScreenCanvas.swift"; sourceTree = "<group>"; };
 		946A74000000000000000001 /* StoreScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreenshotTests.swift; sourceTree = "<group>"; };
 		946A74000000000000000002 /* StoreScreenshotGoldens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StoreScreenshotGoldens; sourceTree = "<group>"; };
+		31DF997E10D7C7495B0C8AED /* ForkSharedTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkSharedTheme.swift; sourceTree = "<group>"; };
+		1FE14ACC30D4CB8AE327500E /* ForkCardCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCardCatalog.swift; sourceTree = "<group>"; };
+		94338B7185DBC79B8B3EACE4 /* ForkSharedThemeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkSharedThemeEnvironment.swift; sourceTree = "<group>"; };
+		161B10C425A32C990813D393 /* ForkCardGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCardGalleryView.swift; sourceTree = "<group>"; };
+		A4C0824CBEA0092FC3A4E363 /* ForkSharedThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkSharedThemeTests.swift; sourceTree = "<group>"; };
+		F947BA193BBA1126E6902E3C /* ForkCardGalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCardGalleryTests.swift; sourceTree = "<group>"; };
+		B6B29FEB300EB72A0F4793A1 /* EphemeralUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EphemeralUI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1999,6 +2013,7 @@
 				4CA84847739A459112E526D6 /* ForkThemeRoles.swift */,
 				A500BEBF6883F695CAE66A48 /* ForkThemeSpec.swift */,
 				BC9D0A567FA3898766C93075 /* ForkRGBA.swift */,
+				31DF997E10D7C7495B0C8AED /* ForkSharedTheme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -2042,6 +2057,8 @@
 				E39DC717F9FD6A4421A9DA9B /* Core */,
 				F7899A2D78F49CDB3F3C89C2 /* Settings */,
 				CB25885B65FADE9CE211004A /* Mission */,
+				5257215DF53EF7E009EC8B9D /* Gallery */,
+				F35FA15EE4F5B77D19873AC6 /* Vendor */,
 			);
 			path = Fork;
 			sourceTree = "<group>";
@@ -2079,6 +2096,7 @@
 			children = (
 				1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */,
 				A58729227C28BC9B91025942 /* ForkThemeStore.swift */,
+				94338B7185DBC79B8B3EACE4 /* ForkSharedThemeEnvironment.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -3135,6 +3153,7 @@
 				A497AA21071567A5332D5EDE /* System */,
 				A8C7D2F8E56E8C7638BD20DA /* Share */,
 				D6494EE4848594D7E151D5F6 /* Annotation */,
+				0102255A2B4239916103A506 /* Gallery */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -3167,6 +3186,8 @@
 				962DCA946758473492CE1514 /* ForkHomeFiltersTests.swift */,
 				FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */,
 				70981FACD42B45182F5262FC /* ForkMessageReportTests.swift */,
+				A4C0824CBEA0092FC3A4E363 /* ForkSharedThemeTests.swift */,
+				F947BA193BBA1126E6902E3C /* ForkCardGalleryTests.swift */,
 			);
 			path = Fork;
 			sourceTree = "<group>";
@@ -3181,6 +3202,30 @@
 				83CA0AA82AE2050B1C8E0258 /* ForkProviderOAuthClient.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		0102255A2B4239916103A506 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				1FE14ACC30D4CB8AE327500E /* ForkCardCatalog.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		5257215DF53EF7E009EC8B9D /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				161B10C425A32C990813D393 /* ForkCardGalleryView.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		F35FA15EE4F5B77D19873AC6 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				B6B29FEB300EB72A0F4793A1 /* EphemeralUI */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3387,6 +3432,7 @@
 				C09200000000000000000021 /* Fonts in Resources */,
 				9E2A653D968A4ACDA19A8142 /* ThirdPartyNotices in Resources */,
 				C0DE16490000000000000001 /* pele.global.js in Resources */,
+				0F2E93B92F71859A1DFCEBBF /* EphemeralUI in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3950,6 +3996,10 @@
 				26AB000000000000000000B2 /* ProvidersView.swift in Sources */,
 				B5A100000000000000000001 /* SharedDraftStore.swift in Sources */,
 				B5A100000000000000000008 /* ShareInputReader.swift in Sources */,
+				7E8226306F99FF60ACB6F348 /* ForkSharedTheme.swift in Sources */,
+				71CD99630DD04908C8E4EB03 /* ForkCardCatalog.swift in Sources */,
+				CB905F5E400794056C6FB390 /* ForkSharedThemeEnvironment.swift in Sources */,
+				ECB3E359B33829BD701B6B3C /* ForkCardGalleryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4237,6 +4287,8 @@
 				C0DE88500000000000000003 /* AppLockTests.swift in Sources */,
 				1A2B3C4D5E6F700000000341 /* AppIntentNewChatTests.swift in Sources */,
 				1A2B3C4D5E6F700000000345 /* AppIntentNewChatInProfileTests.swift in Sources */,
+				C5C6D89469656255CBF9EBFA /* ForkSharedThemeTests.swift in Sources */,
+				F330591078769D8EB99186C0 /* ForkCardGalleryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

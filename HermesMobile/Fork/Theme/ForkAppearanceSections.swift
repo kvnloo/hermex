@@ -7,17 +7,32 @@ struct ForkAppearanceSections: View {
     @AppStorage(ForkThemeStore.jsonKey) private var customJSON = ""
     @AppStorage(GlassPreference.isEnabledKey) private var isGlassEnabled = GlassPreference.defaultIsEnabled
     @Environment(\.appAppearance) private var appearance
+    @Environment(\.forkSharedTheme) private var sharedTheme
     @State private var isImportingFile = false
     @State private var notice: ForkThemeNotice?
 
     var body: some View {
         Section {
-            ForEach(ForkThemeSpec.presets, id: \.id) { look in
+            ForEach(looks, id: \.id) { look in
                 Button { apply(look) } label: { ForkLookRow(look: look, isSelected: isApplied(look)) }
                     .buttonStyle(.plain)
             }
         } header: {
             Text("Looks", tableName: "Fork")
+        } footer: {
+            if let version = sharedTheme?.version {
+                Text("Glide comes from the shared theme file, version \(version).", tableName: "Fork")
+            }
+        }
+
+        Section {
+            NavigationLink {
+                ForkCardGalleryView()
+            } label: {
+                SettingsLabel(title: String(localized: "Card Gallery", table: "Fork"), systemImage: "square.grid.2x2")
+            }
+        } footer: {
+            Text("Every card kind in the shared ephemeral-ui catalog, drawn from its sample data.", tableName: "Fork")
         }
 
         Section {
@@ -57,6 +72,10 @@ struct ForkAppearanceSections: View {
                 Text("Solid replaces Liquid Glass on bars and buttons with a frosted material.", tableName: "Fork")
             }
         }
+    }
+
+    private var looks: [ForkThemeSpec] {
+        (sharedTheme.map { [$0.spec] } ?? []) + ForkThemeSpec.presets
     }
 
     private func isApplied(_ look: ForkThemeSpec) -> Bool {
@@ -101,6 +120,8 @@ struct ForkAppearanceSections: View {
 private struct ForkLookRow: View {
     let look: ForkThemeSpec
     let isSelected: Bool
+    @Environment(\.forkSharedTheme) private var sharedTheme
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         HStack(spacing: 12) {
@@ -115,6 +136,7 @@ private struct ForkLookRow: View {
             }
         }
         .contentShape(Rectangle())
+        .animation(sharedTheme?.animation("quick", reduceMotion: reduceMotion), value: isSelected)
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }

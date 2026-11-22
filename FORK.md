@@ -62,6 +62,24 @@ no app types) as a module named `HermesMobile`, and runs `HermesMobileTests/Fork
 XCTest. The same files are members of the Xcode app and test targets, so macOS CI runs
 those tests too.
 
+## Shared theme and card catalog
+
+`HermesMobile/Fork/Vendor/EphemeralUI/` holds a pinned copy of
+[kvnloo/ephemeral-ui](https://github.com/kvnloo/ephemeral-ui)'s `theme/glide.json` and
+`catalog/catalog.json`. `PIN.json` records the commit, each file's version and its SHA-256;
+`coverage.json` says how the app draws each card kind (`props`: the gallery's field list,
+`native`: a SwiftUI renderer). The folder ships in the app bundle as `EphemeralUI/`.
+Never edit the copies; re-vendor them:
+
+```sh
+git clone https://github.com/kvnloo/ephemeral-ui /tmp/ephemeral-ui   # or pull an existing checkout
+python3 ci/check_ephemeral_ui.py --vendor /tmp/ephemeral-ui           # copies, rewrites PIN.json, checks
+```
+
+`python3 ci/check_ephemeral_ui.py` fails when a copy differs from its pin, a file is not
+shape `v` 0, or a catalog kind has no `coverage.json` entry; `--upstream main` also fails
+when ephemeral-ui `main` has moved on (stale theme or catalog, new kinds). Staging CI runs both.
+
 ## Fork features
 
 See [PARITY.md](PARITY.md) for the hermes-android → hermex feature matrix, each

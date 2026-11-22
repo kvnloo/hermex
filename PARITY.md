@@ -108,6 +108,8 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Look & Feel: theme mode, accent, themes | has | Settings → Appearance, `AppColor` themes, `ThemeGalleryView` (ADR 0102, 0168) | — |
 | NextGen theme engine: looks, Import / Copy theme JSON | missing | Theme JSON codec (Linux-tested) mapped onto `AppColor` custom themes; Import from clipboard/file, Copy to clipboard | `boat/hermex/theme-json` |
 | Solid / Glass surface | partial | Liquid Glass chrome on iOS 26+ (ADR 0163); no user Solid/Glass switch | `boat/hermex/theme-json` |
+| Shared theme file (HX-098): one theme every app reads, with the Glide branding | has | Vendored `kvnloo/ephemeral-ui` `theme/glide.json` (pinned in `HermesMobile/Fork/Vendor/EphemeralUI/PIN.json`), parsed in `ForkSharedTheme` (Linux-tested) and read through `\.forkSharedTheme`: the **Glide** look in Settings → Appearance → Looks, radii, spacing, glass levels and motion speed (turbo halves durations). `ci/check_ephemeral_ui.py` fails on an edited, stale or uncovered copy | `boat/hx-theme/hx-098` |
+| Card gallery from the shared catalog | has | Settings → Appearance → Card Gallery: one cell per fixture of every kind in the vendored `catalog/catalog.json`, drawn from `fixture.props`, with the catalog version shown; `coverage.json` records how each kind is drawn (`ForkCardGallery`) | `boat/hx-theme/hx-098` |
 
 ## System surfaces (Android → iOS)
 
