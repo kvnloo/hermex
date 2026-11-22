@@ -70,8 +70,10 @@ enum AnnotationCompose {
         return [head, body, strokes.isEmpty ? "" : legend(strokes)].filter { !$0.isEmpty }.joined(separator: "\n\n")
     }
 
-    static func closedLoopRegion(_ stroke: AnnotationStroke, screen: AnnotationScreen, padding: Double = 12) -> AnnotationRegion? {
-        guard stroke.pointer == "stylus", ["pen", "circle", "box"].contains(stroke.tool),
+    static func closedLoopRegion(
+        _ stroke: AnnotationStroke, screen: AnnotationScreen, padding: Double = 12, allowsTouch: Bool = false
+    ) -> AnnotationRegion? {
+        guard stroke.pointer == "stylus" || (allowsTouch && stroke.pointer == "touch"), ["pen", "circle", "box"].contains(stroke.tool),
               screen.width.isFinite, screen.height.isFinite, screen.width > 0, screen.height > 0, padding >= 0,
               stroke.points.count >= (stroke.tool == "pen" ? 8 : 2),
               stroke.points.allSatisfy({ $0.x.isFinite && $0.y.isFinite }),

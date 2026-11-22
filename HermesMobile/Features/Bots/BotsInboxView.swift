@@ -11,6 +11,9 @@ import SwiftUI
     private let home: HermesHome?
     @Binding private var pendingDestination: BotDestination?
     @State private var inbox: BotInbox
+    @State private var filters = ForkHomeFilters()
+    @State private var showingFilters = false
+    @State private var reorderAfterFilters = false
     @State private var showingSearch = false
     @State private var searchedProfile: (connectionID: UUID, profileID: String)?
     @State private var showingSetup = false
@@ -62,6 +65,11 @@ import SwiftUI
 
     var body: some View {
         let toasted = navigationSurface
+            .onChange(of: inbox.connection?.id) {
+                reorderAfterFilters = false
+                filters = .init()
+                showingFilters = false
+            }
             .focusedSceneValue(\.hermexSceneActions, sceneActions)
             .fullScreenCover(item: $screenTarget) { target in
                 ScreenView(profile: target.profile.id, title: target.profile.name, server: server, connection: target.connection,
@@ -183,7 +191,9 @@ import SwiftUI
                 if let notice = inbox.notice {
                     Text(notice).font(AppFont.callout()).foregroundStyle(.appSecondary).listRowSeparator(.hidden)
                 }
-                let pinned = inbox.pinned
+                let now = Date.now
+                let pinned = inbox.pinned(filters: filters, now: now)
+                let sections = inbox.sections(filters: filters, now: now)
                 if !pinned.isEmpty {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8, alignment: .top), count: min(pinned.count, 3)), spacing: 24) {
                         ForEach(pinned) { chat in
@@ -205,12 +215,14 @@ import SwiftUI
                     .padding(.vertical, 20)
                     .listRowSeparator(.hidden)
                 }
-                chatSections(inbox.sections)
-                if home == nil && inbox.hiddenCount > 0 {
-                    Button(inbox.showsHidden ? "Hide hidden" : "Show hidden (\(inbox.hiddenCount))") {
-                        inbox.showsHidden.toggle()
+                chatSections(sections, now: now)
+                if pinned.isEmpty && sections.isEmpty && filters != .init()
+                    && (!inbox.profiles.isEmpty || !inbox.rooms.isEmpty) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("No chats match these filters.", tableName: "Fork")
+                        Button { filters = .init() } label: { Text("Reset filters", tableName: "Fork") }
                     }
-                    .font(AppFont.subheadline()).foregroundStyle(.appSecondary)
+                    .font(AppFont.subheadline())
                     .listRowSeparator(.hidden)
                 }
             } else {
@@ -270,15 +282,14 @@ import SwiftUI
     }
 
     private var filterMenu: some View {
-        Menu {
-            Toggle(isOn: $inbox.showsHidden) {
-                Label("Show hidden (\(inbox.hiddenCount))", systemImage: "eye")
-            }
-            .disabled(inbox.hiddenCount == 0 && !inbox.showsHidden)
-            Button("Reorder Sections…", systemImage: "arrow.up.arrow.down") { showingSectionOrder = true }
-                .disabled(inbox.reorderableSectionNames.count < 2)
+        Button {
+            showingFilters = true
         } label: {
-            Label("Filter", systemImage: "line.3.horizontal.decrease")
+            Label {
+                Text("Filters", tableName: "Fork")
+            } icon: {
+                Image(systemName: filters == .init() ? "line.3.horizontal.decrease" : "line.3.horizontal.decrease.circle.fill")
+            }
         }
         .disabled(inbox.connection == nil)
     }
@@ -302,12 +313,12 @@ import SwiftUI
         inbox.selection.profile = inbox.profiles.first { $0.id == searched.profileID }
     }
 
-    @ViewBuilder private func chatSections(_ sections: [BotInbox.ChatSection]) -> some View {
+    @ViewBuilder private func chatSections(_ sections: [BotInbox.ChatSection], now: Date) -> some View {
         let headed = sections.contains { $0.name != nil }
         ForEach(sections) { section in
             if headed {
                 Section {
-                    chatRows(section.chats)
+                    chatRows(section.chats, now: now)
                 } header: {
                     Group {
                         if let name = section.name { Text(verbatim: name) } else { Text("Other chats") }
@@ -317,29 +328,30 @@ import SwiftUI
                     .accessibilityAddTraits(.isHeader)
                 }
             } else {
-                chatRows(section.chats)
+                chatRows(section.chats, now: now)
             }
         }
     }
 
-    private func chatRows(_ chats: [BotInbox.ChatRow]) -> some View {
+    private func chatRows(_ chats: [BotInbox.ChatRow], now: Date) -> some View {
         ForEach(chats) { chat in
             switch chat {
             case .bot(let profile):
-                row(profile, dimmed: profile.hidden)
+                row(profile, showLatest: filters.isRecent(profile.lastActive, now: now))
             case .room(let room):
                 if let key = inbox.roomKey(room) { roomRow(room, key: key) }
             }
         }
     }
 
-    private func row(_ profile: BotProfile, dimmed: Bool) -> some View {
+    private func row(_ profile: BotProfile, showLatest: Bool) -> some View {
         Button { inbox.selection.profile = profile } label: {
             BotInboxRow(profile: profile, avatar: inbox.avatars[profile.id], unread: inbox.isUnread(profile),
-                        status: inbox.liveStatuses[profile.id], statusIsStale: inbox.liveStatusesAreStale)
+                        status: inbox.liveStatuses[profile.id], statusIsStale: inbox.liveStatusesAreStale,
+                        showLatest: showLatest)
         }
         .buttonStyle(.plain)
-        .opacity(dimmed ? 0.5 : 1)
+        .opacity(profile.hidden ? 0.5 : 1)
         .contextMenu { organizeMenu(profile) }
         .swipeActions(edge: .leading, allowsFullSwipe: false) {
             Button {
@@ -478,7 +490,8 @@ import SwiftUI
 
     private var keyboardShortcutChats: [BotInbox.ChatRow] {
         guard inbox.connection != nil else { return [] }
-        return inbox.pinned + inbox.sections.flatMap(\.chats)
+        let now = Date.now
+        return inbox.pinned(filters: filters, now: now) + inbox.sections(filters: filters, now: now).flatMap(\.chats)
     }
 
     private var selectedChatID: String? {
@@ -576,6 +589,17 @@ import SwiftUI
 extension BotsInboxView {
     private func attachPresentations(to content: some View) -> some View {
         content
+            .sheet(isPresented: $showingFilters, onDismiss: {
+                guard reorderAfterFilters else { return }
+                reorderAfterFilters = false
+                showingSectionOrder = inbox.connection != nil
+            }) {
+                BotsHomeFiltersSheet(filters: $filters, profiles: inbox.profiles,
+                                     canReorder: inbox.reorderableSectionNames.count >= 2) {
+                    reorderAfterFilters = true
+                    showingFilters = false
+                }
+            }
             .sheet(isPresented: Binding(get: { roomCreator != nil }, set: { if !$0 { roomCreator = nil } }), onDismiss: {
                 if let key = createdRoom, key.connectionID == inbox.connection?.id { roomSequence = nil; inbox.selection.room = key }
                 createdRoom = nil
@@ -727,6 +751,7 @@ private struct BotsInboxChrome<Filter: View, NewChat: View>: ViewModifier {
                         Button("Search bots and messages", systemImage: "magnifyingglass", action: search)
                             .disabled(isOffline)
                     }
+                    ToolbarItem(placement: .topBarTrailing) { filter }
                     ToolbarItem(placement: .topBarTrailing) { newChat }
                     if #available(iOS 26, *) { ToolbarSpacer(.fixed, placement: .topBarTrailing) }
                     ToolbarItem(placement: .topBarTrailing) {
@@ -841,13 +866,14 @@ private struct BotInboxRow: View {
     let unread: Bool
     let status: BotLiveStatus?
     let statusIsStale: Bool
+    let showLatest: Bool
     private var chip: String? {
-        guard let description = profile.description, description.count <= 24,
+        guard showLatest, let description = profile.description, description.count <= 24,
               profile.preview?.isEmpty == false else { return nil }
         return description
     }
     private var subline: String {
-        if let preview = profile.preview, !preview.isEmpty { return preview }
+        if showLatest, let preview = profile.preview, !preview.isEmpty { return preview }
         return profile.description ?? profile.id
     }
     var body: some View {
@@ -888,7 +914,7 @@ private struct BotInboxRow: View {
         if let status {
             BotLiveStatusLabel(status: status, font: AppFont.subheadline(weight: .semibold), isStale: statusIsStale)
                 .fixedSize(horizontal: !dynamicTypeSize.isAccessibilitySize, vertical: false)
-        } else if let date = profile.lastActive {
+        } else if showLatest, let date = profile.lastActive {
             Text(BotInboxDateLabel.text(for: date)).font(AppFont.subheadline()).foregroundStyle(.appSecondary)
         }
     }

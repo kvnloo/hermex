@@ -41,19 +41,23 @@ import UIKit
         let chats: [ChatRow]
     }
 
-    var sections: [ChatSection] {
-        let rows = rows(matching: "")
+    var sections: [ChatSection] { sections(filters: .init(includeHidden: showsHidden)) }
+
+    func sections(filters: ForkHomeFilters, now: Date = .now) -> [ChatSection] {
         var filed: [String: [ChatRow]] = [:]
         var unfiled: [ChatRow] = []
-        for profile in rows.others + rows.hidden {
-            if let id = profile.sectionID, profile.sectionName != nil { filed[id, default: []].append(.bot(profile)) }
-            else { unfiled.append(.bot(profile)) }
+        for profile in profiles where profile.hidden || !profile.pinned {
+            let row = ChatRow.bot(profile)
+            guard filters.includes(filterRow(row), now: now) else { continue }
+            if let id = profile.sectionID, profile.sectionName != nil { filed[id, default: []].append(row) }
+            else { unfiled.append(row) }
         }
-        unfiled += visibleRooms.filter { isRoomHidden($0) ? showsHidden : !isRoomPinned($0) }.map(ChatRow.room)
+        unfiled += visibleRooms.lazy.filter { self.isRoomHidden($0) || !self.isRoomPinned($0) }
+            .map(ChatRow.room).filter { filters.includes(self.filterRow($0), now: now) }
         var blocks = sectionNames.compactMap { section in
-            filed[section.id].map { ChatSection(id: "section:" + section.id, name: section.name, chats: byAttention($0)) }
+            filed[section.id].map { ChatSection(id: "section:" + section.id, name: section.name, chats: sorted($0, filters: filters)) }
         }
-        if !unfiled.isEmpty { blocks.append(ChatSection(id: "unfiled", name: nil, chats: byAttention(unfiled))) }
+        if !unfiled.isEmpty { blocks.append(ChatSection(id: "unfiled", name: nil, chats: sorted(unfiled, filters: filters))) }
         return blocks
     }
 
@@ -93,9 +97,29 @@ import UIKit
         return front + rest
     }
 
-    var pinned: [ChatRow] {
-        byAttention(rows(matching: "").pinned.map(ChatRow.bot))
-            + byAttention(visibleRooms.filter { isRoomPinned($0) && !isRoomHidden($0) }.map(ChatRow.room))
+    var pinned: [ChatRow] { pinned(filters: .init(includeHidden: showsHidden)) }
+
+    func pinned(filters: ForkHomeFilters, now: Date = .now) -> [ChatRow] {
+        let bots = profiles.filter { $0.pinned && !$0.hidden }.map(ChatRow.bot)
+            .filter { filters.includes(filterRow($0), now: now) }
+        let groups = visibleRooms.filter { isRoomPinned($0) && !isRoomHidden($0) }.map(ChatRow.room)
+            .filter { filters.includes(filterRow($0), now: now) }
+        return filters.sort == .inbox ? byAttention(bots) + byAttention(groups) : sorted(bots + groups, filters: filters)
+    }
+
+    private func filterRow(_ row: ChatRow) -> ForkHomeFilters.Row {
+        switch row {
+        case .bot(let profile):
+            return .init(id: row.id, name: profile.name, activity: row.activity, agentID: profile.id,
+                         hidden: profile.hidden, unread: isUnread(profile))
+        case .room(let room):
+            return .init(id: row.id, name: room.name, activity: row.activity, hidden: isRoomHidden(room))
+        }
+    }
+
+    private func sorted(_ rows: [ChatRow], filters: ForkHomeFilters) -> [ChatRow] {
+        guard filters.sort != .inbox else { return byAttention(rows) }
+        return rows.map { ($0, filterRow($0)) }.sorted { filters.precedes($0.1, $1.1) }.map { $0.0 }
     }
 
     private var visibleRooms: [BotGroupRoom] { roomCapabilities.enabled ? rooms : [] }
