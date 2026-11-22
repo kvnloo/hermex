@@ -213,6 +213,7 @@ final class BotMentionTests: XCTestCase {
         let chat = await openChat(target: .canonicalChat(profile: "default"), roster: Self.pictured)
         await waitUntil("the pictures") { chat.turn.settings.avatars.count == 2 }
         XCTAssertEqual(chat.turn.settings.avatars.keys.sorted(), ["default", "helper"])
+        XCTAssertEqual(chat.avatars.images(connectionID: Self.connection.id).keys.sorted(), ["default", "helper"])
         XCTAssertEqual(chat.writes("profiles.get_asset").compactMap { $0["name"]?.text }, ["default", "helper"])
 
         let session = await openChat(target: .session(profile: "default", key: "tip"), roster: Self.pictured)
@@ -224,6 +225,7 @@ final class BotMentionTests: XCTestCase {
         let model: ChatViewModel
         let turn: HermesChatTurnCoordinator
         let host: BotSocketHost
+        let avatars: BotAvatarStore
 
         func writes(_ method: String) -> [[String: BotJSON]] {
             host.requests.filter { $0["method"].text == method }.compactMap { $0["params"].fields }
@@ -245,7 +247,8 @@ final class BotMentionTests: XCTestCase {
             request.url?.path == "/api/sessions/tip/messages" ? .json(200, .object(["messages": .array([])])) : nil
         }
         let engine = HermesConversation(server: Self.server, connection: Self.connection, target: target, wire: client)
-        let turn = HermesChatTurnCoordinator(engine: engine, isNetworkAvailable: { true })
+        let avatars = BotAvatarStore()
+        let turn = HermesChatTurnCoordinator(engine: engine, isNetworkAvailable: { true }, avatarStore: avatars)
         let copies = BotAttachmentCopies()
         let model = ChatViewModel(
             session: SessionSummary(profile: "default"), server: Self.server, streamingScrollCoalescingDelayNanoseconds: 0,
@@ -256,7 +259,7 @@ final class BotMentionTests: XCTestCase {
         await model.loadMessages()
         XCTAssertEqual(engine.connectionState, .connected)
         await waitUntil("the roster") { turn.settings.profiles.count == roster["profiles"].list?.count }
-        return Chat(model: model, turn: turn, host: host)
+        return Chat(model: model, turn: turn, host: host, avatars: avatars)
     }
 }
 
