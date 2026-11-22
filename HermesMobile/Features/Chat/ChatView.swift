@@ -284,6 +284,7 @@ struct ChatView: View {
     private let composerMaximumWidth = ChatReadingWidth.maximumWidth(horizontalPadding: 16)
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
@@ -1002,7 +1003,7 @@ struct ChatView: View {
                             }
                         }
                 }
-                .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: viewModel.showsListenPlaybackBar)
+                .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: viewModel.showsListenPlaybackBar)
 
                 composerAccessoryStack
 
@@ -1823,8 +1824,8 @@ struct ChatView: View {
             }
         }
         .zIndex(9)
-        .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: requestInsetID)
-        .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: viewModel.hermesSideTasks?.btw?.id)
+        .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: requestInsetID)
+        .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: viewModel.hermesSideTasks?.btw?.id)
     }
 
     @ViewBuilder
@@ -2008,12 +2009,12 @@ struct ChatView: View {
             .frame(maxWidth: composerMaximumWidth)
             .padding(.bottom, composerHeight + 8 + clarificationFootprintHeight)
             .zIndex(8)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: composerAccessoryVisibleItemCount)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: activeRunStatusPresentation?.kind)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: composerLocalNotices)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: showsHostNotice)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: pinnedPlan == nil)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: showsShortcutNotice)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: composerAccessoryVisibleItemCount)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: activeRunStatusPresentation?.kind)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: composerLocalNotices)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: showsHostNotice)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: pinnedPlan == nil)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: showsShortcutNotice)
         }
     }
 
@@ -2590,7 +2591,7 @@ struct ChatView: View {
 
     private func toggleTurnFold(_ turnKey: String) {
         handleDisclosureToggle()
-        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             if !viewModel.expandedTurnKeys.insert(turnKey).inserted {
                 viewModel.expandedTurnKeys.remove(turnKey)
             }
@@ -3943,7 +3944,7 @@ struct ChatView: View {
 
             let isCacheFirstSnapWindow = cacheFirstSnapUntil.map { Date() < $0 } ?? false
             if animated, !isCacheFirstSnapWindow, viewModel.activeStreamID == nil {
-                withAnimation(ChatMotion.scrollToLatest(reduceMotion: reduceMotion)) {
+                withAnimation(ChatMotion.scrollToLatest(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                     proxy.scrollTo(targetID, anchor: anchor)
                 }
             } else {

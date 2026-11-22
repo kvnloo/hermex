@@ -203,24 +203,24 @@ enum SessionRowActionPolicy {
 }
 
 enum SessionListMotion {
-    static func disclosureAnimation(reduceMotion: Bool) -> Animation? {
-        reduceMotion ? nil : .smooth(duration: 0.28, extraBounce: 0)
+    static func disclosureAnimation(reduceMotion: Bool, turboEnabled: Bool = false) -> Animation? {
+        reduceMotion ? nil : .smooth(duration: ForkTurboMotion.duration(0.28, isEnabled: turboEnabled, reduceMotion: reduceMotion), extraBounce: 0)
     }
 
-    static func searchChromeAnimation(reduceMotion: Bool) -> Animation? {
-        reduceMotion ? nil : .smooth(duration: 0.24, extraBounce: 0)
+    static func searchChromeAnimation(reduceMotion: Bool, turboEnabled: Bool = false) -> Animation? {
+        reduceMotion ? nil : .smooth(duration: ForkTurboMotion.duration(0.24, isEnabled: turboEnabled, reduceMotion: reduceMotion), extraBounce: 0)
     }
 
-    static func searchFocusAnimation(reduceMotion: Bool) -> Animation? {
-        reduceMotion ? nil : .easeInOut(duration: 0.18)
+    static func searchFocusAnimation(reduceMotion: Bool, turboEnabled: Bool = false) -> Animation? {
+        reduceMotion ? nil : .easeInOut(duration: ForkTurboMotion.duration(0.18, isEnabled: turboEnabled, reduceMotion: reduceMotion))
     }
 
-    static func pressAnimation(reduceMotion: Bool) -> Animation? {
-        reduceMotion ? .easeOut(duration: 0.12) : .smooth(duration: 0.18, extraBounce: 0)
+    static func pressAnimation(reduceMotion: Bool, turboEnabled: Bool = false) -> Animation? {
+        reduceMotion ? .easeOut(duration: 0.12) : .smooth(duration: ForkTurboMotion.duration(0.18, isEnabled: turboEnabled, reduceMotion: reduceMotion), extraBounce: 0)
     }
 
-    static func sessionMutationAnimation(reduceMotion: Bool) -> Animation? {
-        reduceMotion ? nil : .snappy(duration: 0.24, extraBounce: 0)
+    static func sessionMutationAnimation(reduceMotion: Bool, turboEnabled: Bool = false) -> Animation? {
+        reduceMotion ? nil : .snappy(duration: ForkTurboMotion.duration(0.24, isEnabled: turboEnabled, reduceMotion: reduceMotion), extraBounce: 0)
     }
 
     static func sessionRowTransition(reduceMotion: Bool) -> AnyTransition {
@@ -255,6 +255,7 @@ struct SessionsHeader: View {
     private static let iconHitTarget: CGFloat = 44
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.homeBarOwnsSearch) private var barOwnsSearch
     let logoColor: Color
     let avatar: Avatar
@@ -284,8 +285,8 @@ struct SessionsHeader: View {
         }
         .padding(.horizontal, 24)
         .padding(.top, 28)
-        .animation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion), value: isExpanded)
-        .animation(SessionListMotion.searchFocusAnimation(reduceMotion: reduceMotion), value: showsClearButton)
+        .animation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: isExpanded)
+        .animation(SessionListMotion.searchFocusAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: showsClearButton)
         .drivesHomeConnectionStatus(connectionStatus, connection: connection)
     }
 
@@ -450,6 +451,7 @@ struct SessionSidebarUtilityRows: View {
     private static let rowSpacing: CGFloat = 2
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     let viewModel: SessionListViewModel
     let topPadding: CGFloat
     let automatedVisibility: AutomatedSessionVisibility
@@ -627,7 +629,7 @@ struct SessionSidebarUtilityRows: View {
 
             if selectedProjectID != nil {
                 HapticButton {
-                    withAnimation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion)) {
+                    withAnimation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                         selectedProjectID = nil
                     }
                 } label: {
@@ -686,7 +688,7 @@ struct SessionSidebarUtilityRows: View {
                     ) {
                         guard let projectID = project.projectId else { return }
 
-                        withAnimation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion)) {
+                        withAnimation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                             selectedProjectID = selectedProjectID == projectID ? nil : projectID
                         }
                     } rename: {
@@ -1541,6 +1543,7 @@ private func hasServerSessionID(_ session: SessionSummary) -> Bool {
 
 struct SessionListFloatingChatButtonStyle: ButtonStyle {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.isEnabled) private var isEnabled
 
     func makeBody(configuration: Configuration) -> some View {
@@ -1554,7 +1557,7 @@ struct SessionListFloatingChatButtonStyle: ButtonStyle {
                 radius: isPressed ? 8 : 18,
                 y: isPressed ? 3 : 8
             )
-            .animation(SessionListMotion.pressAnimation(reduceMotion: reduceMotion), value: isPressed)
+            .animation(SessionListMotion.pressAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: isPressed)
     }
 }
 
@@ -1616,6 +1619,7 @@ struct SidebarDisclosureButton<Accessory: View>: View {
 
 private struct SidebarDisclosureChevron: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.layoutDirection) private var layoutDirection
     let isExpanded: Bool
 
@@ -1632,7 +1636,7 @@ private struct SidebarDisclosureChevron: View {
                 anchor: .center
             )
             .frame(width: 24, height: 40)
-            .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: isExpanded)
+            .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: isExpanded)
             .accessibilityHidden(true)
     }
 }

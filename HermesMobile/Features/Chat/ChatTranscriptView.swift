@@ -15,6 +15,7 @@ enum ChatReadingWidth {
 
 struct ChatTranscriptView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var scrollPositionController = ChatScrollPositionController()
     @State private var recoveryChip = DelayedStatusDriver<ActiveStreamRecoveryState>()
@@ -247,7 +248,7 @@ struct ChatTranscriptView: View {
                         .transition(ChatMotion.bottomOverlayTransition(reduceMotion: reduceMotion))
                     }
                 }
-                .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: showsScrollToBottomButton)
+                .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: showsScrollToBottomButton)
                 .background(Color(.appCanvas))
                 .background {
                     StreamingFollowTrigger(trigger: streamingScrollTrigger) {
@@ -475,7 +476,7 @@ struct ChatTranscriptView: View {
             await recoveryChip.run(
                 target: state == .idle ? nil : state,
                 immediately: state == .waitingForNetwork,
-                animation: ChatMotion.quickState(reduceMotion: reduceMotion)
+                animation: ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled)
             )
         }
         .id(transcriptContentID)
@@ -501,7 +502,7 @@ struct ChatTranscriptView: View {
             return .identity
         }
 
-        return ChatMotion.freshRowTransition(isUserRow: message.role == "user", reduceMotion: reduceMotion)
+        return ChatMotion.freshRowTransition(isUserRow: message.role == "user", reduceMotion: reduceMotion, turboEnabled: turboEnabled)
     }
 
     private func compressionReferenceCardView(_ card: CompressionReferenceCard) -> some View {

@@ -23,6 +23,7 @@ struct TranscriptLogRowBodyWindow<Content: View>: View {
     @ViewBuilder let content: () -> Content
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @State private var contentHeight: CGFloat?
 
     var body: some View {
@@ -37,7 +38,7 @@ struct TranscriptLogRowBodyWindow<Content: View>: View {
                     proxy.size.height
                 } action: { height in
                     if contentHeight == nil {
-                        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion)) {
+                        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                             contentHeight = height
                         }
                     } else {
@@ -69,6 +70,7 @@ struct TranscriptLogRowView<Icon: View, Accessory: View, Status: View, ExpandedB
     @ViewBuilder let expandedBody: () -> ExpandedBody
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.chatDisclosureToggled) private var chatDisclosureToggled
     @AppStorage(AppHaptics.isEnabledKey) private var isHapticsEnabled = true
@@ -196,7 +198,7 @@ struct TranscriptLogRowView<Icon: View, Accessory: View, Status: View, ExpandedB
 
     private func toggle() {
         chatDisclosureToggled()
-        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             toggleExpansion()
         }
     }
@@ -206,7 +208,7 @@ struct TranscriptLogRowView<Icon: View, Accessory: View, Status: View, ExpandedB
         UIPasteboard.general.string = copyText()
         ChatHaptics.copied(isEnabled: isHapticsEnabled)
 
-        withAnimation(ChatMotion.quickState(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             showsCopied = true
         }
 
@@ -214,7 +216,7 @@ struct TranscriptLogRowView<Icon: View, Accessory: View, Status: View, ExpandedB
         copiedResetTask = Task { @MainActor in
             try? await Task.sleep(for: .seconds(1.2))
             guard !Task.isCancelled else { return }
-            withAnimation(ChatMotion.quickState(reduceMotion: reduceMotion)) {
+            withAnimation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                 showsCopied = false
             }
         }

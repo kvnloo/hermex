@@ -39,6 +39,7 @@ struct ApprovalRequestInset: View {
     let onFootprintChange: (CGFloat) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @ScaledMetric(relativeTo: .body) private var minimumCardHeight: CGFloat = 88
     @State private var isExpanded = true
     @State private var contentHeight: CGFloat?
@@ -112,7 +113,7 @@ struct ApprovalRequestInset: View {
             onDismissKeyboard()
         }
         ChatHaptics.disclosureToggled(isEnabled: isHapticsEnabled)
-        withAnimation(ChatMotion.clarificationToggle(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.clarificationToggle(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             isExpanded = expanded
         }
     }

@@ -19,6 +19,7 @@ struct HermesSessionListView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.requestReview) private var requestReview
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.modelContext) private var modelContext
     @AppStorage(SessionRowDisplaySettings.showMessageCountKey) private var showsMessageCount = true
     @AppStorage(SessionRowDisplaySettings.showWorkspaceKey) private var showsWorkspace = true
@@ -197,8 +198,8 @@ struct HermesSessionListView: View {
     var body: some View {
         routedSurface
         .focusedSceneValue(\.hermexSceneActions, sceneActions)
-        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: projectsAreExpanded)
-        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: scheduledSessionsAreExpanded)
+        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: projectsAreExpanded)
+        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: scheduledSessionsAreExpanded)
         .overlay(alignment: .bottom) {
             ActionToastView(state: actionToast)
                 .frame(maxWidth: 420)
@@ -546,7 +547,7 @@ struct HermesSessionListView: View {
     }
 
     private func openSearch() {
-        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion)) { isSearchExpanded = true }
+        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) { isSearchExpanded = true }
         if home != nil { searchRequests += 1 }
         Task { @MainActor in
             await Task.yield()
@@ -557,7 +558,7 @@ struct HermesSessionListView: View {
     private func closeSearch() {
         searchText = ""
         isSearchFieldFocused = false
-        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion)) { isSearchExpanded = false }
+        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) { isSearchExpanded = false }
     }
 
     private var newSessionButton: some View {
@@ -936,7 +937,7 @@ struct HermesSessionListView: View {
         actionToast.show(ActionToast(message: message, systemImage: "exclamationmark.triangle", accessibilityLabel: message))
     }
 
-    private var mutationAnimation: Animation? { SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion) }
+    private var mutationAnimation: Animation? { SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled) }
 
     private func togglePinned(_ session: SessionSummary) async {
         if await viewModel.setPinned(session.pinned != true, for: session, animation: mutationAnimation) {
