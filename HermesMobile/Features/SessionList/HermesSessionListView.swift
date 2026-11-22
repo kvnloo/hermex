@@ -58,6 +58,7 @@ struct HermesSessionListView: View {
     @State private var draftRows: Set<ChatDraftStore.DraftRow> = []
     @State private var draftReads = 0
     @State private var wasBackgrounded = false
+    @State private var missionControl: ForkMissionControlEntry?
     @State private var ratingRequestID: UUID?
     @State private var ratingMoment: RatingPromptMoment = .coldLaunch
 
@@ -148,7 +149,8 @@ struct HermesSessionListView: View {
                 profilesAreExpanded: .constant(false), projectsAreExpanded: $projectsAreExpanded,
                 selectedProjectID: $navigation.selectedProjectID, projectPendingDeletion: $navigation.covers.deletingProject,
                 projectPendingRename: $navigation.covers.renamingProject, openDestination: open, switchActiveProfile: { _ in },
-                presentProjectCreation: { covers.creatingProject = HermesProjectCreation(folder: "") }
+                presentProjectCreation: { covers.creatingProject = HermesProjectCreation(folder: "") },
+                openMissionControl: openMissionControl
             )
             if !groups.needsYou.isEmpty {
                 NeedsYouSessionsSection(
@@ -394,6 +396,13 @@ struct HermesSessionListView: View {
 
     private var routedSurface: some View {
         navigationSurface.forkRoutineRequest(isReady: home != nil && profile != nil) { open(.tasks) }
+            .forkMissionControl($missionControl)
+    }
+
+    private var openMissionControl: (() -> Void)? {
+        guard home != nil, !isSearchExpanded else { return nil }
+        let server = entry.server, connection = entry.connection
+        return { missionControl = ForkMissionControlEntry(server: server, connection: connection) }
     }
 
     @ViewBuilder private var navigationSurface: some View {
