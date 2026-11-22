@@ -18,7 +18,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 |---|---|---|---|
 | Add an instance by address and test it | has | Add Server sheet, connection probe (ADR 0138, 0143) | — |
 | Password sign-in | has | `AuthManager`, Hermes connection credentials (ADR 0142) | — |
-| Provider OAuth sign-in (device code) | has | Settings → Provider Sign-In: host device-code routes, `ASWebAuthenticationSession`, catalog readback without an account claim (ADR 0181) | `boat/hx-share-oauth/hx-084` |
+| Provider OAuth sign-in (device code) | has | Settings → Provider Sign-In: host device-code routes, `ASWebAuthenticationSession`, catalog readback without an account claim (ADR 0181) | `boat/hx-rebase/hx-084` |
 | Several saved instances (two or more hosts) | has | `ServerAccount` / server registry, per-server isolation (ADR 0131, `docs/agents/multi-server-state-isolation.md`) | — |
 | Browser (OIDC) sign-in | has | `HermesBrowserSignIn`: loopback + `ASWebAuthenticationSession` + PKCE (ADR 0140) | — |
 | Browser tab closes after sign-in | has | `ASWebAuthenticationSession` (ephemeral) dismisses itself when the loopback redirect lands; the Android open item does not apply | — |
