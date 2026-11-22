@@ -64,10 +64,7 @@ private struct ForkLiveTurnView: View {
                 ForkLiveProgressRow(steps: turn.steps)
             }
             if !turn.replies.isEmpty {
-                Text(verbatim: turn.reply)
-                    .font(AppFont.body())
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .textSelection(.enabled)
+                ForkLiveReplyView(reply: turn.reply)
             }
         }
     }
