@@ -6,11 +6,20 @@ struct ForkAppearanceSections: View {
     @Binding var darkTheme: ColorTheme
     @AppStorage(ForkThemeStore.jsonKey) private var customJSON = ""
     @AppStorage(GlassPreference.isEnabledKey) private var isGlassEnabled = GlassPreference.defaultIsEnabled
+    @AppStorage(ForkTurboMotion.storageKey) private var isTurboEnabled = ForkTurboMotion.defaultIsEnabled
     @Environment(\.appAppearance) private var appearance
     @State private var isImportingFile = false
     @State private var notice: ForkThemeNotice?
 
     var body: some View {
+        Section {
+            Toggle(isOn: $isTurboEnabled) {
+                SettingsLabel(title: String(localized: "Turbo mode", table: "Fork"), systemImage: "bolt.fill")
+            }
+        } footer: {
+            Text("Shortens chat and session list animations.", tableName: "Fork")
+        }
+
         Section {
             ForEach(ForkThemeSpec.presets, id: \.id) { look in
                 Button { apply(look) } label: { ForkLookRow(look: look, isSelected: isApplied(look)) }

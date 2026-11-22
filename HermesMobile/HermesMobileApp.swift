@@ -105,6 +105,7 @@ struct HermesMobileApp: App {
                 .preferredColorScheme(AppTheme.storedValue(appThemeRawValue).colorScheme)
                 .background(WindowBackgroundPainter())
                 .appRootFont()
+                .modifier(ForkTurboPresentation())
                 .forkSystemEntryBridge()
                 .forkBotImport(authManager)
                 .task(id: authManager.state) { await DevAutoLogin.run(authManager: authManager) }
@@ -118,6 +119,7 @@ struct HermesMobileApp: App {
                 .preferredColorScheme(AppTheme.storedValue(appThemeRawValue).colorScheme)
                 .background(WindowBackgroundPainter())
                 .appRootFont()
+                .modifier(ForkTurboPresentation())
                 .forkSystemEntryBridge()
                 .forkBotImport(authManager)
             #endif

@@ -12,6 +12,7 @@ struct ToolActivityGroupView: View {
     var isReplaying = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.chatDisclosureToggled) private var chatDisclosureToggled
     @AppStorage(ChatTranscriptDisplaySettings.thinkingAndToolCardsKey) private var thinkingAndToolCards = ThinkingAndToolCards.collapsed
@@ -61,12 +62,12 @@ struct ToolActivityGroupView: View {
         ) else {
             return .identity
         }
-        return ChatMotion.freshRowTransition(isUserRow: false, reduceMotion: reduceMotion)
+        return ChatMotion.freshRowTransition(isUserRow: false, reduceMotion: reduceMotion, turboEnabled: turboEnabled)
     }
 
     private func toggleExpansion() {
         chatDisclosureToggled()
-        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             userToggledExpansion = !isExpanded
         }
     }

@@ -88,6 +88,7 @@ struct SessionListView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @State private var viewModel: SessionListViewModel
     @State private var navigationState: SessionNavigationState
@@ -755,9 +756,9 @@ struct SessionListView: View {
         .scrollPosition(id: $sidebarScrollPosition)
         .background(Color(.appCanvas))
         .scrollDismissesKeyboard(.interactively)
-        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: profilesAreExpanded)
-        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: projectsAreExpanded)
-        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: scheduledSessionsAreExpanded)
+        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: profilesAreExpanded)
+        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: projectsAreExpanded)
+        .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: scheduledSessionsAreExpanded)
     }
 
     private var header: some View {
@@ -1053,14 +1054,14 @@ struct SessionListView: View {
         searchFieldIsFocused = false
         isSearchFocused = false
 
-        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion)) {
+        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             searchChromeIsExpanded = false
             isSearchVisible = false
         }
     }
 
     private func openSearch() {
-        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion)) {
+        withAnimation(SessionListMotion.searchChromeAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             isSearchVisible = true
             searchChromeIsExpanded = true
         }
@@ -1175,7 +1176,7 @@ struct SessionListView: View {
 
         guard didSwitch else { return }
 
-        withAnimation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion)) {
+        withAnimation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             profilesAreExpanded = false
         }
 
@@ -1206,7 +1207,7 @@ struct SessionListView: View {
             !(session.pinned ?? false),
             for: session,
             modelContext: modelContext,
-            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion)
+            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)
         )
         handleLastError()
 
@@ -1220,7 +1221,7 @@ struct SessionListView: View {
         let didArchive = await viewModel.archive(
             session,
             modelContext: modelContext,
-            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion)
+            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)
         )
         handleLastError()
 
@@ -1262,7 +1263,7 @@ struct SessionListView: View {
         let didUnarchive = await viewModel.unarchive(
             session,
             modelContext: modelContext,
-            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion)
+            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)
         )
         handleLastError()
 
@@ -1275,7 +1276,7 @@ struct SessionListView: View {
         let didDelete = await viewModel.delete(
             session,
             modelContext: modelContext,
-            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion)
+            animation: SessionListMotion.sessionMutationAnimation(reduceMotion: reduceMotion, turboEnabled: turboEnabled)
         )
         handleLastError()
 

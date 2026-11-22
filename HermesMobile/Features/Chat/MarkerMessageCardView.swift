@@ -5,6 +5,7 @@ struct MarkerMessageCardView: View {
     let content: String?
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.chatDisclosureToggled) private var chatDisclosureToggled
     @State private var isExpanded = false
@@ -16,7 +17,7 @@ struct MarkerMessageCardView: View {
         VStack(alignment: .leading, spacing: isExpanded ? 8 : 0) {
             Button {
                 chatDisclosureToggled()
-                withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion)) {
+                withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                     isExpanded.toggle()
                 }
             } label: {
@@ -132,6 +133,7 @@ struct CronRunPromptCard: View {
     let onCopy: (() -> Void)?
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.chatDisclosureToggled) private var chatDisclosureToggled
     @State private var isExpanded = false
@@ -140,7 +142,7 @@ struct CronRunPromptCard: View {
         VStack(alignment: .leading, spacing: 10) {
             Button {
                 chatDisclosureToggled()
-                withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion)) {
+                withAnimation(ChatMotion.disclosure(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
                     isExpanded.toggle()
                 }
             } label: {
