@@ -42,6 +42,7 @@
 		1B83341E3D8E62A72286B005 /* ScreenShareConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DE621D27772BB34EEC473 /* ScreenShareConsent.swift */; };
 		1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03CC1EF1DBA9BB62BA10ECE /* ForkTurboCatalogTests.swift */; };
 		1DE409CDAF4B7CC5CC1E20E2 /* ForkTerminalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E180D3404FE5B8E296F714 /* ForkTerminalProtocol.swift */; };
+		1EAB420FBF5A7A426A85325E /* ForkShareReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE1CFD1B0FC242AA40C0B2D /* ForkShareReviewTests.swift */; };
 		1EB4BE1CF1E94BAC23760DFD /* ForkLiveVoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED2E952E2FC00BD3470928 /* ForkLiveVoiceRequest.swift */; };
 		882F8E5A95EFA332A8293AE2 /* ForkBotDirectoryDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA189C8901ADA54D4251541 /* ForkBotDirectoryDocument.swift */; };
 		1FCB78ADE1E17C22F3A230BB /* ForkControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4497EA4CE4B8E7ACA9BB58 /* ForkControls.swift */; };
@@ -56,6 +57,7 @@
 		3A86CF075E30A9F86E54E82A /* AnnotationCompose.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38FB7D91333D2B06E075D9F /* AnnotationCompose.swift */; };
 		3E260E887C9B1185BB6534F4 /* ForkThemeRoles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA84847739A459112E526D6 /* ForkThemeRoles.swift */; };
 		402D6B143CBF2188DFCE05B4 /* ForkMCPServersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DF8CA747382A507307CCF /* ForkMCPServersView.swift */; };
+		42F393BAD3603202FAF7A123 /* ForkShareReviewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882F8D6AD4A1F4385910941 /* ForkShareReviewSheet.swift */; };
 		4A38FD73E9E65936D79E3F25 /* ForkThemeSpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */; };
 		A8837C5BBF9444A492B17435 /* ForkScanPagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A835DA3AD41F9BB24B031 /* ForkScanPagesTests.swift */; };
 		2DFC8B1306A44F5687E9E5DD /* ForkHomeFiltersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962DCA946758473492CE1514 /* ForkHomeFiltersTests.swift */; };
@@ -76,6 +78,7 @@
 		780427CAB882328CBE8CE44D /* ForkMemoryNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD673424A5BE823BC10DD0 /* ForkMemoryNotice.swift */; };
 		B3F5434F33705CA7C2C45AB8 /* ForkMessageReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70848C9F23207BCDCB244431 /* ForkMessageReport.swift */; };
 		782640638436A34D4E5C1ABD /* LiveModeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F03BE88B465A7F08EB0E6FA /* LiveModeRequest.swift */; };
+		7AA9829C36BC7C57FB07179D /* ForkShareReviewDraftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F4A439CE8C6EA004493BC /* ForkShareReviewDraftTests.swift */; };
 		7CDBA6D77F9DBD7C954A8658 /* ForkMCPRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */; };
 		7F0C38549836C10121F37102 /* ForkReactionRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2B0FB75302ADEC822BC22 /* ForkReactionRPC.swift */; };
 		81C42EB859B65F5482D0DB60 /* ForkRGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9D0A567FA3898766C93075 /* ForkRGBA.swift */; };
@@ -114,6 +117,7 @@
 		D16430000000000000000016 /* BotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000004 /* BotWidget.swift */; };
 		D16430000000000000000017 /* BotWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16430000000000000000005 /* BotWidgetTests.swift */; };
 		D6CE56D6BEE85CA163226E38 /* ForkHostTerminalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C17686249155089FE939D7C /* ForkHostTerminalSession.swift */; };
+		D76C5D8ECCA994277DBA717B /* ForkShareReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FBFC0E2DFA806CFE70D87C /* ForkShareReview.swift */; };
 		D978F78F285CE534B30099C7 /* ForkAppearanceSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */; };
 		DA24FDB39391DDBA18F72307 /* ForkReactionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF35F954A0C8F008E9FC71 /* ForkReactionViews.swift */; };
 		D2E62814D346EB9E62B70804 /* ForkMessageReportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FD8B320A76DB14032B1D0 /* ForkMessageReportButton.swift */; };
@@ -936,8 +940,11 @@
 		2C2F8C654E9FEE8600DA6622 /* ForkLiveOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveOrb.swift; sourceTree = "<group>"; };
 		2D0B0E988DB0D0E10E85937E /* ForkRoutineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRoutineRequest.swift; sourceTree = "<group>"; };
 		2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUILangTests.swift; sourceTree = "<group>"; };
+		2EE1CFD1B0FC242AA40C0B2D /* ForkShareReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkShareReviewTests.swift; sourceTree = "<group>"; };
 		353395B1629DE99C5BDB2F80 /* ForkChatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkChatState.swift; sourceTree = "<group>"; };
+		3882F8D6AD4A1F4385910941 /* ForkShareReviewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkShareReviewSheet.swift; sourceTree = "<group>"; };
 		3C17686249155089FE939D7C /* ForkHostTerminalSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkHostTerminalSession.swift; sourceTree = "<group>"; };
+		3F1F4A439CE8C6EA004493BC /* ForkShareReviewDraftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkShareReviewDraftTests.swift; sourceTree = "<group>"; };
 		40F0388FE63DAA78F894F506 /* ForkLiveModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveModeController.swift; sourceTree = "<group>"; };
 		45091E50F8192F05F6B35D2A /* ForkMCPServers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPServers.swift; sourceTree = "<group>"; };
 		453937AC97DC5C8E07F5EB14 /* ForkOpenUIPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIPanelView.swift; sourceTree = "<group>"; };
@@ -988,6 +995,7 @@
 		C03CC1EF1DBA9BB62BA10ECE /* ForkTurboCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboCatalogTests.swift; sourceTree = "<group>"; };
 		C113B7043CEF77816ABC21D4 /* LiveOrbGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveOrbGeometry.swift; sourceTree = "<group>"; };
 		C43C8B667341CF1D9147096B /* ForkScreenShareReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkScreenShareReviewTests.swift; sourceTree = "<group>"; };
+		C4FBFC0E2DFA806CFE70D87C /* ForkShareReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkShareReview.swift; sourceTree = "<group>"; };
 		C6ACF2AC68E4AB224B91817A /* ForkAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkAnnotationView.swift; sourceTree = "<group>"; };
 		CFD4BD555C4970237F8B8282 /* ForkInkCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkInkCanvas.swift; sourceTree = "<group>"; };
 		D14090000000000000000003 /* ProviderLimitsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLimitsWidget.swift; sourceTree = "<group>"; };
@@ -1879,6 +1887,14 @@
 			path = OpenUI;
 			sourceTree = "<group>";
 		};
+		47D5325451024C7783D7AF6F /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				3882F8D6AD4A1F4385910941 /* ForkShareReviewSheet.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		4C4E255D18602C368E060584 /* Live */ = {
 			isa = PBXGroup;
 			children = (
@@ -1982,6 +1998,7 @@
 				3743733FE8BA6519927551C0 /* Chat */,
 				38BD7060DB50668D1CF2458A /* System */,
 				42759D128A6D951CC5DEE2AC /* OpenUI */,
+				47D5325451024C7783D7AF6F /* Share */,
 				6DECBE36ECB7676E8ED69676 /* Terminal */,
 				90894119555CFD9971BEA473 /* Networking */,
 				AE1A9C38427456DA898C40CE /* Annotation */,
@@ -2003,6 +2020,14 @@
 				2D0B0E988DB0D0E10E85937E /* ForkRoutineRequest.swift */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		A8C7D2F8E56E8C7638BD20DA /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				C4FBFC0E2DFA806CFE70D87C /* ForkShareReview.swift */,
+			);
+			path = Share;
 			sourceTree = "<group>";
 		};
 		AE1A9C38427456DA898C40CE /* Annotation */ = {
@@ -2109,6 +2134,7 @@
 				946A74000000000000000001 /* StoreScreenshotTests.swift */,
 				946A74000000000000000002 /* StoreScreenshotGoldens */,
 				0EBD60CB80D7894949643AF1 /* ForkApp */,
+				3F1F4A439CE8C6EA004493BC /* ForkShareReviewDraftTests.swift */,
 				4A6ABCD131F0EF3A6368B7C8 /* ScreenSessionTests.swift */,
 				642EA013D5ADD8D1B4FA3936 /* RFBDecoderTests.swift */,
 				B235F2E82C1F89AFDC0447FD /* BotAvatarLibraryTests.swift */,
@@ -3071,6 +3097,7 @@
 				7F0AD04752C3913552FD7AB1 /* Theme */,
 				953785A80FC53973558A49FA /* OpenUI */,
 				A497AA21071567A5332D5EDE /* System */,
+				A8C7D2F8E56E8C7638BD20DA /* Share */,
 				D6494EE4848594D7E151D5F6 /* Annotation */,
 			);
 			path = Core;
@@ -3085,6 +3112,7 @@
 				E937DF78A1918DDE5AC2D39F /* ForkDeviceToolsTests.swift */,
 				06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */,
 				2DBBD069164BC7D7EC10DD9A /* OpenUILangTests.swift */,
+				2EE1CFD1B0FC242AA40C0B2D /* ForkShareReviewTests.swift */,
 				49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */,
 				5997454E23E505D02E2EC784 /* AnnotationComposeTests.swift */,
 				8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */,
@@ -3388,6 +3416,7 @@
 				3A86CF075E30A9F86E54E82A /* AnnotationCompose.swift in Sources */,
 				3E260E887C9B1185BB6534F4 /* ForkThemeRoles.swift in Sources */,
 				402D6B143CBF2188DFCE05B4 /* ForkMCPServersView.swift in Sources */,
+				42F393BAD3603202FAF7A123 /* ForkShareReviewSheet.swift in Sources */,
 				4F11B1AFA9AFE6D0F932A45D /* OpenUITreemapLayout.swift in Sources */,
 				503494FE76634CAB2C6F0FBC /* ForkChatState.swift in Sources */,
 				521DD6EAFE3FB3CF9346C4AC /* ForkLiveModeView.swift in Sources */,
@@ -3422,6 +3451,7 @@
 				CFA1B013C7784C249E72A5DE /* ScreenView.swift in Sources */,
 				284C1405D843B63B8A2360CA /* ScreenSession.swift in Sources */,
 				D6CE56D6BEE85CA163226E38 /* ForkHostTerminalSession.swift in Sources */,
+				D76C5D8ECCA994277DBA717B /* ForkShareReview.swift in Sources */,
 				D978F78F285CE534B30099C7 /* ForkAppearanceSections.swift in Sources */,
 				DA24FDB39391DDBA18F72307 /* ForkReactionViews.swift in Sources */,
 				D2E62814D346EB9E62B70804 /* ForkMessageReportButton.swift in Sources */,
@@ -3890,6 +3920,7 @@
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
 				1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */,
+				1EAB420FBF5A7A426A85325E /* ForkShareReviewTests.swift in Sources */,
 				2394F725C3727E726555400A /* ForkTerminalScreenTests.swift in Sources */,
 				4A38FD73E9E65936D79E3F25 /* ForkThemeSpecTests.swift in Sources */,
 				506DC5662D9C872D6D6B5AFE /* ScreenShareConsentTests.swift in Sources */,
@@ -3899,6 +3930,7 @@
 				71AD01A116298F4DBA909514 /* ForkLiveVoiceRequestTests.swift in Sources */,
 				A0DFDA7E30AFC4A127DC3000 /* ForkBotDirectoryDocumentTests.swift in Sources */,
 				736645F7454FADA987E48FE2 /* OpenUICatalogTests.swift in Sources */,
+				7AA9829C36BC7C57FB07179D /* ForkShareReviewDraftTests.swift in Sources */,
 				7CDBA6D77F9DBD7C954A8658 /* ForkMCPRPCTests.swift in Sources */,
 				8311D55DE10C054E87D8AD43 /* ForkTurboModelsTests.swift in Sources */,
 				8463263265BB430B216B908A /* OpenUILangTests.swift in Sources */,
