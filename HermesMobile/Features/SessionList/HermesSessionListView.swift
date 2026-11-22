@@ -50,6 +50,8 @@ struct HermesSessionListView: View {
     private let isCoveredByHome: () -> Bool
     @State private var shareTransfer: Task<Void, Never>?
     @State private var failedShare: HermesShareFailure?
+    @State private var forkShareGate = ForkShareReviewGate()
+    @State private var forkShareReview: ForkShareReviewRequest?
     @State private var viewModel: SessionListViewModel
     @State private var navigation: HermesSessionListNavigation
     @State private var actionToast = ActionToastState()
@@ -268,6 +270,12 @@ struct HermesSessionListView: View {
             Button("Move") { Task { await self.move(move) } }
         } message: { move in
             Text(verbatim: move.message)
+        }
+        .sheet(item: $forkShareReview, onDismiss: settleForkShareReview) { request in
+            ForkShareReviewSheet(request: request, projects: forkShareProjects) { choice in
+                forkShareGate.decide(request.share.reservationID, choice)
+                forkShareReview = nil
+            }
         }
         .alert(failedShare?.share.sharedImport.shortcut.map(\.origin.cantOpenTitle) ?? Text("Couldn’t Add Shared Files"),
                isPresented: Binding(get: { failedShare != nil }, set: { if !$0 { queueFailedShareAgain() } }),
@@ -873,6 +881,12 @@ struct HermesSessionListView: View {
             return
         }
         guard case .chat(let chat) = opening else { return didRouteShare(share) }
+        switch forkShareGate.step(for: share.reservationID, fromShareSheet: share.sharedImport.shortcut == nil) {
+        case .wait: return
+        case .review: return reviewForkShare(share)
+        case .move(let choice): return move(share.applying(choice), into: chat.applying(choice))
+        case .pass: break
+        }
         guard share.sharedImport.shortcut?.profile != nil else { return move(share, into: chat) }
         shareTransfer = Task {
             let confirmed = await share.confirmingProfile(of: chat, readProfiles: viewModel.readHostProfiles)
@@ -890,6 +904,23 @@ struct HermesSessionListView: View {
             case .nothing?, nil:
                 didDeclineShare(share)
             }
+        }
+    }
+
+    private var forkShareProjects: [ForkShareProject] {
+        viewModel.hermesShowsAllProfiles ? [] : viewModel.projects.compactMap { ForkShareProject($0) }
+    }
+
+    private func reviewForkShare(_ share: SharedImportReservation) {
+        covers.bringForward()
+        forkShareReview = ForkShareReviewRequest(share: share)
+    }
+
+    private func settleForkShareReview() {
+        if let declined = forkShareGate.settle(), let share = pendingShare, share.reservationID == declined {
+            didDeclineShare(share)
+        } else {
+            openPendingShare()
         }
     }
 
