@@ -77,6 +77,22 @@ final class LocalizationCatalogTests: XCTestCase {
         }
     }
 
+    func testLiveVoiceShortcutPhrasesPreserveApplicationName() throws {
+        let data = try Data(contentsOf: resourceURL("HermesMobile/Resources/AppShortcuts.xcstrings"))
+        let root = try XCTUnwrap(try JSONSerialization.jsonObject(with: data) as? [String: Any])
+        let strings = try XCTUnwrap(root["strings"] as? [String: Any])
+        for phrase in ["Start live voice in ${applicationName}", "Start a live voice conversation in ${applicationName}"] {
+            let entry = try XCTUnwrap(strings[phrase] as? [String: Any], phrase)
+            let localizations = try XCTUnwrap(entry["localizations"] as? [String: Any], phrase)
+            for language in Self.shippedLanguages + ["en"] {
+                let localization = try XCTUnwrap(localizations[language] as? [String: Any], "[\(language)] \(phrase)")
+                let unit = try XCTUnwrap(localization["stringUnit"] as? [String: Any])
+                let value = try XCTUnwrap(unit["value"] as? String)
+                XCTAssertEqual(value.components(separatedBy: "${applicationName}").count, 2, "[\(language)] \(value)")
+            }
+        }
+    }
+
     func testPushBannerLabelsAreLocalizedInEveryShippedLanguage() throws {
         let data = try Data(contentsOf: catalogURL())
         let root = try XCTUnwrap(try JSONSerialization.jsonObject(with: data) as? [String: Any])

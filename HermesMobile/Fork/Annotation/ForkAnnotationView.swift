@@ -2,8 +2,10 @@ import PencilKit
 import SwiftUI
 
 extension View {
-    func forkAnnotate(_ viewModel: ChatViewModel, title: String) -> some View {
-        modifier(ForkAnnotateEntry(viewModel: viewModel, title: title))
+    func forkAnnotate(
+        _ viewModel: ChatViewModel, title: String, isLive: Binding<Bool>, startLive: @escaping () -> Void
+    ) -> some View {
+        modifier(ForkAnnotateEntry(viewModel: viewModel, title: title, isLive: isLive, startLive: startLive))
     }
 }
 
@@ -15,18 +17,34 @@ struct ForkSnapshot: Identifiable {
 private struct ForkAnnotateEntry: ViewModifier {
     let viewModel: ChatViewModel
     let title: String
+    @Binding var isLive: Bool
+    let startLive: () -> Void
     @State private var snapshot: ForkSnapshot?
 
     func body(content: Content) -> some View {
         content
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        if let image = ForkAnnotationInk.captureKeyWindow() { snapshot = ForkSnapshot(image: image) }
-                    } label: {
-                        Label { Text("Annotate", tableName: "Fork") } icon: { Image(systemName: "pencil.tip.crop.circle") }
+                    if isLive {
+                        Button { isLive = false } label: {
+                            Label("Stop Circling", systemImage: "xmark.circle")
+                        }
+                        .tint(.red)
+                    } else {
+                        Menu {
+                            Button(action: startLive) {
+                                Label("Circle Text to Draft", systemImage: "lasso")
+                            }
+                            Button {
+                                if let image = ForkAnnotationInk.captureKeyWindow() { snapshot = ForkSnapshot(image: image) }
+                            } label: {
+                                Label("Annotate Screenshot", systemImage: "pencil.tip.crop.circle")
+                            }
+                        } label: {
+                            Label("Annotate", systemImage: "pencil.tip.crop.circle")
+                        }
+                        .disabled(viewModel.isViewingCachedData)
                     }
-                    .disabled(viewModel.isViewingCachedData)
                 }
             }
             .fullScreenCover(item: $snapshot) { snapshot in
