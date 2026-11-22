@@ -195,7 +195,7 @@ struct HermesSessionListView: View {
     }
 
     var body: some View {
-        navigationSurface
+        routedSurface
         .focusedSceneValue(\.hermexSceneActions, sceneActions)
         .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: projectsAreExpanded)
         .animation(SessionListMotion.disclosureAnimation(reduceMotion: reduceMotion), value: scheduledSessionsAreExpanded)
@@ -390,6 +390,10 @@ struct HermesSessionListView: View {
     private func prepareRootSelection() {
         pendingUsage = nil
         if usesSplit { covers.bringForward() }
+    }
+
+    private var routedSurface: some View {
+        navigationSurface.forkRoutineRequest(isReady: home != nil && profile != nil) { open(.tasks) }
     }
 
     @ViewBuilder private var navigationSurface: some View {
