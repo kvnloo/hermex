@@ -68,6 +68,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | GPT-Live over WebRTC | missing | Needs a WebRTC stack (new dependency) and a host that offers it; **blocked: Kevin** (dependency) | — |
 | Live Mode survives long tool calls (keepalive, auto-reconnect) | has | Screen stays awake while Live Mode is open; a dropped stream reattaches with backoff to the same conversation (no resend), a stream that ends without a reply refreshes the transcript once, and only 5 minutes disconnected fails the turn (`LiveReplyWatch`) | `boat/hx-live/reconnect` |
 | Avatar styles: faces, voice orb (persona looks), thinking orb | partial | Faces exist (`BotFaceMotion`, generated avatars). Voice orb and thinking orb drawn natively with SwiftUI `Canvas`/`TimelineView` | `boat/hermex/live-mode` |
+| Council mode (Glide `councilPopup`): brief, seat verdicts, report, read aloud | has (HX-091) | Chat toolbar **Council** sheet: the latest `glide.council-run/v1` run quoted in an assistant reply, else a tagged demo run; one clock from brief to report (`Fork/Core/Council`, Linux-tested); Read Aloud speaks the brief and report with `AVSpeechSynthesizer` behind the thinking orb | `boat/hx-council/hx-091` |
 
 ## Ephemeral UI, annotation, turbo
 

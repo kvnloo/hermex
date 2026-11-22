@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FCE80E7ABD1BB29600336605 /* CouncilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54279A19882191B3B6C70D4 /* CouncilTests.swift */; };
+		5F6F94B32D8C0A659AEC5373 /* ForkCouncilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0E4B68B41BA36E65DA036 /* ForkCouncilView.swift */; };
+		F658CFC37D7D5F0FDE57A947 /* ForkCouncilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E0DF47EEC0C241EC4CD4F2 /* ForkCouncilController.swift */; };
+		9DD9A75BC3EFAE7AA90BD093 /* ForkCouncilCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F807504D18AC9BBC0C776 /* ForkCouncilCopy.swift */; };
+		169D57B7E55C26A0750029E2 /* CouncilReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA46C8AB9F044E24AED80C /* CouncilReader.swift */; };
+		8F66D33F956CEF13C1CC0D44 /* CouncilExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFE1745C5040100EBA9BF9 /* CouncilExchange.swift */; };
+		0CC6E0F5ACC7B2804E94A1CF /* CouncilRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD35957663421DA9504D7C /* CouncilRun.swift */; };
 		CF1200000000000000000206 /* test-client.p12 in Resources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000106 /* test-client.p12 */; };
 		CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */; };
 		CF1200000000000000000204 /* ForkClientCertificateScopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */; };
@@ -919,6 +926,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F54279A19882191B3B6C70D4 /* CouncilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilTests.swift; sourceTree = "<group>"; };
+		2BB0E4B68B41BA36E65DA036 /* ForkCouncilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCouncilView.swift; sourceTree = "<group>"; };
+		50E0DF47EEC0C241EC4CD4F2 /* ForkCouncilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCouncilController.swift; sourceTree = "<group>"; };
+		200F807504D18AC9BBC0C776 /* ForkCouncilCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCouncilCopy.swift; sourceTree = "<group>"; };
+		40CA46C8AB9F044E24AED80C /* CouncilReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilReader.swift; sourceTree = "<group>"; };
+		2CBFE1745C5040100EBA9BF9 /* CouncilExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilExchange.swift; sourceTree = "<group>"; };
+		9BFD35957663421DA9504D7C /* CouncilRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilRun.swift; sourceTree = "<group>"; };
 		CF1200000000000000000106 /* test-client.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fixtures/ClientCertificate/test-client.p12"; sourceTree = "<group>"; };
 		CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateChallengeTests.swift"; sourceTree = "<group>"; };
 		CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateScopeTests.swift"; sourceTree = "<group>"; };
@@ -1884,6 +1898,26 @@
 			path = Bots;
 			sourceTree = "<group>";
 		};
+		2147AB46901CE23AAB99013A /* Council */ = {
+			isa = PBXGroup;
+			children = (
+				200F807504D18AC9BBC0C776 /* ForkCouncilCopy.swift */,
+				50E0DF47EEC0C241EC4CD4F2 /* ForkCouncilController.swift */,
+				2BB0E4B68B41BA36E65DA036 /* ForkCouncilView.swift */,
+			);
+			path = Council;
+			sourceTree = "<group>";
+		};
+		23D8FA182F58D8263152AEDB /* Council */ = {
+			isa = PBXGroup;
+			children = (
+				9BFD35957663421DA9504D7C /* CouncilRun.swift */,
+				2CBFE1745C5040100EBA9BF9 /* CouncilExchange.swift */,
+				40CA46C8AB9F044E24AED80C /* CouncilReader.swift */,
+			);
+			path = Council;
+			sourceTree = "<group>";
+		};
 		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -2052,6 +2086,7 @@
 		A46DF3785EECB38B9161F511 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				2147AB46901CE23AAB99013A /* Council */,
 				CF1200000000000000000102 /* ForkClientCertificate.swift */,
 				AB5FAB0DF62FB274D75D6531 /* Device */,
 				2A165CBF43E83C9896B82CCF /* Bots */,
@@ -3147,6 +3182,7 @@
 		E39DC717F9FD6A4421A9DA9B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				23D8FA182F58D8263152AEDB /* Council */,
 				CF1200000000000000000101 /* ForkClientCertificateScope.swift */,
 				585EF083F8A3200894857A7B /* Device */,
 				4ADE0466A91B481295B329A8 /* ForkScanPages.swift */,
@@ -3170,6 +3206,7 @@
 		F20BE09C2F2D10DE30148850 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				F54279A19882191B3B6C70D4 /* CouncilTests.swift */,
 				CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */,
 				BA71FCDDB11AE4D8613F0164 /* ForkDeviceApprovalTests.swift */,
 				170CD219DCF863F535AD3EB9 /* ForkDeviceDispatcherTests.swift */,
@@ -3455,6 +3492,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6F94B32D8C0A659AEC5373 /* ForkCouncilView.swift in Sources */,
+				F658CFC37D7D5F0FDE57A947 /* ForkCouncilController.swift in Sources */,
+				9DD9A75BC3EFAE7AA90BD093 /* ForkCouncilCopy.swift in Sources */,
+				169D57B7E55C26A0750029E2 /* CouncilReader.swift in Sources */,
+				8F66D33F956CEF13C1CC0D44 /* CouncilExchange.swift in Sources */,
+				0CC6E0F5ACC7B2804E94A1CF /* CouncilRun.swift in Sources */,
 				CF1200000000000000000203 /* ForkClientCertificateView.swift in Sources */,
 				7B0D00000000000000000011 /* ForkTurboPresentation.swift in Sources */,
 				CF1200000000000000000202 /* ForkClientCertificate.swift in Sources */,
@@ -3997,6 +4040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE80E7ABD1BB29600336605 /* CouncilTests.swift in Sources */,
 				CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */,
 				CF1200000000000000000204 /* ForkClientCertificateScopeTests.swift in Sources */,
 				3558ED1FC71D279897A54444 /* ForkDeviceApprovalTests.swift in Sources */,
