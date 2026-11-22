@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 extension View {
     func forkLiveMode(_ viewModel: ChatViewModel, title: String) -> some View {
@@ -41,6 +42,7 @@ struct ForkLiveModeView: View {
     @State private var controller: ForkLiveModeController
     @Environment(\.dismiss) private var dismiss
     @AppStorage("fork.liveMode.orbStyle") private var orbStyle = ForkLiveOrbStyle.voice
+    @State private var keptAwake = false
 
     init(viewModel: ChatViewModel, title: String) {
         self.title = title
@@ -78,9 +80,14 @@ struct ForkLiveModeView: View {
         .themedPageBackground()
         .onAppear {
             controller.onClose = { dismiss() }
+            keptAwake = UIApplication.shared.isIdleTimerDisabled
+            UIApplication.shared.isIdleTimerDisabled = true
             controller.start()
         }
-        .onDisappear { controller.stop() }
+        .onDisappear {
+            controller.stop()
+            UIApplication.shared.isIdleTimerDisabled = keptAwake
+        }
     }
 
     private var header: some View {
@@ -122,7 +129,8 @@ struct ForkLiveModeView: View {
         switch controller.phase {
         case .idle, .paused: Text("Paused · tap to talk", tableName: "Fork")
         case .listening: Text("Listening…", tableName: "Fork")
-        case .sending, .thinking: Text("Thinking…", tableName: "Fork")
+        case .sending, .thinking:
+            controller.isReconnecting ? Text("Reconnecting…", tableName: "Fork") : Text("Thinking…", tableName: "Fork")
         case .speaking: Text("Speaking · tap to interrupt", tableName: "Fork")
         case .failed: Text("Something went wrong · tap to retry", tableName: "Fork")
         }
