@@ -107,6 +107,7 @@ struct HermesMobileApp: App {
                 .appRootFont()
                 .modifier(ForkTurboPresentation())
                 .forkSystemEntryBridge()
+                .forkServedBuildChip()
                 .forkBotImport(authManager)
                 .task(id: authManager.state) { await DevAutoLogin.run(authManager: authManager) }
                 .overlay(alignment: .topLeading) {
@@ -121,6 +122,7 @@ struct HermesMobileApp: App {
                 .appRootFont()
                 .modifier(ForkTurboPresentation())
                 .forkSystemEntryBridge()
+                .forkServedBuildChip()
                 .forkBotImport(authManager)
             #endif
         }

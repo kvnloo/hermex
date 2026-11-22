@@ -62,6 +62,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | hermes-android feature | hermex | iOS mapping / where | Branch |
 |---|---|---|---|
 | Live Mode call surface (bot pill, orb, prompt, mic, close) | missing | Full-screen `LiveModeView`: `SFSpeechRecognizer` turn-taking → normal `prompt.submit` → `AVSpeechSynthesizer` reply, over the existing chat path | `boat/hermex/live-mode` |
+| Live Mode lanes (HX-092 / HA-035) | Implemented; device verification pending | From an existing Hermes thread, add up to four branch sessions as selectable orbs. Select a lane, then tap the mic to speak. One voice turn at a time; detaching only removes the orb, not the server session. The orb list lasts while that chat is open. | `boat/hx-lanes/hx-092` |
 | Hands-free (wake phrase, follow-up window) | missing | Same Live Mode loop with a bounded follow-up window; no wake-word model (would be a new dependency) | `boat/hermex/live-mode` (no wake word) |
 | Live Mode progress rows (commands while the agent works) | has | Collapsed progress row per spoken turn in the Live Mode transcript (`ForkLiveTranscriptView`); expands to the chat's own tool rows (`ToolCallLogRowView`) | `boat/hx-live/progress` |
 | Live Mode ephemeral-ui cards | has | OpenUI boards and drawable (`html`/`svg`/`mermaid`) fences in a Live Mode reply show inline in its transcript through the chat's `MarkdownRenderer`; a still-streaming card shows a placeholder | `boat/hx-live/ephemeral` |
@@ -75,7 +76,8 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | hermes-android feature | hermex | iOS mapping / where | Branch |
 |---|---|---|---|
 | ephemeral-ui / OpenUI boards rendered natively | missing | Pure-Swift OpenUI Lang parser (Linux-tested) + SwiftUI board renderer for fenced `openui` blocks | `boat/hermex/openui-boards` |
-| Annotation: compose, ink, snapshot, voice-send | missing | PencilKit `PKCanvasView` overlay over the chat, `ImageRenderer`/`UIGraphicsImageRenderer` snapshot, attach + prompt via the existing composer attachments | `boat/hermex/annotation` |
+| Annotation: compose, ink, snapshot, voice-send | has | Chat menu → Annotate: PencilKit ink over the chat, snapshot, narration and send through the composer (`Fork/Annotation`, `Fork/Core/Annotation`); live overlay and circle-to-draft | `boat/hermex/annotation` |
+| Preview channel + served-build chip (Dash turbo preview, DA-055) | has | Settings → Hermex → Preview channel. On, a chip under the status bar names the running build (`abc1234 · 3m old`) or `abc1234 → def5678` once `staging-ci.yml` has a newer green `staging` run; tap hides it, tap on `old → new` opens that run. Reads the public GitHub API, off by default. Running build from Info.plist `HermexBuildSHA`/`HermexBuildTime` (`Fork/Core/Preview`, `Fork/Preview`) | `boat/hx-port-dash/da-055` |
 | Turbo models sheet | missing | Sheet listing the turbo catalog from `model.options`; one tap sets the session model | `boat/hermex/turbo-models` |
 
 ## Groups
@@ -112,6 +114,8 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Look & Feel: theme mode, accent, themes | has | Settings → Appearance, `AppColor` themes, `ThemeGalleryView` (ADR 0102, 0168) | — |
 | NextGen theme engine: looks, Import / Copy theme JSON | missing | Theme JSON codec (Linux-tested) mapped onto `AppColor` custom themes; Import from clipboard/file, Copy to clipboard | `boat/hermex/theme-json` |
 | Solid / Glass surface | partial | Liquid Glass chrome on iOS 26+ (ADR 0163); no user Solid/Glass switch | `boat/hermex/theme-json` |
+| Shared theme file (HX-098): one theme every app reads, with the Glide branding | has | Vendored `kvnloo/ephemeral-ui` `theme/glide.json` (pinned in `HermesMobile/Fork/Vendor/EphemeralUI/PIN.json`), parsed in `ForkSharedTheme` (Linux-tested) and read through `\.forkSharedTheme`: the **Glide** look in Settings → Appearance → Looks, radii, spacing, glass levels and motion speed (turbo halves durations). `ci/check_ephemeral_ui.py` fails on an edited, stale or uncovered copy | `boat/hx-theme/hx-098` |
+| Card gallery from the shared catalog | has | Settings → Appearance → Card Gallery: one cell per fixture of every kind in the vendored `catalog/catalog.json`, drawn from `fixture.props`, with the catalog version shown; `coverage.json` records how each kind is drawn (`ForkCardGallery`) | `boat/hx-theme/hx-098` |
 
 ## System surfaces (Android → iOS)
 

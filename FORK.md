@@ -62,7 +62,50 @@ no app types) as a module named `HermesMobile`, and runs `HermesMobileTests/Fork
 XCTest. The same files are members of the Xcode app and test targets, so macOS CI runs
 those tests too.
 
+## Shared theme and card catalog
+
+`HermesMobile/Fork/Vendor/EphemeralUI/` holds a pinned copy of
+[kvnloo/ephemeral-ui](https://github.com/kvnloo/ephemeral-ui)'s `theme/glide.json` and
+`catalog/catalog.json`. `PIN.json` records the commit, each file's version and its SHA-256;
+`coverage.json` says how the app draws each card kind (`props`: the gallery's field list,
+`native`: a SwiftUI renderer). The folder ships in the app bundle as `EphemeralUI/`.
+Never edit the copies; re-vendor them:
+
+```sh
+git clone https://github.com/kvnloo/ephemeral-ui /tmp/ephemeral-ui   # or pull an existing checkout
+python3 ci/check_ephemeral_ui.py --vendor /tmp/ephemeral-ui           # copies, rewrites PIN.json, checks
+```
+
+`python3 ci/check_ephemeral_ui.py` fails when a copy differs from its pin, a file is not
+shape `v` 0, or a catalog kind has no `coverage.json` entry; `--upstream main` also fails
+when ephemeral-ui `main` has moved on (stale theme or catalog, new kinds). Staging CI runs both.
+
+## Preview channel
+
+Settings → Hermex → Preview channel follows the newest green `staging` run of
+`staging-ci.yml` and shows a chip naming the build that is running. The app reads its
+own build from the `HERMEX_BUILD_SHA` and `HERMEX_BUILD_TIME` build settings (Info.plist
+`HermexBuildSHA`/`HermexBuildTime`); Staging CI sets them. For a device build, pass them
+the same way, e.g.
+`xcodebuild … HERMEX_BUILD_SHA="$(git rev-parse HEAD)" HERMEX_BUILD_TIME="$(date -u +%s)"`.
+Without them the chip shows only the served build.
+
 ## Fork features
 
 See [PARITY.md](PARITY.md) for the hermes-android → hermex feature matrix, each
 feature's status, and its iOS mapping.
+
+### Shared card gallery
+
+Open **Settings → Card Gallery** (or Settings → Appearance → Card Gallery) to
+browse every fixture in the bundled ephemeral-ui catalog offline. The version at
+the top identifies the exact catalog shown. Kinds marked `native` in
+`coverage.json` (today: `metric`) use the read-only OpenUI board renderer; every
+other kind lists its fixture props, and unavailable fixtures show their reason.
+No fixture runs an action or contacts a server.
+
+The gallery reads the one pinned copy in `HermesMobile/Fork/Vendor/EphemeralUI`
+described above. After re-vendoring, review
+`HermesMobileTests/Fork/CardGallerySnapshot.txt` (group, fixture ID, fixture
+state, and chosen presentation); `ForkCardGalleryTests.testPresentationSnapshot`
+fails until it matches.

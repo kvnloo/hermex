@@ -17,11 +17,11 @@ LITERAL_CALL = re.compile(
 ESCAPE = re.compile(r'\\(?:\(([^()]*)\)|(.))')
 NUMERIC_INTERPOLATIONS = {
     "tools", "probe.tools.count", "reply.status", "files", "count",
-    "seats", "rounds", "helpers", "round", "agree", "total", "dissent", "abstain",
+    "seats", "rounds", "helpers", "round", "agree", "total", "dissent", "abstain", "lane",
 }
 OBJECT_INTERPOLATIONS = {
     "spec.name", "key", "role", "value", "target.connection.name", "text",
-    "session.userCode", "expiresAt, style: .time", "name", "names",
+    "session.userCode", "expiresAt, style: .time", "name", "names", "version",
 }
 FORMAT_TOKEN = re.compile(r'%(?:(\d+)\$)?(lld|@)')
 

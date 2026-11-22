@@ -46,6 +46,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>HermexBuildSHA</key>
+	<string>$(HERMEX_BUILD_SHA)</string>
+	<key>HermexBuildTime</key>
+	<string>$(HERMEX_BUILD_TIME)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>

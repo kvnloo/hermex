@@ -9,7 +9,11 @@
 #   an older macos-15 image cannot compile it.
 # - Fork Logic (Linux): scripts/fork-linux-test compiles the Foundation-only fork
 #   sources under HermesMobile/Fork and runs HermesMobileTests/Fork with XCTest.
-# - Tooling Tests: upstream's Linux checks (comments, test waits, scripts tests).
+# - Tooling Tests: upstream's Linux checks (comments, test waits, scripts tests),
+#   plus the vendored ephemeral-ui theme and catalog: intact, every kind covered,
+#   and not behind kvnloo/ephemeral-ui main.
+# - HERMEX_BUILD_SHA/TIME land in Info.plist so the preview channel's chip can
+#   name the running build (HermesMobile/Fork/Core/Preview).
 
 name: Staging CI
 
@@ -98,6 +102,8 @@ jobs:
             -derivedDataPath "${DERIVED_DATA_PATH}" \
             -disableAutomaticPackageResolution \
             -showBuildTimingSummary \
+            HERMEX_BUILD_SHA="${GITHUB_SHA}" \
+            HERMEX_BUILD_TIME="$(date -u +%s)" \
             CODE_SIGNING_ALLOWED=NO 2>&1 | tee "${CI_LOG_DIR}/build.log"
 
       - name: Test without building
@@ -169,9 +175,13 @@ jobs:
           python3 -m unittest discover -s scripts/tests
           python3 -m unittest discover -s ci -p 'test_*.py'
           python3 ci/check_fork_catalog.py
+          python3 ci/check_ephemeral_ui.py
           python3 ci/check_test_waits.py
           if [[ -n "${GITHUB_BASE_REF:-}" ]]; then
             git fetch --no-tags --depth=1 origin "+refs/heads/${GITHUB_BASE_REF}:refs/remotes/origin/${GITHUB_BASE_REF}"
           fi
           python3 ci/check_comments.py
           ruby ci/select_testflight_build_number_test.rb
+
+      - name: Check the vendored ephemeral-ui copy is current
+        run: python3 ci/check_ephemeral_ui.py --upstream main

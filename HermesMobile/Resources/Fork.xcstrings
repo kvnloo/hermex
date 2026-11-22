@@ -1,6 +1,596 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "Couldn’t add a Live lane.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تعذّرت إضافة مسار مباشر."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-Spur konnte nicht hinzugefügt werden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t add a Live lane."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "No se pudo añadir una vía en directo."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "افزودن مسیر زنده ممکن نبود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Impossible d’ajouter une voie en direct."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "לא ניתן להוסיף ערוץ חי."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Impossibile aggiungere un ramo in diretta."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ライブレーンを追加できませんでした。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "라이브 레인을 추가할 수 없습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Kon geen live-spoor toevoegen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nie udało się dodać ścieżki na żywo."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Não foi possível adicionar um canal ao vivo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Не удалось добавить канал эфира."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canlı kanal eklenemedi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لائیو راستہ شامل نہیں ہو سکا۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "無法新增即時分支。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "无法添加实时分支。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "無法新增即時分支。"
+          }
+        }
+      }
+    },
+    "Live lane %lld": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "المسار المباشر %lld"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-Spur %lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live lane %lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vía en directo %lld"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مسیر زندهٔ %lld"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Voie en direct %lld"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ערוץ חי %lld"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ramo in diretta %lld"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ライブレーン %lld"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "라이브 레인 %lld"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-spoor %lld"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ścieżka na żywo %lld"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal ao vivo %lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Канал эфира %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canlı kanal %lld"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لائیو راستہ %lld"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "即時分支 %lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "实时分支 %lld"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "即時分支 %lld"
+          }
+        }
+      }
+    },
+    "Main Live lane": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "المسار المباشر الرئيسي"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hauptspur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main Live lane"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vía principal en directo"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مسیر زندهٔ اصلی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Voie principale en direct"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ערוץ חי ראשי"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ramo principale in diretta"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "メインのライブレーン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "기본 라이브 레인"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Primair live-spoor"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Główna ścieżka na żywo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal principal ao vivo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Основной канал эфира"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ana canlı kanal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مرکزی لائیو راستہ"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "主要即時分支"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "主实时分支"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "主要即時分支"
+          }
+        }
+      }
+    },
+    "Detach Live lane": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "فصل المسار المباشر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-Spur trennen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detach Live lane"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Desvincular vía en directo"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "جدا کردن مسیر زنده"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Détacher la voie en direct"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ניתוק הערוץ החי"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Scollega ramo in diretta"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ライブレーンを切り離す"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "라이브 레인 분리"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-spoor loskoppelen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Odłącz ścieżkę na żywo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Desvincular canal ao vivo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Отсоединить канал эфира"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canlı kanalı ayır"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لائیو راستہ الگ کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "解除即時分支連結"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "解除实时分支关联"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "解除即時分支連結"
+          }
+        }
+      }
+    },
+    "Add Live lane": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "إضافة مسار مباشر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-Spur hinzufügen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Live lane"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Añadir vía en directo"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "افزودن مسیر زنده"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ajouter une voie en direct"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הוספת ערוץ חי"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Aggiungi ramo in diretta"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ライブレーンを追加"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "라이브 레인 추가"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Live-spoor toevoegen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dodaj ścieżkę na żywo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Adicionar canal ao vivo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Добавить канал эфира"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canlı kanal ekle"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "لائیو راستہ شامل کریں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "新增即時分支"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "添加实时分支"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "新增即時分支"
+          }
+        }
+      }
+    },
     "\"%@\" is %@, not a #RRGGBB or #RRGGBBAA color.": {
       "extractionState": "manual",
       "localizations": {
@@ -5832,6 +6422,363 @@
         }
       }
     },
+    "Card Gallery": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "معرض البطاقات"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Kartengalerie"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Card Gallery"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Galería de tarjetas"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "گالری کارت‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Galerie de cartes"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "גלריית כרטיסים"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Galleria di schede"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "カードギャラリー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "카드 갤러리"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Kaartengalerij"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Galeria kart"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Galeria de cartões"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Галерея карточек"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Kart Galerisi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کارڈ گیلری"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "卡片圖庫"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "卡片图库"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "卡片圖庫"
+          }
+        }
+      }
+    },
+    "Catalog %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "الكتالوج %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Katalog %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Catalog %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catálogo %@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کاتالوگ %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catalogue %@"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "קטלוג %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catalogo %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "カタログ %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "카탈로그 %@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catalogus %@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Katalog %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catálogo %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Каталог %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Katalog %@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کیٹلاگ %@"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目錄 %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目录 %@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目錄 %@"
+          }
+        }
+      }
+    },
+    "Catalog Unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "الكتالوج غير متاح"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Katalog nicht verfügbar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Catalog Unavailable"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catálogo no disponible"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کاتالوگ در دسترس نیست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catalogue indisponible"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הקטלוג אינו זמין"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catalogo non disponibile"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "カタログを利用できません"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "카탈로그를 사용할 수 없음"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catalogus niet beschikbaar"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Katalog niedostępny"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Catálogo indisponível"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Каталог недоступен"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Katalog Kullanılamıyor"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کیٹلاگ دستیاب نہیں"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "無法使用目錄"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "目录不可用"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "無法使用目錄"
+          }
+        }
+      }
+    },
     "Close": {
       "extractionState": "manual",
       "localizations": {
@@ -10473,6 +11420,125 @@
         }
       }
     },
+    "Every card kind in the shared ephemeral-ui catalog, drawn from its sample data.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "كل أنواع البطاقات في كتالوج ephemeral-ui المشترك، مرسومة من بياناتها النموذجية."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Jede Kartenart aus dem gemeinsamen ephemeral-ui-Katalog, gezeichnet aus ihren Beispieldaten."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every card kind in the shared ephemeral-ui catalog, drawn from its sample data."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cada tipo de tarjeta del catálogo compartido de ephemeral-ui, dibujado a partir de sus datos de ejemplo."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "همهٔ انواع کارت در کاتالوگ مشترک ephemeral-ui، ترسیم‌شده از داده‌های نمونهٔ آن‌ها."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Chaque type de carte du catalogue partagé ephemeral-ui, dessiné à partir de ses données d’exemple."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "כל סוגי הכרטיסים בקטלוג המשותף של ephemeral-ui, מצוירים מנתוני הדוגמה שלהם."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ogni tipo di scheda del catalogo condiviso ephemeral-ui, disegnato dai suoi dati di esempio."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共有の ephemeral-ui カタログにあるすべてのカードの種類を、サンプルデータから描画します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "공유 ephemeral-ui 카탈로그의 모든 카드 종류를 샘플 데이터로 그립니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Elk kaarttype uit de gedeelde ephemeral-ui-catalogus, getekend met zijn voorbeeldgegevens."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Każdy rodzaj karty ze wspólnego katalogu ephemeral-ui, narysowany z jego przykładowych danych."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cada tipo de cartão do catálogo compartilhado do ephemeral-ui, desenhado a partir dos dados de exemplo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Все виды карточек из общего каталога ephemeral-ui, построенные по их примерам данных."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Paylaşılan ephemeral-ui kataloğundaki her kart türü, örnek verilerinden çizilir."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مشترکہ ephemeral-ui کیٹلاگ میں ہر کارڈ کی قسم، اس کے نمونہ ڈیٹا سے بنائی گئی۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共用 ephemeral-ui 目錄中的每種卡片，以其範例資料繪製。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共享 ephemeral-ui 目录中的每种卡片，按其示例数据绘制。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "共用 ephemeral-ui 目錄中的每種卡片，以其範例資料繪製。"
+          }
+        }
+      }
+    },
     "Every source is off until you turn it on. Hermex asks you before each request. Hermes hosts can't request device data yet, so only the test buttons here use these sources.": {
       "extractionState": "manual",
       "localizations": {
@@ -12611,6 +13677,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "玻璃"
+          }
+        }
+      }
+    },
+    "Glide comes from the shared theme file, version %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "يأتي Glide من ملف السمة المشترك، الإصدار %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide stammt aus der gemeinsamen Theme-Datei, Version %@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glide comes from the shared theme file, version %@."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide proviene del archivo de tema compartido, versión %@."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide از فایل پوستهٔ مشترک می‌آید، نسخهٔ %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide provient du fichier de thème partagé, version %@."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide מגיע מקובץ ערכת הנושא המשותף, גרסה %@."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide proviene dal file del tema condiviso, versione %@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide は共有テーマファイル（バージョン %@）から読み込まれます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide는 공유 테마 파일(버전 %@)에서 가져옵니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide komt uit het gedeelde themabestand, versie %@."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide pochodzi ze wspólnego pliku motywu, wersja %@."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide vem do arquivo de tema compartilhado, versão %@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide берётся из общего файла темы, версия %@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide, paylaşılan tema dosyasından gelir, sürüm %@."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide مشترکہ تھیم فائل سے آتا ہے، ورژن %@۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide 來自共用主題檔案，版本 %@。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide 来自共享主题文件，版本 %@。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Glide 來自共用主題檔案，版本 %@。"
           }
         }
       }
@@ -38672,6 +39857,482 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "正在撰寫議題…"
+          }
+        }
+      }
+    },
+    "Follow the newest green staging build and show which build is running.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تتبّع أحدث إصدار staging ناجح واعرض الإصدار قيد التشغيل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dem neuesten grünen Staging-Build folgen und anzeigen, welcher Build läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow the newest green staging build and show which build is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Seguir la compilación de staging más reciente que pasó y mostrar cuál se está ejecutando."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "جدیدترین بیلد staging موفق را دنبال کن و نشان بده کدام بیلد در حال اجراست."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Suivre le dernier build staging réussi et afficher le build en cours d’exécution."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "מעקב אחר גרסת ה-staging הירוקה החדשה ביותר והצגת הגרסה שרצה."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Segui la build staging più recente superata e mostra quale build è in esecuzione."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "成功した最新の staging ビルドを追い、実行中のビルドを表示します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "성공한 최신 staging 빌드를 따르고 실행 중인 빌드를 표시합니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Volg de nieuwste geslaagde staging-build en toon welke build draait."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Śledź najnowszą udaną kompilację staging i pokazuj, która kompilacja działa."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Acompanhar a build de staging aprovada mais recente e mostrar qual build está em execução."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Следить за последней успешной сборкой staging и показывать, какая сборка запущена."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "En yeni başarılı staging derlemesini izle ve hangi derlemenin çalıştığını göster."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تازہ ترین کامیاب staging بلڈ کو فالو کریں اور دکھائیں کہ کون سا بلڈ چل رہا ہے۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "跟隨最新通過的 staging 版本，並顯示正在執行的版本。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "跟随最新通过的 staging 构建，并显示正在运行的构建。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "跟隨最新通過的 staging 版本，並顯示正在執行的版本。"
+          }
+        }
+      }
+    },
+    "Newer preview build served: %@. Tap to open it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "يتوفر إصدار معاينة أحدث: %@. اضغط لفتحه."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Neuerer Vorschau-Build verfügbar: %@. Zum Öffnen tippen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Newer preview build served: %@. Tap to open it."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hay una compilación de vista previa más nueva: %@. Toca para abrirla."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "بیلد پیش‌نمایش جدیدتری ارائه شده: %@. برای باز کردن ضربه بزنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nouveau build de préversion disponible : %@. Touchez pour l’ouvrir."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "גרסת תצוגה מקדימה חדשה יותר זמינה: %@. הקש כדי לפתוח."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Disponibile una build di anteprima più recente: %@. Tocca per aprirla."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "新しいプレビュービルドがあります: %@。タップで開きます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "더 새로운 미리보기 빌드: %@. 탭하여 열기."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nieuwere previewbuild beschikbaar: %@. Tik om te openen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dostępna nowsza kompilacja podglądu: %@. Stuknij, aby otworzyć."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build de prévia mais recente disponível: %@. Toque para abrir."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Доступна более новая предварительная сборка: %@. Нажмите, чтобы открыть."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Daha yeni önizleme derlemesi sunuldu: %@. Açmak için dokunun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "نیا پیش نظارہ بلڈ دستیاب ہے: %@۔ کھولنے کے لیے تھپتھپائیں۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "有較新的預覽版本：%@。點按以開啟。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "有更新的预览构建：%@。轻点以打开。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "有較新的預覽版本：%@。點一下以開啟。"
+          }
+        }
+      }
+    },
+    "Preview channel": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "قناة المعاينة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vorschaukanal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview channel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal de vista previa"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کانال پیش‌نمایش"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal de préversion"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ערוץ תצוגה מקדימה"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canale di anteprima"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "プレビューチャンネル"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "미리보기 채널"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Previewkanaal"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Kanał podglądu"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal de prévia"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Канал предварительных сборок"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Önizleme kanalı"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پیش نظارہ چینل"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "預覽頻道"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "预览频道"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "預覽頻道"
+          }
+        }
+      }
+    },
+    "Running build %@. Tap to hide.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "الإصدار قيد التشغيل %@. اضغط للإخفاء."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Laufender Build %@. Zum Ausblenden tippen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running build %@. Tap to hide."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compilación en ejecución %@. Toca para ocultar."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "بیلد در حال اجرا %@. برای پنهان کردن ضربه بزنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build en cours %@. Touchez pour masquer."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "גרסה פעילה %@. הקש כדי להסתיר."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build in esecuzione %@. Tocca per nascondere."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "実行中のビルド %@。タップで非表示。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "실행 중인 빌드 %@. 탭하여 숨기기."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Draaiende build %@. Tik om te verbergen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Działająca kompilacja %@. Stuknij, aby ukryć."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build em execução %@. Toque para ocultar."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Запущена сборка %@. Нажмите, чтобы скрыть."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Çalışan derleme %@. Gizlemek için dokunun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "چلنے والا بلڈ %@۔ چھپانے کے لیے تھپتھپائیں۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "正在執行版本 %@。點按以隱藏。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "正在运行构建 %@。轻点以隐藏。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "正在執行版本 %@。點一下以隱藏。"
           }
         }
       }
