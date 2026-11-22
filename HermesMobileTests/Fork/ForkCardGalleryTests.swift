@@ -65,4 +65,49 @@ final class ForkCardGalleryTests: XCTestCase {
         XCTAssertEqual(ForkCardGallery.summary(.array([.object([:])])), "[1]")
         XCTAssertEqual(ForkCardGallery.summary(.object(["b": .bool(true), "a": .null])), "a: \u{2014}, b: true")
     }
+
+    func testMetricFixturesMountTheNativeBoardAndEveryOtherKindItsProps() throws {
+        let (catalog, gallery) = try vendored()
+        let fixtures = Dictionary(catalog.kinds.flatMap(\.fixtures).map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        let metrics = gallery.cells.filter { $0.kind == "metric" && !$0.isUnavailable }
+        XCTAssertFalse(metrics.isEmpty)
+        for cell in gallery.cells {
+            XCTAssertEqual(cell.board != nil, cell.support == .native && !cell.isUnavailable, cell.id)
+        }
+        for cell in metrics {
+            let board = try XCTUnwrap(cell.board, cell.id)
+            let props = try XCTUnwrap(fixtures[cell.id]).props
+            XCTAssertTrue(board.isFullyRendered)
+            XCTAssertEqual(props["label"], .string(board.title))
+            guard case .stat(let title, .number(let value), let detail)? = board.panels.first,
+                  case .number(let delta)? = props["delta"] else {
+                XCTFail("Expected a metric Stat: \(cell.id)")
+                continue
+            }
+            XCTAssertEqual(props["app"], .string(title))
+            XCTAssertEqual(props["value"], .number(value))
+            XCTAssertEqual(detail, delta.formatted(.number.sign(strategy: .always())) + "%")
+        }
+    }
+
+    func testPresentationSnapshot() throws {
+        let (_, gallery) = try vendored()
+        var lines = ["ephemeral-ui \u{00B7} v" + gallery.version]
+        for section in gallery.sections {
+            lines.append("[\(section.group)]")
+            lines.append(contentsOf: section.cells.map { "\($0.id)\t\($0.state)\t\($0.presentation)" })
+        }
+        let actual = lines.joined(separator: "\n") + "\n"
+        XCTAssertEqual(actual, try String(decoding: Self.snapshot(), as: UTF8.self))
+    }
+
+    private static func snapshot() throws -> Data {
+        #if os(iOS)
+        let url = try XCTUnwrap(Bundle(for: ForkCardGalleryTests.self).url(forResource: "CardGallerySnapshot", withExtension: "txt"))
+        #else
+        let url = URL(fileURLWithPath: #filePath).resolvingSymlinksInPath().deletingLastPathComponent()
+            .appendingPathComponent("CardGallerySnapshot.txt")
+        #endif
+        return try Data(contentsOf: url)
+    }
 }

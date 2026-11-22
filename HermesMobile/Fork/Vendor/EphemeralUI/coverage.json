@@ -26,7 +26,7 @@
     "sign": "props",
     "context": "props",
     "receipt": "props",
-    "metric": "props",
+    "metric": "native",
     "track": "props",
     "crm": "props",
     "ride": "props",

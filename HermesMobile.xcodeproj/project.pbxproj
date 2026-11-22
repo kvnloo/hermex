@@ -14,6 +14,8 @@
 		169D57B7E55C26A0750029E2 /* CouncilReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA46C8AB9F044E24AED80C /* CouncilReader.swift */; };
 		8F66D33F956CEF13C1CC0D44 /* CouncilExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFE1745C5040100EBA9BF9 /* CouncilExchange.swift */; };
 		0CC6E0F5ACC7B2804E94A1CF /* CouncilRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD35957663421DA9504D7C /* CouncilRun.swift */; };
+		86BE001C344BB33CF65B153F /* CardGallerySnapshot.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28EA31142684DBE83BB078C6 /* CardGallerySnapshot.txt */; };
+		CF92EF74AEDACD47D6BA32AA /* ForkCardGalleryRenderingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27058EBC95AD0ECCD4A047AF /* ForkCardGalleryRenderingTests.swift */; };
 		CF1200000000000000000206 /* test-client.p12 in Resources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000106 /* test-client.p12 */; };
 		CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */; };
 		CF1200000000000000000204 /* ForkClientCertificateScopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */; };
@@ -940,6 +942,8 @@
 		40CA46C8AB9F044E24AED80C /* CouncilReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilReader.swift; sourceTree = "<group>"; };
 		2CBFE1745C5040100EBA9BF9 /* CouncilExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilExchange.swift; sourceTree = "<group>"; };
 		9BFD35957663421DA9504D7C /* CouncilRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilRun.swift; sourceTree = "<group>"; };
+		28EA31142684DBE83BB078C6 /* CardGallerySnapshot.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fork/CardGallerySnapshot.txt; sourceTree = "<group>"; };
+		27058EBC95AD0ECCD4A047AF /* ForkCardGalleryRenderingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCardGalleryRenderingTests.swift; sourceTree = "<group>"; };
 		CF1200000000000000000106 /* test-client.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fixtures/ClientCertificate/test-client.p12"; sourceTree = "<group>"; };
 		CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateChallengeTests.swift"; sourceTree = "<group>"; };
 		CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForkClientCertificateScopeTests.swift"; sourceTree = "<group>"; };
@@ -2246,7 +2250,9 @@
 				CF1200000000000000000106 /* test-client.p12 */,
 				CF1200000000000000000105 /* ForkClientCertificateChallengeTests.swift */,
 				946A74000000000000000001 /* StoreScreenshotTests.swift */,
+				27058EBC95AD0ECCD4A047AF /* ForkCardGalleryRenderingTests.swift */,
 				946A74000000000000000002 /* StoreScreenshotGoldens */,
+				28EA31142684DBE83BB078C6 /* CardGallerySnapshot.txt */,
 				0EBD60CB80D7894949643AF1 /* ForkApp */,
 				3F1F4A439CE8C6EA004493BC /* ForkShareReviewDraftTests.swift */,
 				4A6ABCD131F0EF3A6368B7C8 /* ScreenSessionTests.swift */,
@@ -3485,6 +3491,7 @@
 			files = (
 				CF1200000000000000000206 /* test-client.p12 in Resources */,
 				946A74000000000000000004 /* StoreScreenshotGoldens in Resources */,
+				86BE001C344BB33CF65B153F /* CardGallerySnapshot.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4119,6 +4126,7 @@
 				8311D55DE10C054E87D8AD43 /* ForkTurboModelsTests.swift in Sources */,
 				8463263265BB430B216B908A /* OpenUILangTests.swift in Sources */,
 				946A74000000000000000003 /* StoreScreenshotTests.swift in Sources */,
+				CF92EF74AEDACD47D6BA32AA /* ForkCardGalleryRenderingTests.swift in Sources */,
 				A21BF5ECD79B645923D7FC0D /* AnnotationComposeTests.swift in Sources */,
 				A56A4C6A22B3A4D3F8FF7DB6 /* ForkThemeStoreTests.swift in Sources */,
 				A611B0E7BC2C18BA2CA2690F /* ForkMemoryNoticeTests.swift in Sources */,

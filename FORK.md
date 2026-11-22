@@ -84,3 +84,18 @@ when ephemeral-ui `main` has moved on (stale theme or catalog, new kinds). Stagi
 
 See [PARITY.md](PARITY.md) for the hermes-android → hermex feature matrix, each
 feature's status, and its iOS mapping.
+
+### Shared card gallery
+
+Open **Settings → Card Gallery** (or Settings → Appearance → Card Gallery) to
+browse every fixture in the bundled ephemeral-ui catalog offline. The version at
+the top identifies the exact catalog shown. Kinds marked `native` in
+`coverage.json` (today: `metric`) use the read-only OpenUI board renderer; every
+other kind lists its fixture props, and unavailable fixtures show their reason.
+No fixture runs an action or contacts a server.
+
+The gallery reads the one pinned copy in `HermesMobile/Fork/Vendor/EphemeralUI`
+described above. After re-vendoring, review
+`HermesMobileTests/Fork/CardGallerySnapshot.txt` (group, fixture ID, fixture
+state, and chosen presentation); `ForkCardGalleryTests.testPresentationSnapshot`
+fails until it matches.

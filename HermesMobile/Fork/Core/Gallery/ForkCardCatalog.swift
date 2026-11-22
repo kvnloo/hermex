@@ -77,8 +77,10 @@ struct ForkCardCell: Equatable, Sendable, Identifiable {
     let support: ForkCardSupport?
     let unavailableReason: String?
     let lines: [ForkCardLine]
+    let board: OpenUIBoardModel?
 
     var isUnavailable: Bool { unavailableReason != nil }
+    var presentation: String { isUnavailable ? "unavailable" : board != nil ? "board" : "props" }
     var text: String { ([label, id, state] + lines.flatMap { [$0.key, $0.value] } + [unavailableReason ?? ""]).joined(separator: " ") }
 }
 
@@ -122,7 +124,17 @@ struct ForkCardGallery: Equatable, Sendable {
         let lines = fixture.props.keys.sorted().filter { !identityKeys.contains($0) }
             .map { ForkCardLine(key: $0, value: summary(fixture.props[$0] ?? .null)) }
         return ForkCardCell(id: fixture.id, kind: kind.kind, label: kind.label, state: fixture.state, support: support,
-                            unavailableReason: reason, lines: lines)
+                            unavailableReason: reason, lines: lines,
+                            board: reason == nil && support == .native ? board(kind.kind, fixture.props) : nil)
+    }
+
+    static func board(_ kind: String, _ props: [String: ForkJSON]) -> OpenUIBoardModel? {
+        guard kind == "metric", case .string(let app)? = props["app"], !app.isEmpty,
+              case .string(let label)? = props["label"], !label.isEmpty,
+              case .number(let value)? = props["value"], value.isFinite,
+              case .number(let delta)? = props["delta"], delta.isFinite else { return nil }
+        let detail = delta.formatted(.number.sign(strategy: .always())) + "%"
+        return OpenUIBoardModel(title: label, summary: "", panels: [.stat(title: app, value: .number(value), detail: detail)])
     }
 
     static func summary(_ value: ForkJSON, depth: Int = 0) -> String {

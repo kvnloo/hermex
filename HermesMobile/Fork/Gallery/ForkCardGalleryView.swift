@@ -40,7 +40,7 @@ struct ForkCardGalleryView: View {
     }
 }
 
-private struct ForkCardCellView: View {
+struct ForkCardCellView: View {
     let cell: ForkCardCell
     @Environment(\.forkSharedTheme) private var theme
 
@@ -58,10 +58,14 @@ private struct ForkCardCellView: View {
                     .font(AppFont.footnote())
                     .foregroundStyle(.appSecondary)
             }
-            ForEach(cell.lines) { line in
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text(verbatim: line.key).font(AppFont.mono(style: .footnote)).foregroundStyle(.appSecondary)
-                    Text(verbatim: line.value).font(AppFont.footnote()).foregroundStyle(.appPrimary).lineLimit(3)
+            if let board = cell.board {
+                ForkOpenUIBoardView(board: board)
+            } else {
+                ForEach(cell.lines) { line in
+                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                        Text(verbatim: line.key).font(AppFont.mono(style: .footnote)).foregroundStyle(.appSecondary)
+                        Text(verbatim: line.value).font(AppFont.footnote()).foregroundStyle(.appPrimary).lineLimit(3)
+                    }
                 }
             }
         }
@@ -70,5 +74,6 @@ private struct ForkCardCellView: View {
         .background(theme?.material(glass: "card") ?? .regularMaterial, in: shape)
         .overlay(shape.strokeBorder(Color(.appSeparator)))
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("card-gallery-" + cell.id)
     }
 }
