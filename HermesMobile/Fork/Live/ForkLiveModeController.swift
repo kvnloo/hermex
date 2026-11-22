@@ -8,6 +8,7 @@ final class ForkLiveModeController {
     private(set) var machine = LiveModeMachine()
     private(set) var level: Double = 0
     private(set) var errorMessage: String?
+    private(set) var isReconnecting = false
 
     @ObservationIgnored private weak var viewModel: ChatViewModel?
     @ObservationIgnored private let voice = ComposerVoiceInputController()
@@ -16,19 +17,26 @@ final class ForkLiveModeController {
     @ObservationIgnored private var ticker: Task<Void, Never>?
     @ObservationIgnored private var replyBaselineID: String?
     @ObservationIgnored private var sentAt: Date?
+    @ObservationIgnored private var watch: LiveReplyWatch?
+    @ObservationIgnored private var recovering: Task<Void, Never>?
     @ObservationIgnored private let clock = Date()
+    @ObservationIgnored private let transcriptBaseline: Set<String>
     var onClose: (() -> Void)?
 
     private static let echoGuard = Duration.milliseconds(300)
-    private static let replyTimeout: TimeInterval = 300
 
     init(viewModel: ChatViewModel) {
         self.viewModel = viewModel
+        transcriptBaseline = ForkLiveTranscriptSource.baseline(viewModel)
         speaker.onFinished = { [weak self] in self?.handle(.speechFinished) }
     }
 
     var phase: LivePhase { machine.phase }
     var heard: String { machine.heard }
+    var transcript: [LiveTurn<ToolCall>] {
+        guard let viewModel else { return [] }
+        return ForkLiveTranscriptSource.turns(in: viewModel, excluding: transcriptBaseline)
+    }
 
     func start() {
         guard ticker == nil else { return handle(.start) }
@@ -45,6 +53,10 @@ final class ForkLiveModeController {
         handle(.stop)
         ticker?.cancel()
         ticker = nil
+        recovering?.cancel()
+        recovering = nil
+        watch = nil
+        isReconnecting = false
     }
 
     func tapOrb() {
@@ -116,6 +128,7 @@ final class ForkLiveModeController {
         guard let viewModel else { return handle(.sendRefused) }
         replyBaselineID = Self.latestAssistant(in: viewModel)?.id
         sentAt = Date()
+        watch = LiveReplyWatch(sentAt: now)
         Task { [weak self] in
             let started = await viewModel.sendMessage(text)
             self?.handle(started ? .sendAccepted : .sendRefused)
@@ -124,11 +137,51 @@ final class ForkLiveModeController {
 
     private func checkReply() {
         guard let viewModel, let sentAt else { return }
-        if Date().timeIntervalSince(sentAt) > Self.replyTimeout { return handle(.replyFailed) }
-        guard viewModel.activeStreamID == nil, Date().timeIntervalSince(sentAt) > 0.8,
-              let reply = Self.latestAssistant(in: viewModel), reply.id != replyBaselineID else { return }
-        self.sentAt = nil
-        handle(.replyFinished(reply.content ?? ""))
+        if viewModel.activeStreamID == nil, Date().timeIntervalSince(sentAt) > 0.8,
+           let reply = Self.latestAssistant(in: viewModel), reply.id != replyBaselineID {
+            self.sentAt = nil
+            watch = nil
+            isReconnecting = false
+            return handle(.replyFinished(reply.content ?? ""))
+        }
+        guard Date().timeIntervalSince(sentAt) > 0.8 else { return }
+        watchConnection(viewModel)
+    }
+
+    private func watchConnection(_ viewModel: ChatViewModel) {
+        guard var watch else { return }
+        let observation = LiveReplyWatch.Observation(
+            hasStream: viewModel.activeStreamID != nil,
+            isConnected: !viewModel.isActiveStreamConnectionSuspended && viewModel.activeStreamRecoveryState == .idle
+        )
+        let action = watch.observe(observation, at: now)
+        self.watch = watch
+        if isReconnecting != watch.isReconnecting { isReconnecting = watch.isReconnecting }
+        switch action {
+        case .wait:
+            break
+        case .reconnect:
+            recover {
+                await viewModel.reconnectStreamIfNeeded()
+                await viewModel.networkPathDidChange()
+                await viewModel.recoverStaleActiveStreamIfNeeded()
+            }
+        case .refresh:
+            recover { await viewModel.loadMessages() }
+        case .fail:
+            self.watch = nil
+            sentAt = nil
+            isReconnecting = false
+            handle(.replyFailed)
+        }
+    }
+
+    private func recover(_ work: @escaping @MainActor () async -> Void) {
+        guard recovering == nil else { return }
+        recovering = Task { [weak self] in
+            await work()
+            self?.recovering = nil
+        }
     }
 
     private static func latestAssistant(in viewModel: ChatViewModel) -> ChatMessage? {
@@ -140,6 +193,7 @@ final class ForkLiveModeController {
 final class ForkLiveSpeaker: NSObject, AVSpeechSynthesizerDelegate {
     private let synthesizer = AVSpeechSynthesizer()
     private var pending = 0
+    var onStarted: ((String) -> Void)?
     var onFinished: (() -> Void)?
 
     override init() {
@@ -163,6 +217,14 @@ final class ForkLiveSpeaker: NSObject, AVSpeechSynthesizerDelegate {
     func stop() {
         pending = 0
         if synthesizer.isSpeaking { synthesizer.stopSpeaking(at: .immediate) }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        let text = utterance.speechString
+        Task { @MainActor in
+            guard self.pending > 0 else { return }
+            self.onStarted?(text)
+        }
     }
 
     nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {

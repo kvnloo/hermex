@@ -142,6 +142,7 @@ private struct ComposerQuoteDetailView: View {
 struct MessageComposerView: View {
     @Environment(\.composerViewportIsShort) private var viewportIsShort
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.scenePhase) private var scenePhase
     @AppStorage(HeaderLogoColor.storageKey) private var headerLogoColorHex = HeaderLogoColor.defaultHex
@@ -521,8 +522,8 @@ struct MessageComposerView: View {
                     .transition(ChatMotion.bottomOverlayTransition(reduceMotion: reduceMotion))
                 }
             }
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: showsSlashAutocomplete)
-            .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: showsFileAutocomplete)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: showsSlashAutocomplete)
+            .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: showsFileAutocomplete)
             .layoutPriority(-1)
 
             if showsNewChatControls, showsConfigurationControls, !viewportIsShort {
@@ -546,7 +547,7 @@ struct MessageComposerView: View {
                         ))
                     }
                 }
-                    .animation(ChatMotion.quickState(reduceMotion: reduceMotion), value: isDictating)
+                    .animation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: isDictating)
                     .padding(.horizontal)
                     .padding(.top, 8)
                     .frame(maxWidth: .infinity)
@@ -560,7 +561,7 @@ struct MessageComposerView: View {
             }
         }
         .animation(isExpanded ? ChatMotion.keyboard(reduceMotion: reduceMotion)
-            : ChatMotion.composerChrome(reduceMotion: reduceMotion), value: isExpanded)
+            : ChatMotion.composerChrome(reduceMotion: reduceMotion, turboEnabled: turboEnabled), value: isExpanded)
         .background(
             GeometryReader { proxy in
                 Color.clear

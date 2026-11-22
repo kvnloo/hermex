@@ -87,6 +87,7 @@ struct ChatTactileButtonStyle: ButtonStyle {
     let shadow: Shadow?
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.isEnabled) private var isEnabled
 
     func makeBody(configuration: Configuration) -> some View {
@@ -114,7 +115,7 @@ struct ChatTactileButtonStyle: ButtonStyle {
     }
 
     private var animation: Animation? {
-        ChatMotion.press(duration: variant.duration, reduceMotion: reduceMotion)
+        ChatMotion.press(duration: variant.duration, reduceMotion: reduceMotion, turboEnabled: turboEnabled)
     }
 }
 
@@ -313,6 +314,7 @@ struct ChatDecisionButtonStyle: ButtonStyle {
     let emphasis: Emphasis
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.isEnabled) private var isEnabled
 
@@ -377,7 +379,7 @@ struct ChatDecisionButtonStyle: ButtonStyle {
     }
 
     private var animation: Animation? {
-        ChatMotion.press(duration: 0.18, reduceMotion: reduceMotion)
+        ChatMotion.press(duration: 0.18, reduceMotion: reduceMotion, turboEnabled: turboEnabled)
     }
 }
 

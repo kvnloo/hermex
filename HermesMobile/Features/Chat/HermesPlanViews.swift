@@ -71,6 +71,7 @@ struct HermesPlanStrip: View {
     let onCollapsedHeightChange: (CGFloat) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @AppStorage(AppHaptics.isEnabledKey) private var isHapticsEnabled = true
     @State private var isExpanded = false
@@ -140,7 +141,7 @@ struct HermesPlanStrip: View {
     private var count: String { String(localized: "\(plan.completedCount) of \(plan.items.count)") }
 
     private func toggle() {
-        withAnimation(ChatMotion.quickState(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.quickState(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             isExpanded.toggle()
         }
     }

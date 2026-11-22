@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 extension View {
     func forkLiveMode(_ viewModel: ChatViewModel, title: String) -> some View {
@@ -41,6 +42,7 @@ struct ForkLiveModeView: View {
     @State private var controller: ForkLiveModeController
     @Environment(\.dismiss) private var dismiss
     @AppStorage("fork.liveMode.orbStyle") private var orbStyle = ForkLiveOrbStyle.voice
+    @State private var keptAwake = false
 
     init(viewModel: ChatViewModel, title: String) {
         self.title = title
@@ -51,13 +53,19 @@ struct ForkLiveModeView: View {
         ForkLiveModeScreen(
             title: title, phase: controller.phase, level: controller.level,
             heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
+            isReconnecting: controller.isReconnecting, transcript: controller.transcript,
             onOrb: controller.tapOrb, onEnd: controller.stop
         )
         .onAppear {
             controller.onClose = { dismiss() }
+            keptAwake = UIApplication.shared.isIdleTimerDisabled
+            UIApplication.shared.isIdleTimerDisabled = true
             controller.start()
         }
-        .onDisappear { controller.stop() }
+        .onDisappear {
+            controller.stop()
+            UIApplication.shared.isIdleTimerDisabled = keptAwake
+        }
     }
 }
 
@@ -68,16 +76,22 @@ struct ForkLiveModeScreen: View {
     let heard: String
     let error: String?
     @Binding var orbStyle: ForkLiveOrbStyle
+    var isReconnecting = false
+    var transcript: [LiveTurn<ToolCall>] = []
     let onOrb: () -> Void
     let onEnd: () -> Void
 
     var body: some View {
         VStack(spacing: 20) {
             header
-            Spacer(minLength: 12)
+            if transcript.isEmpty {
+                Spacer(minLength: 12)
+            } else {
+                ForkLiveTranscriptView(turns: transcript)
+            }
             Button(action: onOrb) {
                 ForkLiveOrb(phase: phase, level: level, style: orbStyle)
-                    .frame(width: 240, height: 240)
+                    .frame(width: transcript.isEmpty ? 240 : 140, height: transcript.isEmpty ? 240 : 140)
             }
             .buttonStyle(.plain)
             .accessibilityLabel(statusText)
@@ -94,7 +108,7 @@ struct ForkLiveModeScreen: View {
             if let error {
                 Text(verbatim: error).font(AppFont.footnote()).foregroundStyle(.red).multilineTextAlignment(.center)
             }
-            Spacer(minLength: 12)
+            if transcript.isEmpty { Spacer(minLength: 12) }
             controls
         }
         .padding(.vertical, 24)
@@ -141,7 +155,8 @@ struct ForkLiveModeScreen: View {
         switch phase {
         case .idle, .paused: Text("Paused · tap to talk", tableName: "Fork")
         case .listening: Text("Listening…", tableName: "Fork")
-        case .sending, .thinking: Text("Thinking…", tableName: "Fork")
+        case .sending, .thinking:
+            isReconnecting ? Text("Reconnecting…", tableName: "Fork") : Text("Thinking…", tableName: "Fork")
         case .speaking: Text("Speaking · tap to interrupt", tableName: "Fork")
         case .failed: Text("Something went wrong · tap to retry", tableName: "Fork")
         }

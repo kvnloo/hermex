@@ -14,6 +14,7 @@ struct ClarificationRequestInset: View {
     let onFootprintChange: (CGFloat) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @State private var isExpanded = true
     @State private var draftResponse = ""
 
@@ -60,7 +61,7 @@ struct ClarificationRequestInset: View {
             onDismissKeyboard()
         }
         ChatHaptics.disclosureToggled(isEnabled: isHapticsEnabled)
-        withAnimation(ChatMotion.clarificationToggle(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.clarificationToggle(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             isExpanded = expanded
         }
     }
@@ -509,6 +510,7 @@ struct HermesRequestInset: View {
     let onFootprintChange: (CGFloat) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.forkTurboEnabled) private var turboEnabled
     @ScaledMetric(relativeTo: .body) private var collapseButtonSize: CGFloat = 28
     @ScaledMetric(relativeTo: .body) private var minimumScrollHeight: CGFloat = 44
     @State private var isExpanded = true
@@ -600,7 +602,7 @@ struct HermesRequestInset: View {
             onDismissKeyboard()
         }
         ChatHaptics.disclosureToggled(isEnabled: isHapticsEnabled)
-        withAnimation(ChatMotion.clarificationToggle(reduceMotion: reduceMotion)) {
+        withAnimation(ChatMotion.clarificationToggle(reduceMotion: reduceMotion, turboEnabled: turboEnabled)) {
             isExpanded = expanded
         }
     }
