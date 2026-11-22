@@ -20,6 +20,7 @@
 		1FCB78ADE1E17C22F3A230BB /* ForkControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4497EA4CE4B8E7ACA9BB58 /* ForkControls.swift */; };
 		212C3034D7CDED976DA1E6C6 /* ForkReactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978F4B610AEAA53A028C95C9 /* ForkReactions.swift */; };
 		2394F725C3727E726555400A /* ForkTerminalScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80E0D7BB949E48D199DC10 /* ForkTerminalScreenTests.swift */; };
+		23EFE54A887EE95EDBCC23DE /* ForkRoutineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B1036A9E07A376B4E9DF1 /* ForkRoutineEntry.swift */; };
 		24A9AA122AED1A57FED3B9F1 /* LiveOrbGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C113B7043CEF77816ABC21D4 /* LiveOrbGeometry.swift */; };
 		2A354B1D84EBF032C9046434 /* ForkOpenUIPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453937AC97DC5C8E07F5EB14 /* ForkOpenUIPanelView.swift */; };
 		2E4C6D76B90CEE868EC6BDBE /* ChatViewModel+Fork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7E3AA66343F31BD8B824D /* ChatViewModel+Fork.swift */; };
@@ -58,6 +59,7 @@
 		A611B0E7BC2C18BA2CA2690F /* ForkMemoryNoticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEC11889D020CB4FA609E9A /* ForkMemoryNoticeTests.swift */; };
 		B0AD692DCC11D71E2EC792C0 /* ForkTurboCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF081C27526EC111B642030 /* ForkTurboCatalog.swift */; };
 		B2F9952844FB41EED3764AB9 /* ForkSystemEntryBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC19C25F305BDAF0DCF91EF /* ForkSystemEntryBridge.swift */; };
+		BBA49B19140A4828F6A9BA0D /* ForkHandoffIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207D61D9EAB6F13F55A03C3C /* ForkHandoffIntents.swift */; };
 		C28EAF595A5AC02F102BE75D /* OpenUIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979792DB0B837DB22851E2A /* OpenUIBoard.swift */; };
 		C6A9A15020D6FDF3791221E7 /* ForkChatRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99AF1D35D93792E7C80B35 /* ForkChatRPCTests.swift */; };
 		CA3212FAA358EFCA64B93091 /* ForkTerminalPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA7EDF4E722F3EB89B7439 /* ForkTerminalPalette.swift */; };
@@ -164,6 +166,7 @@
 		5417A7400000000000000092 /* SwiftMath in Frameworks */ = {isa = PBXBuildFile; productRef = 5417A7400000000000000091 /* SwiftMath */; };
 		1A2B3C4D5E6F7000000000A0 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7000000000B0 /* KeychainStore.swift */; };
 		1A2B3C4D5E6F7000000000A1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7000000000B1 /* AuthManager.swift */; };
+		FB4D75CCD64D033E231FEFBD /* ForkHandoffIntentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8501A29A58FC210F161741 /* ForkHandoffIntentsTests.swift */; };
 		FD49B8F15D1CA06C516BB541 /* ForkLiveVoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED2E952E2FC00BD3470928 /* ForkLiveVoiceRequest.swift */; };
 		FE4E43ABAB3A416FA881C6C8 /* AuthManager+MoveToHermes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258EA266C5141C2B253F58E /* AuthManager+MoveToHermes.swift */; };
 		C0DE88500000000000000001 /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE88500000000000000002 /* AppLock.swift */; };
@@ -851,9 +854,11 @@
 /* Begin PBXFileReference section */
 		06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactionsTests.swift; sourceTree = "<group>"; };
 		075F28927F691751A928FE57 /* ForkMCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMCPClient.swift; sourceTree = "<group>"; };
+		0F8501A29A58FC210F161741 /* ForkHandoffIntentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkHandoffIntentsTests.swift; sourceTree = "<group>"; };
 		1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveVoiceIntent.swift; sourceTree = "<group>"; };
 		1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRPCTests.swift; sourceTree = "<group>"; };
 		1D3FB9894BF61C3714B1CECB /* ForkAppearanceSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkAppearanceSections.swift; sourceTree = "<group>"; };
+		207D61D9EAB6F13F55A03C3C /* ForkHandoffIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkHandoffIntents.swift; sourceTree = "<group>"; };
 		21A8142271498D56EC872003 /* AnnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationModel.swift; sourceTree = "<group>"; };
 		26346E09CC0F3BD0A62FED1B /* ForkTurboModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboModels.swift; sourceTree = "<group>"; };
 		27D61C250D17DCA68AA54FA7 /* OpenUITreemapLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUITreemapLayout.swift; sourceTree = "<group>"; };
@@ -871,6 +876,7 @@
 		49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRoutineRequestTests.swift; sourceTree = "<group>"; };
 		4CA84847739A459112E526D6 /* ForkThemeRoles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeRoles.swift; sourceTree = "<group>"; };
 		4F4497EA4CE4B8E7ACA9BB58 /* ForkControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkControls.swift; sourceTree = "<group>"; };
+		4F5B1036A9E07A376B4E9DF1 /* ForkRoutineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRoutineEntry.swift; sourceTree = "<group>"; };
 		56072E9464C2CCD3D91864AB /* ForkOpenUIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkOpenUIBoardView.swift; sourceTree = "<group>"; };
 		5997454E23E505D02E2EC784 /* AnnotationComposeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationComposeTests.swift; sourceTree = "<group>"; };
 		5F03BE88B465A7F08EB0E6FA /* LiveModeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModeRequest.swift; sourceTree = "<group>"; };
@@ -1684,6 +1690,7 @@
 		0EBD60CB80D7894949643AF1 /* ForkApp */ = {
 			isa = PBXGroup;
 			children = (
+				0F8501A29A58FC210F161741 /* ForkHandoffIntentsTests.swift */,
 				1C5213BB8DE6216687B9D1CE /* ForkRPCTests.swift */,
 				29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */,
 				75BC3F979914165875B98C5C /* ForkMCPRPCTests.swift */,
@@ -1716,6 +1723,8 @@
 			isa = PBXGroup;
 			children = (
 				1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */,
+				207D61D9EAB6F13F55A03C3C /* ForkHandoffIntents.swift */,
+				4F5B1036A9E07A376B4E9DF1 /* ForkRoutineEntry.swift */,
 				7CC19C25F305BDAF0DCF91EF /* ForkSystemEntryBridge.swift */,
 			);
 			path = System;
@@ -3168,6 +3177,7 @@
 				1DE409CDAF4B7CC5CC1E20E2 /* ForkTerminalProtocol.swift in Sources */,
 				1EB4BE1CF1E94BAC23760DFD /* ForkLiveVoiceRequest.swift in Sources */,
 				212C3034D7CDED976DA1E6C6 /* ForkReactions.swift in Sources */,
+				23EFE54A887EE95EDBCC23DE /* ForkRoutineEntry.swift in Sources */,
 				24A9AA122AED1A57FED3B9F1 /* LiveOrbGeometry.swift in Sources */,
 				2A354B1D84EBF032C9046434 /* ForkOpenUIPanelView.swift in Sources */,
 				2E4C6D76B90CEE868EC6BDBE /* ChatViewModel+Fork.swift in Sources */,
@@ -3197,6 +3207,7 @@
 				A51DF9C43664F57AB354D418 /* OpenUIPanels.swift in Sources */,
 				B0AD692DCC11D71E2EC792C0 /* ForkTurboCatalog.swift in Sources */,
 				B2F9952844FB41EED3764AB9 /* ForkSystemEntryBridge.swift in Sources */,
+				BBA49B19140A4828F6A9BA0D /* ForkHandoffIntents.swift in Sources */,
 				C28EAF595A5AC02F102BE75D /* OpenUIBoard.swift in Sources */,
 				CA3212FAA358EFCA64B93091 /* ForkTerminalPalette.swift in Sources */,
 				CB8FD1A082B2BE3DAAE3C318 /* ForkTerminalView.swift in Sources */,
@@ -3679,6 +3690,7 @@
 				C6A9A15020D6FDF3791221E7 /* ForkChatRPCTests.swift in Sources */,
 				E3F5754BA971FCE280677E84 /* ForkReactionsTests.swift in Sources */,
 				ECF685D21F1CE2F6739A8BA5 /* ForkMCPServersTests.swift in Sources */,
+				FB4D75CCD64D033E231FEFBD /* ForkHandoffIntentsTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,
 				3C47C99D373EDF30CDEAAED1 /* RFBDecoderTests.swift in Sources */,
 				A4790000000000000000E006 /* PushRegistrationTests.swift in Sources */,
