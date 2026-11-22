@@ -46,7 +46,7 @@ branch (cut from `staging`); `—` means nothing to do. **Blocked** names who mu
 | Chat style (Bubbles) | has | `MessageBubbleView` (native bubbles are hermex's default) | — |
 | More → Artifacts | has | Bot artifacts (`BotArtifact*`, ADR 0001) | — |
 | More → Execution | has | Delegated work / workers (`HermesDelegatedWorkView`, ADR 0037) | — |
-| Mission Control: agents, subagents, Tasks, background processes with Pause / Resume / Stop / Retry | has | Sidebar → **Mission Control** sheet: one list from `delegation.status`, the Tasks list and `agents.list`; spawn gate and Tasks pause/resume, failed Tasks retry; commands the host can't honour are disabled with the reason (`HermesMobile/Fork/Mission/`, ADR 0181) | `boat/hx-mission/hx-075` |
+| Mission Control: agents, subagents, Tasks, background processes with Pause / Resume / Stop / Retry | has | Sidebar → **Mission Control** sheet: one list from `delegation.status`, the Tasks list and `agents.list`; spawn gate and Tasks pause/resume, failed Tasks retry; commands the host can't honour are disabled with the reason (`HermesMobile/Fork/Mission/`, ADR 0183) | `boat/hx-rebase/hx-075` |
 | More → Terminal | missing | Host shell over `/api/host-terminal` WebSocket + a small VT screen buffer | `boat/hermex/host-terminal` |
 | "Worked for %s" after a turn | has | `TranscriptTurnFolding` ("Worked for \(elapsed)") | — |
 | Reactions with skin tone (`message.react`, `message.reaction`) | missing | Context-menu React picker with a skin-tone row; chips under the message | `boat/hermex/chat-parity` |
