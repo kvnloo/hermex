@@ -64,6 +64,7 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | Live Mode call surface (bot pill, orb, prompt, mic, close) | missing | Full-screen `LiveModeView`: `SFSpeechRecognizer` turn-taking → normal `prompt.submit` → `AVSpeechSynthesizer` reply, over the existing chat path | `boat/hermex/live-mode` |
 | Hands-free (wake phrase, follow-up window) | missing | Same Live Mode loop with a bounded follow-up window; no wake-word model (would be a new dependency) | `boat/hermex/live-mode` (no wake word) |
 | GPT-Live over WebRTC | missing | Needs a WebRTC stack (new dependency) and a host that offers it; **blocked: Kevin** (dependency) | — |
+| Live Mode survives long tool calls (keepalive, auto-reconnect) | has | Screen stays awake while Live Mode is open; a dropped stream reattaches with backoff to the same conversation (no resend), a stream that ends without a reply refreshes the transcript once, and only 5 minutes disconnected fails the turn (`LiveReplyWatch`) | `boat/hx-live/reconnect` |
 | Avatar styles: faces, voice orb (persona looks), thinking orb | partial | Faces exist (`BotFaceMotion`, generated avatars). Voice orb and thinking orb drawn natively with SwiftUI `Canvas`/`TimelineView` | `boat/hermex/live-mode` |
 
 ## Ephemeral UI, annotation, turbo
