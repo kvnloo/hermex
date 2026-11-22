@@ -15,7 +15,7 @@ LITERAL_CALL = re.compile(
     r'"(?P<literal>(?:[^"\\\n]|\\.)*)"\s*,\s*(?P<table>' + TABLE_ARGUMENT.pattern + ')'
 )
 ESCAPE = re.compile(r'\\(?:\(([^()]*)\)|(.))')
-NUMERIC_INTERPOLATIONS = {"tools", "probe.tools.count", "reply.status"}
+NUMERIC_INTERPOLATIONS = {"tools", "probe.tools.count", "reply.status", "count"}
 OBJECT_INTERPOLATIONS = {"spec.name", "key", "role", "value"}
 FORMAT_TOKEN = re.compile(r'%(?:(\d+)\$)?(lld|@)')
 

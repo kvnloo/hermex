@@ -39,6 +39,7 @@ import SwiftUI
     @State private var hostLacksScreen = false
     @AppStorage private var isScreenEnabled: Bool
     @State private var heldScreens: [String] = []
+    @State private var sessionTree = ForkBotSessionTreeStore()
 
     init(
         server: URL,
@@ -338,6 +339,9 @@ import SwiftUI
             switch chat {
             case .bot(let profile):
                 row(profile, showLatest: filters.isRecent(profile.lastActive, now: now))
+                if let routes = home?.botSessions, let connection = inbox.connection {
+                    ForkBotSessionBranchRows(profile: profile, connectionID: connection.id, inbox: inbox, store: sessionTree, routes: routes)
+                }
             case .room(let room):
                 if let key = inbox.roomKey(room) { roomRow(room, key: key) }
             }
@@ -351,6 +355,8 @@ import SwiftUI
                         showLatest: showLatest)
         }
         .buttonStyle(.plain)
+        .modifier(ForkBotSessionDisclosureSlot(server: server, connectionID: inbox.connection?.id, profile: profile,
+                                               isOffered: home?.botSessions != nil))
         .opacity(profile.hidden ? 0.5 : 1)
         .contextMenu { organizeMenu(profile) }
         .swipeActions(edge: .leading, allowsFullSwipe: false) {

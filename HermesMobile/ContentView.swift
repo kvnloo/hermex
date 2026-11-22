@@ -570,7 +570,8 @@ struct HermesServerHome: View {
 
     var body: some View {
         let identity = HermesServerIdentity(account: authManager.activeServer, server: server)
-        let home = HermesHome(title: identity.title, avatar: avatar(identity), tab: $tab, isSidebar: usesSplit)
+        let home = HermesHome(title: identity.title, avatar: avatar(identity), tab: $tab, isSidebar: usesSplit,
+                              botSessions: botSessionRoutes)
         Group {
             if usesSplit {
                 homeContent(home)
@@ -654,6 +655,20 @@ struct HermesServerHome: View {
         }
         .onAppear(perform: readConnection)
         .forkRoutineTab(showSessionsForRoutine)
+    }
+
+    private var botSessionRoutes: ForkBotSessionRoutes? {
+        guard let sessions else { return nil }
+        return ForkBotSessionRoutes(
+            open: { profile, key in pendingSessionDestination = HermesSessionDestination(server: server, profile: profile, key: key) },
+            newSession: { pendingNewChat = HermesNewChatDestination(server: server, profile: $0) },
+            showAll: { profile in
+                HermesProfilePreference.save(profile, for: server)
+                HermesProfilePreference.saveShowsAllProfiles(false, for: server)
+                tab = .sessions; settings = nil; isPresentingAddServer = false
+                Task { await sessions.model.selectHermesProfile(profile) }
+            }
+        )
     }
 
     private func showSessionsForRoutine() {

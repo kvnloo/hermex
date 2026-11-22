@@ -166,6 +166,8 @@ import UIKit
     private(set) var seen: [String: Double] = [:]
     private(set) var liveStatuses: [String: BotLiveStatus] = [:]
     private(set) var liveStatusesAreStale = false
+    private(set) var sessionStatuses: [String: BotLiveStatus] = [:]
+    private(set) var rosterRevision = 0
     private(set) var isReconnecting = false
     var homeConnection: HomeConnectionStatus.Facts {
         HomeConnectionStatus.Facts(keepsRows: !profiles.isEmpty && errorMessage == nil && routeAdvice == nil,
@@ -283,7 +285,7 @@ import UIKit
             if connection?.id != saved?.id {
                 selection = BotInboxSelection()
                 profiles = []; avatars = [:]; seen = [:]; rooms = []; roomCapabilities = BotRoomCapabilities(.null)
-                roomFlags = BotRoomOrganizeStore.Flags(); sectionOrder = []; setLiveStatuses([:])
+                roomFlags = BotRoomOrganizeStore.Flags(); sectionOrder = []; setLiveStatuses([:]); sessionStatuses = [:]
                 setReconnecting(false)
             }
             if connection?.id != saved?.id || connection?.address != saved?.address {
@@ -399,6 +401,13 @@ import UIKit
         connection != nil && profiles.isEmpty && errorMessage == nil && routeAdvice == nil && link != .live
     }
 
+    func firstSessionPage(_ profile: String) async throws -> HermesSessionPage {
+        guard link == .live, let client = wire else { throw BotFailure.stale }
+        let page = try await client.sessionPage(profile: profile, offset: 0, archived: false)
+        guard wire === client else { throw BotFailure.stale }
+        return page
+    }
+
     func mayEdit(_ profile: BotProfile) -> Bool { link == .live && !editing.contains(profile.id) }
 
     func mayDelete(_ profile: BotProfile) -> Bool { profile.id != "default" && mayEdit(profile) }
@@ -428,6 +437,7 @@ import UIKit
         if selection.profile?.id == profile { selection = BotInboxSelection() }
         guard let connection else { return }
         seen.removeValue(forKey: profile); persistSeen()
+        ForkBotSessionExpansion.setExpanded(false, server: server, connectionID: connection.id, profile: profile)
         avatarStore.setImage(nil, connectionID: connection.id, profile: profile, revision: nil)
         if let offlineCache {
             try? CacheStore.removeHermesBotChats(serverURL: server, connectionID: connection.id, profile: profile, in: offlineCache)
@@ -508,6 +518,7 @@ import UIKit
             guard let rows = roster["profiles"].list else { throw BotFailure.unsupported }
             let previous = Set(profiles.map(\.id))
             profiles = Self.roster(rows)
+            rosterRevision += 1
             setReconnecting(false)
             if profileNames.save(profiles.map { .init(profile: $0.id, title: $0.name, model: $0.model) }, for: server) {
                 ProfileEntityProvider.refreshAppShortcuts(changed: true)
@@ -566,12 +577,14 @@ import UIKit
             let reply = try await client.call(.sessionActiveList)
             guard current() else { return }
             setLiveStatuses(BotLiveStatus.statuses(reply["sessions"].list ?? [], profiles: profiles))
+            let sessions = BotLiveStatus.sessionStatuses(reply["sessions"].list ?? [])
+            if sessions != sessionStatuses { sessionStatuses = sessions }
             retriesStatusRead = false
         } catch {
             guard current() else { return }
             if error as? BotFailure == .rejected(-32601) {
                 readsLiveStatus = false
-                setLiveStatuses([:])
+                setLiveStatuses([:]); sessionStatuses = [:]
             } else {
                 retriesStatusRead = retriesStatusRead || !liveStatuses.isEmpty
                 setLiveStatuses(liveStatuses, stale: !liveStatuses.isEmpty)
