@@ -76,7 +76,8 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | hermes-android feature | hermex | iOS mapping / where | Branch |
 |---|---|---|---|
 | ephemeral-ui / OpenUI boards rendered natively | missing | Pure-Swift OpenUI Lang parser (Linux-tested) + SwiftUI board renderer for fenced `openui` blocks | `boat/hermex/openui-boards` |
-| Annotation: compose, ink, snapshot, voice-send | missing | PencilKit `PKCanvasView` overlay over the chat, `ImageRenderer`/`UIGraphicsImageRenderer` snapshot, attach + prompt via the existing composer attachments | `boat/hermex/annotation` |
+| Annotation: compose, ink, snapshot, voice-send | has | Chat menu → Annotate: PencilKit ink over the chat, snapshot, narration and send through the composer (`Fork/Annotation`, `Fork/Core/Annotation`); live overlay and circle-to-draft | `boat/hermex/annotation` |
+| Preview channel + served-build chip (Dash turbo preview, DA-055) | has | Settings → Hermex → Preview channel. On, a chip under the status bar names the running build (`abc1234 · 3m old`) or `abc1234 → def5678` once `staging-ci.yml` has a newer green `staging` run; tap hides it, tap on `old → new` opens that run. Reads the public GitHub API, off by default. Running build from Info.plist `HermexBuildSHA`/`HermexBuildTime` (`Fork/Core/Preview`, `Fork/Preview`) | `boat/hx-port-dash/da-055` |
 | Turbo models sheet | missing | Sheet listing the turbo catalog from `model.options`; one tap sets the session model | `boat/hermex/turbo-models` |
 
 ## Groups

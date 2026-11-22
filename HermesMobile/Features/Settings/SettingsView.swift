@@ -92,6 +92,8 @@ struct SettingsView: View {
                 } label: {
                     SettingsLabel(title: String(localized: "Card Gallery", table: "Fork"), systemImage: "rectangle.grid.2x2")
                 }
+
+                ForkPreviewChannelSettingsRow()
             } header: {
                 Text(verbatim: "Hermex")
             } appFooter: {

@@ -12,6 +12,8 @@
 # - Tooling Tests: upstream's Linux checks (comments, test waits, scripts tests),
 #   plus the vendored ephemeral-ui theme and catalog: intact, every kind covered,
 #   and not behind kvnloo/ephemeral-ui main.
+# - HERMEX_BUILD_SHA/TIME land in Info.plist so the preview channel's chip can
+#   name the running build (HermesMobile/Fork/Core/Preview).
 
 name: Staging CI
 
@@ -100,6 +102,8 @@ jobs:
             -derivedDataPath "${DERIVED_DATA_PATH}" \
             -disableAutomaticPackageResolution \
             -showBuildTimingSummary \
+            HERMEX_BUILD_SHA="${GITHUB_SHA}" \
+            HERMEX_BUILD_TIME="$(date -u +%s)" \
             CODE_SIGNING_ALLOWED=NO 2>&1 | tee "${CI_LOG_DIR}/build.log"
 
       - name: Test without building
