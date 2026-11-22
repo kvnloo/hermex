@@ -90,4 +90,22 @@ final class AnnotationComposeTests: XCTestCase {
         let open = Array(loop.prefix(7)) + [AnnotationPoint(x: 0.4, y: 0.5, pressure: 0.5, time: 8)]
         XCTAssertNil(AnnotationCompose.closedLoopRegion(stroke(3, start: 0, end: 8, pointer: "stylus", points: open), screen: screen))
     }
+    func testLiveInkFeedsFingerLoopsWithoutChangingStylusOnlyDefault() throws {
+        let points = (0...24).map { index -> AnnotationPoint in
+            let angle = Double(index) / 24 * 2 * .pi
+            return AnnotationPoint(x: 0.25 + 0.2 * cos(angle), y: 0.3 + 0.04 * sin(angle), pressure: 1, time: index)
+        }
+        let circle = stroke(1, start: 0, end: 24, points: points)
+        XCTAssertNil(AnnotationCompose.closedLoopRegion(circle, screen: screen))
+        let region = try XCTUnwrap(AnnotationCompose.closedLoopRegion(circle, screen: screen, allowsTouch: true))
+        let lines = [
+            AnnotationTextBox(x: 55, y: 215, width: 100, height: 16, text: "Release checklist"),
+            AnnotationTextBox(x: 55, y: 245, width: 100, height: 16, text: "Run the tests"),
+            AnnotationTextBox(x: 55, y: 330, width: 100, height: 16, text: "Don't include me"),
+        ]
+        XCTAssertEqual(AnnotationCompose.visibleText(in: region, boxes: lines), "Release checklist\nRun the tests")
+        let arc = stroke(2, start: 0, end: 12, points: Array(points.prefix(13)))
+        XCTAssertNil(AnnotationCompose.closedLoopRegion(arc, screen: screen, allowsTouch: true))
+    }
+
 }
