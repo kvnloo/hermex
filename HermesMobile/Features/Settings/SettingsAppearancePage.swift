@@ -33,6 +33,8 @@ struct SettingsAppearancePage: View {
                 AccentPicker(accentHex: $accentHex, lightTheme: lightTheme, darkTheme: darkTheme)
             }
 
+            ForkAppearanceSections(lightTheme: $lightTheme, darkTheme: $darkTheme)
+
             Section("Text") {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("The quick brown fox jumps over the lazy dog.")

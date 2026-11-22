@@ -9,6 +9,7 @@ enum ColorTheme: String, CaseIterable, Identifiable {
     case ocean
     case ember
     case iris
+    case custom
 
     var id: Self { self }
 
@@ -21,6 +22,7 @@ enum ColorTheme: String, CaseIterable, Identifiable {
         case .ocean: String(localized: "Ocean")
         case .ember: String(localized: "Ember")
         case .iris: String(localized: "Iris")
+        case .custom: ForkThemeStore.title
         }
     }
 
@@ -43,6 +45,7 @@ enum ColorTheme: String, CaseIterable, Identifiable {
         case (.ember, true): ThemePalette.emberDark
         case (.iris, false): ThemePalette.irisLight
         case (.iris, true): ThemePalette.irisDark
+        case (.custom, _): ForkThemeStore.palette(isDark: isDark)
         }
     }
 }
@@ -79,7 +82,7 @@ final class ThemePalette {
     static let irisLight = ThemePalette(isDark: false, canvas: 0xF8F5FC, surface: 0xEEE8F7, text: 0x211A33, muted: 0x685E80, border: 0xE0D8EF, accent: 0x6D3FC8, code: 0xEEE8F7)
     static let irisDark = ThemePalette(isDark: true, canvas: 0x100C1C, surface: 0x1C162C, text: 0xEFEAF8, muted: 0x9C92B5, border: 0x2B2342, accent: 0xA98BF5, code: 0x161125)
 
-    private init(
+    init(
         canvas: UIColor, surface: UIColor, raised: UIColor, groupedCanvas: UIColor, groupedSurface: UIColor, groupedRaised: UIColor,
         text: UIColor, textSecondary: UIColor, textTertiary: UIColor, placeholder: UIColor,
         separator: UIColor, fill: UIColor, fillSecondary: UIColor, fillTertiary: UIColor,
@@ -151,11 +154,13 @@ struct AppAppearance: Equatable {
     let accentHex: String?
     private let lightPalette: ThemePalette
     private let darkPalette: ThemePalette
+    private let forkRevision: String
 
     init(lightTheme: ColorTheme, darkTheme: ColorTheme, accentHex: String?) {
         self.lightTheme = lightTheme
         self.darkTheme = darkTheme
         self.accentHex = accentHex
+        forkRevision = ForkThemeStore.revision(light: lightTheme, dark: darkTheme)
         let accent = accentHex.flatMap(UIColor.init(hexRGB:))
         lightPalette = accent.map { lightTheme.palette(isDark: false).withAccent($0, isDark: false) }
             ?? lightTheme.palette(isDark: false)
@@ -165,12 +170,13 @@ struct AppAppearance: Equatable {
 
     func palette(isDark: Bool) -> ThemePalette { isDark ? darkPalette : lightPalette }
 
-    var cacheKey: String { "\(lightTheme.rawValue)|\(darkTheme.rawValue)|\(accentHex ?? "")" }
+    var cacheKey: String { "\(lightTheme.rawValue)|\(darkTheme.rawValue)|\(accentHex ?? "")|\(forkRevision)" }
 
     func theme(for colorScheme: ColorScheme) -> ColorTheme { colorScheme == .dark ? darkTheme : lightTheme }
 
     static func == (lhs: AppAppearance, rhs: AppAppearance) -> Bool {
         lhs.lightTheme == rhs.lightTheme && lhs.darkTheme == rhs.darkTheme && lhs.accentHex == rhs.accentHex
+            && lhs.forkRevision == rhs.forkRevision
     }
 }
 

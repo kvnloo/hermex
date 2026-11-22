@@ -171,6 +171,8 @@ struct SettingsServerPage: View {
 
         if let hermesConnection {
             Section {
+                ForkTerminalSettingsRow(connection: hermesConnection, server: server)
+
                 NavigationLink {
                     HermesDefaultModelView(connection: hermesConnection, server: server)
                 } label: {
@@ -194,6 +196,8 @@ struct SettingsServerPage: View {
                 } label: {
                     SettingsLabel(title: String(localized: "Connected Apps"), systemImage: "app.connected.to.app.below.fill")
                 }
+
+                ForkMCPSettingsRow(connection: hermesConnection, server: server)
             }
 
             OfflineDataSection(server: server)

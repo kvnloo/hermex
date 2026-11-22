@@ -1229,7 +1229,10 @@ import SwiftUI
         chat.receive(reclaimed(runtime: "another-runtime", key: "another-key"))
         XCTAssertEqual(chat.turn.engine.connectionState, .connected)
         XCTAssertEqual(chat.turn.engine.runtime, "runtime")
-        XCTAssertEqual(chat.host.requests.count, leaving, "nothing read or sent")
+        XCTAssertEqual(socketReads(chat, since: leaving), [], "nothing read or sent")
+        await reclaim(chat, reclaimed(runtime: "another-runtime", key: "tip"))
+        XCTAssertEqual(socketReads(chat, since: leaving), ["session.resume", "session.events.since", "session.resume"],
+                       "only this session's reclaim reattaches")
     }
 
     func testAReclaimMidTurnEndsInTheRecoveryState() async {

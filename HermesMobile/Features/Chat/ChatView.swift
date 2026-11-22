@@ -1132,6 +1132,7 @@ struct ChatView: View {
                 handleRunEnd()
             }
             .onChange(of: viewModel.streamingHapticPulseTrigger, handleStreamingHapticPulse)
+            .forkAnnotate(viewModel, title: displayTitle)
     }
 
     private var chatContent: some View {
@@ -1169,6 +1170,7 @@ struct ChatView: View {
                     delegatedWorkToolbarItem
                 }
             }
+            .forkLiveMode(viewModel, title: displayTitle)
             .navigationDestination(item: $pushedSession) { session in
                 ChatView(session: session, server: server, onAPIError: onAPIError)
             }
@@ -2318,6 +2320,7 @@ struct ChatView: View {
             delegatedWork: delegatedWork,
             onOpenDelegatedWork: openDelegatedWork
         )
+        .forkChat(viewModel.forkChat)
         .onChange(of: viewModel.latestRunOutcome) {
             handleLatestRunOutcomeChange(viewModel.latestRunOutcome)
         }

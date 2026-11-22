@@ -9,7 +9,7 @@ struct HermesModelCatalog {
     init(_ payload: BotJSON) {
         var seenProviders = Set<String>()
         var capabilities: [ModelFavoriteKey: BotJSON] = [:]
-        groups = (payload["providers"].list ?? []).compactMap { row in
+        groups = ForkTurboCatalog.arrange(payload: payload, (payload["providers"].list ?? []).compactMap { row in
             guard let provider = row["slug"].text, !provider.isEmpty,
                   seenProviders.insert(provider).inserted else { return nil }
             var seenModels = Set<String>()
@@ -24,7 +24,7 @@ struct HermesModelCatalog {
             guard !options.isEmpty else { return nil }
             return ModelCatalogGroup(id: provider, name: row["name"].text ?? provider,
                                      providerID: provider, models: options)
-        }
+        })
         self.capabilities = capabilities
         if let id = payload["model"].text, !id.isEmpty {
             active = ModelCatalogOption(id: id, displayName: id, providerID: payload["provider"].text)
