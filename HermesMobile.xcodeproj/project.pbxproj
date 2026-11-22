@@ -38,6 +38,8 @@
 		0318C33F2E26150811B704EA /* ForkTerminalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76875456DE0BDC0A137F9BDA /* ForkTerminalScreen.swift */; };
 		0BB65E0170E3A64E6DDEA170 /* ForkScreenShareReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA83256EC1B1E87118C33CF /* ForkScreenShareReviewView.swift */; };
 		0AC8B181DEC2DFC8498A6A92 /* ForkRoutineRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */; };
+		C24032A628E3514692C683AD /* LiveTranscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2DF683ED7B96FD6CEC36C7 /* LiveTranscriptTests.swift */; };
+		4D8D756371457B59AC6D643F /* LiveReplyCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55105B8A07F063021D9146D /* LiveReplyCardsTests.swift */; };
 		0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */; };
 		0D4B0C89517853C424C982B8 /* ForkLiveVoiceIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */; };
 		14BFB05ECAA8FA6066D0FA4F /* ForkLiveVoiceIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2A7614B86F54B3AD81833F /* ForkLiveVoiceIntent.swift */; };
@@ -70,6 +72,8 @@
 		503494FE76634CAB2C6F0FBC /* ForkChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353395B1629DE99C5BDB2F80 /* ForkChatState.swift */; };
 		506DC5662D9C872D6D6B5AFE /* ScreenShareConsentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64B41F6BF4177C603B03A2 /* ScreenShareConsentTests.swift */; };
 		512977B581CC12C18CB241EE /* ForkScreenShareReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43C8B667341CF1D9147096B /* ForkScreenShareReviewTests.swift */; };
+		897EB62008C711615635B6EC /* ForkLiveTranscriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806B96937F0010D238B7677C /* ForkLiveTranscriptView.swift */; };
+		AD59254052D640193A37B3D1 /* ForkLiveReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66572A064F56F35FA02457BA /* ForkLiveReplyView.swift */; };
 		521DD6EAFE3FB3CF9346C4AC /* ForkLiveModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19F35A59EC5DAA4FA6C322 /* ForkLiveModeView.swift */; };
 		5F7E68DFE3DD0C5C49DAC1A6 /* OpenUICheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB8E37ED2823F231E459F2B /* OpenUICheck.swift */; };
 		621FC1A5D09779C9461E26C2 /* ForkShareScreenIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2595EC78B62E0B53A60FA31 /* ForkShareScreenIntent.swift */; };
@@ -172,6 +176,8 @@
 		E3F5754BA971FCE280677E84 /* ForkReactionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CDAFD91F9AD4F346081EBC /* ForkReactionsTests.swift */; };
 		E4DC38E627DC44226E0591C7 /* ForkInkCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4BD555C4970237F8B8282 /* ForkInkCanvas.swift */; };
 		ECF685D21F1CE2F6739A8BA5 /* ForkMCPServersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4949044CB553EA242FCF44 /* ForkMCPServersTests.swift */; };
+		D21D13BF672812FFA674C634 /* LiveTranscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8ECBE705C2F5459DDC81C5 /* LiveTranscript.swift */; };
+		B203B04BC26799ACA4B13038 /* LiveReplyCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A98B4A86DC579401D5489 /* LiveReplyCards.swift */; };
 		F00B028696C77FD8DFC5B785 /* LiveModeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18A7BB13E96C1FD37D98E8 /* LiveModeMachine.swift */; };
 		F0907446778F4FBEBAEEC2B9 /* BotHistoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCCA0BACC647998F9CC3D0 /* BotHistoryCache.swift */; };
 		6F1EF01AA79B446C989D7FC1 /* BotSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0AA6F787074B4A8DC903FF /* BotSearchView.swift */; };
@@ -949,6 +955,8 @@
 		27ED2E952E2FC00BD3470928 /* ForkLiveVoiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveVoiceRequest.swift; sourceTree = "<group>"; };
 		2DA189C8901ADA54D4251541 /* ForkBotDirectoryDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotDirectoryDocument.swift; sourceTree = "<group>"; };
 		29B2F8D1617455A40799392C /* ForkThemeStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkThemeStoreTests.swift; sourceTree = "<group>"; };
+		2F8ECBE705C2F5459DDC81C5 /* LiveTranscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTranscript.swift; sourceTree = "<group>"; };
+		370A98B4A86DC579401D5489 /* LiveReplyCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReplyCards.swift; sourceTree = "<group>"; };
 		2A18A7BB13E96C1FD37D98E8 /* LiveModeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModeMachine.swift; sourceTree = "<group>"; };
 		2C2F8C654E9FEE8600DA6622 /* ForkLiveOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveOrb.swift; sourceTree = "<group>"; };
 		2D0B0E988DB0D0E10E85937E /* ForkRoutineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkRoutineRequest.swift; sourceTree = "<group>"; };
@@ -984,6 +992,8 @@
 		7DF081C27526EC111B642030 /* ForkTurboCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkTurboCatalog.swift; sourceTree = "<group>"; };
 		808109721AB21054F3557F57 /* ForkProviderSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkProviderSignInView.swift; sourceTree = "<group>"; };
 		83CA0AA82AE2050B1C8E0258 /* ForkProviderOAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkProviderOAuthClient.swift; sourceTree = "<group>"; };
+		CA2DF683ED7B96FD6CEC36C7 /* LiveTranscriptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTranscriptTests.swift; sourceTree = "<group>"; };
+		C55105B8A07F063021D9146D /* LiveReplyCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReplyCardsTests.swift; sourceTree = "<group>"; };
 		8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModeMachineTests.swift; sourceTree = "<group>"; };
 		978F4B610AEAA53A028C95C9 /* ForkReactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkReactions.swift; sourceTree = "<group>"; };
 		9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUICatalogTests.swift; sourceTree = "<group>"; };
@@ -1071,6 +1081,8 @@
 		41FCCA0BACC647998F9CC3D0 /* BotHistoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotHistoryCache.swift; sourceTree = "<group>"; };
 		AF0AA6F787074B4A8DC903FF /* BotSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bots/BotSearchView.swift; sourceTree = "<group>"; };
 		6984D85D628F4E18ABAA2BA9 /* BotChatControlsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotChatControlsTests.swift; sourceTree = "<group>"; };
+		806B96937F0010D238B7677C /* ForkLiveTranscriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveTranscriptView.swift; sourceTree = "<group>"; };
+		66572A064F56F35FA02457BA /* ForkLiveReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveReplyView.swift; sourceTree = "<group>"; };
 		FF19F35A59EC5DAA4FA6C322 /* ForkLiveModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveModeView.swift; sourceTree = "<group>"; };
 		FFAECFA53DCE4DDF90FBEEE7 /* BotChatControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bots/BotChatControls.swift"; sourceTree = "<group>"; };
 		A8D7065880CB4CA7B1ECB65C /* BotChatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bots/BotChatSettings.swift"; sourceTree = "<group>"; };
@@ -1934,6 +1946,8 @@
 		4C4E255D18602C368E060584 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				2F8ECBE705C2F5459DDC81C5 /* LiveTranscript.swift */,
+				370A98B4A86DC579401D5489 /* LiveReplyCards.swift */,
 				2A18A7BB13E96C1FD37D98E8 /* LiveModeMachine.swift */,
 				5F03BE88B465A7F08EB0E6FA /* LiveModeRequest.swift */,
 				B5C752931926558ABF54BEF9 /* LiveSpeechText.swift */,
@@ -3116,6 +3130,8 @@
 			children = (
 				2C2F8C654E9FEE8600DA6622 /* ForkLiveOrb.swift */,
 				40F0388FE63DAA78F894F506 /* ForkLiveModeController.swift */,
+				806B96937F0010D238B7677C /* ForkLiveTranscriptView.swift */,
+				66572A064F56F35FA02457BA /* ForkLiveReplyView.swift */,
 				FF19F35A59EC5DAA4FA6C322 /* ForkLiveModeView.swift */,
 			);
 			path = Live;
@@ -3157,6 +3173,8 @@
 				2EE1CFD1B0FC242AA40C0B2D /* ForkShareReviewTests.swift */,
 				49F967EC034AAFD4DABF5B1F /* ForkRoutineRequestTests.swift */,
 				5997454E23E505D02E2EC784 /* AnnotationComposeTests.swift */,
+				CA2DF683ED7B96FD6CEC36C7 /* LiveTranscriptTests.swift */,
+				C55105B8A07F063021D9146D /* LiveReplyCardsTests.swift */,
 				8AA731B6054622153EADA64C /* LiveModeMachineTests.swift */,
 				9DC36571A19F1C6A4507E56A /* OpenUICatalogTests.swift */,
 				AF80E0D7BB949E48D199DC10 /* ForkTerminalScreenTests.swift */,
@@ -3469,6 +3487,8 @@
 				42F393BAD3603202FAF7A123 /* ForkShareReviewSheet.swift in Sources */,
 				4F11B1AFA9AFE6D0F932A45D /* OpenUITreemapLayout.swift in Sources */,
 				503494FE76634CAB2C6F0FBC /* ForkChatState.swift in Sources */,
+				897EB62008C711615635B6EC /* ForkLiveTranscriptView.swift in Sources */,
+				AD59254052D640193A37B3D1 /* ForkLiveReplyView.swift in Sources */,
 				521DD6EAFE3FB3CF9346C4AC /* ForkLiveModeView.swift in Sources */,
 				5F7E68DFE3DD0C5C49DAC1A6 /* OpenUICheck.swift in Sources */,
 				621FC1A5D09779C9461E26C2 /* ForkShareScreenIntent.swift in Sources */,
@@ -3509,6 +3529,8 @@
 				D2E62814D346EB9E62B70804 /* ForkMessageReportButton.swift in Sources */,
 				DFD1D755F237889B1F728F44 /* ForkMCPClient.swift in Sources */,
 				E4DC38E627DC44226E0591C7 /* ForkInkCanvas.swift in Sources */,
+				D21D13BF672812FFA674C634 /* LiveTranscript.swift in Sources */,
+				B203B04BC26799ACA4B13038 /* LiveReplyCards.swift in Sources */,
 				F00B028696C77FD8DFC5B785 /* LiveModeMachine.swift in Sources */,
 				FC264D031B2CAEDB4AF53C1D /* RFBClient.swift in Sources */,
 				DAB1829DA684D7E566D41872 /* RFBDecoder.swift in Sources */,
@@ -3971,6 +3993,8 @@
 				E2C53E32419C5E4D678B9484 /* ForkDeviceToolsTests.swift in Sources */,
 				ED698DD7902CE8DC220A4637 /* ForkBotSessionTreeTests.swift in Sources */,
 				0AC8B181DEC2DFC8498A6A92 /* ForkRoutineRequestTests.swift in Sources */,
+				C24032A628E3514692C683AD /* LiveTranscriptTests.swift in Sources */,
+				4D8D756371457B59AC6D643F /* LiveReplyCardsTests.swift in Sources */,
 				0C2D3237B485D0C11C7C017E /* LiveModeMachineTests.swift in Sources */,
 				18F41C550390E4951EF425F3 /* ForkRPCTests.swift in Sources */,
 				1DD459065B7582800AA94B96 /* ForkTurboCatalogTests.swift in Sources */,

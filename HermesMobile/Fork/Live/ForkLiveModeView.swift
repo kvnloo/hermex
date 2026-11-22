@@ -53,7 +53,7 @@ struct ForkLiveModeView: View {
         ForkLiveModeScreen(
             title: title, phase: controller.phase, level: controller.level,
             heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
-            isReconnecting: controller.isReconnecting,
+            isReconnecting: controller.isReconnecting, transcript: controller.transcript,
             onOrb: controller.tapOrb, onEnd: controller.stop
         )
         .onAppear {
@@ -77,16 +77,21 @@ struct ForkLiveModeScreen: View {
     let error: String?
     @Binding var orbStyle: ForkLiveOrbStyle
     var isReconnecting = false
+    var transcript: [LiveTurn<ToolCall>] = []
     let onOrb: () -> Void
     let onEnd: () -> Void
 
     var body: some View {
         VStack(spacing: 20) {
             header
-            Spacer(minLength: 12)
+            if transcript.isEmpty {
+                Spacer(minLength: 12)
+            } else {
+                ForkLiveTranscriptView(turns: transcript)
+            }
             Button(action: onOrb) {
                 ForkLiveOrb(phase: phase, level: level, style: orbStyle)
-                    .frame(width: 240, height: 240)
+                    .frame(width: transcript.isEmpty ? 240 : 140, height: transcript.isEmpty ? 240 : 140)
             }
             .buttonStyle(.plain)
             .accessibilityLabel(statusText)
@@ -103,7 +108,7 @@ struct ForkLiveModeScreen: View {
             if let error {
                 Text(verbatim: error).font(AppFont.footnote()).foregroundStyle(.red).multilineTextAlignment(.center)
             }
-            Spacer(minLength: 12)
+            if transcript.isEmpty { Spacer(minLength: 12) }
             controls
         }
         .padding(.vertical, 24)
