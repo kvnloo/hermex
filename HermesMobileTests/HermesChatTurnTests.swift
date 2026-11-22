@@ -36,6 +36,38 @@ import SwiftUI
         XCTAssertNil(returned.summaries.states[returned.key], "only the host withdrawing it drops the result")
     }
 
+    func testAnOpenClarifyReplayedAfterTheCatchUpIsShownOnce() async {
+        let chat = await openChat()
+        defer { chat.model.suspendStreamForBackground() }
+        chat.receive(event(1, "message.start"))
+        chat.model.suspendStreamForBackground()
+
+        let clarify = BotJSON.object(["jsonrpc": .string("2.0"), "id": .string("srq-c1"), "method": .string("clarify"),
+            "params": .object(["session_id": .string("runtime"), "question": .string("Which branch?")])])
+        let parked = resume(running: true).replacing("open_requests", with: .array([clarify]))
+        chat.host.next("session.events.since", .init(result: BotFixtureWire.replay(latest: 2, events: [
+            event(2, "message.delta", ["text": .string("Before I go on, ")])
+        ])))
+        chat.host.always("session.resume", .init(result: parked))
+        await chat.model.reconnectStreamIfNeeded()
+        XCTAssertEqual(chat.turn.engine.connectionState, .connected)
+        XCTAssertEqual(chat.turn.requests.open.map(\.id), ["srq-c1"], "only session.resume carries a question asked while away")
+        XCTAssertEqual(chat.turn.requests.onScreen?.requestID, "srq-c1")
+        XCTAssertTrue(chat.model.isWaitingForUser)
+
+        chat.receive(clarify)
+        XCTAssertEqual(chat.turn.requests.open.map(\.id), ["srq-c1"], "the live frame for the same request adds no second card")
+
+        chat.model.suspendStreamForBackground()
+        chat.host.always("session.events.since", .init(result: BotFixtureWire.replay(latest: 2)
+            .replacing("open_requests", with: .array([clarify, clarify]))))
+        await chat.model.reconnectStreamIfNeeded()
+        XCTAssertEqual(chat.turn.engine.connectionState, .connected)
+        XCTAssertEqual(chat.turn.requests.open.map(\.id), ["srq-c1"], "the next catch-up still shows it once")
+        XCTAssertEqual(chat.turn.requests.onScreen?.requestID, "srq-c1")
+        XCTAssertNil(chat.turn.requests.withdrawal)
+    }
+
     func testRecordedTurnStreamsTextAndTitleAndEndsOnSessionInfo() async throws {
         let frames = try recorded("turn-frames")
         let first = frames[0]["params"]

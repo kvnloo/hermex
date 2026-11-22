@@ -168,6 +168,15 @@ struct HermexShortcuts: AppShortcutsProvider {
             systemImageName: "mic.badge.plus"
         )
         AppShortcut(
+            intent: ForkStartLiveVoiceIntent(),
+            phrases: [
+                "Start live voice in \(.applicationName)",
+                "Start a live voice conversation in \(.applicationName)"
+            ],
+            shortTitle: LocalizedStringResource("Start Live Voice", table: "Fork"),
+            systemImageName: "waveform"
+        )
+        AppShortcut(
             intent: NewChatInProfileIntent(),
             phrases: [
                 "New \(\.$profile) chat in \(.applicationName)",
