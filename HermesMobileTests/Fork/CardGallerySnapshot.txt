@@ -1,0 +1,286 @@
+ephemeral-ui · v0.1.0
+[sculpt] Multi-agent sculpt
+sculpt/blender	sample	unsupported
+sculpt/zbrush	sample	unsupported
+sculpt/nomad-sculpt	sample	unsupported
+[city] City blockout (PCG)
+city/blender	sample	unsupported
+city/autodesk-3ds-max	sample	unsupported
+city/houdini	sample	unsupported
+[fly] Camera flythrough
+fly/spline	sample	unsupported
+fly/blender	sample	unsupported
+fly/autodesk-maya	sample	unsupported
+[fpv] FPV drone run
+fpv/unreal-engine	sample	unsupported
+fpv/cesium	sample	unsupported
+fpv/dji-fly	sample	unsupported
+[light] Lighting rig
+light/spline	sample	unsupported
+light/blender	sample	unsupported
+light/zbrush	sample	unsupported
+[trigger] Game trigger
+trigger/babylon-js	sample	unsupported
+trigger/playcanvas	sample	unsupported
+trigger/unreal-engine	sample	unsupported
+[globe] Live globe
+globe/god-s-eye-view	sample	unsupported
+[gen3d] Image / text → 3D
+gen3d/open3d	sample	unsupported
+gen3d/meshy	sample	unsupported
+gen3d/trellis	sample	unsupported
+[sim] Robot sim
+sim/isaac-sim	sample	unsupported
+sim/newton	sample	unsupported
+sim/mujoco	sample	unsupported
+[inbox] Inbox search
+inbox/gmail	sample	unsupported
+inbox/outlook	sample	unsupported
+inbox/proton-mail	sample	unsupported
+[thread] Message + summary
+thread/gmail	sample	unsupported
+thread/outlook	sample	unsupported
+thread/proton-mail	sample	unsupported
+[approve] Just-in-time permission
+approve/snyk	sample	unsupported
+approve/pagerduty	sample	unsupported
+approve/tailscale	sample	unsupported
+[chat] Channel catch-up
+chat/replit	sample	unsupported
+chat/codesandbox	sample	unsupported
+chat/slack	sample	unsupported
+[notify] Notification stack
+notify/snyk	sample	unsupported
+notify/github-actions	sample	unsupported
+notify/stack-overflow	sample	unsupported
+[slots] Find a time
+slots/google-calendar	sample	unsupported
+slots/zoom	sample	unsupported
+slots/google-meet	sample	unsupported
+[kanban] Board move
+kanban/miro	sample	unsupported
+kanban/linear	sample	unsupported
+kanban/jira	sample	unsupported
+[triage] Issue triage
+triage/github	sample	unsupported
+triage/gitlab	sample	unsupported
+triage/bitbucket	sample	unsupported
+[file] File preview
+file/replit	sample	unsupported
+file/codesandbox	sample	unsupported
+file/figma	sample	unsupported
+[graph] Linked notes graph
+graph/notion	sample	unsupported
+graph/confluence	sample	unsupported
+graph/obsidian	sample	unsupported
+[search] Search results
+search/npm	sample	unsupported
+search/pypi	sample	unsupported
+search/crates-io	sample	unsupported
+[feed] Post composer
+feed/stack-overflow	sample	unsupported
+feed/dribbble	sample	unsupported
+feed/behance	sample	unsupported
+[frames] Design review
+frames/figma	sample	unsupported
+frames/framer	sample	unsupported
+frames/sketch	sample	unsupported
+[sign] Sign a document
+sign/docusign	sample	unsupported
+sign/dropbox-sign	sample	unsupported
+[context] Context window
+context/claude	sample	unsupported
+context/chatgpt	sample	unsupported
+context/gemini	sample	unsupported
+[receipt] Pay + receipt
+receipt/stripe	sample	unsupported
+receipt/paypal	sample	unsupported
+receipt/square	sample	unsupported
+[metric] Metric + sparkline
+metric/npm	sample	board
+metric/pypi	sample	board
+metric/crates-io	sample	board
+[track] Order tracking
+track/shopify	sample	unsupported
+track/amazon	sample	unsupported
+track/ebay	sample	unsupported
+[crm] Deal pipeline
+crm/salesforce	sample	unsupported
+crm/hubspot	sample	unsupported
+crm/pipedrive	sample	unsupported
+[ride] Choose a ride
+ride/uber	sample	unsupported
+ride/lyft	sample	unsupported
+ride/bolt	sample	unsupported
+[route] Route on a map
+route/fedex	sample	unsupported
+route/ups	sample	unsupported
+route/dhl	sample	unsupported
+[boarding] Boarding pass
+boarding/expedia	sample	unsupported
+boarding/united	sample	unsupported
+boarding/delta	sample	unsupported
+[player] Now playing
+player/spotify	sample	unsupported
+player/youtube	sample	unsupported
+player/apple-music	sample	unsupported
+[workout] Activity rings
+workout/strava	sample	unsupported
+workout/fitbit	sample	unsupported
+workout/garmin	sample	unsupported
+[home] Device control
+home/tailscale	sample	unsupported
+home/home-assistant	sample	unsupported
+home/philips-hue	sample	unsupported
+[merge] PR merge (after @pitus_)
+merge/github	sample	unsupported
+merge/gitlab	sample	unsupported
+merge/github/input	input	unsupported
+[ci] CI checks timeline
+ci/github	sample	unsupported
+ci/gitlab	sample	unsupported
+ci/bitbucket	sample	unsupported
+[deploy] Deploy
+deploy/npm	sample	unsupported
+deploy/pypi	sample	unsupported
+deploy/crates-io	sample	unsupported
+[incident] Incident
+incident/snyk	sample	unsupported
+incident/docker-hub	sample	unsupported
+incident/circleci	sample	unsupported
+[migrate] Data migration
+migrate/supabase	sample	unsupported
+migrate/planetscale	sample	unsupported
+migrate/neon	sample	unsupported
+[nodes] Node graph
+nodes/spline	sample	unsupported
+nodes/blender	sample	unsupported
+nodes/cinema-4d	sample	unsupported
+[timeline] Voice + mark edit
+timeline/blender	sample	unsupported
+timeline/elevenlabs	sample	unsupported
+timeline/autodesk-maya	sample	unsupported
+[review] Frame review
+review/miro	sample	unsupported
+review/loom	sample	unsupported
+review/vimeo	sample	unsupported
+[layers] Generative layers
+layers/mudbox	sample	unsupported
+layers/substance-3d-painter	sample	unsupported
+layers/armorpaint	sample	unsupported
+[gallery] Media gallery
+gallery/dribbble	sample	unsupported
+gallery/behance	sample	unsupported
+gallery/loom	sample	unsupported
+[cad] CAD drafting
+cad/plasticity	sample	unsupported
+cad/shapr3d	sample	unsupported
+cad/illustrator	sample	unsupported
+[board] Whiteboard
+board/miro	sample	unsupported
+board/twine	sample	unsupported
+board/are-na	sample	unsupported
+[daw] DAW
+daw/ableton-live	sample	unsupported
+daw/logic-pro	sample	unsupported
+daw/fl-studio	sample	unsupported
+[flash] Flashcards
+flash/readwise	sample	unsupported
+flash/duolingo	sample	unsupported
+flash/musescore	sample	unsupported
+[stage] USD stage
+stage/openusd	sample	unsupported
+stage/isaac-sim	sample	unsupported
+stage/omniverse	sample	unsupported
+[anatomy] Anatomy figure
+anatomy/anatomy	sample	unsupported
+[cua-action] Cua Driver action
+cua-action/cua	sample	unsupported
+[work-dock] Work dock
+work-dock/z0	sample	unsupported
+[screen] Computer-use screen
+screen/cua	sample	unsupported
+screen/scrcpy	sample	unsupported
+screen/boat	sample	unsupported
+[sandbox] Forking sandboxes
+sandbox/cua	sample	unsupported
+sandbox/boat	sample	unsupported
+sandbox/e2b	sample	unsupported
+[twin] Digital twin + policies
+twin/warehouse-twin	sample	unsupported
+[health] Health brief
+health/apple-health	sample	unsupported
+health/oura	sample	unsupported
+health/whoop	sample	unsupported
+[fleet-hosts] Hosts & k3s
+fleet-hosts/k3s	example	unsupported
+fleet-hosts/k3s/unavailable	unavailable	unavailable
+[fleet-portfolio] Product portfolio
+fleet-portfolio/dash	example	unsupported
+fleet-portfolio/dash/unavailable	unavailable	unavailable
+[fleet-factory] Agent factory graph
+fleet-factory/aodl	example	unsupported
+fleet-factory/aodl/unavailable	unavailable	unavailable
+[gev-contacts] GEV contacts
+gev-contacts/god-s-eye-view	sample	unsupported
+[intent-declare] Intent declaration
+intent-declare/ripple	sample	unsupported
+[intent-contract] Intent contract
+intent-contract/aodl	sample	unsupported
+[intent-work] Intent work graph
+intent-work/aodl	sample	unsupported
+[intent-proof] Intent proof
+intent-proof/aodl	sample	unsupported
+[intel-decisions] Intelligence decisions
+intel-decisions/z0intelligence	sample	unsupported
+[intel-value] Intelligence value
+intel-value/z0intelligence	sample	unsupported
+[intel-context] Intelligence context
+intel-context/z0intelligence	sample	unsupported
+[intel-health] Intelligence health
+intel-health/z0intelligence	sample	unsupported
+[intel-suite] Intelligence
+intel-suite/glide	example	unsupported
+intel-suite/glide/unavailable	unavailable	unavailable
+[ops-burn] Ops · subscription burn lanes
+ops-burn/z0intelligence	sample	unsupported
+[ops-alive] Ops · is it still running?
+ops-alive/hermes-agent	sample	unsupported
+[ops-incidents] Ops · incident timeline
+ops-incidents/prometheus	sample	unsupported
+[ops-fleet] Ops · hosts and k3s
+ops-fleet/k3s	sample	unsupported
+[ops-slow] Ops · why was it slow?
+ops-slow/omp-stats	sample	unsupported
+[ops-models] Ops · model mix
+ops-models/omp-stats	sample	unsupported
+[ops-tokens] Ops · tokens, cache and cost
+ops-tokens/omp-stats	sample	unsupported
+[ops-context] Ops · context pressure
+ops-context/hermes-agent	sample	unsupported
+[ops-tools] Ops · tool-call health
+ops-tools/hermes-agent	sample	unsupported
+[ops-routing] Ops · routing lanes
+ops-routing/z0intelligence	sample	unsupported
+[ops-sources] Ops · what we measure
+ops-sources/grafana	sample	unsupported
+[plugin] Hermes plugin chain
+plugin/google-meet	sample	unsupported
+plugin/meshy	sample	unsupported
+plugin/phone-harness	sample	unsupported
+[trace] Trace timeline
+trace/omp-stats	sample	unsupported
+[trace-span] Span drawer
+trace-span/omp-stats	sample	unsupported
+[trace-summary] Trace summary strip
+trace-summary/omp-stats	sample	unsupported
+[trace-usage] Model · provider · cost
+trace-usage/omp-stats	sample	unsupported
+[trace-tools] Tool latency & failures
+trace-tools/omp-stats	sample	unsupported
+[trace-errors] Error signatures
+trace-errors/omp-stats	sample	unsupported
+[trace-compare] Session compare
+trace-compare/omp-stats	sample	unsupported
+[trace-frustration] Frustration
+trace-frustration/omp-stats	sample	unsupported

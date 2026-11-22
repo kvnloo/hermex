@@ -62,4 +62,5 @@ SWIFT
 
 cd "${work}"
 swift build --build-tests "$@"
+export HERMEX_TEST_REPO="${repo}"
 swift test --skip-build "$@"

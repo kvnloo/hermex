@@ -8,11 +8,30 @@ enum ForkOpenUIFence {
 }
 
 struct ForkOpenUIBoardView: View {
-    let source: String
+    private enum Input {
+        case source(String)
+        case board(OpenUIBoardModel)
+    }
+
+    private let input: Input
     @State private var showsSource = false
 
+    init(source: String) { input = .source(source) }
+    init(board: OpenUIBoardModel) { input = .board(board) }
+
+    private var source: String? {
+        guard case .source(let source) = input else { return nil }
+        return source
+    }
+
+    private var result: OpenUICatalogResult {
+        switch input {
+        case .source(let source): ForkOpenUIBoardCache.result(for: source)
+        case .board(let board): .ready(board)
+        }
+    }
+
     var body: some View {
-        let result = ForkOpenUIBoardCache.result(for: source)
         Group {
             switch result {
             case .ready(let board) where board.isFullyRendered:
@@ -41,21 +60,23 @@ struct ForkOpenUIBoardView: View {
             HStack {
                 Text("Read-only board", tableName: "Fork").font(AppFont.caption()).foregroundStyle(.appTertiary)
                 Spacer()
-                Button { showsSource.toggle() } label: {
-                    Label {
-                        showsSource ? Text("Hide Source", tableName: "Fork") : Text("Show Source", tableName: "Fork")
-                    } icon: {
-                        Image(systemName: showsSource ? "chevron.left.forwardslash.chevron.right" : "curlybraces")
+                if source != nil {
+                    Button { showsSource.toggle() } label: {
+                        Label {
+                            showsSource ? Text("Hide Source", tableName: "Fork") : Text("Show Source", tableName: "Fork")
+                        } icon: {
+                            Image(systemName: showsSource ? "chevron.left.forwardslash.chevron.right" : "curlybraces")
+                        }
+                        .font(AppFont.caption(weight: .semibold))
                     }
-                    .font(AppFont.caption(weight: .semibold))
+                    .buttonStyle(.borderless)
                 }
-                .buttonStyle(.borderless)
             }
             ForEach(Array(board.panels.enumerated()), id: \.offset) { _, panel in
                 Divider()
                 ForkOpenUIPanelView(panel: panel)
             }
-            if showsSource { sourceView }
+            if showsSource, let source { sourceView(source) }
         }
     }
 
@@ -65,11 +86,11 @@ struct ForkOpenUIBoardView: View {
             if let problem {
                 Text(verbatim: problem.description).font(AppFont.caption()).foregroundStyle(.appSecondary)
             }
-            sourceView
+            if let source { sourceView(source) }
         }
     }
 
-    private var sourceView: some View {
+    private func sourceView(_ source: String) -> some View {
         ScrollView(.horizontal) {
             Text(verbatim: source)
                 .font(AppFont.mono(style: .footnote))

@@ -66,3 +66,25 @@ those tests too.
 
 See [PARITY.md](PARITY.md) for the hermes-android → hermex feature matrix, each
 feature's status, and its iOS mapping.
+
+### Shared card gallery
+
+Open **Settings → Card Gallery** to browse the bundled ephemeral-ui fixtures
+offline. The version at the top identifies the exact catalog shown. Metric
+fixtures use the native read-only OpenUI board renderer; other kinds show an
+explicit unsupported cell, distinct from an unavailable-data fixture. No
+fixture runs an action or contacts a server.
+
+The files in `HermesMobile/Resources/EphemeralGallery` are byte-for-byte copies
+from the commit in `REVISION`: `catalog/catalog.json`, `catalog/VERSION`,
+`theme/glide.json`, and `theme/tokens.schema.json`. The gallery uses Glide's
+light/dark colors and card radius; typography stays native and the gallery
+adds no motion or glass effects. The full theme and schema stay pinned together.
+
+To update, copy all four files from a single upstream revision, update
+`REVISION`, and review the corresponding changes to
+`HermesMobileTests/Fork/CardGallerySnapshot.txt` (section title, fixture ID,
+fixture state, and chosen presentation). Run `python3 ci/check_ephemeral_gallery.py`
+to check the pin and detect changes to these files on upstream main. This
+network check runs only in tooling; the app and the Linux Swift tests use
+the pinned files.
