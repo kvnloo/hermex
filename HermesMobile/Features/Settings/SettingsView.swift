@@ -87,6 +87,8 @@ struct SettingsView: View {
                 }
 
                 ForkDeviceAccessSettingsRow()
+
+                ForkPreviewChannelSettingsRow()
             } header: {
                 Text(verbatim: "Hermex")
             } appFooter: {

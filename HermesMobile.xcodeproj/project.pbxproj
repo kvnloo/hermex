@@ -29,6 +29,10 @@
 		11BDF2B16D339FA8B1C2FD26 /* ForkMissionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CAB98898BEA1BAE79F5E8 /* ForkMissionClient.swift */; };
 		2EBE8DD69CFE60C4D4467EF5 /* ForkMissionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF64BC2BE92EE1FF72CB30E3 /* ForkMissionControlView.swift */; };
 		E080940EB658F7BF6AECAA41 /* ForkMissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B21698D9D0430C803455C3 /* ForkMissionTests.swift */; };
+		D3E0932E796C7534036D3DA4 /* ForkPreviewChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EDE1217FF3FCB65C1EEADE /* ForkPreviewChannel.swift */; };
+		AC2A8E695C84060D8CAD4AD9 /* ForkPreviewChannelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D14A965A19DE07F5A2E94 /* ForkPreviewChannelStore.swift */; };
+		0E39929C20BA64695693C338 /* ForkServedBuildChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C93F57ED516C73E9D232A5 /* ForkServedBuildChip.swift */; };
+		D8F7818A24436CB5E55693DF /* ForkPreviewChannelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D55C32019E0CBC800ED610 /* ForkPreviewChannelTests.swift */; };
 		5E470C2C4E2F6B5E74329517 /* ForkBotSessionTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8C1B711E4793A5129EA56 /* ForkBotSessionTree.swift */; };
 		947BE15572EE00A84246452E /* ForkBotSessionTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F7277DD33877DDEDFD7711 /* ForkBotSessionTreeView.swift */; };
 		ED698DD7902CE8DC220A4637 /* ForkBotSessionTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234ECA251B16267B38AE25B /* ForkBotSessionTreeTests.swift */; };
@@ -930,6 +934,10 @@
 		5D3CAB98898BEA1BAE79F5E8 /* ForkMissionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMissionClient.swift; sourceTree = "<group>"; };
 		FF64BC2BE92EE1FF72CB30E3 /* ForkMissionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMissionControlView.swift; sourceTree = "<group>"; };
 		F2B21698D9D0430C803455C3 /* ForkMissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkMissionTests.swift; sourceTree = "<group>"; };
+		A8EDE1217FF3FCB65C1EEADE /* ForkPreviewChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkPreviewChannel.swift; sourceTree = "<group>"; };
+		427D14A965A19DE07F5A2E94 /* ForkPreviewChannelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkPreviewChannelStore.swift; sourceTree = "<group>"; };
+		08C93F57ED516C73E9D232A5 /* ForkServedBuildChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkServedBuildChip.swift; sourceTree = "<group>"; };
+		67D55C32019E0CBC800ED610 /* ForkPreviewChannelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkPreviewChannelTests.swift; sourceTree = "<group>"; };
 		82F8C1B711E4793A5129EA56 /* ForkBotSessionTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotSessionTree.swift; sourceTree = "<group>"; };
 		97F7277DD33877DDEDFD7711 /* ForkBotSessionTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotSessionTreeView.swift; sourceTree = "<group>"; };
 		C234ECA251B16267B38AE25B /* ForkBotSessionTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkBotSessionTreeTests.swift; sourceTree = "<group>"; };
@@ -1828,6 +1836,23 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		E1519E12D8C22C1788E76515 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				A8EDE1217FF3FCB65C1EEADE /* ForkPreviewChannel.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		73CB6D6B0CF21D610EEFEB7B /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				427D14A965A19DE07F5A2E94 /* ForkPreviewChannelStore.swift */,
+				08C93F57ED516C73E9D232A5 /* ForkServedBuildChip.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		4A92A50339D8214758670F7F /* Mission */ = {
 			isa = PBXGroup;
 			children = (
@@ -2042,6 +2067,7 @@
 				E39DC717F9FD6A4421A9DA9B /* Core */,
 				F7899A2D78F49CDB3F3C89C2 /* Settings */,
 				CB25885B65FADE9CE211004A /* Mission */,
+				73CB6D6B0CF21D610EEFEB7B /* Preview */,
 			);
 			path = Fork;
 			sourceTree = "<group>";
@@ -3130,6 +3156,7 @@
 				789B478AC1301668F5D39BD3 /* Terminal */,
 				7E21641DFD8B619872A3B531 /* Settings */,
 				4A92A50339D8214758670F7F /* Mission */,
+				E1519E12D8C22C1788E76515 /* Preview */,
 				7F0AD04752C3913552FD7AB1 /* Theme */,
 				953785A80FC53973558A49FA /* OpenUI */,
 				A497AA21071567A5332D5EDE /* System */,
@@ -3161,6 +3188,7 @@
 				EC1DC4A7B30203D67201F42D /* ForkBotDirectoryDocumentTests.swift */,
 				DF4949044CB553EA242FCF44 /* ForkMCPServersTests.swift */,
 				F2B21698D9D0430C803455C3 /* ForkMissionTests.swift */,
+				67D55C32019E0CBC800ED610 /* ForkPreviewChannelTests.swift */,
 				E27538FC9B26251CA70A07AE /* ForkProviderOAuthTests.swift */,
 				EA0AA9D796DB3456722C9E99 /* ForkThemeSpecTests.swift */,
 				D64A835DA3AD41F9BB24B031 /* ForkScanPagesTests.swift */,
@@ -3452,6 +3480,9 @@
 				2E4C6D76B90CEE868EC6BDBE /* ChatViewModel+Fork.swift in Sources */,
 				2E9F8B06FAAEB4834089007A /* ForkMCPServers.swift in Sources */,
 				2F8CAC52598C64A1E4218153 /* ForkMission.swift in Sources */,
+				D3E0932E796C7534036D3DA4 /* ForkPreviewChannel.swift in Sources */,
+				AC2A8E695C84060D8CAD4AD9 /* ForkPreviewChannelStore.swift in Sources */,
+				0E39929C20BA64695693C338 /* ForkServedBuildChip.swift in Sources */,
 				EFB1C30785838E565BD55E9E /* ForkMissionWire.swift in Sources */,
 				11BDF2B16D339FA8B1C2FD26 /* ForkMissionClient.swift in Sources */,
 				2EBE8DD69CFE60C4D4467EF5 /* ForkMissionControlView.swift in Sources */,
@@ -3990,6 +4021,7 @@
 				E3F5754BA971FCE280677E84 /* ForkReactionsTests.swift in Sources */,
 				ECF685D21F1CE2F6739A8BA5 /* ForkMCPServersTests.swift in Sources */,
 				E080940EB658F7BF6AECAA41 /* ForkMissionTests.swift in Sources */,
+				D8F7818A24436CB5E55693DF /* ForkPreviewChannelTests.swift in Sources */,
 				F098EAEB023804C86878E3DB /* ForkProviderOAuthTests.swift in Sources */,
 				FB4D75CCD64D033E231FEFBD /* ForkHandoffIntentsTests.swift in Sources */,
 				FD6887A5B7CABFF85B74F360 /* ScreenSessionTests.swift in Sources */,

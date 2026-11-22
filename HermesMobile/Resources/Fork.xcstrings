@@ -9402,6 +9402,125 @@
         }
       }
     },
+    "Follow the newest green staging build and show which build is running.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تتبّع أحدث إصدار staging ناجح واعرض الإصدار قيد التشغيل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dem neuesten grünen Staging-Build folgen und anzeigen, welcher Build läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow the newest green staging build and show which build is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Seguir la compilación de staging más reciente que pasó y mostrar cuál se está ejecutando."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "جدیدترین بیلد staging موفق را دنبال کن و نشان بده کدام بیلد در حال اجراست."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Suivre le dernier build staging réussi et afficher le build en cours d’exécution."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "מעקב אחר גרסת ה-staging הירוקה החדשה ביותר והצגת הגרסה שרצה."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Segui la build staging più recente superata e mostra quale build è in esecuzione."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "成功した最新の staging ビルドを追い、実行中のビルドを表示します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "성공한 최신 staging 빌드를 따르고 실행 중인 빌드를 표시합니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Volg de nieuwste geslaagde staging-build en toon welke build draait."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Śledź najnowszą udaną kompilację staging i pokazuj, która kompilacja działa."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Acompanhar a build de staging aprovada mais recente e mostrar qual build está em execução."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Следить за последней успешной сборкой staging и показывать, какая сборка запущена."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "En yeni başarılı staging derlemesini izle ve hangi derlemenin çalıştığını göster."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تازہ ترین کامیاب staging بلڈ کو فالو کریں اور دکھائیں کہ کون سا بلڈ چل رہا ہے۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "跟隨最新通過的 staging 版本，並顯示正在執行的版本。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "跟随最新通过的 staging 构建，并显示正在运行的构建。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "跟隨最新通過的 staging 版本，並顯示正在執行的版本。"
+          }
+        }
+      }
+    },
     "Free · checking answers": {
       "extractionState": "manual",
       "localizations": {
@@ -15590,6 +15709,125 @@
         }
       }
     },
+    "Newer preview build served: %@. Tap to open it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "يتوفر إصدار معاينة أحدث: %@. اضغط لفتحه."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Neuerer Vorschau-Build verfügbar: %@. Zum Öffnen tippen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Newer preview build served: %@. Tap to open it."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Hay una compilación de vista previa más nueva: %@. Toca para abrirla."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "بیلد پیش‌نمایش جدیدتری ارائه شده: %@. برای باز کردن ضربه بزنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nouveau build de préversion disponible : %@. Touchez pour l’ouvrir."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "גרסת תצוגה מקדימה חדשה יותר זמינה: %@. הקש כדי לפתוח."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Disponibile una build di anteprima più recente: %@. Tocca per aprirla."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "新しいプレビュービルドがあります: %@。タップで開きます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "더 새로운 미리보기 빌드: %@. 탭하여 열기."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nieuwere previewbuild beschikbaar: %@. Tik om te openen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dostępna nowsza kompilacja podglądu: %@. Stuknij, aby otworzyć."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build de prévia mais recente disponível: %@. Toque para abrir."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Доступна более новая предварительная сборка: %@. Нажмите, чтобы открыть."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Daha yeni önizleme derlemesi sunuldu: %@. Açmak için dokunun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "نیا پیش نظارہ بلڈ دستیاب ہے: %@۔ کھولنے کے لیے تھپتھپائیں۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "有較新的預覽版本：%@。點按以開啟。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "有更新的预览构建：%@。轻点以打开。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "有較新的預覽版本：%@。點一下以開啟。"
+          }
+        }
+      }
+    },
     "No MCP servers are configured for this Profile.": {
       "extractionState": "manual",
       "localizations": {
@@ -19279,6 +19517,125 @@
         }
       }
     },
+    "Preview channel": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "قناة المعاينة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vorschaukanal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview channel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal de vista previa"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "کانال پیش‌نمایش"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal de préversion"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ערוץ תצוגה מקדימה"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canale di anteprima"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "プレビューチャンネル"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "미리보기 채널"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Previewkanaal"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Kanał podglądu"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Canal de prévia"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Канал предварительных сборок"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Önizleme kanalı"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "پیش نظارہ چینل"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "預覽頻道"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "预览频道"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "預覽頻道"
+          }
+        }
+      }
+    },
     "Prompt": {
       "extractionState": "manual",
       "localizations": {
@@ -21179,6 +21536,125 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "執行工作"
+          }
+        }
+      }
+    },
+    "Running build %@. Tap to hide.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "الإصدار قيد التشغيل %@. اضغط للإخفاء."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Laufender Build %@. Zum Ausblenden tippen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running build %@. Tap to hide."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Compilación en ejecución %@. Toca para ocultar."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "بیلد در حال اجرا %@. برای پنهان کردن ضربه بزنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build en cours %@. Touchez pour masquer."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "גרסה פעילה %@. הקש כדי להסתיר."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build in esecuzione %@. Tocca per nascondere."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "実行中のビルド %@。タップで非表示。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "실행 중인 빌드 %@. 탭하여 숨기기."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Draaiende build %@. Tik om te verbergen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Działająca kompilacja %@. Stuknij, aby ukryć."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Build em execução %@. Toque para ocultar."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Запущена сборка %@. Нажмите, чтобы скрыть."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Çalışan derleme %@. Gizlemek için dokunun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "چلنے والا بلڈ %@۔ چھپانے کے لیے تھپتھپائیں۔"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "正在執行版本 %@。點按以隱藏。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "正在运行构建 %@。轻点以隐藏。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "正在執行版本 %@。點一下以隱藏。"
           }
         }
       }
