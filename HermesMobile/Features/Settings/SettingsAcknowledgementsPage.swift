@@ -15,6 +15,7 @@ struct AcknowledgementNotice: Hashable {
     var projectURL: URL? {
         switch name {
         case "DM Sans": URL(staticString: "https://github.com/googlefonts/dm-fonts")
+        case "Hermex": URL(staticString: "https://github.com/uzairansaruzi/hermex")
         case "Highlightr": URL(staticString: "https://github.com/raspu/Highlightr")
         case "KeychainAccess": URL(staticString: "https://github.com/kishikawakatsumi/KeychainAccess")
         case "LDSwiftEventSource": URL(staticString: "https://github.com/LaunchDarkly/swift-eventsource")

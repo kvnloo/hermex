@@ -176,6 +176,8 @@ Hermex is funded by its members. Thank you.
 
 MIT. See [LICENSE](LICENSE).
 
+This repository is a fork of [uzairansaruzi/hermex](https://github.com/uzairansaruzi/hermex), MIT, Copyright (c) 2026 Uzair Ansar. The app ships that license in Settings > Acknowledgements as `Hermex-LICENSE.txt`.
+
 The file-type icons in the workspace tree are [Pierre](https://pierre.computer)'s `@pierre/trees` icons (Apache-2.0), with a few additions from [T3 Code](https://github.com/pingdotgg/t3code) (MIT).
 
 Hermex is an independent client. It isn't affiliated with Nous Research, Hermes Agent, or the [hermes-webui](https://github.com/nesquena/hermes-webui) project. Apple, the Apple logo, and App Store are trademarks of Apple Inc.
