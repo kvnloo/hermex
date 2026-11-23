@@ -1,13 +1,18 @@
 import contextlib
 import io
 import json
+import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
 
 import check_ephemeral_ui as check
+
+WORKFLOWS = check.REPO / ".github" / "workflows"
 
 
 def theme(version="0.1.0", v=0):
@@ -85,6 +90,28 @@ class EphemeralUIPinTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(check.main(["--vendor-dir", str(self.vendor), "--upstream", "main"], fetch=fetch), 0)
         self.assertEqual(refs, ["main"])
+
+    def test_a_stale_upstream_passes_pr_mode_and_fails_freshness_mode(self):
+        self.publish(theme(), catalog("sculpt", "merge", "orbit", version="0.2.0"))
+        stale = check.read_source(self.source)
+        summary = self.root / "summary.md"
+        with mock.patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": str(summary)}):
+            self.assertEqual(self.run_check(), 0)
+            self.assertFalse(summary.exists())
+            with contextlib.redirect_stderr(io.StringIO()) as err, contextlib.redirect_stdout(io.StringIO()):
+                code = check.main(["--vendor-dir", str(self.vendor), "--upstream", "main"], fetch=lambda ref: stale)
+        self.assertEqual(code, 1)
+        self.assertIn("uncovered kind: 'orbit' is in kvnloo/ephemeral-ui@main", err.getvalue())
+        self.assertIn("orbit", summary.read_text())
+
+    def test_the_upstream_check_runs_only_on_schedule_and_dispatch(self):
+        for path in WORKFLOWS.glob("*.yml"):
+            if path.name != "ephemeral-ui-freshness.yml":
+                self.assertFalse("check_ephemeral_ui.py --upstream" in path.read_text(), f"{path.name} reads upstream")
+        freshness = (WORKFLOWS / "ephemeral-ui-freshness.yml").read_text()
+        self.assertIn("python3 ci/check_ephemeral_ui.py --upstream main", freshness)
+        triggers = re.search(r"^on:\n((?:  .*\n)+)", freshness, re.M).group(1)
+        self.assertEqual(re.findall(r"^  (\w+):", triggers, re.M), ["schedule", "workflow_dispatch"])
 
     def test_the_repo_copy_is_intact(self):
         with contextlib.redirect_stdout(io.StringIO()):
