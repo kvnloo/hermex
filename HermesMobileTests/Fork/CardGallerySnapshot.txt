@@ -1,4 +1,4 @@
-ephemeral-ui · v0.1.0
+ephemeral-ui · v0.6.0
 [studio]
 sculpt/blender	sample	props
 sculpt/zbrush	sample	props
@@ -56,6 +56,7 @@ stage/openusd	sample	props
 stage/isaac-sim	sample	props
 stage/omniverse	sample	props
 anatomy/anatomy	sample	props
+cua-spaces/cua	sample	props
 screen/cua	sample	props
 screen/scrcpy	sample	props
 screen/boat	sample	props
@@ -66,6 +67,9 @@ twin/warehouse-twin	sample	props
 health/apple-health	sample	props
 health/oura	sample	props
 health/whoop	sample	props
+ace-facility/ace	sample	props
+form-check/ace	sample	props
+swing/ace	sample	props
 plugin/google-meet	sample	props
 plugin/meshy	sample	props
 plugin/phone-harness	sample	props
@@ -159,6 +163,13 @@ incident/circleci	sample	props
 migrate/supabase	sample	props
 migrate/planetscale	sample	props
 migrate/neon	sample	props
+health-activity/apple-health	sample	props
+health-activity/google-fit	sample	props
+health-recovery/oura	sample	props
+health-recovery/whoop	sample	props
+health-recovery/noop	sample	props
+health-nutrition/myfitnesspal	sample	props
+health-nutrition/lifesum	sample	props
 [agent]
 cua-action/cua	sample	props
 work-dock/z0	sample	props
@@ -179,6 +190,19 @@ intel-decisions/z0intelligence	sample	props
 intel-value/z0intelligence	sample	props
 intel-context/z0intelligence	sample	props
 intel-health/z0intelligence	sample	props
+[infra]
+infra-architecture/google-cloud	sample	props
+infra-architecture/aws	sample	props
+infra-architecture/google-cloud/input	input	props
+infra-cluster/k3s	sample	props
+infra-cluster/kind	sample	props
+infra-cluster/amazon-eks	sample	props
+infra-iac/terraform	sample	props
+infra-iac/opentofu	sample	props
+infra-iac/pulumi	sample	props
+infra-models/unsloth	sample	props
+infra-models/lambda-gpu-cloud	sample	props
+infra-models/nvidia-brev	sample	props
 [intel]
 intel-suite/glide	example	props
 intel-suite/glide/unavailable	unavailable	unavailable
