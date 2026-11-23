@@ -11,9 +11,10 @@ extension View {
 private struct ForkLiveModeEntry: ViewModifier {
     let viewModel: ChatViewModel
     let title: String
-    @State private var isPresented = false
-    @State private var controller: ForkLiveModeController?
+    @Environment(ForkLiveSession.self) private var environmentSession: ForkLiveSession?
     @AppStorage(LiveModeRequest.storageKey) private var requestedAt: Double = 0
+
+    private var session: ForkLiveSession { environmentSession ?? .shared }
 
     func body(content: Content) -> some View {
         content
@@ -25,10 +26,24 @@ private struct ForkLiveModeEntry: ViewModifier {
                     .disabled(viewModel.isViewingCachedData)
                 }
             }
-            .fullScreenCover(isPresented: $isPresented) {
-                if let controller { ForkLiveModeView(title: title, controller: controller) }
+            .confirmationDialog(
+                Text("Switch the Live call?", tableName: "Fork"),
+                isPresented: Binding(
+                    get: { session.isAskingToSwitch(from: viewModel) },
+                    set: { if !$0 { session.resolveSwitch(false) } }
+                ),
+                titleVisibility: .visible
+            ) {
+                Button { session.resolveSwitch(true) } label: { Text("Switch to This Chat", tableName: "Fork") }
+                Button(role: .cancel) { session.resolveSwitch(false) } label: { Text("Keep Current Call", tableName: "Fork") }
+            } message: {
+                let name = session.title
+                Text("A Live call is running in “\(name)”. Switching ends it.", tableName: "Fork")
             }
-            .onAppear(perform: openIfRequested)
+            .onAppear {
+                session.chatAppeared(viewModel)
+                openIfRequested()
+            }
             .onChange(of: requestedAt) { openIfRequested() }
     }
 
@@ -39,42 +54,34 @@ private struct ForkLiveModeEntry: ViewModifier {
     }
 
     private func present() {
-        guard !viewModel.isViewingCachedData else { return }
-        if controller?.belongs(to: viewModel) != true {
-            controller = ForkLiveModeController(viewModel: viewModel)
-        }
-        isPresented = true
+        session.requestStart(viewModel, title: title)
     }
 }
 
 struct ForkLiveModeView: View {
-    let title: String
+    let session: ForkLiveSession
     let controller: ForkLiveModeController
-    @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dismiss) private var dismiss
     @AppStorage("fork.liveMode.orbStyle") private var orbStyle = ForkLiveOrbStyle.voice
     @State private var keptAwake = false
 
     var body: some View {
         ForkLiveModeScreen(
-            title: title, phase: controller.phase, level: controller.level,
+            title: session.title, phase: controller.phase, level: controller.level,
             heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
             isReconnecting: controller.isReconnecting, transcript: controller.transcript,
-            onOrb: controller.tapOrb, onEnd: controller.stop,
-            lanes: controller.supportsLanes ? ForkLiveLaneControls(controller: controller) : nil
+            onOrb: controller.tapOrb, onEnd: { session.end(.user) },
+            lanes: controller.supportsLanes ? ForkLiveLaneControls(controller: controller) : nil,
+            onMinimize: { session.minimize() },
+            ask: controller.pendingAsk.map { ask in
+                ForkLiveAskControls(ask: ask, isAnswering: controller.answeringAskID != nil, onAnswer: session.answer)
+            }
         )
+        .accessibilityAction(.escape) { session.minimize() }
         .onAppear {
-            controller.onClose = { dismiss() }
             keptAwake = UIApplication.shared.isIdleTimerDisabled
             UIApplication.shared.isIdleTimerDisabled = true
-            controller.start()
-        }
-        .onChange(of: scenePhase) { _, phase in
-            if phase == .background { controller.stop() }
         }
         .onDisappear {
-            controller.onClose = nil
-            controller.stop()
             UIApplication.shared.isIdleTimerDisabled = keptAwake
         }
     }
@@ -92,6 +99,8 @@ struct ForkLiveModeScreen: View {
     let onOrb: () -> Void
     let onEnd: () -> Void
     var lanes: ForkLiveLaneControls? = nil
+    var onMinimize: (() -> Void)? = nil
+    var ask: ForkLiveAskControls? = nil
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.layoutDirection) private var layoutDirection
 
@@ -119,6 +128,7 @@ struct ForkLiveModeScreen: View {
             } else {
                 ForkLiveTranscriptView(turns: transcript)
             }
+            if let ask { ask.row.padding(.horizontal, 20) }
             ZStack {
                 if let lanes, lanes.hasOrbit {
                     lanes.orbit(reduceMotion: reduceMotion, layoutDirection: layoutDirection)
@@ -154,7 +164,38 @@ struct ForkLiveModeScreen: View {
     }
 
     private var header: some View {
+        VStack(spacing: 4) {
+            if onMinimize != nil {
+                Capsule()
+                    .fill(Color(.appFillSecondary))
+                    .frame(width: 36, height: 5)
+                    .accessibilityHidden(true)
+            }
+            headerRow
+        }
+        .contentShape(Rectangle())
+        .gesture(
+            DragGesture(minimumDistance: 16).onEnded { value in
+                guard let onMinimize, value.translation.height > 60,
+                      value.translation.height > abs(value.translation.width) else { return }
+                onMinimize()
+            }
+        )
+    }
+
+    private var headerRow: some View {
         HStack {
+            if let onMinimize {
+                Button(action: onMinimize) {
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 17, weight: .semibold))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text("Minimize Live Mode", tableName: "Fork"))
+                .accessibilityHint(Text("The call keeps running while you use the app.", tableName: "Fork"))
+            }
             Text(verbatim: title).font(AppFont.subheadline(weight: .semibold)).lineLimit(1)
             Spacer()
             Picker(selection: $orbStyle) {

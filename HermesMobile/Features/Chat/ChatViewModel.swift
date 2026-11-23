@@ -5326,6 +5326,20 @@ final class ChatViewModel {
 
     var liveLaneThread: String? { hermesTurn?.engine.root }
 
+    var liveCallKey: String? {
+        if let engine = hermesTurn?.engine, let root = engine.root {
+            return "\(engine.server.absoluteString)|\(engine.target.profile)|\(root)"
+        }
+        return sessionID.map { "\(server.absoluteString)|\($0)" }
+    }
+
+    var liveCallLink: URL? {
+        if let engine = hermesTurn?.engine, let root = engine.root {
+            return HermesDeepLink.sessionURL(for: HermesSessionDestination(server: engine.server, profile: engine.target.profile, key: root))
+        }
+        return sessionID.flatMap { HermesDeepLink.webuiSessionURL(server: server, sessionID: $0) }
+    }
+
     var canBranchLiveLane: Bool {
         liveLaneThread != nil && !isViewingCachedData && !isStartingChat && !isForkingMessage && activeStreamID == nil
     }

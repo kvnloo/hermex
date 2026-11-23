@@ -50,7 +50,7 @@ struct ContentView: View {
                 await AgentLiveActivityManager.shared.settleActivitiesFromPreviousLaunch(checking: hermesRunCheck())
             }
             .onChange(of: scenePhase) {
-                if scenePhase == .background { HermesConnections.shared.closeForBackground() }
+                if scenePhase == .background, !ForkLiveSession.shared.isRunning { HermesConnections.shared.closeForBackground() }
                 guard scenePhase == .active else { return }
                 Task { await UsageReports.shared.appBecameActive() }
                 importPendingSharedDraftIfAvailable()

@@ -11,6 +11,7 @@ struct HermesLiveActivityWidgetBundle: WidgetBundle {
         ForkActionsWidget()
         ForkNewChatControl()
         ForkLiveVoiceControl()
+        ForkLiveCallActivityWidget()
     }
 }
 

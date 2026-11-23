@@ -12,6 +12,8 @@ final class ForkLiveModeController {
 
     private(set) var router = LiveLaneRouter()
     private(set) var isAddingLane = false
+    private(set) var pendingAsk: LiveAsk?
+    private(set) var answeringAskID: String?
 
     @ObservationIgnored private var laneModels: [Int: ChatViewModel] = [:]
     @ObservationIgnored private var laneBaselines: [Int: Set<String>] = [:]
@@ -20,7 +22,8 @@ final class ForkLiveModeController {
     @ObservationIgnored private var sendTask: Task<Void, Never>?
     @ObservationIgnored private var listenTask: Task<Void, Never>?
     @ObservationIgnored private weak var viewModel: ChatViewModel?
-    @ObservationIgnored private let voice = ComposerVoiceInputController()
+    @ObservationIgnored private let voice = ComposerVoiceInputController(mayRecord: { ForkLiveAudio.shared.mayRecord })
+    @ObservationIgnored private var shownAskID: String?
     @ObservationIgnored private let speaker = ForkLiveSpeaker()
     @ObservationIgnored private var draft = ""
     @ObservationIgnored private var ticker: Task<Void, Never>?
@@ -31,7 +34,9 @@ final class ForkLiveModeController {
     @ObservationIgnored private var replyBaselineEnd: TranscriptTurnRunOutcome?
     @ObservationIgnored private let clock = Date()
     @ObservationIgnored private let transcriptBaseline: Set<String>
-    var onClose: (() -> Void)?
+    var onEnd: (() -> Void)?
+    var onOpenAsk: ((URL?) -> Void)?
+    var onChange: (() -> Void)?
 
     private static let echoGuard = Duration.milliseconds(300)
 
@@ -51,6 +56,32 @@ final class ForkLiveModeController {
     }
 
     func belongs(to model: ChatViewModel) -> Bool { viewModel === model }
+
+    var isMinimized: Bool { machine.isMinimized }
+    var isMuted: Bool { machine.isMuted }
+    var hasUnseenCard: Bool { machine.hasUnseenCard }
+
+    func minimize() { handle(.minimize) }
+    func restore() { handle(.restore) }
+    var isHearing: Bool { !machine.isMuted && ![.idle, .paused, .failed].contains(machine.phase) }
+
+    func toggleMute() {
+        if machine.isMuted {
+            handle(.unmute)
+        } else if isHearing {
+            handle(.mute)
+        } else {
+            handle(.start)
+        }
+    }
+    func pauseForInterruption() { handle(.pause) }
+    func resumeAfterInterruption() { handle(.start) }
+
+    func answer(_ command: LiveApprovalCommand) {
+        guard let ask = pendingAsk, ask.offers.contains(command), answeringAskID == nil else { return }
+        handle(.askHandled(ask.id))
+        deliver(command, to: ask.id)
+    }
 
     var supportsLanes: Bool { viewModel?.supportsLiveLanes == true }
 
@@ -107,7 +138,7 @@ final class ForkLiveModeController {
         voice.stopBeforeSubmittingDraft()
         voice.dismissError()
         speaker.stop()
-        machine = LiveModeMachine()
+        machine = machine.restartingConversation()
         errorMessage = nil
         draft = ""
         level = 0
@@ -151,8 +182,10 @@ final class ForkLiveModeController {
         if let pending = router.pending { _ = router.finish(pending) }
         sentAt = nil
         laneModels.values.forEach { $0.suspendStreamForNavigation() }
+        shownAskID = nil
+        pendingAsk = nil
+        answeringAskID = nil
         resetListening()
-        onClose?()
     }
 
     func tapOrb() {
@@ -165,6 +198,101 @@ final class ForkLiveModeController {
         }
     }
 
+    private func syncAsk() {
+        let candidates = askingModels().compactMap { lane, model in
+            Self.ask(in: model).map { LiveAskCandidate(ask: $0, lane: lane) }
+        }
+        let ask = LiveAskRoute.pick(candidates, callLanes: router.lanes, selectedLane: router.selected)
+        if shownAskID != ask?.id {
+            if let shownAskID { handle(.askClosed(shownAskID)) }
+            shownAskID = ask?.id
+        }
+        if pendingAsk != ask { pendingAsk = ask }
+        if let ask { handle(.askOpened(ask)) }
+    }
+
+    private func askingModels() -> [(Int, ChatViewModel)] {
+        var models: [(Int, ChatViewModel)] = []
+        if let viewModel { models.append((LiveLaneRouter.root, viewModel)) }
+        for lane in router.lanes where lane != LiveLaneRouter.root {
+            if let model = laneModels[lane] { models.append((lane, model)) }
+        }
+        return models
+    }
+
+    private func model(asking id: String) -> ChatViewModel? {
+        askingModels().first { Self.ask(in: $0.1)?.id == id }?.1
+    }
+
+    private func deliver(_ command: LiveApprovalCommand, to id: String) {
+        guard let model = model(asking: id) else { return }
+        guard command != .open else {
+            onOpenAsk?(model.liveCallLink)
+            return
+        }
+        answeringAskID = id
+        Task { [weak self] in
+            let answered = await Self.respond(command, in: model, to: id)
+            guard let self, self.answeringAskID == id else { return }
+            self.answeringAskID = nil
+            guard !answered else { return }
+            self.errorMessage = String(localized: "Couldn’t send your answer. Try again.", table: "Fork")
+            self.handle(.askClosed(id))
+        }
+    }
+
+    private static func respond(_ command: LiveApprovalCommand, in model: ChatViewModel, to id: String) async -> Bool {
+        if let requests = model.hermesRequests {
+            guard case .approval(let approval)? = requests.onScreen, approval.requestID == id,
+                  let action = requests.prepareAnswer() else { return false }
+            return await requests.respond(action, choice: command == .allow ? .once : .deny)
+        }
+        guard model.approvalPrompt?.id == id else { return false }
+        return await model.respondToApproval(command == .allow ? .once : .deny)
+    }
+
+    static func ask(in model: ChatViewModel) -> LiveAsk? {
+        if let requests = model.hermesRequests {
+            switch requests.onScreen {
+            case .approval(let approval)?:
+                return .approval(id: approval.requestID,
+                                 summary: approval.consequence ?? approval.command ?? approval.toolName ?? "",
+                                 allowsOnce: approval.choices.contains(.once), allowsDeny: approval.choices.contains(.deny))
+            case .question(let question)?:
+                return .question(id: question.requestID, summary: question.questions.first?.prompt ?? "")
+            case .credential(let credential)?:
+                return .question(id: credential.requestID, summary: credential.title)
+            case .connection(let operation)?:
+                return .question(id: operation.opID, summary: "")
+            case .desktopTask?, nil:
+                return nil
+            }
+        }
+        if let prompt = model.approvalPrompt {
+            return .approval(id: prompt.id, summary: prompt.pending.description ?? prompt.pending.command ?? "",
+                             allowsOnce: true, allowsDeny: true)
+        }
+        if let prompt = model.clarificationPrompt { return .question(id: prompt.id, summary: prompt.question) }
+        return nil
+    }
+
+    static func spokenPrompt(_ ask: LiveAsk, again: Bool) -> String {
+        switch (ask.kind, ask.offers.contains(.allow), again) {
+        case (.approval, true, false):
+            String(localized: "Hermes needs your OK. Say allow, deny, or open it.", table: "Fork")
+        case (.approval, true, true):
+            String(localized: "Sorry, I didn’t catch that. Say allow, deny, or open it.", table: "Fork")
+        case (.approval, false, false):
+            String(localized: "Hermes needs your OK. Say deny, or open it to choose.", table: "Fork")
+        case (.approval, false, true):
+            String(localized: "Sorry, I didn’t catch that. Say deny, or open it.", table: "Fork")
+        case (.question, _, false):
+            String(localized: "Hermes has a question. Say open it to answer.", table: "Fork")
+        case (.question, _, true):
+            String(localized: "Sorry, I didn’t catch that. Say open it to answer.", table: "Fork")
+        }
+    }
+
     private var now: Double { Date().timeIntervalSince(clock) }
 
     private func tick() {
@@ -174,12 +302,14 @@ final class ForkLiveModeController {
             errorMessage = message
             handle(.pause)
         }
+        syncAsk()
         if machine.phase == .thinking { checkReply() }
         if router.pending == nil, !laneModels.isEmpty, laneThread != viewModel?.liveLaneThread {
             clearChangedThread()
             resetListening()
         }
         handle(.tick)
+        onChange?()
     }
 
     private func handle(_ event: LiveEvent) {
@@ -208,7 +338,13 @@ final class ForkLiveModeController {
         case .stopSpeaking:
             speaker.stop()
         case .close:
-            break
+            onEnd?()
+        case .announceAsk(let ask):
+            speaker.speak([Self.spokenPrompt(ask, again: false)])
+        case .askAgain(let ask):
+            speaker.speak([Self.spokenPrompt(ask, again: true)])
+        case .answerAsk(let id, let command):
+            deliver(command, to: id)
         }
     }
 

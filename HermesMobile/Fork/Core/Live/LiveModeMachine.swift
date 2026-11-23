@@ -64,13 +64,21 @@ struct LiveModeMachine: Equatable, Sendable {
 
     var isActive: Bool { phase != .idle }
 
+    func restartingConversation() -> LiveModeMachine {
+        var next = LiveModeMachine()
+        next.isMinimized = isMinimized
+        next.hasUnseenCard = hasUnseenCard
+        next.turns = turns
+        return next
+    }
+
     mutating func handle(_ event: LiveEvent, at time: Double) -> [LiveEffect] {
         switch (event, phase) {
         case (.stop, _):
             let effects: [LiveEffect] = phase == .speaking ? [.stopSpeaking, .close] : [.stopListening, .close]
             close()
             return effects
-        case (_, .idle) where !Self.startsCall(event):
+        case (_, .idle) where !Self.appliesWhileIdle(event):
             return []
         case (.start, .idle), (.start, .paused), (.start, .failed):
             isMuted = false
@@ -150,10 +158,11 @@ struct LiveModeMachine: Equatable, Sendable {
         }
     }
 
-    private static func startsCall(_ event: LiveEvent) -> Bool {
-        if case .start = event { return true }
-        if case .restore = event { return true }
-        return false
+    private static func appliesWhileIdle(_ event: LiveEvent) -> Bool {
+        switch event {
+        case .start, .minimize, .restore: true
+        default: false
+        }
     }
 
     private mutating func open(_ new: LiveAsk, at time: Double) -> [LiveEffect] {

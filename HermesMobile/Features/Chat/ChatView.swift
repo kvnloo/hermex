@@ -1107,8 +1107,10 @@ struct ChatView: View {
                 if chatLeft {
                     viewModel.cancelPastedTextStaging()
                     viewModel.stopListening()
-                    viewModel.suspendStreamForNavigation()
-                    viewModel.cleanupPollingTasks()
+                    if !ForkLiveSession.shared.adoptsLeavingChat(viewModel) {
+                        viewModel.suspendStreamForNavigation()
+                        viewModel.cleanupPollingTasks()
+                    }
                 }
                 gitAvailabilityViewModel.suspendPullRequestReads()
             }
@@ -3720,6 +3722,8 @@ struct ChatView: View {
         }
 
         switch phase {
+        case .background where ForkLiveSession.shared.holds(viewModel):
+            break
         case .background:
             if isHermesSession {
                 viewModel.suspendStreamForBackground()

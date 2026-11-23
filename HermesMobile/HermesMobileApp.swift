@@ -109,6 +109,7 @@ struct HermesMobileApp: App {
                 .forkSystemEntryBridge()
                 .forkServedBuildChip()
                 .forkBotImport(authManager)
+                .forkLiveSession()
                 .task(id: authManager.state) { await DevAutoLogin.run(authManager: authManager) }
                 .overlay(alignment: .topLeading) {
                     if HitchMeter.isEnabled {
@@ -124,6 +125,7 @@ struct HermesMobileApp: App {
                 .forkSystemEntryBridge()
                 .forkServedBuildChip()
                 .forkBotImport(authManager)
+                .forkLiveSession()
             #endif
         }
         .modelContainer(cacheContainer)

@@ -154,8 +154,7 @@ final class LiveModeMachineCallTests: XCTestCase {
         XCTAssertEqual(machine.handle(.stop, at: 4), [.stopListening, .close])
         XCTAssertFalse(machine.isActive)
         XCTAssertFalse(machine.isMinimized)
-        XCTAssertEqual(machine.handle(.minimize, at: 5), [])
-        XCTAssertFalse(machine.isMinimized)
+        XCTAssertEqual(machine.handle(.tick, at: 5), [])
     }
 
     func testCardsWhileMinimizedRaiseTheDotAndAreNeverSpoken() {
@@ -271,5 +270,16 @@ final class LiveModeMachineCallTests: XCTestCase {
         _ = machine.handle(.speechFinished, at: 4)
         XCTAssertEqual(machine.handle(.tick, at: 40), [])
         XCTAssertEqual(machine.phase, .listening)
+    }
+}
+
+final class LiveModeMachineRestartTests: XCTestCase {
+    func testRestartingTheConversationKeepsTheCallMinimized() {
+        var machine = LiveModeMachine()
+        _ = machine.handle(.start, at: 0)
+        _ = machine.handle(.minimize, at: 1)
+        let next = machine.restartingConversation()
+        XCTAssertTrue(next.isMinimized)
+        XCTAssertEqual(next.phase, .idle)
     }
 }
