@@ -6,8 +6,12 @@ file shape v 0 and the pinned version, and coverage.json names every catalog
 kind exactly once, so a re-vendored catalog with a new kind fails until the
 kind is covered.
 
+The offline check is the pull_request/push gate: it reads only the PR's tree.
+
 --upstream REF (or --source DIR): also fail when the pinned copy is stale,
-naming the new version and any kind the pinned catalog does not cover yet.
+naming the new version and any kind the pinned catalog does not cover yet, and
+append the drift to the GitHub job summary. Only the scheduled freshness
+workflow runs it, so an ephemeral-ui merge never turns a PR red.
 
 --vendor DIR: copy theme/glide.json and catalog/catalog.json from an
 ephemeral-ui checkout and rewrite PIN.json with its commit. coverage.json is
@@ -17,6 +21,7 @@ never rewritten; run the check afterwards to see which kinds need a decision.
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -119,6 +124,15 @@ def stale_errors(vendor, upstream, label):
     return errors
 
 
+def write_summary(errors, label):
+    path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not path:
+        return
+    with open(path, "a", encoding="utf-8") as out:
+        out.write(f"### ephemeral-ui drift against {label}\n\n" + "".join(f"- {e}\n" for e in errors)
+                  + "\nRe-vendor: `python3 ci/check_ephemeral_ui.py --vendor <ephemeral-ui checkout>`\n")
+
+
 def vendor_from(source, vendor):
     commit = subprocess.run(["git", "-C", str(source), "rev-parse", "HEAD"], check=True,
                             capture_output=True, text=True).stdout.strip()
@@ -153,6 +167,8 @@ def main(argv=None, fetch=fetch_upstream):
             return 2
         label = str(args.source) if args.source else f"{UPSTREAM}@{args.upstream}"
         errors = stale_errors(args.vendor_dir, upstream, label)
+        if errors:
+            write_summary(errors, label)
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1

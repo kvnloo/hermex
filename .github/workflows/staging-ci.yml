@@ -10,8 +10,9 @@
 # - Fork Logic (Linux): scripts/fork-linux-test compiles the Foundation-only fork
 #   sources under HermesMobile/Fork and runs HermesMobileTests/Fork with XCTest.
 # - Tooling Tests: upstream's Linux checks (comments, test waits, scripts tests),
-#   plus the vendored ephemeral-ui theme and catalog: intact, every kind covered,
-#   and not behind kvnloo/ephemeral-ui main.
+#   plus the vendored ephemeral-ui theme and catalog: intact and every kind
+#   covered. Drift from kvnloo/ephemeral-ui main is checked on a schedule by
+#   ephemeral-ui-freshness.yml, so an upstream merge never turns a PR red.
 # - HERMEX_BUILD_SHA/TIME land in Info.plist so the preview channel's chip can
 #   name the running build (HermesMobile/Fork/Core/Preview).
 
@@ -182,6 +183,3 @@ jobs:
           fi
           python3 ci/check_comments.py
           ruby ci/select_testflight_build_number_test.rb
-
-      - name: Check the vendored ephemeral-ui copy is current
-        run: python3 ci/check_ephemeral_ui.py --upstream main
