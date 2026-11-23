@@ -1,0 +1,26 @@
+# Fails when kvnloo/ephemeral-ui main has moved past the vendored pin (a stale
+# theme or catalog, or a kind the gallery does not cover yet) and lists the drift
+# in the job summary. Schedule and dispatch only: PR and push gates in
+# staging-ci.yml check the pinned copy offline and never read upstream.
+
+name: Ephemeral-ui freshness
+
+on:
+  schedule:
+    - cron: "23 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freshness:
+    name: Vendored ephemeral-ui is current
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Compare the pin with ephemeral-ui main
+        run: python3 ci/check_ephemeral_ui.py --upstream main

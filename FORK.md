@@ -78,7 +78,10 @@ python3 ci/check_ephemeral_ui.py --vendor /tmp/ephemeral-ui           # copies, 
 
 `python3 ci/check_ephemeral_ui.py` fails when a copy differs from its pin, a file is not
 shape `v` 0, or a catalog kind has no `coverage.json` entry; `--upstream main` also fails
-when ephemeral-ui `main` has moved on (stale theme or catalog, new kinds). Staging CI runs both.
+when ephemeral-ui `main` has moved on (stale theme or catalog, new kinds). Staging CI's PR
+and push gate runs only the offline check, so an ephemeral-ui merge never reddens a PR;
+`ephemeral-ui-freshness.yml` runs `--upstream main` on a daily schedule or by hand and
+lists any drift in its job summary.
 
 ## Preview channel
 
