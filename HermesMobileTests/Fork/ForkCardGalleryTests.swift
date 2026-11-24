@@ -66,28 +66,17 @@ final class ForkCardGalleryTests: XCTestCase {
         XCTAssertEqual(ForkCardGallery.summary(.object(["b": .bool(true), "a": .null])), "a: \u{2014}, b: true")
     }
 
-    func testMetricFixturesMountTheNativeBoardAndEveryOtherKindItsProps() throws {
-        let (catalog, gallery) = try vendored()
-        let fixtures = Dictionary(catalog.kinds.flatMap(\.fixtures).map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
-        let metrics = gallery.cells.filter { $0.kind == "metric" && !$0.isUnavailable }
-        XCTAssertFalse(metrics.isEmpty)
+    func testEveryFixtureMountsAKitCardAndNoneFallsBackToItsProps() throws {
+        let (_, gallery) = try vendored()
         for cell in gallery.cells {
-            XCTAssertEqual(cell.board != nil, cell.support == .native && !cell.isUnavailable, cell.id)
+            XCTAssertNotEqual(cell.presentation, "props", cell.id)
+            XCTAssertEqual(cell.kit.kind, cell.kind, cell.id)
+            XCTAssertEqual(cell.kit.layout == .unavailable, cell.isUnavailable, cell.id)
+            if !cell.isUnavailable { XCTAssertFalse(cell.kit.isPlaceholder, cell.id) }
         }
-        for cell in metrics {
-            let board = try XCTUnwrap(cell.board, cell.id)
-            let props = try XCTUnwrap(fixtures[cell.id]).props
-            XCTAssertTrue(board.isFullyRendered)
-            XCTAssertEqual(props["label"], .string(board.title))
-            guard case .stat(let title, .number(let value), let detail)? = board.panels.first,
-                  case .number(let delta)? = props["delta"] else {
-                XCTFail("Expected a metric Stat: \(cell.id)")
-                continue
-            }
-            XCTAssertEqual(props["app"], .string(title))
-            XCTAssertEqual(props["value"], .number(value))
-            XCTAssertEqual(detail, delta.formatted(.number.sign(strategy: .always())) + "%")
-        }
+        let metric = try XCTUnwrap(gallery.cells.first { $0.id == "metric/npm" })
+        XCTAssertEqual(metric.kit.hero?.value, "12,840")
+        XCTAssertEqual(metric.presentation, "hero")
     }
 
     func testPresentationSnapshot() throws {
