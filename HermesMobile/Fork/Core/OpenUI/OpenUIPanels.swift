@@ -65,17 +65,23 @@ extension OpenUICheck {
             }
             return .heatmap(title: title, unit: unit, rows: rows, columns: columns, counts: counts)
         case "RideOptions":
-            try rideOptions(name, args, at)
-            return .unsupported(type: name)
+            return .kit(title: "", cards: [.drawn(try rideOptions(name, args, at))])
         case "MailList":
-            try mailList(name, args, at)
-            return .unsupported(type: name)
+            return .kit(title: "", cards: [.drawn(try mailList(name, args, at))])
         case "Route":
-            try route(name, args, at)
-            return .unsupported(type: name)
+            return .kit(title: "", cards: [.drawn(try route(name, args, at))])
         case "PullRequest":
-            try pullRequest(name, args, at, node)
-            return .unsupported(type: name)
+            return .kit(title: "", cards: [.drawn(try pullRequest(name, args, at, node))])
+        case "EphemeralCards":
+            try arity(name, args, at, 2)
+            let title = try string(args[0], "title", max: 200)
+            let cards = try array(args[1], "cards", min: 1, max: KitCardProgram.maxCards).map { try kitSpec($0) }
+            return .kit(title: title, cards: cards.map(KitCardEntry.catalog))
+        case "EphemeralCard":
+            try arity(name, args, at, 1, 2)
+            let kind = try string(args[0], "kind", min: 1, max: 100)
+            let app = args.count == 2 ? try string(args[1], "app", min: 1, max: 100) : nil
+            return .kit(title: "", cards: [.catalog(KitCardSpec(kind: kind, app: app))])
         default:
             throw bad(node, "Chart board contains an unknown panel.")
         }
@@ -105,46 +111,66 @@ extension OpenUICheck {
         return .treemap(title: title, sizeLabel: sizeLabel, colorLabel: colorLabel, rows: rows)
     }
 
-    private static func rideOptions(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition) throws {
+    private static func rideOptions(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition) throws -> KitCardModel {
         try arity(name, args, at, 4)
-        _ = try choice(args[0], "app", ["uber", "lyft"])
-        _ = try string(args[1], "pickup", min: 1, max: 200)
-        _ = try string(args[2], "dropoff", min: 1, max: 200)
+        let app = try choice(args[0], "app", ["uber", "lyft"])
+        let pickup = try string(args[1], "pickup", min: 1, max: 200)
+        let dropoff = try string(args[2], "dropoff", min: 1, max: 200)
         var seen: Set<String> = []
+        var rows: [KitRow] = []
         for entry in try array(args[3], "ride options", min: 1, max: 8) {
             let row = try object(entry, "ride")
             let rideName = try text(row, "name", entry, min: 1)
-            _ = try number(row, "minutes", entry, max: 100_000)
-            _ = try text(row, "price", entry, min: 1, max: 24)
-            _ = try number(row, "seats", entry, min: 1, max: 20, integer: true)
+            let minutes = try number(row, "minutes", entry, max: 100_000)
+            let price = try text(row, "price", entry, min: 1, max: 24)
+            let seats = try number(row, "seats", entry, min: 1, max: 20, integer: true)
             try optionalText(row, "arrival", 200)
             if !seen.insert(rideName).inserted { throw bad(entry, "RideOptions lists the same option twice.") }
+            let arrival = row["arrival"].flatMap { if case .string(let text, _) = $0, !text.isEmpty { text } else { nil } }
+            let detail = ["\(KitFormat.number(minutes)) min", KitFormat.count(Int(seats), "seat"), arrival].compactMap { $0 }
+            rows.append(KitRow(id: rows.count, title: rideName, detail: detail.joined(separator: " \u{00B7} "), trailing: price))
         }
+        var card = KitCardModel(kind: "ride", app: app, appName: KitFormat.title(app), label: "Ride options", group: "app",
+                                title: "Ride options")
+        card.route = KitRoute(from: pickup, to: dropoff)
+        card.addRows(rows)
+        return card
     }
 
-    private static func mailList(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition) throws {
+    private static func mailList(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition) throws -> KitCardModel {
         try arity(name, args, at, 2)
-        _ = try string(args[0], "query", max: 200)
+        let query = try string(args[0], "query", max: 200)
+        var rows: [KitRow] = []
         for entry in try array(args[1], "messages", max: 20) {
             let row = try object(entry, "message")
-            _ = try text(row, "from", entry, min: 1)
-            _ = try text(row, "subject", entry)
-            _ = try text(row, "snippet", entry, max: 400)
-            _ = try text(row, "time", entry)
+            let from = try text(row, "from", entry, min: 1)
+            let subject = try text(row, "subject", entry)
+            let snippet = try text(row, "snippet", entry, max: 400)
+            let time = try text(row, "time", entry)
             try boolean(field(row, "unread", entry), "unread")
             try optionalText(row, "attachment", 200)
+            let unread = if case .boolean(true, _)? = row["unread"] { true } else { false }
+            rows.append(KitRow(id: rows.count, title: subject.isEmpty ? from : subject,
+                               detail: [from, snippet].filter { !$0.isEmpty }.joined(separator: " \u{2014} "),
+                               trailing: time.isEmpty ? nil : time, isEmphasized: unread))
         }
+        var card = KitCardModel(kind: "inbox", app: "mail", appName: "Mail", label: "Inbox", group: "app",
+                                title: query.isEmpty ? "Inbox" : "\u{201C}\(query)\u{201D}")
+        card.subtitle = KitFormat.count(rows.count, "message")
+        card.addRows(rows)
+        if rows.isEmpty { card.addFact("Messages", "0") }
+        return card
     }
 
-    private static func route(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition) throws {
+    private static func route(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition) throws -> KitCardModel {
         try arity(name, args, at, 6, 9)
-        _ = try string(args[0], "origin", min: 1, max: 200)
-        _ = try string(args[1], "destination", min: 1, max: 200)
-        _ = try choice(args[2], "mode", ["drive", "walk", "transit", "bike"])
-        _ = try number(args[3], "minutes", max: 100_000)
-        _ = try string(args[4], "distance", max: 200)
-        for step in try array(args[5], "steps", max: 20) { _ = try string(step, "step", min: 1, max: 200) }
-        if args.count > 6 { _ = try string(args[6], "via", max: 200) }
+        let origin = try string(args[0], "origin", min: 1, max: 200)
+        let destination = try string(args[1], "destination", min: 1, max: 200)
+        let mode = try choice(args[2], "mode", ["drive", "walk", "transit", "bike"])
+        let minutes = try number(args[3], "minutes", max: 100_000)
+        let distance = try string(args[4], "distance", max: 200)
+        let steps = try array(args[5], "steps", max: 20).map { try string($0, "step", min: 1, max: 200) }
+        let via = args.count > 6 ? try string(args[6], "via", max: 200) : ""
         if args.count > 7 {
             for point in try array(args[7], "path", min: 2, max: 600) {
                 let pair = try array(point, "coordinate", min: 2, max: 2)
@@ -163,23 +189,32 @@ extension OpenUICheck {
             _ = try number(bounds[2], "north", min: -90, max: 90)
             _ = try number(bounds[3], "east", min: -180, max: 180)
         }
+        var card = KitCardModel(kind: "route", app: "maps", appName: "Maps", label: "Route", group: "app",
+                                title: KitFormat.capitalized(mode) + (via.isEmpty ? "" : " via \(via)"))
+        card.route = KitRoute(from: origin, to: destination,
+                              detail: ["\(KitFormat.number(minutes)) min", distance.isEmpty ? nil : distance].compactMap { $0 }
+                                  .joined(separator: " \u{00B7} "))
+        card.addRows(steps.map { KitRow(id: 0, title: $0) })
+        return card
     }
 
-    private static func pullRequest(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition, _ node: OpenUIValue) throws {
+    private static func pullRequest(_ name: String, _ args: [OpenUIValue], _ at: OpenUIPosition, _ node: OpenUIValue) throws -> KitCardModel {
         try arity(name, args, at, 7, 8)
-        _ = try number(args[0], "PR number", min: 1, max: .greatestFiniteMagnitude, integer: true)
-        _ = try string(args[1], "title", min: 1, max: 200)
+        let prNumber = try number(args[0], "PR number", min: 1, max: .greatestFiniteMagnitude, integer: true)
+        let title = try string(args[1], "title", min: 1, max: 200)
         let state = try choice(args[2], "state", ["open", "conflict", "ready", "merged", "closed"])
-        _ = try string(args[3], "head", min: 1, max: 200)
-        _ = try string(args[4], "base", min: 1, max: 200)
+        let head = try string(args[3], "head", min: 1, max: 200)
+        let base = try string(args[4], "base", min: 1, max: 200)
         var pending = false
+        var checks: [ForkJSON] = []
         for entry in try array(args[5], "checks", max: 12) {
             let check = try object(entry, "check")
-            _ = try text(check, "name", entry, min: 1)
+            let checkName = try text(check, "name", entry, min: 1)
             let status = try text(check, "status", entry, min: 1)
             guard ["pass", "fail", "running", "skip"].contains(status) else { throw bad(entry, "Invalid check status.") }
             pending = pending || status == "fail" || status == "running"
-            _ = try text(check, "detail", entry)
+            let detail = try text(check, "detail", entry)
+            checks.append(.object(["name": .string(checkName), "status": .string(status), "detail": .string(detail)]))
             try optionalNumber(check, "started", 6_000_000)
             try optionalNumber(check, "seconds", 6_000_000)
         }
@@ -199,6 +234,32 @@ extension OpenUICheck {
                 try optionalText(item, "branch", 200)
                 if let conflict = item["conflict"] { try boolean(conflict, "conflict") }
             }
+        }
+        let kind = ForkCardKind(kind: "merge", label: "Pull request", group: "app", fixtures: [])
+        return KitCardMapper.model(kind: kind, app: "github", props: ["input": .object([
+            "number": .number(prNumber), "title": .string(title), "state": .string(state), "head": .string(head),
+            "base": .string(base), "conflicts": .number(conflicts), "checks": .array(checks),
+        ])], unavailable: nil)
+    }
+
+    private static func kitSpec(_ node: OpenUIValue) throws -> KitCardSpec {
+        let card = try object(node, "card")
+        let kind = try text(card, "kind", node, min: 1, max: 100)
+        let app = try card["app"].map { try string($0, "app", min: 1, max: 100) }
+        let title = try card["title"].map { try string($0, "title", max: 200) }
+        let input = try card["input"].map(json)
+        return KitCardSpec(kind: kind, app: app, title: title, input: input)
+    }
+
+    static func json(_ node: OpenUIValue) throws -> ForkJSON {
+        switch node {
+        case .string(let text, _): return .string(text)
+        case .number(let value, _): return .number(value)
+        case .boolean(let flag, _): return .bool(flag)
+        case .null: return .null
+        case .array(let items, _): return .array(try items.map(json))
+        case .object(let fields, _): return .object(try fields.mapValues(json))
+        case .call, .reference: throw bad(node, "Card input must be plain data.")
         }
     }
 }

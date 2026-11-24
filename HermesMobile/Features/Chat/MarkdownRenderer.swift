@@ -219,6 +219,8 @@ private struct MathFenceOrCodeBlock: View {
             DisplayMathView(latex: content)
         } else if ForkOpenUIFence.matches(language), !(isStreaming || replyIsStreaming) {
             ForkOpenUIBoardView(source: content)
+        } else if KitCardProgram.matches(language), !(isStreaming || replyIsStreaming) {
+            ForkKitFenceView(source: content)
         } else {
             ChatCodeBlock(
                 language: language,

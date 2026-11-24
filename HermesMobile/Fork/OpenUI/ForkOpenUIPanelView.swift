@@ -6,7 +6,9 @@ struct ForkOpenUIPanelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(verbatim: panel.title).font(AppFont.subheadline(weight: .semibold))
+            if !panel.title.isEmpty {
+                Text(verbatim: panel.title).font(AppFont.subheadline(weight: .semibold))
+            }
             content
         }
         .accessibilityElement(children: .contain)
@@ -23,7 +25,8 @@ struct ForkOpenUIPanelView: View {
         case .treemap(_, let sizeLabel, let colorLabel, let rows):
             ForkOpenUITreemap(rows: rows).frame(height: 220).accessibilityLabel(Text(verbatim: "\(sizeLabel), \(colorLabel)"))
         case .heatmap(_, let unit, let rows, let columns, let counts): heatmap(unit, rows, columns, counts)
-        case .unsupported: EmptyView()
+        case .kit(_, let cards):
+            ForEach(Array(cards.enumerated()), id: \.offset) { _, entry in ForkKitEntryView(entry: entry) }
         }
     }
 

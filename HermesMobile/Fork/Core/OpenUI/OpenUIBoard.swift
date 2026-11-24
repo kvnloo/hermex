@@ -22,6 +22,11 @@ enum OpenUISeriesKind: String, Equatable, Sendable {
     case line = "LineChart"
 }
 
+enum KitCardEntry: Equatable, Sendable {
+    case catalog(KitCardSpec)
+    case drawn(KitCardModel)
+}
+
 enum OpenUIPanel: Equatable, Sendable {
     case stat(title: String, value: OpenUICell, detail: String?)
     case bars(title: String, unit: String, bars: [(label: String, value: Double)])
@@ -29,7 +34,7 @@ enum OpenUIPanel: Equatable, Sendable {
     case table(title: String, columns: [String], rows: [[OpenUICell]])
     case treemap(title: String, sizeLabel: String, colorLabel: String, rows: [OpenUITreemapRow])
     case heatmap(title: String, unit: String, rows: [String], columns: [String], counts: [[Double]])
-    case unsupported(type: String)
+    case kit(title: String, cards: [KitCardEntry])
 
     static func == (lhs: OpenUIPanel, rhs: OpenUIPanel) -> Bool {
         switch (lhs, rhs) {
@@ -40,7 +45,7 @@ enum OpenUIPanel: Equatable, Sendable {
         case let (.table(a, b, c), .table(x, y, z)): a == x && b == y && c == z
         case let (.treemap(a, b, c, d), .treemap(w, x, y, z)): a == w && b == x && c == y && d == z
         case let (.heatmap(a, b, c, d, e), .heatmap(v, w, x, y, z)): a == v && b == w && c == x && d == y && e == z
-        case let (.unsupported(a), .unsupported(b)): a == b
+        case let (.kit(a, b), .kit(x, y)): a == x && b == y
         default: false
         }
     }
@@ -49,13 +54,8 @@ enum OpenUIPanel: Equatable, Sendable {
         switch self {
         case .stat(let title, _, _), .bars(let title, _, _), .series(_, let title, _, _, _), .table(let title, _, _),
              .treemap(let title, _, _, _), .heatmap(let title, _, _, _, _): title
-        case .unsupported(let type): type
+        case .kit(let title, _): title
         }
-    }
-
-    var isRendered: Bool {
-        if case .unsupported = self { return false }
-        return true
     }
 }
 
@@ -64,7 +64,7 @@ struct OpenUIBoardModel: Equatable, Sendable {
     let summary: String
     let panels: [OpenUIPanel]
 
-    var isFullyRendered: Bool { panels.allSatisfy(\.isRendered) }
+    var isFullyRendered: Bool { !panels.isEmpty }
 }
 
 enum OpenUICatalogResult: Equatable, Sendable {
@@ -78,7 +78,7 @@ enum OpenUICatalog {
     static let maxValue = 1e12
     static let panelTypes: Set<String> = [
         "Treemap", "BarChart", "StackedArea", "Heatmap", "Stat", "StackedBar", "LineChart", "Table",
-        "RideOptions", "MailList", "Route", "PullRequest",
+        "RideOptions", "MailList", "Route", "PullRequest", "EphemeralCards", "EphemeralCard",
     ]
     static let fenceLanguages: Set<String> = ["openui-v2", "openui"]
 

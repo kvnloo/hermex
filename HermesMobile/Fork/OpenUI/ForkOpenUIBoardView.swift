@@ -34,10 +34,8 @@ struct ForkOpenUIBoardView: View {
     var body: some View {
         Group {
             switch result {
-            case .ready(let board) where board.isFullyRendered:
+            case .ready(let board):
                 boardBody(board)
-            case .ready:
-                notice(Text("This board uses panels Hermex can't show yet.", tableName: "Fork"), problem: nil)
             case .incomplete(let problem):
                 notice(Text("This board is incomplete.", tableName: "Fork"), problem: problem)
             case .invalid(let problem):

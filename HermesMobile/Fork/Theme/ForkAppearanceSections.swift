@@ -7,6 +7,7 @@ struct ForkAppearanceSections: View {
     @AppStorage(ForkThemeStore.jsonKey) private var customJSON = ""
     @AppStorage(GlassPreference.isEnabledKey) private var isGlassEnabled = GlassPreference.defaultIsEnabled
     @AppStorage(ForkTurboMotion.storageKey) private var isTurboEnabled = ForkTurboMotion.defaultIsEnabled
+    @AppStorage(KitCardStyle.storageKey) private var kitCardStyle = KitCardStyle.defaultValue
     @Environment(\.appAppearance) private var appearance
     @Environment(\.forkSharedTheme) private var sharedTheme
     @State private var isImportingFile = false
@@ -35,13 +36,18 @@ struct ForkAppearanceSections: View {
         }
 
         Section {
+            ForkKitStylePicker(style: $kitCardStyle)
             NavigationLink {
                 ForkCardGalleryView()
             } label: {
                 SettingsLabel(title: String(localized: "Card Gallery", table: "Fork"), systemImage: "square.grid.2x2")
             }
+        } header: {
+            Text("Agent cards", tableName: "Fork")
         } footer: {
-            Text("Every card kind in the shared ephemeral-ui catalog, drawn from its sample data.", tableName: "Fork")
+            Text("Service style draws a card in the colors of the service it comes from, such as Gmail, GitHub or Stripe.", tableName: "Fork")
+                + Text(verbatim: " ")
+                + Text("Every card kind in the shared ephemeral-ui catalog, drawn from its sample data.", tableName: "Fork")
         }
 
         Section {

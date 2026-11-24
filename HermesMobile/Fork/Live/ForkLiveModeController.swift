@@ -52,6 +52,8 @@ final class ForkLiveModeController {
 
     func belongs(to model: ChatViewModel) -> Bool { viewModel === model }
 
+    var chat: ChatViewModel? { viewModel }
+
     var supportsLanes: Bool { viewModel?.supportsLiveLanes == true }
 
     var canAddLane: Bool {
