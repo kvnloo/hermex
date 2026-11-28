@@ -128,6 +128,16 @@ final class KitCardTests: XCTestCase {
         XCTAssertEqual(model.title, "Now playing")
     }
 
+    func testServiceMonogramsMeetSmallTextContrastInBothAppearances() {
+        for brand in KitServiceBrand.all.values.sorted(by: { $0.id < $1.id }) {
+            for dark in [false, true] {
+                let palette = brand.palette(dark: dark)
+                XCTAssertGreaterThanOrEqual(KitPalette.contrast(palette.accentInk, palette.accent), 4.5,
+                                            "\(brand.id) monogram, dark: \(dark)")
+            }
+        }
+    }
+
     func testStyleDefaultsToTheAppThemeAndServiceStyleFallsBackForUnbrandedApps() throws {
         XCTAssertEqual(KitCardStyle.defaultValue, .appTheme)
         XCTAssertEqual(KitCardStyle(stored: nil), .appTheme)
