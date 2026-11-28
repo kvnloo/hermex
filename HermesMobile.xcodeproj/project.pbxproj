@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50B16433AC0463FF2C4BB2ED /* LiveOrbLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF97D21E0844BFAFFB3F3E /* LiveOrbLayoutTests.swift */; };
+		B4B693660732443BA6A25B3E /* LiveCallRoomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B30A84DC396033D444A2AF /* LiveCallRoomTests.swift */; };
 		2DCF1597D16AF1A5FC26308C /* KitCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2132FD9FC991D34AA8666B /* KitCardTests.swift */; };
 		9C02141ECA99ED7F564AA648 /* ForkLiveApprovalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876B04B46F2116C1DCAACDB9 /* ForkLiveApprovalCard.swift */; };
 		5EA9A3C0E753B38B214932D4 /* ForkKitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283512F5D98F7037FAF4E85 /* ForkKitCardView.swift */; };
@@ -950,6 +951,7 @@
 
 /* Begin PBXFileReference section */
 		DABF97D21E0844BFAFFB3F3E /* LiveOrbLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveOrbLayoutTests.swift; sourceTree = "<group>"; };
+		15B30A84DC396033D444A2AF /* LiveCallRoomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCallRoomTests.swift; sourceTree = "<group>"; };
 		DB2132FD9FC991D34AA8666B /* KitCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitCardTests.swift; sourceTree = "<group>"; };
 		876B04B46F2116C1DCAACDB9 /* ForkLiveApprovalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveApprovalCard.swift; sourceTree = "<group>"; };
 		0283512F5D98F7037FAF4E85 /* ForkKitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkKitCardView.swift; sourceTree = "<group>"; };
@@ -3302,6 +3304,7 @@
 			isa = PBXGroup;
 			children = (
 				DABF97D21E0844BFAFFB3F3E /* LiveOrbLayoutTests.swift */,
+				15B30A84DC396033D444A2AF /* LiveCallRoomTests.swift */,
 				DB2132FD9FC991D34AA8666B /* KitCardTests.swift */,
 				F54279A19882191B3B6C70D4 /* CouncilTests.swift */,
 				CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */,
@@ -4182,6 +4185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B16433AC0463FF2C4BB2ED /* LiveOrbLayoutTests.swift in Sources */,
+				B4B693660732443BA6A25B3E /* LiveCallRoomTests.swift in Sources */,
 				2DCF1597D16AF1A5FC26308C /* KitCardTests.swift in Sources */,
 				FCE80E7ABD1BB29600336605 /* CouncilTests.swift in Sources */,
 				CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */,
