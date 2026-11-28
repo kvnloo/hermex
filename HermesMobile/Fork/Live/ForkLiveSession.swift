@@ -37,12 +37,20 @@ final class ForkLiveSession {
 
     func expand() { room.expand() }
 
-    func chatLeft(_ model: ChatViewModel) -> Bool { room.chatLeft(Self.key(model)) }
+    func chatLeft(_ model: ChatViewModel) -> Bool {
+        guard holds(model) else { return false }
+        return room.chatLeft(Self.key(model))
+    }
 
-    func chatAppeared(_ model: ChatViewModel) { room.chatAppeared(Self.key(model)) }
+    func chatAppeared(_ model: ChatViewModel) {
+        guard holds(model) else { return }
+        room.chatAppeared(Self.key(model))
+    }
+
+    private func holds(_ model: ChatViewModel) -> Bool { room.call?.chat == Self.key(model) }
 
     func end(_ reason: LiveCallEnd) {
-        guard let ending = room.end(reason) else { return }
+        guard room.call != nil, let ending = room.end(reason) else { return }
         controller?.stop()
         if ending.releasesChat, let model {
             model.suspendStreamForNavigation()
