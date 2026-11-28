@@ -11,8 +11,6 @@ extension View {
 private struct ForkLiveModeEntry: ViewModifier {
     let viewModel: ChatViewModel
     let title: String
-    @State private var isPresented = false
-    @State private var controller: ForkLiveModeController?
     @AppStorage(LiveModeRequest.storageKey) private var requestedAt: Double = 0
 
     func body(content: Content) -> some View {
@@ -25,10 +23,10 @@ private struct ForkLiveModeEntry: ViewModifier {
                     .disabled(viewModel.isViewingCachedData)
                 }
             }
-            .fullScreenCover(isPresented: $isPresented) {
-                if let controller { ForkLiveModeView(title: title, controller: controller) }
+            .onAppear {
+                ForkLiveSession.shared.chatAppeared(viewModel)
+                openIfRequested()
             }
-            .onAppear(perform: openIfRequested)
             .onChange(of: requestedAt) { openIfRequested() }
     }
 
@@ -39,53 +37,30 @@ private struct ForkLiveModeEntry: ViewModifier {
     }
 
     private func present() {
-        guard !viewModel.isViewingCachedData else { return }
-        if controller?.belongs(to: viewModel) != true {
-            controller = ForkLiveModeController(viewModel: viewModel)
-        }
-        isPresented = true
+        ForkLiveSession.shared.start(viewModel, title: title)
     }
 }
 
 struct ForkLiveModeView: View {
-    let title: String
+    let session: ForkLiveSession
     let controller: ForkLiveModeController
-    @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dismiss) private var dismiss
     @AppStorage("fork.liveMode.orbStyle") private var orbStyle = ForkLiveOrbStyle.voice
-    @AppStorage(ForkLiveOrbModeKey.storageKey) private var orbMode = LiveOrbMode.focus
-    @State private var keptAwake = false
+    @State private var orbMode = LiveOrbMode.focus
 
     var body: some View {
         ForkLiveModeScreen(
-            title: title, phase: controller.phase, level: controller.level,
+            title: session.title, phase: controller.phase, level: controller.level,
             heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
             isReconnecting: controller.isReconnecting, transcript: controller.transcript,
-            onOrb: controller.tapOrb, onEnd: controller.stop,
+            onOrb: controller.tapOrb, onEnd: { session.end(.user) },
             lanes: controller.supportsLanes ? ForkLiveLaneControls(controller: controller) : nil,
             orbMode: $orbMode,
             approvalIDs: ForkLiveApprovals.ids(controller.chat),
-            approval: controller.chat.map { ForkLiveApprovalCard(viewModel: $0) }
+            approval: controller.chat.map { ForkLiveApprovalCard(viewModel: $0) },
+            onMinimize: session.compact
         )
-        .onAppear {
-            controller.onClose = { dismiss() }
-            keptAwake = UIApplication.shared.isIdleTimerDisabled
-            UIApplication.shared.isIdleTimerDisabled = true
-            controller.start()
-        }
-        .onChange(of: scenePhase) { _, phase in
-            if phase == .background { controller.stop() }
-        }
-        .onDisappear {
-            controller.onClose = nil
-            controller.stop()
-            UIApplication.shared.isIdleTimerDisabled = keptAwake
-        }
+        .accessibilityAction(.escape) { session.compact() }
     }
-}
-
-enum ForkLiveOrbModeKey {
-    static let storageKey = "fork.liveMode.orbMode"
 }
 
 struct ForkLiveModeScreen: View {
@@ -103,6 +78,7 @@ struct ForkLiveModeScreen: View {
     var orbMode: Binding<LiveOrbMode> = .constant(.focus)
     var approvalIDs: [String] = []
     var approval: ForkLiveApprovalCard? = nil
+    var onMinimize: (() -> Void)? = nil
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.layoutDirection) private var layoutDirection
 
@@ -233,6 +209,17 @@ struct ForkLiveModeScreen: View {
 
     private func header(_ layout: LiveOrbLayout) -> some View {
         HStack {
+            if let onMinimize {
+                Button(action: onMinimize) {
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 17, weight: .semibold))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text("Minimize Live Mode", tableName: "Fork"))
+                .accessibilityHint(Text("The call keeps running while you use the app.", tableName: "Fork"))
+            }
             Text(verbatim: title).font(AppFont.subheadline(weight: .semibold)).lineLimit(1)
             Spacer()
             Picker(selection: $orbStyle) {

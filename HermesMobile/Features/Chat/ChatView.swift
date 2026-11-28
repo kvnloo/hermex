@@ -1107,8 +1107,10 @@ struct ChatView: View {
                 if chatLeft {
                     viewModel.cancelPastedTextStaging()
                     viewModel.stopListening()
-                    viewModel.suspendStreamForNavigation()
-                    viewModel.cleanupPollingTasks()
+                    if !ForkLiveSession.shared.chatLeft(viewModel) {
+                        viewModel.suspendStreamForNavigation()
+                        viewModel.cleanupPollingTasks()
+                    }
                 }
                 gitAvailabilityViewModel.suspendPullRequestReads()
             }

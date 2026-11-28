@@ -29,12 +29,18 @@ SwiftUI and ships no WebView card host.
   does.
 - Live Mode has two orb modes (`LiveOrbLayout`): a 58 pt bubble docked beside the
   status over the transcript, and focus with a 188 pt orb and the pending approval
-  and the newest agent cards below it. The last mode is remembered; the first
-  open is focus.
+  and the newest agent cards below it. Live always opens in focus.
+- One Live call for the whole app (`LiveCallRoom`, owned by `ForkLiveSession`
+  above navigation). Minimize (chevron or VoiceOver escape) turns focus into a
+  58 pt bubble that floats over every screen; tapping it opens the same call in
+  focus, never a new one. Asking for Live from any chat while a call runs opens
+  that call. End, backgrounding and an account change end it. A chat the call
+  holds keeps its stream and approval polling when you leave it; ending the call
+  does that skipped cleanup.
 
 ## Consequences
 
 - Catalog fixture props are summaries, so some kinds (ops, intent, trace) draw
   only a few facts until the catalog carries richer props.
-- A floating bubble on other screens needs Live Mode to outlive its full-screen
-  cover (`boat/hxvoice/live-anywhere`); that branch can reuse `LiveOrbLayout`.
+- The call ends in the background: no silent audio engine, Live Activity or
+  spoken approvals from `boat/hxvoice/live-anywhere`. Those stay on that branch.
