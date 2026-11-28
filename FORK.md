@@ -102,10 +102,20 @@ feature's status, and its iOS mapping.
 
 Open **Settings → Card Gallery** (or Settings → Appearance → Card Gallery) to
 browse every fixture in the bundled ephemeral-ui catalog offline. The version at
-the top identifies the exact catalog shown. Kinds marked `native` in
-`coverage.json` (today: `metric`) use the read-only OpenUI board renderer; every
-other kind lists its fixture props, and unavailable fixtures show their reason.
-No fixture runs an action or contacts a server.
+the top identifies the exact catalog shown. Every kind is drawn as a native kit
+card (`ForkKitCardView`) from a view model `KitCardMapper` builds out of the
+fixture's props; unavailable fixtures show their reason. No fixture runs an
+action or contacts a server.
+
+The same kit card renders in chat and in Live Mode: an ```` ```ephemeral-ui ````
+fence (one card.v0 object, a list of them, or `{title, cards}`) and the
+`EphemeralCards(title, [{kind, app?, input?, title?}])` / `EphemeralCard(kind, app?)`
+panels of an `openui-v2` board name a catalog kind; the OpenUI action panels
+(MailList, RideOptions, Route, PullRequest) are drawn as inbox, ride, route and
+merge kit cards. Settings → Appearance → Agent cards → **Card style** picks
+**App theme** (default, Hermex's colors) or **Service style** (the source service's
+palette, corner radius and density where `KitServiceBrand` knows the app, such as
+Gmail, GitHub, Stripe or Spotify; other apps keep the app theme).
 
 The gallery reads the one pinned copy in `HermesMobile/Fork/Vendor/EphemeralUI`
 described above. After re-vendoring, review

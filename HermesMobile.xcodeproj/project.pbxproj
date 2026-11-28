@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50B16433AC0463FF2C4BB2ED /* LiveOrbLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF97D21E0844BFAFFB3F3E /* LiveOrbLayoutTests.swift */; };
+		B4B693660732443BA6A25B3E /* LiveCallRoomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B30A84DC396033D444A2AF /* LiveCallRoomTests.swift */; };
+		2DCF1597D16AF1A5FC26308C /* KitCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2132FD9FC991D34AA8666B /* KitCardTests.swift */; };
+		9C02141ECA99ED7F564AA648 /* ForkLiveApprovalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876B04B46F2116C1DCAACDB9 /* ForkLiveApprovalCard.swift */; };
+		388A385228C22F0004D25971 /* ForkLiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CE86C6B052FBF6D7BD5F7 /* ForkLiveSession.swift */; };
+		5EA9A3C0E753B38B214932D4 /* ForkKitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283512F5D98F7037FAF4E85 /* ForkKitCardView.swift */; };
+		EAFC4ECD34007199DC067B0B /* LiveOrbLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49966FC8EA4299B895882D5C /* LiveOrbLayout.swift */; };
+		34B24A9D9F8E21BB2AF071CD /* LiveCallRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EB7E4CECC4AF4B4A0CC5A /* LiveCallRoom.swift */; };
+		654398CCE4E0248D3DC3C55F /* KitCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E7B592C736E27C32D4C44 /* KitCardStyle.swift */; };
+		540C56AE20317FCB40ADFFEC /* KitCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89894F4399E7258929F93485 /* KitCardModel.swift */; };
+		080457DD0592E945EF712711 /* KitCardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52446C61D0E67890C0BCA1A3 /* KitCardSpec.swift */; };
 		FCE80E7ABD1BB29600336605 /* CouncilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54279A19882191B3B6C70D4 /* CouncilTests.swift */; };
 		5F6F94B32D8C0A659AEC5373 /* ForkCouncilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0E4B68B41BA36E65DA036 /* ForkCouncilView.swift */; };
 		F658CFC37D7D5F0FDE57A947 /* ForkCouncilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E0DF47EEC0C241EC4CD4F2 /* ForkCouncilController.swift */; };
@@ -941,6 +952,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DABF97D21E0844BFAFFB3F3E /* LiveOrbLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveOrbLayoutTests.swift; sourceTree = "<group>"; };
+		15B30A84DC396033D444A2AF /* LiveCallRoomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCallRoomTests.swift; sourceTree = "<group>"; };
+		DB2132FD9FC991D34AA8666B /* KitCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitCardTests.swift; sourceTree = "<group>"; };
+		876B04B46F2116C1DCAACDB9 /* ForkLiveApprovalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveApprovalCard.swift; sourceTree = "<group>"; };
+		671CE86C6B052FBF6D7BD5F7 /* ForkLiveSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkLiveSession.swift; sourceTree = "<group>"; };
+		0283512F5D98F7037FAF4E85 /* ForkKitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkKitCardView.swift; sourceTree = "<group>"; };
+		49966FC8EA4299B895882D5C /* LiveOrbLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveOrbLayout.swift; sourceTree = "<group>"; };
+		936EB7E4CECC4AF4B4A0CC5A /* LiveCallRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCallRoom.swift; sourceTree = "<group>"; };
+		6C2E7B592C736E27C32D4C44 /* KitCardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitCardStyle.swift; sourceTree = "<group>"; };
+		89894F4399E7258929F93485 /* KitCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitCardModel.swift; sourceTree = "<group>"; };
+		52446C61D0E67890C0BCA1A3 /* KitCardSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitCardSpec.swift; sourceTree = "<group>"; };
 		F54279A19882191B3B6C70D4 /* CouncilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouncilTests.swift; sourceTree = "<group>"; };
 		2BB0E4B68B41BA36E65DA036 /* ForkCouncilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCouncilView.swift; sourceTree = "<group>"; };
 		50E0DF47EEC0C241EC4CD4F2 /* ForkCouncilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkCouncilController.swift; sourceTree = "<group>"; };
@@ -1865,6 +1887,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3746E7A2176F6F0F5EB43441 /* Kit */ = {
+			isa = PBXGroup;
+			children = (
+				0283512F5D98F7037FAF4E85 /* ForkKitCardView.swift */,
+			);
+			path = Kit;
+			sourceTree = "<group>";
+		};
+		11A741318BD957FE06A54262 /* Kit */ = {
+			isa = PBXGroup;
+			children = (
+				6C2E7B592C736E27C32D4C44 /* KitCardStyle.swift */,
+				89894F4399E7258929F93485 /* KitCardModel.swift */,
+				52446C61D0E67890C0BCA1A3 /* KitCardSpec.swift */,
+			);
+			path = Kit;
+			sourceTree = "<group>";
+		};
 		EC6466AEAA7D015E940D412A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2033,6 +2073,8 @@
 		4C4E255D18602C368E060584 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				49966FC8EA4299B895882D5C /* LiveOrbLayout.swift */,
+				936EB7E4CECC4AF4B4A0CC5A /* LiveCallRoom.swift */,
 				2F8ECBE705C2F5459DDC81C5 /* LiveTranscript.swift */,
 				370A98B4A86DC579401D5489 /* LiveReplyCards.swift */,
 				2A18A7BB13E96C1FD37D98E8 /* LiveModeMachine.swift */,
@@ -2135,6 +2177,7 @@
 		A46DF3785EECB38B9161F511 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				3746E7A2176F6F0F5EB43441 /* Kit */,
 				2147AB46901CE23AAB99013A /* Council */,
 				CF1200000000000000000102 /* ForkClientCertificate.swift */,
 				AB5FAB0DF62FB274D75D6531 /* Device */,
@@ -3225,6 +3268,8 @@
 		E114D55AF8A50EECB1D69855 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				876B04B46F2116C1DCAACDB9 /* ForkLiveApprovalCard.swift */,
+				671CE86C6B052FBF6D7BD5F7 /* ForkLiveSession.swift */,
 				2C2F8C654E9FEE8600DA6622 /* ForkLiveOrb.swift */,
 				40F0388FE63DAA78F894F506 /* ForkLiveModeController.swift */,
 				806B96937F0010D238B7677C /* ForkLiveTranscriptView.swift */,
@@ -3237,6 +3282,7 @@
 		E39DC717F9FD6A4421A9DA9B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				11A741318BD957FE06A54262 /* Kit */,
 				23D8FA182F58D8263152AEDB /* Council */,
 				CF1200000000000000000101 /* ForkClientCertificateScope.swift */,
 				585EF083F8A3200894857A7B /* Device */,
@@ -3263,6 +3309,9 @@
 		F20BE09C2F2D10DE30148850 /* Fork */ = {
 			isa = PBXGroup;
 			children = (
+				DABF97D21E0844BFAFFB3F3E /* LiveOrbLayoutTests.swift */,
+				15B30A84DC396033D444A2AF /* LiveCallRoomTests.swift */,
+				DB2132FD9FC991D34AA8666B /* KitCardTests.swift */,
 				F54279A19882191B3B6C70D4 /* CouncilTests.swift */,
 				CF1200000000000000000104 /* ForkClientCertificateScopeTests.swift */,
 				BA71FCDDB11AE4D8613F0164 /* ForkDeviceApprovalTests.swift */,
@@ -3579,6 +3628,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C02141ECA99ED7F564AA648 /* ForkLiveApprovalCard.swift in Sources */,
+				388A385228C22F0004D25971 /* ForkLiveSession.swift in Sources */,
+				5EA9A3C0E753B38B214932D4 /* ForkKitCardView.swift in Sources */,
+				EAFC4ECD34007199DC067B0B /* LiveOrbLayout.swift in Sources */,
+				34B24A9D9F8E21BB2AF071CD /* LiveCallRoom.swift in Sources */,
+				654398CCE4E0248D3DC3C55F /* KitCardStyle.swift in Sources */,
+				540C56AE20317FCB40ADFFEC /* KitCardModel.swift in Sources */,
+				080457DD0592E945EF712711 /* KitCardSpec.swift in Sources */,
 				5F6F94B32D8C0A659AEC5373 /* ForkCouncilView.swift in Sources */,
 				F658CFC37D7D5F0FDE57A947 /* ForkCouncilController.swift in Sources */,
 				9DD9A75BC3EFAE7AA90BD093 /* ForkCouncilCopy.swift in Sources */,
@@ -4135,6 +4192,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B16433AC0463FF2C4BB2ED /* LiveOrbLayoutTests.swift in Sources */,
+				B4B693660732443BA6A25B3E /* LiveCallRoomTests.swift in Sources */,
+				2DCF1597D16AF1A5FC26308C /* KitCardTests.swift in Sources */,
 				FCE80E7ABD1BB29600336605 /* CouncilTests.swift in Sources */,
 				CF1200000000000000000205 /* ForkClientCertificateChallengeTests.swift in Sources */,
 				CF1200000000000000000204 /* ForkClientCertificateScopeTests.swift in Sources */,

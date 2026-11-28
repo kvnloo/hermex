@@ -46,12 +46,43 @@ final class OpenUICatalogTests: XCTestCase {
                                                  counts: [[1, 2], [3, 4]]))
     }
 
-    func testActionPanelsValidateButAreNotRendered() throws {
+    func testActionPanelsDrawAsKitCardsInsteadOfPlaceholders() throws {
         let board = try XCTUnwrap(board("""
-        root = Board("Mail", "", [MailList("is:unread", [{from: "a", subject: "s", snippet: "x", time: "now", unread: true}])])
+        root = Board("Today", "", [mail, ride, route, pr])
+        mail = MailList("is:unread", [{from: "Ana", subject: "Invoice", snippet: "Due Friday", time: "9:41", unread: true}])
+        ride = RideOptions("uber", "Home", "SFO", [{name: "Comfort", minutes: 24, price: "$46.90", seats: 4, arrival: "9:58"}])
+        route = Route("Home", "Office", "bike", 18, "4.2 km", ["Left on Main", "Right on 3rd"])
+        pr = PullRequest(42, "Fix login", "open", "fix", "main", [{name: "Tests", status: "running", detail: "2 of 4"}], 0)
         """))
-        XCTAssertEqual(board.panels, [.unsupported(type: "MailList")])
-        XCTAssertFalse(board.isFullyRendered)
+        XCTAssertTrue(board.isFullyRendered)
+        let models = board.panels.flatMap { panel -> [KitCardModel] in
+            guard case .kit(_, let cards) = panel else { return [] }
+            return cards.compactMap { if case .drawn(let model) = $0 { model } else { nil } }
+        }
+        XCTAssertEqual(models.map(\.kind), ["inbox", "ride", "route", "merge"])
+        XCTAssertTrue(models.allSatisfy { !$0.isPlaceholder })
+        XCTAssertEqual(models[0].rows.first?.title, "Invoice")
+        XCTAssertEqual(models[0].rows.first?.isEmphasized, true)
+        XCTAssertEqual(models[1].app, "uber")
+        XCTAssertEqual(models[1].rows.first?.trailing, "$46.90")
+        XCTAssertEqual(models[2].route?.from, "Home")
+        XCTAssertEqual(models[2].rows.map(\.title), ["Left on Main", "Right on 3rd"])
+        XCTAssertEqual(models[3].title, "Fix login")
+        XCTAssertEqual(models[3].status?.tone, .warning)
+    }
+
+    func testEphemeralCardsNameCatalogKindsAndRefuseUnknownOnes() throws {
+        let board = try XCTUnwrap(board("""
+        root = Board("Kit", "", [EphemeralCards("Mail", [{kind: "inbox", app: "gmail"}, {kind: "player"}]), EphemeralCard("receipt", "stripe")])
+        """))
+        guard case .kit(let title, let cards) = board.panels[0], case .kit(_, let single) = board.panels[1] else {
+            return XCTFail("expected kit panels: \(board.panels)")
+        }
+        XCTAssertEqual(title, "Mail")
+        XCTAssertEqual(cards, [.catalog(KitCardSpec(kind: "inbox", app: "gmail")), .catalog(KitCardSpec(kind: "player"))])
+        XCTAssertEqual(single, [.catalog(KitCardSpec(kind: "receipt", app: "stripe"))])
+        XCTAssertEqual(problem(#"root = Board("x", "", [EphemeralCards("t", [{app: "gmail"}])])"#), "Missing field: kind.")
+        XCTAssertEqual(problem(#"root = Board("x", "", [EphemeralCards("t", [])])"#), "cards has an invalid length.")
     }
 
     func testCatalogRejectsMalformedBoards() {

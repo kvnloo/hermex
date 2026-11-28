@@ -14,11 +14,31 @@ enum LiveReplySegment: Equatable, Sendable {
     }
 }
 
+struct LiveFocusCard: Equatable, Sendable, Identifiable {
+    let id: String
+    let language: String
+    let source: String
+
+    var markdown: String { LiveReplySegment.card(language: language, source: source).markdown }
+}
+
 enum LiveReplyCards {
     static let drawableLanguages: Set<String> = ["html", "svg", "mermaid"]
 
     static func isCardLanguage(_ language: String) -> Bool {
         OpenUICatalog.fenceLanguages.contains(language) || drawableLanguages.contains(language)
+            || language == KitCardProgram.fenceLanguage
+    }
+
+    static func focusCards<Step>(_ turns: [LiveTurn<Step>]) -> [LiveFocusCard] {
+        turns.flatMap { turn in
+            segments(turn.reply).compactMap { segment -> (String, String)? in
+                guard case .card(let language, let source) = segment,
+                      OpenUICatalog.fenceLanguages.contains(language) || language == KitCardProgram.fenceLanguage else { return nil }
+                return (language, source)
+            }
+            .enumerated().map { LiveFocusCard(id: "\(turn.id)-\($0.offset)", language: $0.element.0, source: $0.element.1) }
+        }
     }
 
     static func segments(_ markdown: String) -> [LiveReplySegment] {

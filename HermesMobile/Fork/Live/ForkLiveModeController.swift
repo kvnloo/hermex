@@ -31,7 +31,6 @@ final class ForkLiveModeController {
     @ObservationIgnored private var replyBaselineEnd: TranscriptTurnRunOutcome?
     @ObservationIgnored private let clock = Date()
     @ObservationIgnored private let transcriptBaseline: Set<String>
-    var onClose: (() -> Void)?
 
     private static let echoGuard = Duration.milliseconds(300)
 
@@ -50,7 +49,7 @@ final class ForkLiveModeController {
         return ForkLiveTranscriptSource.turns(in: model, excluding: baseline)
     }
 
-    func belongs(to model: ChatViewModel) -> Bool { viewModel === model }
+    var chat: ChatViewModel? { viewModel }
 
     var supportsLanes: Bool { viewModel?.supportsLiveLanes == true }
 
@@ -152,7 +151,6 @@ final class ForkLiveModeController {
         sentAt = nil
         laneModels.values.forEach { $0.suspendStreamForNavigation() }
         resetListening()
-        onClose?()
     }
 
     func tapOrb() {

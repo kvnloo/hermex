@@ -4,6 +4,7 @@ struct ForkCardGalleryView: View {
     @Environment(\.forkSharedTheme) private var theme
     @State private var gallery: ForkCardGallery?
     @State private var isLoaded = false
+    @AppStorage(KitCardStyle.storageKey) private var style = KitCardStyle.defaultValue
 
     var body: some View {
         ScrollView {
@@ -12,6 +13,7 @@ struct ForkCardGalleryView: View {
                     Self.versionLabel(gallery.version)
                         .font(AppFont.footnote())
                         .foregroundStyle(.appSecondary)
+                    ForkKitStylePicker(style: $style)
                     ForEach(gallery.sections) { section in
                         Text(verbatim: section.group)
                             .font(AppFont.footnote(weight: .semibold))
@@ -42,38 +44,31 @@ struct ForkCardGalleryView: View {
 
 struct ForkCardCellView: View {
     let cell: ForkCardCell
-    @Environment(\.forkSharedTheme) private var theme
 
     var body: some View {
-        let shape = RoundedRectangle(cornerRadius: theme?.corner("card") ?? 16, style: .continuous)
-        VStack(alignment: .leading, spacing: theme?.spacing("1") ?? 4) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .firstTextBaseline) {
-                Text(verbatim: cell.label).font(AppFont.body(weight: .semibold)).foregroundStyle(.appPrimary)
+                Text(verbatim: cell.id).font(AppFont.mono(style: .caption)).foregroundStyle(.appSecondary)
                 Spacer(minLength: 8)
-                Text(verbatim: cell.state).font(AppFont.mono(style: .footnote)).foregroundStyle(.appSecondary)
+                Text(verbatim: cell.state).font(AppFont.mono(style: .caption)).foregroundStyle(.appTertiary)
             }
-            Text(verbatim: cell.id).font(AppFont.mono(style: .footnote)).foregroundStyle(.appSecondary)
-            if let reason = cell.unavailableReason {
-                Label { Text(verbatim: reason) } icon: { Image(systemName: "exclamationmark.triangle") }
-                    .font(AppFont.footnote())
-                    .foregroundStyle(.appSecondary)
-            }
-            if let board = cell.board {
-                ForkOpenUIBoardView(board: board)
-            } else {
-                ForEach(cell.lines) { line in
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text(verbatim: line.key).font(AppFont.mono(style: .footnote)).foregroundStyle(.appSecondary)
-                        Text(verbatim: line.value).font(AppFont.footnote()).foregroundStyle(.appPrimary).lineLimit(3)
-                    }
-                }
-            }
+            .accessibilityHidden(true)
+            ForkKitCardView(model: cell.kit)
         }
-        .padding(theme?.spacing("3") ?? 12)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(theme?.material(glass: "card") ?? .regularMaterial, in: shape)
-        .overlay(shape.strokeBorder(Color(.appSeparator)))
-        .accessibilityElement(children: .combine)
         .accessibilityIdentifier("card-gallery-" + cell.id)
+    }
+}
+
+struct ForkKitStylePicker: View {
+    @Binding var style: KitCardStyle
+
+    var body: some View {
+        Picker(selection: $style) {
+            Text("App theme", tableName: "Fork").tag(KitCardStyle.appTheme)
+            Text("Service style", tableName: "Fork").tag(KitCardStyle.serviceNative)
+        } label: {
+            Text("Card style", tableName: "Fork")
+        }
+        .pickerStyle(.segmented)
     }
 }

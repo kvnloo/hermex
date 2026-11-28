@@ -11,8 +11,6 @@ extension View {
 private struct ForkLiveModeEntry: ViewModifier {
     let viewModel: ChatViewModel
     let title: String
-    @State private var isPresented = false
-    @State private var controller: ForkLiveModeController?
     @AppStorage(LiveModeRequest.storageKey) private var requestedAt: Double = 0
 
     func body(content: Content) -> some View {
@@ -25,10 +23,10 @@ private struct ForkLiveModeEntry: ViewModifier {
                     .disabled(viewModel.isViewingCachedData)
                 }
             }
-            .fullScreenCover(isPresented: $isPresented) {
-                if let controller { ForkLiveModeView(title: title, controller: controller) }
+            .onAppear {
+                ForkLiveSession.shared.chatAppeared(viewModel)
+                openIfRequested()
             }
-            .onAppear(perform: openIfRequested)
             .onChange(of: requestedAt) { openIfRequested() }
     }
 
@@ -39,44 +37,29 @@ private struct ForkLiveModeEntry: ViewModifier {
     }
 
     private func present() {
-        guard !viewModel.isViewingCachedData else { return }
-        if controller?.belongs(to: viewModel) != true {
-            controller = ForkLiveModeController(viewModel: viewModel)
-        }
-        isPresented = true
+        ForkLiveSession.shared.start(viewModel, title: title)
     }
 }
 
 struct ForkLiveModeView: View {
-    let title: String
+    let session: ForkLiveSession
     let controller: ForkLiveModeController
-    @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dismiss) private var dismiss
     @AppStorage("fork.liveMode.orbStyle") private var orbStyle = ForkLiveOrbStyle.voice
-    @State private var keptAwake = false
+    @State private var orbMode = LiveOrbMode.focus
 
     var body: some View {
         ForkLiveModeScreen(
-            title: title, phase: controller.phase, level: controller.level,
+            title: session.title, phase: controller.phase, level: controller.level,
             heard: controller.heard, error: controller.errorMessage, orbStyle: $orbStyle,
             isReconnecting: controller.isReconnecting, transcript: controller.transcript,
-            onOrb: controller.tapOrb, onEnd: controller.stop,
-            lanes: controller.supportsLanes ? ForkLiveLaneControls(controller: controller) : nil
+            onOrb: controller.tapOrb, onEnd: { session.end(.user) },
+            lanes: controller.supportsLanes ? ForkLiveLaneControls(controller: controller) : nil,
+            orbMode: $orbMode,
+            approvalIDs: ForkLiveApprovals.ids(controller.chat),
+            approval: controller.chat.map { ForkLiveApprovalCard(viewModel: $0) },
+            onMinimize: session.compact
         )
-        .onAppear {
-            controller.onClose = { dismiss() }
-            keptAwake = UIApplication.shared.isIdleTimerDisabled
-            UIApplication.shared.isIdleTimerDisabled = true
-            controller.start()
-        }
-        .onChange(of: scenePhase) { _, phase in
-            if phase == .background { controller.stop() }
-        }
-        .onDisappear {
-            controller.onClose = nil
-            controller.stop()
-            UIApplication.shared.isIdleTimerDisabled = keptAwake
-        }
+        .accessibilityAction(.escape) { session.compact() }
     }
 }
 
@@ -92,69 +75,151 @@ struct ForkLiveModeScreen: View {
     let onOrb: () -> Void
     let onEnd: () -> Void
     var lanes: ForkLiveLaneControls? = nil
+    var orbMode: Binding<LiveOrbMode> = .constant(.focus)
+    var approvalIDs: [String] = []
+    var approval: ForkLiveApprovalCard? = nil
+    var onMinimize: (() -> Void)? = nil
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.layoutDirection) private var layoutDirection
 
     var body: some View {
-        Group {
-            if transcript.isEmpty {
-                GeometryReader { geometry in
-                    ScrollView {
-                        stackedContent.frame(minHeight: geometry.size.height)
-                    }
-                    .scrollBounceBehavior(.basedOnSize)
-                }
-            } else {
-                stackedContent.frame(maxHeight: .infinity)
+        let cards = LiveReplyCards.focusCards(transcript)
+        let layout = LiveOrbLayout.make(mode: orbMode.wrappedValue, approvals: approvalIDs, cards: cards.map(\.id))
+        VStack(spacing: 16) {
+            header(layout)
+            switch layout.mode {
+            case .focus: focus(layout, cards: cards)
+            case .bubble: docked(layout)
             }
+            if let lanes { lanes.actions }
+            controls
         }
+        .padding(.vertical, 20)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .themedPageBackground()
+        .animation(reduceMotion ? nil : .snappy(duration: 0.25), value: layout.mode)
     }
 
-    private var stackedContent: some View {
-        VStack(spacing: 20) {
-            header
+    private func focus(_ layout: LiveOrbLayout, cards: [LiveFocusCard]) -> some View {
+        let hasOrbit = lanes?.hasOrbit == true
+        return VStack(spacing: 12) {
+            ZStack {
+                if let lanes, hasOrbit {
+                    lanes.orbit(reduceMotion: reduceMotion, layoutDirection: layoutDirection)
+                }
+                orbButton(side: hasOrbit ? 158 : layout.diameter, action: onOrb)
+                    .accessibilityHint(Text("Double-tap to pause, resume, or interrupt the reply.", tableName: "Fork"))
+            }
+            statusText.font(AppFont.headline()).accessibilityHidden(true)
+            caption.lineLimit(3).padding(.horizontal, 24)
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 12) {
+                    ForEach(layout.items) { item in
+                        switch item {
+                        case .approval: approval
+                        case .card(let id):
+                            if let card = cards.first(where: { $0.id == id }) {
+                                MarkdownRenderer(content: card.markdown).frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+            .defaultScrollAnchor(.bottom)
+            .accessibilityIdentifier("live-focus-cards")
+        }
+    }
+
+    private func docked(_ layout: LiveOrbLayout) -> some View {
+        VStack(spacing: 12) {
             if transcript.isEmpty {
+                Spacer(minLength: 12)
+                Text("Your conversation shows here. Tap the orb to open focus.", tableName: "Fork")
+                    .font(AppFont.subheadline())
+                    .foregroundStyle(.appSecondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 32)
                 Spacer(minLength: 12)
             } else {
                 ForkLiveTranscriptView(turns: transcript)
             }
-            ZStack {
-                if let lanes, lanes.hasOrbit {
-                    lanes.orbit(reduceMotion: reduceMotion, layoutDirection: layoutDirection)
+            HStack(alignment: .center, spacing: 12) {
+                VStack(alignment: .leading, spacing: 2) {
+                    statusText.font(AppFont.subheadline(weight: .semibold))
+                    caption.lineLimit(2)
                 }
-                Button(action: onOrb) {
-                    let side: CGFloat = transcript.isEmpty ? (lanes?.hasOrbit == true ? 158 : 240) : 140
-                    ForkLiveOrb(phase: phase, level: level, style: orbStyle)
-                        .frame(width: side, height: side)
-                        .contentShape(Circle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel(statusText)
-                .accessibilityHint(Text("Double-tap to pause, resume, or interrupt the reply.", tableName: "Fork"))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibilityElement(children: .combine)
+                orbButton(side: layout.diameter) { orbMode.wrappedValue = .focus }
+                    .overlay(alignment: .topTrailing) {
+                        if layout.badge > 0 {
+                            Text(layout.badge, format: .number)
+                                .font(AppFont.caption2(weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 5)
+                                .frame(minWidth: 18, minHeight: 18)
+                                .background(Color.red, in: Capsule())
+                                .accessibilityHidden(true)
+                        }
+                    }
+                    .contextMenu {
+                        Button(action: onOrb) {
+                            phase == .listening ? Text("Pause Listening", tableName: "Fork") : Text("Listen", tableName: "Fork")
+                        }
+                        Button(role: .destructive, action: onEnd) { Text("End Live Mode", tableName: "Fork") }
+                    }
+                    .accessibilityHint(Text("Double-tap to open focus.", tableName: "Fork"))
+                    .accessibilityValue(Self.badgeValue(layout.badge))
             }
-            statusText
-                .font(AppFont.headline())
-                .accessibilityHidden(true)
+            .padding(.horizontal, 20)
+        }
+    }
+
+    private static func badgeValue(_ count: Int) -> Text {
+        count > 0 ? Text("\(count) approvals waiting", tableName: "Fork") : Text(verbatim: "")
+    }
+
+    private func orbButton(side: Double, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            ForkLiveOrb(phase: phase, level: level, style: orbStyle)
+                .frame(width: side, height: side)
+                .background {
+                    if side < 100 { Circle().fill(Color(.appFillSecondary)) }
+                }
+                .contentShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(statusText)
+        .accessibilityIdentifier(side < 100 ? "live-orb-bubble" : "live-orb-focus")
+    }
+
+    private var caption: some View {
+        VStack(spacing: 4) {
             Text(verbatim: heard.isEmpty ? " " : heard)
                 .font(AppFont.body())
                 .foregroundStyle(.appSecondary)
-                .multilineTextAlignment(.center)
-                .lineLimit(4)
-                .padding(.horizontal, 24)
+                .multilineTextAlignment(orbMode.wrappedValue == .focus ? .center : .leading)
             if let error {
                 Text(verbatim: error).font(AppFont.footnote()).foregroundStyle(.red).multilineTextAlignment(.center)
             }
-            if transcript.isEmpty { Spacer(minLength: 12) }
-            if let lanes { lanes.actions }
-            controls
         }
-        .padding(.vertical, 24)
-        .frame(maxWidth: .infinity)
     }
 
-    private var header: some View {
+    private func header(_ layout: LiveOrbLayout) -> some View {
         HStack {
+            if let onMinimize {
+                Button(action: onMinimize) {
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 17, weight: .semibold))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text("Minimize Live Mode", tableName: "Fork"))
+                .accessibilityHint(Text("The call keeps running while you use the app.", tableName: "Fork"))
+            }
             Text(verbatim: title).font(AppFont.subheadline(weight: .semibold)).lineLimit(1)
             Spacer()
             Picker(selection: $orbStyle) {
@@ -163,6 +228,14 @@ struct ForkLiveModeScreen: View {
                 Text("Avatar", tableName: "Fork")
             }
             .pickerStyle(.menu)
+            if layout.mode == .focus {
+                Button { orbMode.wrappedValue = .bubble } label: {
+                    Image(systemName: "rectangle.bottomhalf.inset.filled")
+                        .font(.system(size: 17, weight: .semibold))
+                        .frame(width: 44, height: 44)
+                }
+                .accessibilityLabel(Text("Show Transcript", tableName: "Fork"))
+            }
         }
         .padding(.horizontal, 20)
     }
@@ -199,7 +272,6 @@ struct ForkLiveModeScreen: View {
         }
     }
 }
-
 
 @MainActor
 struct ForkLiveLaneControls {

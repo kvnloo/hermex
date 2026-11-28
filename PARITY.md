@@ -115,7 +115,8 @@ Add Server also accepts a client certificate before the connection probe. The sy
 | NextGen theme engine: looks, Import / Copy theme JSON | missing | Theme JSON codec (Linux-tested) mapped onto `AppColor` custom themes; Import from clipboard/file, Copy to clipboard | `boat/hermex/theme-json` |
 | Solid / Glass surface | partial | Liquid Glass chrome on iOS 26+ (ADR 0163); no user Solid/Glass switch | `boat/hermex/theme-json` |
 | Shared theme file (HX-098): one theme every app reads, with the Glide branding | has | Vendored `kvnloo/ephemeral-ui` `theme/glide.json` (pinned in `HermesMobile/Fork/Vendor/EphemeralUI/PIN.json`), parsed in `ForkSharedTheme` (Linux-tested) and read through `\.forkSharedTheme`: the **Glide** look in Settings → Appearance → Looks, radii, spacing, glass levels and motion speed (turbo halves durations). `ci/check_ephemeral_ui.py` fails on an edited, stale or uncovered copy | `boat/hx-theme/hx-098` |
-| Card gallery from the shared catalog | has | Settings → Appearance → Card Gallery: one cell per fixture of every kind in the vendored `catalog/catalog.json`, drawn from `fixture.props`, with the catalog version shown; `coverage.json` records how each kind is drawn (`ForkCardGallery`) | `boat/hx-theme/hx-098` |
+| Card gallery from the shared catalog | has | Settings → Appearance → Card Gallery: one native kit card per fixture of every kind in the vendored `catalog/catalog.json` (`KitCardMapper`, `ForkKitCardView`), with the catalog version and the card style picker shown | `boat/hx-theme/hx-098`, `boat/hx-eui-kit/hx-099` |
+| Ephemeral-ui kit cards in chat and Live Mode, two styles (HX-099) | has | ```` ```ephemeral-ui ```` fences and OpenUI `EphemeralCards`/`EphemeralCard`/action panels draw the shared kit card in chat, the Live Mode transcript and the gallery; Card style: App theme (default) or Service style. Live Mode orb: small docked bubble over the transcript, or focus with a large orb and the pending approval and agent cards below it. Minimized, the call floats as a small bubble over the whole app and reopens in focus | `boat/hx-eui-kit/hx-099` |
 
 ## System surfaces (Android → iOS)
 
@@ -143,7 +144,7 @@ they combine. The Linux core tests (`scripts/fork-linux-test`) pass there: 88 of
 |---|---|---|
 | `boat/hermex/chat-parity` | Reactions with skin tone; Memory updated | Reactions on a still-streaming reply (only persisted rows) |
 | `boat/hermex/theme-json` | NextGen theme JSON import/copy, looks; Solid/Glass switch | `glow` accepted but unused |
-| `boat/hermex/openui-boards` | ephemeral-ui / OpenUI boards | Action panels (RideOptions, MailList, Route, PullRequest) show a notice, as on Android |
+| `boat/hermex/openui-boards` | ephemeral-ui / OpenUI boards | Action panels (RideOptions, MailList, Route, PullRequest) draw as kit cards since `boat/hx-eui-kit/hx-099` |
 | `boat/hermex/live-mode` | Live Mode call surface; hands-free loop; voice orb + thinking orb; listening avatar | Wake word; GPT-Live/WebRTC (new dependency: Kevin) |
 | `boat/hermex/annotation` | Annotation: ink, snapshot, narration, send | Live overlay over the running chat; circle-to-draft |
 | `boat/hermex/mcp-servers` | Agent settings → MCP | Adding/removing servers stays on the host |
